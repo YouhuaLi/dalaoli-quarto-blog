@@ -1,5 +1,5 @@
 ---
-title: "dalaoli_quarto_blog"
+title: "大老李聊数学"
 listing:
   contents: posts
   feed: true

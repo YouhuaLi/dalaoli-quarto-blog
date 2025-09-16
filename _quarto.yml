@@ -3,19 +3,18 @@ project:
   output-dir: docs
 
 website:
-  description: "A blog built with Quarto"
+  description: "大老李聊数学的个人博客"
   site-url: https://your-website-url.example.com # you must change this appropriately for RSS feeds to work properly
-  title: "dalaoli_quarto_blog"
+  title: "大老李聊数学"
   navbar:
     right:
       - about.qmd
-      - icon: github
-        href: https://github.com/
-      - icon: twitter
-        href: https://twitter.com
+      - text: 知乎
+        href: https://www.zhihu.com/people/li-you-hua
+      - text: bilibili
+        href: https://space.bilibili.com/423722633
 format:
   html:
     theme:
-      - cosmo
-      - brand
+      - cosmos
     css: styles.css
