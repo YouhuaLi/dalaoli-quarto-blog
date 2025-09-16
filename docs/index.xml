@@ -12,28 +12,6 @@
 <generator>quarto-1.8.24</generator>
 <lastBuildDate>Sat, 13 Sep 2025 07:00:00 GMT</lastBuildDate>
 <item>
-  <title>Post With Code</title>
-  <dc:creator>Harlow Malloc</dc:creator>
-  <link>https://your-website-url.example.com/posts/post-with-code/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>This is a post with executable code.</p>
-
-
-
- ]]></description>
-  <category>news</category>
-  <category>code</category>
-  <category>analysis</category>
-  <guid>https://your-website-url.example.com/posts/post-with-code/</guid>
-  <pubDate>Sat, 13 Sep 2025 07:00:00 GMT</pubDate>
-  <media:content url="https://your-website-url.example.com/posts/post-with-code/image.jpg" medium="image" type="image/jpeg"/>
-</item>
-<item>
   <title>数学家推翻90年猜想：当两个结相遇，解结数不再是简单的加法</title>
   <link>https://your-website-url.example.com/posts/2025-09-13-数学家推翻90年猜想当两个结相遇解结数不再是简单的加法.html</link>
   <description><![CDATA[ 
@@ -165,27 +143,6 @@
   <category>每周一题</category>
   <guid>https://your-website-url.example.com/posts/2025-09-13-数学家推翻90年猜想当两个结相遇解结数不再是简单的加法.html</guid>
   <pubDate>Sat, 13 Sep 2025 07:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Welcome To My Blog</title>
-  <dc:creator>Tristan O&#39;Malley</dc:creator>
-  <link>https://your-website-url.example.com/posts/welcome/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>This is the first post in a Quarto blog. Welcome!</p>
-<p><img src="https://your-website-url.example.com/posts/welcome/thumbnail.jpg" class="img-fluid"></p>
-<p>Since this post doesn’t specify an explicit <code>image</code>, the first image in the post will be used in the listing page of posts.</p>
-
-
-
- ]]></description>
-  <category>news</category>
-  <guid>https://your-website-url.example.com/posts/welcome/</guid>
-  <pubDate>Wed, 10 Sep 2025 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>2022年菲尔兹奖得主做了啥——詹姆斯·梅纳德</title>
@@ -1758,6 +1715,163 @@ https://arxiv.org/pdf/1605.00723.pdf
   <category>音频讲稿</category>
   <guid>https://your-website-url.example.com/posts/2021-02-26-数到无穷大之后-无穷序数简介.html</guid>
   <pubDate>Fri, 26 Feb 2021 08:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>数学故事：我已经说了无数次了</title>
+  <link>https://your-website-url.example.com/posts/2021-02-01-数学故事我已经说了无数次了.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>这是一座普通城市的普通中学的一趟普通的初中英语课，但却是费晓马最不喜欢的课程。费晓马本来就对英语不感兴趣，偏又遇上一个脾气古怪，整天板着脸的中年女英语老师。这天的英语课教的是序数词，费晓马例行地想心事，根本没在听。</p>
+<figure class="wp-block-image figure">
+<img src="https://imgkr2.cn-bj.ufileos.com/e711ceb1-f41c-47bb-a5cb-df00d5be43d7.png?UCloudPublicKey=TOKEN_8d8b72be-579a-4e83-bfd0-5f6ce1546f13&amp;Signature=4VBoSCUCqtrh%252FEvsAlIhyTr6rUU%253D&amp;Expires=1612297534" class="img-fluid figure-img">
+</figure>
+<p>英语老师看费晓马走神了，直接让他回答问题：“费晓马，请你中译英这句话：我上次考试得了第一名”？费小马条件反射地站了起来，一词一顿地说：“啊，I am first in last exam……”。</p>
+<p>还没等费晓马说完，老师直接打断了他：“我已经说过无数次了，序数词前要加定冠词‘the’，the first……你还要我说几遍啊！回去把今天的例句抄10遍！”</p>
+<p>费晓马沮丧地坐了下来，心想：这堂课赶紧过去吧。脑子又开始放空，开始思考一些数学题来。费晓马很喜欢数学，绰号”小费马”，数学是他最喜欢的科目。</p>
+<p>想着想着，忽然不知不觉中，英语老师不见了，数学老师站在讲台上，好像数学课开始了。</p>
+<p>数学老师是费晓马最喜欢的李老师，年轻，举止文雅，谈吐幽默，很能跟学生打成一片。这时李老师提问了：“上一堂课我们教‘递归’概念的时候，讲了个有“递归”的故事，谁还记得那个故事？”</p>
+<p>费晓马在数学课上最积极了，马上站了起来，说：老师，我记得。那个故事是这样的，从前有座山，山上有座庙，庙里有个老和尚和小和尚。有一天，老和尚对小和尚说：从年有座山，山上有座庙，庙里有个老和尚和小和尚……就这么下去，老和尚和小和尚的故事怎么也说不完”。</p>
+<figure class="wp-block-image figure">
+<img src="https://static01.imgkr.com/temp/671fd1a9b3cc4de5848f6ef7ca4e80da.png" class="img-fluid figure-img">
+</figure>
+<p>“很正确!”，李老师追问：“那么费晓马，如果你是故事里最里面的那个老和尚，你会怎么终结故事呢？”</p>
+<p>费晓马不加思索地说：“那个老和尚对小和尚说：‘这个故事，我已经说了无数次了啊！’” 听到费晓马说出了英语老师的口头禅，教室里哄堂大笑。</p>
+<p>李老师也笑了，说：“你为什么认为‘我已经说了无数次了’这句话可以终结这个故事呢？”</p>
+<p>费晓马说：“无数次嘛，就表示后面还可以说很多很多次，但都省略不说了，所以就用无数次概括了。但是，没有人真的可以说无数多次，所以这样说大概不太对”。</p>
+<p>李老师微微一笑，推了一下眼镜，说：“其实，‘我已经说了无数次’， 这句话也并非没有完全意义，如果我们把这句话用序数来理解的的话。”</p>
+<p>费晓马一下子紧张了：“老师，这不会跟英语里的序数词有啥关联吧？”</p>
+<p>李老师说：“费晓马，你不用怕英语到这程度吧。别怕，不考你英语。我们就看看能不能赋予’我已经说了无数次’，这句话一点意义，但会牵扯到数学里的序数概念。你看，如果我们把‘无数次’算作一个数字的话，那‘我已经说了无数次’这句话，就更我们平时说的，’我已经说了一百次，一千次’一样，都是有意义的。”</p>
+<p>“但是老师，’无数次’到底算是一个什么数字呢”？</p>
+<p>李老师说：“比任何自然数都大的一个数！我知道这很难理解，但这是数学里很有意思的地方，因为它是一个可以与‘无穷大’打交道的学科。</p>
+<p>“比全体自然数大，这句话确实无法理解，因为在常规的大和小的意义下，这句话是不对的。但数学里有其他比大小的方法，比如集合中的包含和子集。一个集合里的元素完全可以是无穷多的，它也可以包含其他有无穷多个元素的集合，没有问题。”</p>
+<p>费晓马似懂非懂的问：“这跟‘无数次’有什么关系吗’？</p>
+<figure class="wp-block-image figure">
+<img src="https://static01.imgkr.com/temp/526455428ad04beebeacd4875476af51.png" class="img-fluid figure-img">
+</figure>
+<p>李老师说：“有啊，你可以这样理解：</p>
+<p>“我已经说了n次” 这句话，相当于‘我说：“我已经说了n-1次了”’，你看，这是不是很像一个集合包含了另一个集合，也有点像递归？”</p>
+<p>“对”，很多学生同时答到。</p>
+<p>“那我们我再定义：‘我已经说了无数次了’，这句话描述了一个集合，其中包含了所有的‘我说了n次’的情况，n可以是任何的自然数，这样，‘我已经说了无数次了’，这句话不就有意义了吗？</p>
+<p>费晓马思索了一下，困惑的说：老师，这样真有什么意义吗？‘说了n多次，无数次’，这种话，我们平时开开玩笑而已，数学里有什么用吗？”</p>
+<p>李老师说：“现在看确实没啥用，但是如果我们能在‘无数次说’了之后，再‘说一次’，那就有意思了。”</p>
+<p>“无数次之后再说一次？”费晓马更困惑了。</p>
+<p>李老师暗下一乐，说：“既然我们在说集合，并且一个集合包含另一个集合，就表示前者更大，那我们只要定义一个集合，包含了‘我说了无数次’这个集合就可以了。你们想下这句话：‘我说：我已经说了无数次了’，那么你们觉得我一共说了几次呢？”</p>
+<p>“难道是无数次加一？”，费晓马问？</p>
+<p>李老师说：“对啊，根据我们之前集合递归包含的规则，这就是无数次加一次啊。记住，我们现在就可以把‘无数次’当做一个数字来处理，虽然它的本质是全体自然数构成的集合。另外要记住一点，现在的加法是没有交换律的，比如‘1+无数次’就不等于‘无数次+1’，费晓马你说说看为什么这样？”</p>
+<p>费晓马开始思考起来，说：“‘我说了1+无数次’，那就相当于我先说了一次，然后又说：‘我说了无数次’；但是‘无数次’里包含了那一次，所以总体只说了‘无数次’。但是，这句话：‘我说：我已经说了无数次了’，根据我们递归规则，外面这次确实包含了里面的那句话，所以相当于说了‘无数次+1’次。”</p>
+<p>李老师对费晓马相当满意，说：“太对了，你要记住，现在的讨论里，次序会很重要，因为我们牵涉到无穷这个概念。”</p>
+<p>费晓马一下子来劲了，继续思考：“对啊，不管你先说了多少次，后面如果说了无数次，那么总数上还是无数次啊，次序换过来就不一样了。那么老师，这样看的话，这句话：’我说，“我说：我已经说了无数次”’这句话，就是我说了无数次+2次吧。”</p>
+<p>李老师答复：“对。”</p>
+<figure class="wp-block-image figure">
+<img src="https://imgkr2.cn-bj.ufileos.com/6420a7f5-1605-4d32-94b0-66f18c83d2ed.png?UCloudPublicKey=TOKEN_8d8b72be-579a-4e83-bfd0-5f6ce1546f13&amp;Signature=ZgLPpqa2iqYeWTSlh8ELcFjSLo0%253D&amp;Expires=1612297665" class="img-fluid figure-img">
+</figure>
+<p>“那么这句话：‘我已经说了无数次：我已经说了无数次’，这句话算说了几次呢？”，费晓马抛出了他真正想问的问题。</p>
+<p>李老师也早有准备：“那我们需要返回之前的定义。之前我们只定义了：’我说了：我已经说了n次‘，这句话的含义，其结果相当于说了n+1次。但是没有定义这种句式：‘我说了p次：我已经说了q次’。现在需要定义一下这种句式的含义。</p>
+<p>根据我们日常经验：‘我已经说了两次：这事我已经说了三次了’。总体上是不是感觉说了六次。那么之前那句话，我们就可以定义成乘法关系，‘我说了p次：我已经说了q次’，这句话总体上就是说了q乘以p次。”</p>
+<p>“那么‘我已经说了2次：我已经说了无数次’ 就是我已经说了2倍的无数次！”。费晓马忍不住插了一句。</p>
+<p>李老师微微点头，继续说：“但要注意，一旦涉及到‘无数次’，次序又变得重要起来。比如‘我已经说了无数次：我说了两次了’。这句话，总的次数应该写成2乘以无数次，但结果仍然是无数次。因为说再多的‘两次’，最终也会被外面的‘无数次’覆盖了，超不过‘无数次’。</p>
+<p>但是，’我已经说了两次：我说了无数次了‘，这句话确实是‘我已经说了无数次乘以2次’，就是两倍于无数次。而‘两倍于无数次’确实比‘无数次’大，所以我们这里，乘法交换律也不成立，这一点需要注意。”</p>
+<p>费晓马顿有所悟，有点兴奋得说：“那老师，这样看来，‘我说了无数次：我已经说了无数次’，这句话就应该是‘无数次’乘以‘无数次’，等于‘无数次的平方次’了吧？”</p>
+<p>“对啊，简单吧。那之后你还可以继续……”</p>
+<p>没等李老师说完，费晓马迫不及待的说：“那还可以有无数次的3次方，无数次的4次方，以至于无数次的无数次方对吧…..”</p>
+<p>刚到这里，费晓马忽然又听到一个不想听到声音：“费晓马，你上课又打瞌睡了，你告诉我，我刚才说了啥？”</p>
+<p>啊，原来还是英语课啊，费晓马迷迷糊糊地的，也不知道哪来的勇气：“老师，你刚才说，你已经说了无数次了，但你其实已经说过了无数次‘我已经说了无数次了’！”。</p>
+<p>课堂里一阵哄笑，费晓马这次真的醒了过来。原来现在只是早上，费晓马还躺在自己的床上。</p>
+<figure class="wp-block-image figure">
+<img src="https://static01.imgkr.com/temp/4d935af3515b4a109209521a15b5c9b1.png" class="img-fluid figure-img">
+</figure>
+<p>费晓马心想：“还好只是梦啊，都怪我昨天睡前听大老李讲序数，做了这么一个梦中梦。不过以后我知道原来’我说了无数次’这句话还是有意义的啊。”想到这，费晓马似乎觉得英语老师的这句口头禅也不是那么讨厌了。</p>
+<p>(未完，续不续看反响……)</p>
+
+
+
+ ]]></description>
+  <category>每周一题</category>
+  <guid>https://your-website-url.example.com/posts/2021-02-01-数学故事我已经说了无数次了.html</guid>
+  <pubDate>Mon, 01 Feb 2021 08:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>“九头蛇数”简版介绍和一则有奖征答</title>
+  <link>https://your-website-url.example.com/posts/2021-01-06-九头蛇数简版介绍和一则有奖征答.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<figure class="wp-block-embed is-type-rich is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio figure">
+<div class="wp-block-embed__wrapper">
+https://youtu.be/sDrLJfLZ-_I
+</div></figure>
+<p>九头蛇序列(hydra sequence)可以用这个“去括号”游戏说明。游戏规则是：</p>
+<p>开始时，构造一个全由”(“和”)“字符构成的括号字符串，左右括号必须匹配。比如：</p>
+((()())()))
+
+<p>然后按如下规则对此括号串进行变换：</p>
+<ol>
+<li>
+步数=1
+</li>
+<li>
+去掉一对最内层的括号，最右侧的优先
+</li>
+<li>
+检查去掉的括号的父括号：
+</li>
+</ol>
+<p>如果该父括号是最外层括号，则无操作；</p>
+<p>如果该父括号不是最外层括号，则在该父括号右侧复制该父括号全部内容。复制数量为当前步数。</p>
+<ol start="4">
+<li>
+步数加一
+</li>
+<li>
+如果当前括号串只剩下”()“，变换终止；否则回到步骤2.
+</li>
+</ol>
+<p>比如对：“((()))”， 完整变换过程为：</p>
+<code>start&nbsp;hydra&nbsp;is:&nbsp;((())) step&nbsp;1:&nbsp;(()()) step&nbsp;2:&nbsp;(()) step&nbsp;3:&nbsp;()</code>
+
+<p>再比如对”(()(()())))“，其变换过程为：</p>
+<code>start&nbsp;hydra&nbsp;is:&nbsp;(()(()())) step&nbsp;1:&nbsp;(()(())(())) step&nbsp;2:&nbsp;(()(())()()()) step&nbsp;3:&nbsp;(()(())()()) step&nbsp;4:&nbsp;(()(())()) step&nbsp;5:&nbsp;(()(())) step&nbsp;6:&nbsp;(()()()()()()()()) step&nbsp;7:&nbsp;(()()()()()()()) step&nbsp;8:&nbsp;(()()()()()()) step&nbsp;9:&nbsp;(()()()()()) step&nbsp;10:&nbsp;(()()()()) step&nbsp;11:&nbsp;(()()()) step&nbsp;12:&nbsp;(()()) step&nbsp;13:&nbsp;(()) step&nbsp;14:&nbsp;()</code>
+
+<p>现在定义hydra(n)序列如下：对n+1层括号嵌套，按如上规则变换所需步骤数。</p>
+<p>比如，之前有关”((()))“例子，其用了三步变换终止，因此hydra(2)=3。</p>
+<p>再比如，对4层括号”(((())))” , 它经过37步终止：</p>
+<code>start&nbsp;hydra&nbsp;is:&nbsp;(((()))) step&nbsp;1:&nbsp;((()())) step&nbsp;2:&nbsp;((())(())(())) step&nbsp;3:&nbsp;((())(())()()()()) step&nbsp;4:&nbsp;((())(())()()()) step&nbsp;5:&nbsp;((())(())()()) step&nbsp;6:&nbsp;((())(())()) step&nbsp;7:&nbsp;((())(())) step&nbsp;8:&nbsp;((())()()()()()()()()()) step&nbsp;9:&nbsp;((())()()()()()()()()) step&nbsp;10:&nbsp;((())()()()()()()()) step&nbsp;11:&nbsp;((())()()()()()()) step&nbsp;12:&nbsp;((())()()()()()) step&nbsp;13:&nbsp;((())()()()()) step&nbsp;14:&nbsp;((())()()()) step&nbsp;15:&nbsp;((())()()) step&nbsp;16:&nbsp;((())()) step&nbsp;17:&nbsp;((())) step&nbsp;18:&nbsp;(()()()()()()()()()()()()()()()()()()()) step&nbsp;19:&nbsp;(()()()()()()()()()()()()()()()()()()) step&nbsp;20:&nbsp;(()()()()()()()()()()()()()()()()()) step&nbsp;21:&nbsp;(()()()()()()()()()()()()()()()()) step&nbsp;22:&nbsp;(()()()()()()()()()()()()()()()) step&nbsp;23:&nbsp;(()()()()()()()()()()()()()()) step&nbsp;24:&nbsp;(()()()()()()()()()()()()()) step&nbsp;25:&nbsp;(()()()()()()()()()()()()) step&nbsp;26:&nbsp;(()()()()()()()()()()()) step&nbsp;27:&nbsp;(()()()()()()()()()()) step&nbsp;28:&nbsp;(()()()()()()()()()) step&nbsp;29:&nbsp;(()()()()()()()()) step&nbsp;30:&nbsp;(()()()()()()()) step&nbsp;31:&nbsp;(()()()()()()) step&nbsp;32:&nbsp;(()()()()()) step&nbsp;33:&nbsp;(()()()()) step&nbsp;34:&nbsp;(()()()) step&nbsp;35:&nbsp;(()()) step&nbsp;36:&nbsp;(()) step&nbsp;37:&nbsp;()</code>
+
+<p>因此，hydra(3)=37。</p>
+<p>现在的问题是，对hydra(4)，它能在有限步骤内结束吗？hydra(4)的前100步的括号字符串长度变化情况为：</p>
+<code>start&nbsp;hydra&nbsp;is:&nbsp;((((())))) hydra&nbsp;lengh&nbsp;after&nbsp;step&nbsp;1:&nbsp;10 hydra&nbsp;lengh&nbsp;after&nbsp;step&nbsp;2:&nbsp;16 hydra&nbsp;lengh&nbsp;after&nbsp;step&nbsp;3:&nbsp;20 hydra&nbsp;lengh&nbsp;after&nbsp;step&nbsp;4:&nbsp;82 hydra&nbsp;lengh&nbsp;after&nbsp;step&nbsp;5:&nbsp;150 hydra&nbsp;lengh&nbsp;after&nbsp;step&nbsp;6:&nbsp;220 hydra&nbsp;lengh&nbsp;after&nbsp;step&nbsp;7:&nbsp;288 hydra&nbsp;lengh&nbsp;after&nbsp;step&nbsp;8:&nbsp;302 hydra&nbsp;lengh&nbsp;after&nbsp;step&nbsp;9:&nbsp;498 ….. hydra&nbsp;lengh&nbsp;after&nbsp;step&nbsp;98:&nbsp;11328 hydra&nbsp;lengh&nbsp;after&nbsp;step&nbsp;99:&nbsp;11326 hydra&nbsp;lengh&nbsp;after&nbsp;step&nbsp;100:&nbsp;11324 …..</code>
+
+<p>且没有终止的迹象。出人意料的是1982年，<strong>Kirby, L.和 Paris, J. 证明</strong><sup>[1]</sup>，对任意大的n, hydra(n)都是有限的。</p>
+<p>更出人意料的是hydra(4)出奇得大，现已证明hydra(4)将远大于另一个出名大数“葛立恒数”。</p>
+<p>另外hydra(n)的有限性已无法在皮亚诺算数公理中证明，因此它也是哥德尔不完备定理的一个例子。</p>
+<p>有关更具体的九头蛇序列说明，请观看视频。</p>
+<hr class="wp-block-separator">
+<p>有奖思考题：</p>
+<p>视频中我有一个错误：hydra(n)并不是去括号游戏的最优解法，因为它总是优先去除最右边的括号，因此这样的玩法所得步骤数并不是最少的。那么问题来了，如果我们用optimal_hydra(n)定义为最优解法的步数，那么optimal_hydra(4)的下限是多少？</p>
+<p>“去括号”游戏可能的最优玩法是：</p>
+<p>总是优先去除最内层的括号；</p>
+<p>同样层次的括号中，总是优先去除“兄弟”最多的。因为这些“兄弟”总是要被复制的，那么提前复制的话可以尽量减少复制的次数。</p>
+<p>我将对能给出optimal_hydra(4)最优下限甚至确切值的读者，奖励本人所著《老师没教的数学》一本。</p>
+<p>请将你的计算结果和理由发至dalaoliliaoshuxue@gmail.com (“大老李聊数学”的拼音 + <span class="citation" data-cites="gmail.com">@gmail.com</span>)， 截止时间2021年1月20日。</p>
+<p>本文中用到的计算hydra变化的<a href="https://github.com/YouhuaLi/math_misc/blob/master/brackets_hydra_game/bhg.py">python代码：</a>（随便写的，效率极差， 见谅。）</p>
+<h3 class="anchored">
+参考资料
+</h3>
+<p>[1]</p>
+<p>Kirby, L.和 Paris, J. 证明: <em>http://logic.amu.edu.pl/images/3/3c/Kirbyparis.pdf</em></p>
+
+
+ ]]></description>
+  <category>每周一题</category>
+  <guid>https://your-website-url.example.com/posts/2021-01-06-九头蛇数简版介绍和一则有奖征答.html</guid>
+  <pubDate>Wed, 06 Jan 2021 08:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
