@@ -1,0 +1,149 @@
+---
+title: '形形色色的素数--素性检验'
+date: "2020-03-31"
+categories:
+  - "每周一题"
+---
+
+大家好，我是大老李。今天聊聊素性检验（primality test），即检查一个数是否为质数的问题。这里的“素性检验”，如其名称所示，仅需要检查一个数字是否为素数，而不需要对其进行质因数分解。因当今计算机的广泛使用，加密和伪随机数算法到处可见。而这些算法中，有许多都需要先产生一个随机大质数，所以素性检验问题对这些算法是至关紧要。
+
+检查一个数是否为素数，最简单的方法当然是我们小学里都学过的“试除法”。比如检查101是不是质数，我们只要把101去除以2，3，4，一个个除下去，直到100，如果都不能整除，则101是质数。当然，你可以很容易对这个方法改进一些，比如对某个整数n，你只要试除小于<span class="katex--inline"><span class="katex"><span class="katex-mathml">n\sqrt{n}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.04em;vertical-align:-.23972em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.80028em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:.833em;"><span class="mord mathdefault">n</span></span></span><span class="" style="top:-2.76028em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:.853em;height:1.08em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.23972em;"><span class=""></span></span></span></span></span></span></span></span></span>的整数就可以了，也只需要试除奇数。如果你有质数表，你也可以只试除小于<span class="katex--inline"><span class="katex"><span class="katex-mathml">n\sqrt{n}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.04em;vertical-align:-.23972em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.80028em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:.833em;"><span class="mord mathdefault">n</span></span></span><span class="" style="top:-2.76028em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:.853em;height:1.08em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.23972em;"><span class=""></span></span></span></span></span></span></span></span></span>的质数。
+
+但不管如何改进，这样的改进结果，从算法角度来说，最终结果都是一个指数时间复杂度的算法。但是试除法的好处是，一旦判断某个数不是质数，同时也就它的质因数也找了出来。
+
+所以，现在有个问题，对某个很大的数，进行素性检验，如果只要求检验是否为素数，但不要求找出质因子，是否有多项式时间的算法呢？
+
+你可能想会到<a href="https://zhuanlan.zhihu.com/p/96071526">费马小定理</a>，遗憾的是，费马小定理的逆命题并不成立。之前节目提到过，即使某个数以所有底数通过费马小定理的检验，也不保证所得结果必定质数。这种例外的数字就被称为“卡迈克尔数”。
+
+<hr>
+
+（转自维基百科）
+
+费马小定理是数论中的一个定理：假如 a是一个整数， p 是一个质数，那么 <span class="katex--inline"><span class="katex"><span class="katex-mathml">ap−aa^{p}-a</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.747722em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault">a</span></span></span></span></span>是p的倍数，可以表示为：
+
+<span class="katex--inline"><span class="katex"><span class="katex-mathml">ap≡a(modp)a^{p} \equiv a {\pmod {p}}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.664392em;vertical-align:0;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord mathdefault">a</span><span class="mord"><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:.444444em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:.333333em;"></span><span class="mord mathdefault">p</span><span class="mclose">)</span></span></span></span></span></span>
+
+如果a不是p的倍数，这个定理也可以写成：
+
+<span class="katex--inline"><span class="katex"><span class="katex-mathml">ap−1≡1(modp)a^{p-1}\equiv 1{\pmod {p}}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.814108em;vertical-align:0;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mord"><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:.444444em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:.333333em;"></span><span class="mord mathdefault">p</span><span class="mclose">)</span></span></span></span></span></span>
+
+“卡迈克尔数”为符合上述性质的**合数**p，也即那些使费马小定理逆命题不成立的反例。最小的卡迈克尔数是561，其等于 <span class="katex--inline"><span class="katex"><span class="katex-mathml">3×11×173\times 11 \times 17</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">1</span><span class="mord">1</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span><span class="mord">7</span></span></span></span></span>。
+
+<hr>
+
+但卡迈克尔数很稀有，所以，有时一个数如果通过了足够多的底数下的费马小定理的性质检验，则我们知道它是质数的可能性非常高，在某些应用场景下够用了。所以这种用“费马小定理”去检判定质数的方法仍有一定实用性，这种素性检验法就叫做“费马素性检验”（简称“费马检验”）。
+
+也因为它可能将合数误判为质数，所以它又叫“非确定性”或“概率性”素性检验。费马素性检验的时间复杂度是：<span class="katex--inline"><span class="katex"><span class="katex-mathml">O(k×log⁡3n)O(k\times \log^{3}{n})</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span style="margin-right:.02778em;" class="mord mathdefault">O</span><span class="mopen">(</span><span style="margin-right:.03148em;" class="mord mathdefault">k</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1.14845em;vertical-align:-.25em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:.01389em;">g</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.898448em;"><span class="" style="top:-3.14734em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord"><span class="mord mathdefault">n</span></span><span class="mclose">)</span></span></span></span></span>，其中k是要检查的底数数量。它已经比指数复杂度的试除法好多了，在电子邮件加密软件PGP就使用了费马素性检验。
+
+那有没有一种能在多项式时间里，以确定性的方式完成素性检验的算法呢？还真有，这就是2002年，由三位印度科学家提出的AKS算法。当时他们的论文标题就是”素数属于P”。这里的P就是我之前聊过的<a href="https://zhuanlan.zhihu.com/p/68652786">“P vs NP”问题里</a>的那个P，意思是：检查一个数是否为素数，是有多项式时间的算法的。这是第一个确定性的多项式时间的素性检验算法，具有里程碑意义。
+
+AKS算法的时间复杂度是<span class="katex--inline"><span class="katex"><span class="katex-mathml">O(log⁡12n)O(\log^{12}n)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.14845em;vertical-align:-.25em;"></span><span style="margin-right:.02778em;" class="mord mathdefault">O</span><span class="mopen">(</span><span class="mop"><span class="mop">lo<span style="margin-right:.01389em;">g</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.898448em;"><span class="" style="top:-3.14734em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></span>，后来被改进到<span class="katex--inline"><span class="katex"><span class="katex-mathml">O(log⁡6n)O(\log^{6}n)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.14845em;vertical-align:-.25em;"></span><span style="margin-right:.02778em;" class="mord mathdefault">O</span><span class="mopen">(</span><span class="mop"><span class="mop">lo<span style="margin-right:.01389em;">g</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.898448em;"><span class="" style="top:-3.14734em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></span>。 AKS素性测试的基本理念其实还是费马小定理，只是它能在多项式时间内，排除掉n是所有种类的<a href="https://zhuanlan.zhihu.com/p/96071526">伪素数</a>的情况。
+
+但有意思的是，虽然有了AKS算法，我们当今实用领域里的需要生成大质数的各种加密算法中，几乎没有使用AKS算法的，而是使用一种概率性的算法：米勒——拉宾测试算法（Miller  Rabin）。
+
+米勒–拉宾算法最早其实是1967年苏联数学家Artjuhov发现的，但并不为西方所知。1976年，卡内基梅隆大学的计算机系教授Gary Lee Miller再次提出了这个算法的最初版本，它是基于广义黎曼猜想的确定性算法。也就是：如果广义黎曼假设被证明是真命题，那么这个算法的结果就是正确的，且是决定性的。但是黎曼假设的证明还遥遥无期，所以后来以色列的科学家Michael Rabin将其改进，使其不再依赖黎曼假设，但结果是概率性的。因此这个算法现在被称为“米勒–拉宾算法”。
+
+米勒–拉宾算法的具体步骤在节目里不便说，但我可以说说它的基本理念，其实很类似于费马素性检验。根据费马小定理，我们知道，对于某个n，如果它是质数，则对所有2到n-1的自然数a, <span class="katex--inline"><span class="katex"><span class="katex-mathml">an−1a^ {n-1}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.814108em;vertical-align:0;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span></span> 除以n的余数是1。 但对某些合数n，也符合这个性质。
+
+那我们把鉴定一个整数n是否为质数的过程，想象成法庭审判的过程，把这些底数当做一个个证人。比如我们要“审判”101是否为质数。我们先请“2”来作证。证人“2”来了，它按费马小定理算了下，<span class="katex--inline"><span class="katex"><span class="katex-mathml">2101−1≡1(mod101)2^{101-1}\equiv 1{\pmod {101}}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.814108em;vertical-align:0;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">0</span><span class="mord mtight">1</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mord"><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:.444444em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:.333333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span></span>，符合费马小定理。于是证人“2”说：在我看来，101是一个质数。
+
+然后你继续请证人“3”。“3”也算了下，<span class="katex--inline"><span class="katex"><span class="katex-mathml">3101−1≡1(mod101)3^{101-1}\equiv 1{\pmod {101}}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.814108em;vertical-align:0;"></span><span class="mord"><span class="mord">3</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">0</span><span class="mord mtight">1</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mord"><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:.444444em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:.333333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span></span>，于是，“3”也说：在我看来，101是一个质数。后续你继续请证人4，5，6，7，…，一直到100来作证。结果这些数作为底数对101进行费马检验，结果都符合余数为1。于是它们都作证说：101是一个质数。这些证人在算法中有个术语，叫做“证人数”。
+
+那你知道，除非101是一个卡迈克尔数，否则它就是一个质数。所以你基本可以确信，101是一个质数。但对561这个数，我们知道它是最小的卡迈尔克数。对它，即使你请“2”到“560”所有的“证人”来作证，这些数都会认为561是一个质数，但是561却是一个合数。此时我们说：2到560都做了“伪证”，但这不能怪这些数，只能怪561这个卡迈克尔数伪装的太像质数了。
+
+先不管这些，现在请你改进以上过程，改进目标是：尽量少请一些证人，但最终仍然可以以比较高的准确率鉴定一个质数。
+
+首先，我们不用考虑卡迈克尔数的问题了，因为即使请所有的证人出来，也不能鉴定出它是合数。我们需要考虑的是，怎么少请证人，仍然可以尽量少的误判一个合数为质数。你会想到，如果有两个证人数，它们经常同时作“伪证”，也就是它们经常对同一个合数作出错误判断，那么这两个证人同时出场的意义就不大了。
+
+比如对341这个数，<span class="katex--inline"><span class="katex"><span class="katex-mathml">2341−1≡1(mod341)2^{341-1}\equiv 1{\pmod {341}}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.814108em;vertical-align:0;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">4</span><span class="mord mtight">1</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mord"><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:.444444em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:.333333em;"></span><span class="mord">3</span><span class="mord">4</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span></span>， <span class="katex--inline"><span class="katex"><span class="katex-mathml">4341−1≡1(mod341)4^{341-1}\equiv 1{\pmod {341}}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.814108em;vertical-align:0;"></span><span class="mord"><span class="mord">4</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">4</span><span class="mord mtight">1</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mord"><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:.444444em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:.333333em;"></span><span class="mord">3</span><span class="mord">4</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span></span>。所以证人“2”和“4”都会认为341是一个质数，但是341却是一个合数，所以2和4同时作了“伪证”。因此我们知道，在341这个问题上，2和4同时出来作证的意义就不大了。
+
+在法律术语中，这种情况叫“关联证人”，也就是两个证人互相认识或有某种共同的利益，所以“关联证人”的证词会具有相同的倾向性，它们同时作伪证的可能比较高，所以要比互不相关的证人证词效力差。
+
+在我们素性检验的问题中，我们可以通过某些数学上的性质，挑选合适的证人数，使得它们关系尽量独立，从而达到快速鉴定素数，同时使误差率尽量小的目的。
+
+这个思路有点像最近的那期“<a href="https://zhuanlan.zhihu.com/p/110769310">三人成虎</a>”的节目：一个证人说某个数字是质数，你可能不信，三个或更多互不认识的证人说某个数字是质数，那么这个数字是质数的概率就很高了。
+
+而米勒–拉宾算法就是通过一种费马小定理的特殊情形，进行一些数学变换，能够高效选取独立性很高的“证人数”，使得我们能快速鉴定质数。并且我们可以通过调节证人数的数量，控制最后结果的准确率。证人数越多，最终结果是伪质数的概率就越小，且其结果甚至排除掉卡迈克尔数。实践中，我们可以让伪质数出现概率小于<span class="katex--inline"><span class="katex"><span class="katex-mathml">1/21001/2^{100}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06411em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mord">/</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">0</span><span class="mord mtight">0</span></span></span></span></span></span></span></span></span></span></span></span></span>，而它的时间复杂度与费马检验法一样是<span class="katex--inline"><span class="katex"><span class="katex-mathml">O(k×log⁡3n)O(k\times \log^{3}{n})</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span style="margin-right:.02778em;" class="mord mathdefault">O</span><span class="mopen">(</span><span style="margin-right:.03148em;" class="mord mathdefault">k</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1.14845em;vertical-align:-.25em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:.01389em;">g</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.898448em;"><span class="" style="top:-3.14734em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord"><span class="mord mathdefault">n</span></span><span class="mclose">)</span></span></span></span></span> ，k为“证人”数量，是一个多项式时间算法。
+
+米勒–拉宾算法十分简洁，以下即为用Python语言实现的米勒–拉宾测试 ：
+
+<code>def is_Prime(n):
+"""
+Miller-Rabin primality test.
+
+A return value of False means n is certainly not prime. A return value of
+True means n is very likely a prime.
+"""
+if n!=int(n):
+    return False
+n=int(n)
+#Miller-Rabin test for prime
+if n==0 or n==1 or n==4 or n==6 or n==8 or n==9:
+    return False
+
+if n==2 or n==3 or n==5 or n==7:
+    return True
+s = 0
+d = n-1
+while d%2==0:
+    d>>=1
+    s+=1
+assert(2**s * d == n-1)
+
+def trial_composite(a):
+    if pow(a, d, n) == 1:
+        return False
+    for i in range(s):
+        if pow(a, 2**i * d, n) == n-1:
+            return False
+    return True
+
+for i in range(8):#number of trials
+    a = random.randrange(2, n)
+    if trial_composite(a):
+        return False
+
+return True
+</code></pre>
+
+有了米勒—拉宾算法，要产生一个大质数就简单了。比如要找到一个2048位的随机质数，那只要先产生若干个2048位的随机二进制奇数，然后再送到米勒拉宾算法检验，直到找出一个质数。
+
+给大家一个思考题:，根据素数定理，我们知道素数的密度。2048位的一个随机二进制数为质数的概率约是：<span class="katex--inline"><span class="katex"><span class="katex-mathml">1/ln⁡22048≈0.07%1/\ln{2^{2048}}\approx0.07\%</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06411em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mord">/</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mop">ln</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord"><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mord mtight">0</span><span class="mord mtight">4</span><span class="mord mtight">8</span></span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.80556em;vertical-align:-.05556em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">0</span><span class="mord">7</span><span class="mord">%</span></span></span></span></span>。 那么请问：随机取多少个2048位的二进制**奇数**，可以使得结果中，以99%的概率，至少存在一个质数？这个问题留给大家做思考题。
+
+到这里，你会有一个问题，米勒–拉宾算法是概率性算法，而AKS算法是确定性的，也就是通过AKS检查的数不会有伪质数，而两者又都是多项式时间的，为什么实践中不用AKS算法？
+
+这是因为，虽然都是多项式时间算法，但是所需时间还是有差距的，AKS算法要比米勒拉宾算法复杂多，单次检测所需时间明显长。在上述产生随机大质数的过程，两者所需时间的差距可以是1分钟对1秒钟的差距，AKS算法在使用体验上会差不少。
+
+更重要的是，我们已经通过数学方法证明，米勒-拉宾算法产生的质数（调整到足够测试次数后）是伪质数的几率小于<span class="katex--inline"><span class="katex"><span class="katex-mathml">1/21001/2^{100}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06411em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mord">/</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">0</span><span class="mord mtight">0</span></span></span></span></span></span></span></span></span></span></span></span></span>，这个数字已经小于计算机硬件出错的概率了，因此算法上更高的准确率已经没有意义。并且实践中，还没有发现哪个通过米勒-拉宾检查的数，最终是合数的情况。
+
+也就是，你可以通过米勒–拉宾算法产生很多质数，然后再送到AKS算法中鉴定，看看是不是伪质数。到目前为止，没有人发现这样的数。其实这是可以理解的，因为我们知道米勒拉宾算法的错误率已经小到<span class="katex--inline"><span class="katex"><span class="katex-mathml">1/21001/2^{100}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06411em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mord">/</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">0</span><span class="mord mtight">0</span></span></span></span></span></span></span></span></span></span></span></span></span>，这是非常非常小的。并且，也许在2的几千次方以内，根本没有这样的伪质数。
+
+另外，计算机领域中有一个“工业级素数”的说法。如果把大素数生成算法想象成一个个生产素数的工厂的话，那么生产出来的素数就可以称为“工业级素数”。有意思的是，目前的“工业级素数”其实是有个小概率是合数的，属于“残次品”，但目前还没有发现这样的残次品。
+
+总结一下，目前最常用的大素数检查算法就是米勒–拉宾算法，它的算法简单，“精度”可调，实用性非常高。唯一缺点是：它的结果是概率性的，而非确定性。但这个缺点是可以接受的，因为我们可以把它的出错率调到小于计算机硬件出错的概率。将来如果能证明广义黎曼假设，那我们就可以用原版的米勒算法，那个就是确定性的了。
+
+参考链接：
+
+<a href="https://crypto.stackexchange.com/questions/71/how-can-i-generate-large-prime-numbers-for-rsa">https://crypto.stackexchange.com/questions/71/how-can-i-generate-large-prime-numbers-for-rsa</a>
+
+<a href="https://en.wikipedia.org/wiki/Primality_test">https://en.wikipedia.org/wiki/Primality_test</a>
+
+<a href="https://zh.wikipedia.org/zh-cn/AKS%E8%B3%AA%E6%95%B8%E6%B8%AC%E8%A9%A6">https://zh.wikipedia.org/zh-cn/AKS%E8%B3%AA%E6%95%B8%E6%B8%AC%E8%A9%A6</a>
+
+<a href="https://zh.wikipedia.org/wiki/%E8%B4%B9%E9%A9%AC%E7%B4%A0%E6%80%A7%E6%A3%80%E9%AA%8C">https://zh.wikipedia.org/wiki/%E8%B4%B9%E9%A9%AC%E7%B4%A0%E6%80%A7%E6%A3%80%E9%AA%8C</a>
+
+<a href="https://zh.wikipedia.org/zh-cn/%E7%B1%B3%E5%8B%92-%E6%8B%89%E5%AE%BE%E6%A3%80%E9%AA%8C">https://zh.wikipedia.org/zh-cn/%E7%B1%B3%E5%8B%92-%E6%8B%89%E5%AE%BE%E6%A3%80%E9%AA%8C</a>
+
+<a href="https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test">https://en.wikipedia.org/wiki/Miller–Rabin_primality_test</a>
+
+<hr>
+
+喜马拉雅：<a href="https://link.zhihu.com/?target=https%3A//www.ximalaya.com/keji/6310606/">https://www.ximalaya.com/keji/6310606/</a>
+
+微信关注：dalaoli_shuxue
+
+B站: <a href="https://link.zhihu.com/?target=https%3A//space.bilibili.com/423722633">https://space.bilibili.com/423722633</a>
+
+知乎：<a href="https://link.zhihu.com/?target=https%3A//zhuanlan/">https://zhuanlan</a>.<a href="http://zhihu.com/dalaoli-shuxue/">zhihu.com/dalaoli-shuxue/</a>
+
+电邮：dalaoliliaoshuxue@gmail.com

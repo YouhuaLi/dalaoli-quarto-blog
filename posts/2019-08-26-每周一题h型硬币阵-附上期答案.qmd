@@ -1,0 +1,86 @@
+---
+title: '每周一题：H型硬币阵 （附上期答案）'
+date: "2019-08-26"
+categories:
+  - "每周一题"
+---
+
+<h3 id="本期题目：h型硬币阵">本期题目：H型硬币阵</h3>
+
+题目来源：new scientist
+
+![enter image description here](https://pic1.zhimg.com/80/v2-92d23afc6e5c778ed5bdc447f2575de4_hd.jpg)
+
+桌上有若干硬币，摆放成如上图形状，从中可以找到5条直线（包括倾斜的），使每条直线上恰有3枚硬币。
+
+请你在图中增加两枚硬币，使得图中可以找到10条直线，使每条直线上恰有3枚硬币。如果你能找到两种方案，且互不为镜像，则你找出了所有答案，给自己晚饭加个🍗。
+
+请直接留言或发邮件至：dalaoliliaoshuxue @gmail.com 解答
+
+<hr>
+
+<h3 id="加餐题：圆弧包围的面积">加餐题：圆弧包围的面积</h3>
+
+题目来源：<a href="https://brilliant.org">https://brilliant.org</a>
+
+![enter image description here](https://pic1.zhimg.com/80/v2-8a8276902f78c92b0539425432aee174_hd.jpg)
+
+图中每个小方格都是边长为1的正方形，每一段弧都是圆弧的一部分。已知图中以弧BJ, JK, KD, DB包围的阴影部分面积可以表示为：
+
+<span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml">aπ+bc\frac{a\pi+b}{c}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.05744em;vertical-align:-.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.37144em;"><span class="" style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">c</span></span></span><span class="" style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span class="" style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">a</span><span style="margin-right:.03588em;" class="mord mathdefault">π</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mord mathdefault">b</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.686em;"><span class=""></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></span>
+
+其中a,b,c都是整数，且c是正数，求a+b+c的最大值。
+
+请直接留言或发邮件至：dalaoliliaoshuxue @gmail.com 解答
+
+<hr>
+
+<h3 id="上周题目：-小孔测地月距离">上周题目： 小孔测地月距离</h3>
+
+<blockquote>
+你在纸上打了一个直径6mm的小孔，当你把纸放在大约一条手臂的距离时，你发现透过小孔观察，月亮恰好填可满整个小孔被看到。已知月亮的直径约为3500km。请问，你能否估算出地球到月球的距离？
+</blockquote>
+
+解答：如果你的臂长约60cm，则地月距离约35万公里。用很简单的相似三角形原理，可知：
+
+地月距离约为：
+
+<span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml">(60/0.6)×3500=350,000(60/0.6)\times 3500 = 350,000</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mopen">(</span><span class="mord">6</span><span class="mord">0</span><span class="mord">/</span><span class="mord">0</span><span class="mord">.</span><span class="mord">6</span><span class="mclose">)</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">3</span><span class="mord">5</span><span class="mord">0</span><span class="mord">0</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.83888em;vertical-align:-.19444em;"></span><span class="mord">3</span><span class="mord">5</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span></span></span></span></span></span>
+
+此题目的在于告诉大家估算地月距离就是那么简单，希望有人真的做了这个实验。但是不要用此方法去估算地球与太阳的距离！
+
+所有答对者的答案已置为精华。
+
+<hr>
+
+<h3 id="上期加餐题：池塘上架设木板">上期加餐题：池塘上架设木板</h3>
+
+<blockquote>
+你有一个半径1米的圆形池塘和一些长度为1米的窄木板（宽度不计）。你希望在池塘上架设一些这种木板，使得池塘的中心可以被木板覆盖。架设的要求是木板的两端必须架在池塘边缘或者已经架设的木板上。
+
+问：你至少需要架几块木板，可以盖住池塘的中心？
+
+比如，对直径为1/2米，5/8米和7/10米的池塘，分别最少只需要1，2，3块木板：
+
+![enter image description here](https://pic1.zhimg.com/v2-1bcc9311db70c17ec0db6fa879b9245c_1200x500.jpg)
+</blockquote>
+
+答案：需要12块木板。最终的图形如下：
+
+![enter image description here](https://pic4.zhimg.com/80/v2-012778d4a5f9faf8afe2170a75b7abe7_hd.jpg)
+
+而有人用电脑证明11块确实不够（黄色的木板“够不到”其他蓝色木板）：
+
+![enter image description here](https://pic2.zhimg.com/80/v2-d4b5d626e8be0e3bb0a2b5015021d481_hd.jpg)
+
+所有答对者的答案已置为精华。
+
+<hr>
+
+<h4 id="喜马拉雅fm：大老李聊数学”：">喜马拉雅FM："大老李聊数学”：</h4>
+
+![enter image description here](https://pic1.zhimg.com/80/v2-8d13d5180712a2921dbf634a4ab3ce78_hd.jpg)
+
+<h4 id="关注“大老李聊数学”公众号：-dalaoli_shuxue">关注“大老李聊数学”公众号： dalaoli_shuxue</h4>
+
+<h4 id="哔哩哔哩--゜--゜つロ-乾杯-bilibili"><a href="https://link.zhihu.com/?target=https%3A//space.bilibili.com/423722633">哔哩哔哩 ( ゜- ゜)つロ 乾杯~ Bilibili</a></h4>

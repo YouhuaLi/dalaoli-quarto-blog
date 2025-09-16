@@ -1,0 +1,1763 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>dalaoli_quarto_blog</title>
+<link>https://your-website-url.example.com/</link>
+<atom:link href="https://your-website-url.example.com/index.xml" rel="self" type="application/rss+xml"/>
+<description>A blog built with Quarto</description>
+<generator>quarto-1.8.24</generator>
+<lastBuildDate>Sat, 13 Sep 2025 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>Post With Code</title>
+  <dc:creator>Harlow Malloc</dc:creator>
+  <link>https://your-website-url.example.com/posts/post-with-code/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>This is a post with executable code.</p>
+
+
+
+ ]]></description>
+  <category>news</category>
+  <category>code</category>
+  <category>analysis</category>
+  <guid>https://your-website-url.example.com/posts/post-with-code/</guid>
+  <pubDate>Sat, 13 Sep 2025 07:00:00 GMT</pubDate>
+  <media:content url="https://your-website-url.example.com/posts/post-with-code/image.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>数学家推翻90年猜想：当两个结相遇，解结数不再是简单的加法</title>
+  <link>https://your-website-url.example.com/posts/2025-09-13-数学家推翻90年猜想当两个结相遇解结数不再是简单的加法.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>让我们聊一个最近在<strong>纽结理论</strong>中非常有趣的发现。2025年6月30日，内布拉斯加大学的两名科学家在预印本网站arXiv上发表了一篇<a href="https://arxiv.org/abs/2506.24088">论文</a>，标题为《解结数在连接和下是非加性的》（Unknotting number is not additive under connected sum）。这篇论文成功推翻了一个将近90年的猜想，并提供了一个反例：将两个结连接起来，形成一个更大的新结，但解开这个新结，居然比分别解开原来两个结要更容易。</p>
+<h3 class="anchored">
+什么是“纽结”和“解结数”？
+</h3>
+<p>首先，我们来快速回顾一下纽结的基本概念。在数学中，纽结指的是一个<strong>闭合的绳环</strong>。最简单的结是<strong>平凡结</strong>，就是一个没有任何交叉的圆圈。而最简单的非平凡结则是<strong>三叶结</strong>，它有三个交叉点。你可以自己动手试一试，有且仅有一个或两个交叉点的绳环，无论怎么变动，最终都能被拉直成一个圆圈，所以它们都属于平凡结。</p>
+<p><img src="https://files.mdnice.com/user/5405/aa656e64-6568-49f5-aff4-d524c329fe23.png" class="img-fluid"></p>
+<p>(上图：一个三叶结，交换任意交叉点上的绳子上下关系，其就变为平凡结)</p>
+<p>在区分不同纽结时，<strong>交叉点数量</strong>(crossing)是一个非常重要的指标。但我们还需要一个指标来衡量一个结的复杂程度，那就是<strong>解结数</strong>（unknotting number）。这个概念直观且容易理解：</p>
+<ol>
+<li>
+把一个结投影到平面上，形成一个交叉点最少的图形。
+</li>
+<li>
+在每个交叉点，你都会看到两股绳子，一股在上面，一股在下面。
+</li>
+<li>
+现在，你可以选择任意一个交叉点，把上面的绳子和下面的绳子位置对调。
+</li>
+<li>
+你的目标是，通过最少的对调次数，把这个结变成最简单的平凡结。
+</li>
+</ol>
+<p><strong>解结数</strong>就是你完成这个目标所需要的<strong>最少对调次数</strong>。例如，<strong>三叶结的解结数是1</strong>。不信的话，你可以画一个三叶结的图，然后对调任意一个交叉点，你会发现，它立刻就变成了平凡结。</p>
+<p>虽然解结数的概念很简单，但计算它却非常困难。目前，只有少数特定类型的结有简单的公式可以计算解结数，而对于大多数结，我们只能依赖计算机进行暴力搜索。到目前为止，人类只确定了交叉点数在9个及以下的所有纽结的解结数。对于更复杂的结，我们通常只能找到一个解结数的<strong>上限</strong>。</p>
+<h3 class="anchored">
+纽结的“加法”——连接和
+</h3>
+<p>接下来，我们介绍另一个关键概念：两个纽结的<strong>加法</strong>，也就是<strong>连接和</strong>（connected sum）。这个操作非常直观：</p>
+<ol>
+<li>
+将两个纽结分别剪开一个点，得到四个绳头。
+</li>
+<li>
+将第一个结的两个绳头与第二个结的两个绳头分别连接起来。
+</li>
+<li>
+这个连接过程不能产生新的交叉点。
+</li>
+</ol>
+<p>通过这种方式，两个小结就合并成了一个新的大结。</p>
+<p><img src="https://files.mdnice.com/user/5405/d278dcc8-5207-4fe1-a4d7-45f07ec6e52b.png" class="img-fluid"></p>
+<p>（连接和操作的一个实例，图片来自维基百科）</p>
+<p>这个操作引发了两个有趣的思考题：</p>
+<ul>
+<li>
+<strong>思考题一：</strong> 你剪开两个结的位置不同，或者把结上下翻转，会得到不同的新结吗？这是一个复杂的问题，在纽结理论中有更精确的定义来处理它。
+</li>
+</ul>
+<p><img src="https://files.mdnice.com/user/5405/43622abe-9fb4-4e0a-bd11-a72f17a0805c.png" class="img-fluid"></p>
+<p>（两个三叶结相加的图示。把某个三叶结上下翻转后再相加，会得到同样的结果吗？）</p>
+<ul>
+<li>
+<strong>思考题二：</strong> 两个纽结相加后，交叉点总数会变少吗？目前，数学家们猜想<strong>交叉点数是加性的</strong>，也就是相加后的交叉点数等于原来两个结的交叉点数之和。如果你能找到一个反例，推翻这个近百年的猜想，那将是一个了不起的发现！
+</li>
+</ul>
+<p>这种连接和的“加法”符合<strong>交换律</strong>，并且平凡结相当于“0”的角色，任何结加上平凡结，结果还是它本身。但需要注意的是，一个纽结加上它的镜像，并不能得到平凡结。1999年的一项定理证明，只有当两个结都是平凡结时，它们的连接和才是平凡结。</p>
+<p>我们还可以将纽结分为<strong>素结</strong>和<strong>合结</strong>。如果一个结不能被分解成两个或更多非平凡结的连接和，它就是<strong>素结</strong>，就像数论中的质数一样，是纽结世界的基本“构件”。</p>
+<h3 class="anchored">
+持续了将近90年的猜想被推翻了！
+</h3>
+<p>有了<strong>解结数</strong>和<strong>连接和</strong>这两个概念，数学家们自然会问：<strong>连接和是加性（additive）的吗？</strong> 也就是说，两个结连接起来后，新结的解结数是否等于原来两个结的解结数之和？</p>
+<p>早在1937年，就有人提出了这个猜想。在1977年的一本书中，这个猜想被更明确地阐述出来。我们很容易证明，新结的解结数<strong>不会多于</strong>原来两个结的解结数之和，因为我们总可以通过分别解开这两个小结来解开大结。</p>
+<p>但问题在于：有没有可能新结的解结数会<strong>少于</strong>原来两个结的解结数之和呢？这就像是连接之后，两个结之间的纠缠互相抵消，反而让整个结构变得更容易解开。</p>
+<p>在很长一段时间里，数学家们都没有找到这样的例子，所以这个猜想一直被认为是正确的。然而，在今年6月发表的这篇论文中，内布拉斯加大学的两位研究者终于找到了一个<strong>反例</strong>，从而推翻了这个至少有50年历史的猜想。他们甚至证明，有了这个反例，我们可以构造出无穷多组符合这种情况的纽结。</p>
+<h3 class="anchored">
+反例的细节
+</h3>
+<p>那么，这个反例是什么样的呢？</p>
+<p>研究者们找到的这两个小结都是<strong>七个交叉点</strong>的结，并且它们互为镜像。这两个结都属于一类特殊的纽结，叫做<strong>环面纽结</strong>(torus knot)，因为它们可以完美地缠绕在一个轮胎形状的环面上。环面纽结的解结数可以通过一个简单的公式计算出来，这两个七交叉点环面纽结的解结数都是<strong>3</strong>。</p>
+<p><img src="https://files.mdnice.com/user/5405/61861e1e-6627-4205-95cb-c7f9a0a59920.png" class="img-fluid"></p>
+<p>（本次反例就是以上这个纽结，(7, 2)-torus knot，加上其镜像所得。该纽结的解结数为3。图片来源：https://en.wikipedia.org/wiki/71_knot#/media/File:Blue_7_1_Knot.png）</p>
+<p>当这两个解结数都为3的纽结连接起来，它们形成了一个有<strong>14个交叉点</strong>的大结。根据原来的猜想，这个大结的解结数应该是<img src="https://latex.codecogs.com/png.latex?3+3=6">。</p>
+<p>然而，研究者们发现，这个14交叉点的大结，通过一系列操作，最终的解结数是<strong>5</strong>，而不是6。</p>
+<p>具体来说，他们证明：</p>
+<ol>
+<li>
+这个14交叉点的大结，可以通过<strong>两次</strong>绳子对调，变成另一个14交叉点的大结。
+</li>
+</ol>
+<p><img src="https://files.mdnice.com/user/5405/92e63f4b-632a-47ca-aac4-22dc7e62d068.png" class="img-fluid"></p>
+<p><img src="https://files.mdnice.com/user/5405/5bc52298-7682-4894-ae01-ea4dd6b50a5d.png" class="img-fluid"></p>
+<p>(第一步过程的图示。图片来自原作者论文)</p>
+<ol start="2">
+<li>
+这个新的14交叉点大结，只需要<strong>一次</strong>对调，就可以变成一个有15个交叉点的结（没错，对调后交叉点数量变多了）。
+</li>
+</ol>
+<p><img src="https://files.mdnice.com/user/5405/9800fa51-bd9d-4169-a8f0-362be2fcf361.png" class="img-fluid"></p>
+<p>(第二步过程的图示。图片来自原作者论文)</p>
+<ol start="3">
+<li>
+这个15交叉点的结，虽然看起来更复杂，但它的解结数已知为<strong>2</strong>。
+</li>
+</ol>
+<p>因此，最初的14交叉点大结的解结数最多为 <img src="https://latex.codecogs.com/png.latex?2+1+2=5">。这证明了它的解结数小于 <img src="https://latex.codecogs.com/png.latex?3+3=6">。这个发现之所以了不起，是因为它是在另一个研究项目中被<strong>意外</strong>发现的。</p>
+<h3 class="anchored">
+持续的疑问与新挑战
+</h3>
+<p>这个反例的出现，虽然解决了旧问题，但同时也带来了许多新的疑问：</p>
+<ul>
+<li>
+<strong>第一个问题：</strong> 还有没有其他类型的反例？这个反例中的两个结互为镜像，这是否是唯一的反例类型？感觉上应该不止这一种。
+</li>
+<li>
+<strong>第二个问题：</strong> 反例中的那个14交叉点大结的<strong>确切</strong>解结数是多少？我们刚才证明了它的解结数<strong>最多是5</strong>，但我们还没有证明它不可能是4。如果你能通过四次对调就解开它，那你将创造新的世界纪录！
+</li>
+</ul>
+<p><img src="https://files.mdnice.com/user/5405/6c21ec12-f58b-468b-860e-a20b5fe98387.png" class="img-fluid"></p>
+<p>(上图：根据以上结果，可知这个结的解结数最多是5，但可能是4吗？目前仍未知)</p>
+<p>纽结理论看似简单，但其中蕴含的问题却无比深刻。这个发现再次提醒我们，即使是看似基础的数学猜想，也可能被一个巧妙的反例所推翻。</p>
+<p>最后的思考题：</p>
+<p>以下这个15个交叉点的解结数是2，你能找出翻转哪两个交叉点的绳子，可以解开这个结吗？</p>
+<p><img src="https://files.mdnice.com/user/5405/f97b190f-bb95-4ce1-9f22-5bba85695248.png" class="img-fluid"></p>
+<p>参考链接：</p>
+<p><a href="https://www.newscientist.com/article/2487444-complex-knots-can-actually-be-easier-to-untie-than-simple-ones/">Complex knots can actually be easier to untie than simple ones</a></p>
+<p><a href="https://arxiv.org/abs/2506.24088">Unknotting number is not additive under connected sum</a></p>
+
+
+
+ ]]></description>
+  <category>每周一题</category>
+  <guid>https://your-website-url.example.com/posts/2025-09-13-数学家推翻90年猜想当两个结相遇解结数不再是简单的加法.html</guid>
+  <pubDate>Sat, 13 Sep 2025 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Welcome To My Blog</title>
+  <dc:creator>Tristan O&#39;Malley</dc:creator>
+  <link>https://your-website-url.example.com/posts/welcome/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>This is the first post in a Quarto blog. Welcome!</p>
+<p><img src="https://your-website-url.example.com/posts/welcome/thumbnail.jpg" class="img-fluid"></p>
+<p>Since this post doesn’t specify an explicit <code>image</code>, the first image in the post will be used in the listing page of posts.</p>
+
+
+
+ ]]></description>
+  <category>news</category>
+  <guid>https://your-website-url.example.com/posts/welcome/</guid>
+  <pubDate>Wed, 10 Sep 2025 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>2022年菲尔兹奖得主做了啥——詹姆斯·梅纳德</title>
+  <link>https://your-website-url.example.com/posts/2022-09-19-2022年菲尔兹奖得主做了啥詹姆斯梅纳德.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>不久前，四年一度的数学届的最高奖项之一，菲尔兹奖的颁奖结果已经宣布，产生了四位获奖者。有网友想让我介绍一下这四位获奖者的数学上的主要成果，所以我准备就做这样一个系列的节目，给大家介绍下几位获奖者的主要数学成果和一些有趣的生平经历。</p>
+<p><img src="https://files.mdnice.com/user/5405/5cad679e-0e23-4128-b612-b254c545d6fc.png" class="img-fluid"> （詹姆斯梅纳德的近照，转自Quanta Magazine）</p>
+<p>第一篇文章，我就介绍詹姆斯·梅纳德(James Maynard，1987年6月10日－)。梅纳德的主要研究领域是解析数论。解析数论是用各种数学分析的手段研究数论的数学领域。数论就是研究数字性质的理论，而数字的性质最重要的莫过于自然数，自然数中最重要的莫过于质数。一些爱好者熟悉的容易理解，却又非常困难的数学猜想，比如哥德巴赫猜想、孪生素数猜想，乃至黎曼猜想，都属于解析数论中的问题。数论是大家喜闻乐见的领域。但对爱好者来说，这也是一个容易误入歧途的领域，我绝对不建议各位业余爱好者研究以上几个猜想。即使是专业数学研究者，要投身这一领域，也是要冒很大风险的。而梅纳德就选择了这一领域，并且在2013年，其刚取得博士学位不久，就得到了解析数论中的一个大的成果，这个成果是关于孪生素数猜想的。</p>
+<hr>
+<p>孪生素数猜想：</p>
+<p>那些大小仅相差2的质数对，称为“孪生质数”，比如：3和5，5和7,11和13，10016957和10016959等。</p>
+<p>孪生素数猜想是指：存在无穷多对“孪生质数”，这个猜想至今仍未被证明。目前，已证明的最好结论是：</p>
+<p>存在无穷多对质数，其大小之差不超过246。</p>
+<hr>
+<p>说到2013年和孪生素数猜想，我相信你能想到的一个新闻就是：时年55岁的张益唐证明了存在无穷多个对素数，其间隔小于<strong>7000万</strong>。因为这是第一次证明存在无穷多对质数，其间隔有一个有限上界，再加上张老此前一直默默无闻，经历也颇具戏剧性，所以张益唐的名字很快上了各大新闻，为大家所熟知。张老的这个发现确实很重大，确实值得一书。</p>
+<p>但不为大众所熟知的是，就在张老的论文发表后的半年，梅纳德也发表了一篇关于素数间隔的论文。这篇论文实际上证明了，存在无穷多对质数，间隔小于<strong>600</strong>，所以他的结果要比张益唐的强。梅纳德的结果甚至更为一般化，他给出了任意连续数量的质数的最小间隔，比如存在无穷多组连续三个、四个、五个质数等等，其中最小的和最大的那个间隔是多少。所以，这是一个相当好的成果。</p>
+<p>但问题就在于梅纳德发表论文的时间比张益唐晚了半年，他也只是一名26岁初出茅庐的博士，所以他的这个成果并没有引起什么关注，很多人也只是认为他改进了张益唐的结果。但在数论专家眼里，梅纳德当时的结果是非常出色的。在外人看来，梅纳德在这件事上运气不太好，但这在数学领域中是再正常不过的情况。同一个问题，如果有很多人在研究，那么往往只有第一个解决的人可以得到大部分荣誉。</p>
+<p>而梅纳德在这个问题上，他不但与张益唐撞车了，他还与另一位功成名就的数学家撞车了，那就是陶哲轩。</p>
+<p>陶哲轩在看到张益唐发表了他的论文之后，对素数最小间距问题产生了很大的兴趣。陶哲轩把这个问题加入了一个一个数学领域的集体合作项目——<a href="https://polymathprojects.org/">Polymath</a>，目标是改进张益唐的结果。很快，几乎与梅纳德同时，陶也把最小间距进行了大幅改进到几百的数量级。所以，梅纳德不幸与陶哲轩撞车了。</p>
+<p>当陶哲轩得知梅纳德也得到了相同的结果时，表现得非常大度，甚至还有点开心。陶说：“诚实地说，梅纳德的证明比我写得简洁干净，而且他得到了比我略强的结果”。陶哲轩为了避免梅纳德的成果被忽视，选择了不正式发表他的结果，也不与梅纳德共同署名发表论文。因为他知道，如果共同署名，那么多数人会认为他的贡献是主要的，但这不是事实。最终，梅纳德单独就这个成果发表了论文，这是梅纳德的幸运之处。现在我们知道这个质数最小间隔已经被缩小到<strong>246</strong>。</p>
+<p>尽管梅纳德失去了在2013年一举成名的一次机会，但这不影响他对数学的热情和质数的热爱。2014年，梅纳德有发表了一篇有关质数最大间距的问题的论文。我们知道，相邻两个质数之间的间距可以是任意大，这是很容易证明的。但如果问：在多大的自然数范围内，其中一定有一定间隔的质数，这就是质数的大间距问题。梅纳德在2014年，在这个领域，同样给出了一个改进的结果。</p>
+<hr>
+<p>质数的大间距问题。2014年，梅纳德证明了，在前x个自然数中，必然存在一对质数，其间隔<strong>大于</strong>：</p>
+<p><img src="https://latex.codecogs.com/png.latex?t(1+o(1))%5Cfrac%7B(%5Clog%20x)(%5Clog%20%5Clog%20x)(%5Clog%20%5Clog%20%5Clog%20%5Clog%20x)%7D%7B(%5Clog%20%5Clog%20%5Clog%20x)%5E%7B2%7D%7D"></p>
+<p>其中，t是某个常数。陶哲轩几乎在同一时刻，证明了非常相似的结论。</p>
+<hr>
+<p>但这次不幸的是，他又与陶哲轩撞车了。陶哲轩和另两名合作者几乎在同一时间，在这个问题上给出了几乎同样的结果。此后，陶哲轩与梅纳德撞车的事情，在数论圈里成了一个梗。以至于2015年，当陶哲轩证明了“埃尔德什偏差问题”的时候，他从侧面向梅纳德身边的人打听了一下，询问梅纳德是否在证明同样的问题。当他得知否否定的回答后，陶哲轩长出一口气，心说，终于没有撞车了。</p>
+<p>埃尔德什偏差问题并不是数论里的一个典型问题，而梅纳德则继续专心在解析数论的领域。2019年，梅纳德解决了有80年历史的一个猜想：达芬——舍费尔猜想（Duffin-Schaeffer conjecture），这个猜想是关于用有理数去近似逼近无理数的。</p>
+<p>很早以前的人们就知道用有理数去近似无理数。比如关于<img src="https://latex.codecogs.com/png.latex?%5Cpi"> ，祖冲之就给出两个近似值，<img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B22%7D%7B7%7D"> 和<img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B255%7D%7B113%7D"> 。如果问：能否用有理数分数无限的逼近无理数，答案当然是可以。因为你总可以把无理数在某个小数点后截断，然后当成一个有理数并转化成分数。这个分数当然可以任意的接近这个无理数。</p>
+<p>但显然，当我们用有理数近似无理数的时候，我们希望这个有理数的分母越小越好。比如<img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B355%7D%7B113%7D"> ，约等于3.1415920，那在近似<img src="https://latex.codecogs.com/png.latex?%5Cpi"> 这件事情上，它肯定要比分数<img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B314159%7D%7B100000%7D"> 好非常多，因为<img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B355%7D%7B113%7D"> 用了更小的分母，完成了更高的近似度。</p>
+<p>那么，数学家就问了这样一个问题：当寻找无理数的近似分数的时候，近似程度的效率可以达到多大？这里的“效率”的意思就是分母尽可能小，近似程度尽可能高。</p>
+<p>关于这个问题，1837年，数学家狄利克雷证明了这样一个结论：当用有理数分数去近似无理数时，总可以找到一个近似分数，如果这个分数的分母是n，则它与这个无理数之间的误差小于<img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B1%7D%7Bn%5E2%7D"> 。也就是，当使用分数近似无理数时，它与目标无理数的误差以分母平方的倒数快速逼近。</p>
+<p>比如<img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B22%7D%7B7%7D">，它与<img src="https://latex.codecogs.com/png.latex?%5Cpi">的误差小于<img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B1%7D%7B49%7D">，<img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B355%7D%7B113%7D">latex 与<img src="https://latex.codecogs.com/png.latex?%5Cpi">的误差小于<img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B1%7D%7B113%5E2%7D">。倒过来考虑也可以，比如，当需要找到一个分数与<img src="https://latex.codecogs.com/png.latex?%5Cpi">的误差小于一万分之一，那么存在符合这个要求的某个分数，而且分母小于100，因为100的平方是1万。</p>
+<p>狄利克雷的这个定理当然非常有用，它说明有理数在近似无理数时，是非常有效率的。但数学家还没完，他们继续发问：如果对近似分数的分母施加限制，结果会如何？比如说，只允许分母取1到9；或者分母的个位数只能是1；或者分母只能是质数等等，加入这些条件后，近似效率会如何？</p>
+<p>那么显然，对分母取值范围的限制会限制近似程度。对分母的限制越大，近似程度就会越低。在1941年，两位数学家，达芬和舍费尔对这个问题提出了一个定量化的猜想，讨论对分母的限制程度会如何限制近似程度，这个猜想后来就被称为达芬——舍费尔猜想。</p>
+<hr>
+<p>曾经的“达芬—舍费尔猜想”，现在叫“达芬—舍费尔—库库洛普洛斯—梅纳德定理”，它的内容是：</p>
+<p>如果函数f为: <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BN%7D%20%5Crightarrow%20%5Cmathbb%7BR%7D%5E%7B+%7D">，那么“几乎”对所有的<img src="https://latex.codecogs.com/png.latex?%5Calpha">，以下不等式：</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cleft%7C%5Calpha-%5Cfrac%7Bp%7D%7Bq%7D%5Cright%7C%3C%5Cfrac%7Bf(q)%7D%7Bq%7D"></p>
+<p>其有无穷多的、互质的整数解p和q时，当且仅当p，q有以下条件：</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Csum_%7Bq=1%7D%5E%7B%5Cinfty%7D%20f(q)%20%5Cfrac%7B%5Cvarphi(q)%7D%7Bq%7D=%5Cinfty">。</p>
+<p>其中的<img src="https://latex.codecogs.com/png.latex?%5Cvarphi(q)">是欧拉<img src="https://latex.codecogs.com/png.latex?%5Cvarphi">函数，意思是小于等于q的自然数中与q互质的整数个数。</p>
+<p>“几乎”是一个数学术语，可以简单理解为“例外情况非常少”，例外的情况占总数的比值趋向于0。</p>
+<p>如果定义<img src="https://latex.codecogs.com/png.latex?f(q)=%5Cfrac%7B1%7D%7Bq%7D">, 又当q为质数时，<img src="https://latex.codecogs.com/png.latex?%5Cphi(q)=q-1">，则：</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Csum_%7Bq=1%7D%5E%7B%5Cinfty%7Df(q)%5Cfrac%7B%5Cvarphi(q)%7D%7Bq%7D"> <img src="https://latex.codecogs.com/png.latex?=%5Csum_%7Bq=1%7D%5E%7B%5Cinfty%7D%5Cfrac%7B1%7D%7Bq%7D%5Cfrac%7Bq-1%7D%7Bq%7D=%5Csum_%7Bq=1%7D%5E%7B%5Cinfty%7D(%5Cfrac%7B1%7D%7Bq%7D-%5Cfrac%7B1%7D%7Bq%5E2%7D)">，</p>
+<p>发散。意味着不等式：</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cleft%7C%5Calpha-%5Cfrac%7Bp%7D%7Bq%7D%5Cright%7C%3C%5Cfrac%7Bf(q)%7D%7Bq%7D=%5Cfrac%7B1%7D%7Bq%5E2%7D">,有无穷多组解。这就回到了狄利克雷所证明的情况。</p>
+<hr>
+<p>近80年后，梅纳德和另一位合作者共同证明了达芬-舍费尔猜想，这是梅纳德的又一项主要数学成果。那么现在达芬-舍费尔猜想应该怎么称呼呢？如果叫“达芬——舍费尔定理”其实不太公平。之前有读者指出，当一个猜想被解决后，应该在后面增加证明者的名字，再改称定理。比如“费马大定理”，应该改称“费马——怀尔斯定理”。这种说法有些道理。那么按照这个原则，“达芬-舍费尔猜想”现在就应该被叫做“达芬-舍费尔-库库洛普洛斯-梅纳德定理”，你能否记住这个名字我就管不着了。</p>
+<p>最后，来一个梅纳德证明的，一个非常容易理解，又是非常难以证明的定理。它同样是关于质数的：存在无穷多个质数，它的10进制表示中，没有“7”，而且把数字“7”换成任何0到9中的任何一个数字，此结论都成立。这个结论非常有意思，它也是告诉了我们一些质数的分布规律。</p>
+<hr>
+<p>梅纳德证明了，在质数表中，删去所有含有数字“7”的质数，这个质数表仍然可以无限地写下去：</p>
+<p>2, 3, 5, <s>7</s>, 11, 13,<s>17</s>, 19, 23, 29, 31, <s>37</s>, 41, 43, <s>47</s>, 53, 59, 61, <s>67</s>, <s>71</s>, <s>73</s>, <s>79</s>, 83, 89, <s>97</s> …</p>
+<p>删除含有0到9的任何一个数字后，仍然有同样的结论。</p>
+<hr>
+<p>而且梅纳德是从更大的进制单位开始证明这个结论的。你可以想象，在更大的进制下，单个数字所起的作用就会小许多，这个命题的证明难度也会变小。比如100进制下，每一位有100种取值。去掉其中一种，对整体上可表示的数字范围的影响是非常小的。所以梅纳德就从更大的进制开始，逐步向10进制逼近。</p>
+<p>据说，在12进制的情况下，梅纳德卡住了非常长的时间。但他还是坚持了下来，完成了10进制下的证明，他自己对此结果也是非常满意。但目前，没有看到梅纳德继续往9进制以下证明的消息，我们可以简单分析一下，进制单位再缩小会如何。</p>
+<p>极端一些，直接从2进制看，显然一个质数不可能都是由0构成。那么是否存在无穷多个由1构成的二进制质数呢？其实全部由1构成的二进制质数，就是梅森质数。是否存在无穷多个梅森质数，目前猜想是真，但至今仍未证明。这个猜想已经存在数百年之久，当然是非常困难的。</p>
+<hr>
+<p>关于梅森素数：</p>
+<p>容易证明对<img src="https://latex.codecogs.com/png.latex?2%5En-1">形式的数字，仅当n为质数时，其可能为质数。对那些形如<img src="https://latex.codecogs.com/png.latex?2%5Ep-1">类型的质数，称为“梅森素数”，比如:</p>
+<p><img src="https://latex.codecogs.com/png.latex?2%5E2-1=3">，</p>
+<p><img src="https://latex.codecogs.com/png.latex?2%5E3-1=7">，</p>
+<p>但：</p>
+<p><img src="https://latex.codecogs.com/png.latex?M_%7B11%7D=2%5E%7B11%7D-1=2047=23%20%5Ctimes%2089">，不是质数。</p>
+<p>至今未能证明：存在无穷多个质数p，使得<img src="https://latex.codecogs.com/png.latex?2%5Ep-1">是<strong>质数</strong>，也未能证明：存在无穷多个质数p，使得<img src="https://latex.codecogs.com/png.latex?2%5Ep-1">是<strong>合数</strong>。</p>
+<p>而所有的的梅森素数，其二进制形态都是若干个1的连写：</p>
+<p>111…..111。</p>
+<hr>
+<p>3进制会如何呢？感觉上可以存在无穷多个没有数字“0”、”1“或”2”的3进制质数。但同样，要证明此结论是非常困难的。</p>
+<p>那么以上简单分析可以看出，梅纳德证明的结论是可以压缩到2进制的。但是个人感觉，进制数再往下的话，问题的难度呈直线上升，以至于梅纳德目前也就停留在十进制的结论下。</p>
+<p>好了，以上给大家简单介绍了一下梅纳德的数学成就，可以看出，梅纳德对质数有执着的偏好。众所周知，关于质数的数学命题往往都是非常困难的。梅纳德的博士导师也曾劝梅纳德不要研究那些关于质数的猜想，但梅纳德对质数有执着的偏好和信念，所以仍旧投身了这一研究领域，并且得到了一些杰出的成果。恭喜梅纳德，下期文章再见！</p>
+<p>参考链接：</p>
+<p>https://www.quantamagazine.org/new-proof-settles-how-to-approximate-numbers-like-pi-20190814/</p>
+<p>https://www.quantamagazine.org/number-theorist-james-maynard-wins-the-fields-medal-20220705/</p>
+
+
+
+ ]]></description>
+  <category>每周一题</category>
+  <guid>https://your-website-url.example.com/posts/2022-09-19-2022年菲尔兹奖得主做了啥詹姆斯梅纳德.html</guid>
+  <pubDate>Mon, 19 Sep 2022 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>1个球变2个球——巴拿赫塔斯基悖论</title>
+  <link>https://your-website-url.example.com/posts/2022-08-07-1个球变2个球巴拿赫塔斯基悖论.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p><a href="https://zhuanlan.zhihu.com/p/539454283">这篇知乎上的文章中</a>的后半部分，我们领略了数学家维塔利的一个构造，这个构造可以把一个圆变成两个圆。</p>
+<p>回顾一下维塔利的构造要点。首先，这种构造之所以存在，是基于无穷集合的基数理论。无穷集合中，集合的真子集可以与自身建立一一对应，这是这种构造存在的基本理论依据。但是，对不可数集合，要建立某种貌似离散的切割和组合操作，完成子集到自身的一一对应，难度还是很大的。从维塔利的构造中，我们看到了这个构造的基本理念：</p>
+<p>把一个不可数集合分割成无数个子集，每个子集都是可数集。可数集中，比较容易建立子集到整体的一一对关系，所以最后的重组工作就比较容易，难点在于分割的过程。</p>
+<p>现在就要把维塔利的这个构造，扩展到球体上。首先要声明的一点是，以下的构造是便于理解的简化版本，不是原版的叙述，难免有不严谨之处。但这不是大问题，因为我的目标是尽量让大家理解巴拿赫塔斯基悖论构造的思路和原理，所以无需在此时去追究细节。</p>
+<p>具体怎么扩展？你大概也可以想到，因为从圆到球就是一个二维到三维的过程，而球体可以看做是无数条半径构成的，因此可以继续考虑，怎么对球的半径分类。难点在于，球体上的半径旋转方向太多了，我们可以先把问题限制在球面上，因为最终整个球就是所有不同半径的球面的组合。</p>
+<p>所以，我们考虑这样一个问题：从球面上的某个点开始，设计一条合理的离散移动路线，经过无穷多个点，并且不会经过任何一个点两次。这个过程，与维塔利的构造中，从一条半径，通过转动不同角度，得到其他半径的过程的目的是一样的。通过这个过程，可以将球面上的点分成很多类，每一类的数量是可数无穷，然后就可以方便地重新组合了。</p>
+<p>那么在球面上，要怎么移动呢？如果把球面想象成地球表面的话，我们可以规定移动方向就是东、南、西、北这个四个方向。这样，感觉上就可能移动到球面的全部位置，而不需要更多方向。每次移动的距离是多少？我们有一个目标是，不希望移动到同一个位置，那么利用无理数是一个好的思路。</p>
+<p>所以，我们规定每次移动都是无理数的距离，比如东西方向移动，每次是√2的距离，南北向移动每次是√3的距离。又因为我们不希望回到原来的位置，我们规定每次移动后不能退回原先位置。比如向东之后不能立即向西移动。向南移动之后不能立即向北移动。当然，这样仍有可能回到原来的位置，比如走了一个矩形等等，所以需要硬性规定不能移动到之前到过的位置。所以，我们的行动方式是：</p>
+<p>从任何一点出发，任意地向东、南、西、北四个方向之一，前进一个无理数的距离，但不能回到原来的位置，如此无限得进行下去。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-68a06ede60bd99daefc0043e807020bd_720w.jpg" class="img-fluid"> （上图：某个点的移动路径示意图。绿色点为起始点，这条路径为“北东北西北西南”，最后的紫色点为“北向点”。图片来源：https://www.quantamagazine.org）</p>
+<p>到这里，你可能会有疑问，是否会出现这种情况：到了某个位置后，选任何一个方向之后，都会回到之前去过的位置。这并不是不可能，但这个缺陷对我们的今天的讨论无关紧要，我们就忽略这个缺陷，假设无论怎么走，都可以无限的走下去，而不会出现走投无路的情况。</p>
+<p>那么现在我们就从某一点出发，取四个方向，无限地走下去，把<strong>所有</strong>的可能路径组合都走一遍！把所有到过的点作为一个集合。这些点的特点是：可以用包含“东”、“南”、”西“、”北“、四个字符组成的路径来表示这个点，比“如东东南南西南”等等。这个字符串可以作为表示这个点的一个方法，稍后我们会用到这个路径表示。</p>
+<p>不管怎样，我们得到了一组按第一个起始点所生成的点集合。这个集合有无穷多个元素，但是却是可数无穷多。这里，我也不严格证明为什么是可数无穷多，我需要表达的是，球面上还有很多点没有在这个集合中，还有很多点没有到过。</p>
+<p>那么我们就从没有选到的点中，再选某点作为起始点，重复以上步骤，又得到一组可数无穷多的点。那么必然还会存在很多没有到过的点。</p>
+<p>继续重复以上步骤，直到球面的每个点都被到达过，使每个点都属于某个起始点生成的集合。在这里，你可能又有疑问，怎么保证这样的操作是可以完成的？是否会出现某个时刻只剩下有限多的点没有到达，从而无法产生无穷多的点集合？我再一次无法严格证明这些问题，但也无关紧要，你可以相信以上操作可以完成。</p>
+<p>如此一来，我们就把球面上的点分成了<strong>不可数无穷</strong>多组，每一组都有<strong>可数无穷</strong>多个点。然后，我们又要开始重新组合这些点了，组合方法非常巧妙。</p>
+<p>我们先考察除了起始点之外的点。这些点都是通过上一个点经过某条路径所得到达的。那么不管这个路径如何，它总有最后一个移动方向。根据这个方向，我们把这些点分别叫做“东向点”，“南向点”，“西向点”，和“北向点”。</p>
+<p>比如，如果A点的路径是“东东南南东”，最后一步是从另一个点向东移动达到的，那么A点就是东向点。如果B点路径的最后一步是向北移动，那么B点就是“北向点”等等。那么对球面上的点如此命名后，我们就得到了5大类点：起始点、东向点、南向点、西向点和北向点。那么对不同半径的球面都做这个操作，我们就把球上的点分成了这个五类。</p>
+<p>现在把所有的<strong>东向点</strong>取出来，然后向<strong>西</strong>移动一步，考察一下，移动后到达的是哪些点呢？你会发现，回退后的点不能是西向点，因为之前规定移动是不能立即回退的。在某个西向点上，不能立即向东移动。所以从东向点回退一步，不会是西向点。但某个东向点的最后两步可以是“东东”、“南东”或“北东”。这意味着：</p>
+<p>所有东向点向西移动后，它就覆盖了所有东向点，南向点和北向点！这还没完，起始点也应该包含其中！因为选定某个起始点之后，当然可以向东移动，得到一个东向点。从那些东向点向西移动，自然就包含全体起始点。</p>
+<p>这样我们得到一个惊人结果：<strong>所有东向点向西移动一步之后，就得到了全体东向点，南向店和北向点和起始点！</strong> 是不是有1变4的感觉！</p>
+<p>那么，我们手头上就有1份东向点，2份南向点，1份西向点，2份北向点和2份起始点。要把球复制为两份的话，还需要1份东向点和一份西向点。</p>
+<p>后面的步骤就简单了: 我们把南向点向北移动，得到全体东向点，南向店、西向点和起始点。那我们手头就有2份东向点，2份南向点，2份西向点，2份北向点和3份起始点。</p>
+<p>这样我们就能把这些点组合成两个球，还多了一份起始点！这一份“起始点”浪费了吗？其实没有。之前对球面上的点分类时，还漏了一些点没有说明，那就是南极点和北极点。在移动时，我们需要规定，不能到达南极和北极点。因为一但到了这两个点，之后无法确定应该向哪里移动，所以需要禁止到达南极点和北极点。对球体来说，就是排除整个自转轴。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-13f892f093f957ca9f3276e4c702018b_720w.jpg" class="img-fluid"> （分球示意图：球上的点被分为六组：东向点、南向点、西向点、北向点、起始点、自转轴。东向点向西移动一步后，则可以复制出东向点、南向点、北向点、起始点。图片来源：https://www.quantamagazine.org）</p>
+<p>那么既然多了一份起始点，那么这份起始点作为某个球的自转轴，那就完美了。一个球变两个球，任务完成！</p>
+<p>那么以上，我就带大家领略了巴拿赫塔斯基悖论的基本概貌。本质上来讲，只要涉及到不可数无穷，并且允许使用选择公理，那么我们就可能遭遇这种情况。</p>
+<p>那么数学里，是怎么能够规范这种情况，使得我们可以避免这种悖论带来的困扰？这就涉及到测度理论。我们生活中所用到的有关长度、面积和体积的概念，其实都属于“勒贝格测度”。勒贝格测度规定到了一系列有关测量的性质或公理，比如局部要小于整体；若干部分相加，应该等于整体等等，都是符合生活中的直观感觉的。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-8e194ff9cda62a7bd7d64bd569b643b5_720w.jpg" class="img-fluid"> （上图：勒贝格测度的一个性质：平移不变。图片来源：维基百科）</p>
+<p>在巴拿赫塔斯基悖论中，对球上的点所划分的若干集合，不符合勒贝格测度的定义，称其为“勒贝格不可测”，那么“体积”的概念就不适用于这个球了。</p>
+<p>留一个思考题，上文中，我只是把东向点和南向点各回退一步。如果对西向点和北向点也回退一步，那么会得到怎样的复制结果，可以组成几个球呢？大家可以思考一下，发在评论区了。</p>
+
+
+
+ ]]></description>
+  <category>悖论</category>
+  <category>每周一题</category>
+  <category>测度</category>
+  <guid>https://your-website-url.example.com/posts/2022-08-07-1个球变2个球巴拿赫塔斯基悖论.html</guid>
+  <pubDate>Sun, 07 Aug 2022 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>一千年前是一家—— 一些鸽巢原理趣题</title>
+  <link>https://your-website-url.example.com/posts/2022-05-24-一千年前是一家-一些鸽巢原理趣题.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>你或许已熟知这样一个原理：</p>
+<p>当有n个笼子和n+1只鸽子，那么至少有一个笼子里有2只鸽子。</p>
+<p><img src="https://files.mdnice.com/user/5405/e6853bd0-a5aa-4161-9ad8-216a91140cc2.png" class="img-fluid"></p>
+<p>这就是“鸽巢原理”，又名”抽屉原理”或”鸽笼原理”等等。</p>
+<p>这个原理听上去简直像废话，这是小学生都能懂的道理。但它既然能在数学里留下名字，它当然是很有用的一个原理，绝不是只能简单处理把鸽子放进笼子这样的情况。那么以下，我列举一些可以用鸽巢原理证明的有趣命题和结论。</p>
+<p>先来一个比较简单的，生活化的例子。有若干人，在一个房间里聚会。聚会开始时互相握手认识。那么有这样一个结论：</p>
+<p>在任何时刻，总存在两个人，与这两人握过手的人数，是相等的。</p>
+<p><img src="https://files.mdnice.com/user/5405/5a023825-cd3f-44bd-850e-1e0c712b4492.png" class="img-fluid"></p>
+<p>证明如下：</p>
+<p>假设有一共有n个人，那么每个人可以握手的人数就是从0到n-1，一共有n种可能。一共有n个人，那么看上去似乎鸽巢原理用不上了呢？别急，这里面还有一个情况。如果有一个人，与其握过手的人数是n-1，那么就不应该有另一个人，与其握过手的人数是0了。同理，如果某个人一次也没有跟其他人握手，那么就不会有另一个人，与n-1个人握手。所以“0”与“n-1”，这两个数字不能共存。因此所有人的可能握手人数，其范围要么是从1到n-1，要么是从0到n-2，一共n-1种可能。</p>
+<p>而总人数有n个人，所以必然存在2个人，他们的握手人数相等，证明完成。这个问题也经常用锦标赛来描述，结论就是，在一场锦标赛里，任何时刻总有两个人或两支队伍，他们比赛过的场次数是一样的。这是第一个例子。</p>
+<p>再来一个比较偏数学的例子，考虑这样一个数列：</p>
+<p>7, 77, 777, 7777，77777，777777, …</p>
+<p>即由若干个7连写的数字构成的数列。请证明：这些数字中，至少有一个能被2027整除。</p>
+<p>当然，你可以一个一个去试，直到找到这样一个能被2027整除的数字。但是这样很麻烦，即使用电脑编程求解，你也不知道程序需要跑多久。另外，2027是一个质数，所以你不用考虑与质因数分解相关的方法。</p>
+<p>这里有一个使用鸽巢原理，且非常简洁的证明方法。而且，可以证明更强的结论：这个序列里不但肯定有可以被2027整除的数字，而且这个数字出现在前2027项以内。以下是证明。</p>
+<p>首先，用反证法。假设这个数列的前2027项里，所有数字都不能被2027整除。那么这些数字除以2027，都会有余数，余数的取值范围是从1到2026，一共2026种。根据鸽巢原理，这个数列里的前2027中，必然有两个数字，它们除以2027后，所得余数相等，那么现在有意思了。</p>
+<p>我们把这两个数字取出来，把大的那个去减去小的那个，考察相减后的数字。因为原先两个数字除以2027后余数相等，所以它们相减后，它们的差必然可以被2027整除，这一点是比较容易确认的。那么再看一下这个差值数字的形式。因为原先两个数字都是7连写构成的数字，那么它们相减后必然所得数字必然是若干个7在开头，后面有若干个0的形式：</p>
+<p>7…70….0</p>
+<p>这个数字可以改写为 7…7 × <img src="https://latex.codecogs.com/png.latex?10%5En"> 的形式。</p>
+<p><img src="https://latex.codecogs.com/png.latex?10%5En">是肯定不能被2027整除的，则那若干个“7”连写构成的整数必然能被2027整除。而那若干个“7”连写，本身就是数列的前2027项中的某一项，那么这个情况就与我们证明开始时的假设矛盾了！从而我们在证明开始时的假设不成立，这说明，这个数列的前2027项中必有一项可以被2027整除。</p>
+<p>而这个证明也告诉我们，一般来说“鸽巢原理”给出的结论都是存在性的，而不是构造性的。这也是数学奇妙的地方之一，它可以告诉你一个东西肯定存在，但不知道在哪里。</p>
+<p>再看一个比较生活化的例子。请证明：在任何一年，最少有4个月份，最多有5个月份，包含5个星期天。</p>
+<p>你不信的话，可以马上看一下日历，数数有哪几个月有5个星期天。那么可以告诉你，有5个星期天的月份总是4个或5个，不过多也不会少。这个结论，可以简单得用鸽巢原理证明，大概也是唯一的方法。</p>
+<p>因为一年365或366天，也就是52个星期多1天或2天。那么一年里至少有52个星期天，最多53个星期天（如果这一年元旦恰好是星期天）。我们要把这些星期天，分布到12个月里。因为每个月至少28天，至多31天，也就是每个月至少有4个星期天，最多5个星期天。</p>
+<p>那么，现在就可以反证法了。如果只有3个月份有5个星期天，那么其他9个月份都是4个星期天，总共是3×5+9×4=51个星期天，就与这一天年至少有52个星期天矛盾了。而如果有6个月份有5个星期天，那么其他6个月份是4个星期天，总的星期天数量是6×5+6×4=54，这就与一天中最多53个星期天矛盾了。所以，一年中最少有4个月，最多有5个月份，包含5个星期天，证明完成！</p>
+<p>而用鸽巢原理还能得出一些令人吃惊的有趣结论。比如，有这样一个结论：全体北京人中间，至少有两个人的头发数量相同，排除光头。这很好理解，因为人的平均头发数量是10万，不会超过15万，北京人口远超这个数量，所以北京肯定有2个人有相同的头发数量。而且北京人口实际超过2千多万，所以这个结论可以加强为：北京肯定有100个人，他们有相同数量的头发。</p>
+<p>“鸽巢原理”可以告诉我们的一个最惊人的结论是这样一个（大概率成立的）命题：在最近1000年以内，存在这样一个历史上的人，这个人是你的父母亲的共同祖先！也就是，你的父母都是这个人的后代。</p>
+<p>你可能会说，这怎么可能，我变成近亲结婚的后代了吗？你先别急，1000年以内，从生物学上讲已经完全不是近亲了。但是，这个结论是成立的吗？那么我们来论证一下这个结论，它可以用鸽巢原理非确定性的证明，但是大概率是成立的。</p>
+<p>首先，如果我们从自己的父母向上追溯人口的话，你会发现每向上一代，你的祖先人数就会翻倍。你的父母有两个人；你的祖父祖母、外公外婆是4个人。你向上追溯n代，那么你就会有<img src="https://latex.codecogs.com/png.latex?2%5En">个祖先。</p>
+<p><img src="https://files.mdnice.com/user/5405/8162d849-f868-40ba-af3b-0e8f48e886ae.png" class="img-fluid"></p>
+<p>那么我们假设每25年，有一代人的更迭。那么1000年的话，大约是40代。如果你的祖先40代，都是不同的人，那么总的人数就是<img src="https://latex.codecogs.com/png.latex?2+4+8+....+2%5E%7B40%7D=2%5E%7B41%7D-1">人，大约是2.2 × <img src="https://latex.codecogs.com/png.latex?10%5E%7B12%7D">，也就是22万亿人，这个数字太吓人了！根据历史记载，最近1000年，地球上存在过的人口数量，远小于22万亿人。所以，这就说明，你的祖先这40代人，不可能都是不同的人！很可能，有某人是你父母的共同祖先。</p>
+<p>但为什么说这不是一个100%严谨的证明呢？因为还存在这样一种可能：你父亲这一支向上的祖先，发生过很多的合并，也就是你父亲的祖先里，有很多人有共同的祖先。同样，你母亲这一支的祖先中，也有很多人有共同的祖先。这样你父母亲的祖先这两支人口，就不需要那么多人了，有可能，你父母的祖先在1000年内完全是两个没有交集的群体。但这也说明，如果以上结论对你不成立，那么这个结论就会对你的父母更大概率的成立。</p>
+<p>这就是鸽巢原理告诉我们的一个反直觉结论。它让我想起了一些延伸的结论。既然以上结论适合你的父母，其实它也适合任何两个人。</p>
+<p>比如，中国人有句俗语，对同姓氏的人，我们常说“五百年前是一家”。根据以上推导，这句话还真不是一句客套话，而是可以从数学上证明的。同姓氏的两个人，非常有可能在500年内，有一个共同祖先，尤其是那些不常见的姓氏。</p>
+<p>那么有关鸽巢原理，就聊到这里。鸽巢原理虽然内容简单，但是它确实能帮我们证明一些意想不到的结论。最后，出两道有意思的，与鸽巢原理相关的思考题，供大家消遣娱乐：</p>
+<p>史密斯夫妇，邀请4对夫妇到家里来玩。这4对夫妇中，有些人是史密斯先生的朋友，有些是史密斯太太的朋友，有些互相之间认识，有些不认识。当这4对夫妇到达史密斯夫妇的家中后，所有之前互相认识的人都握手了一下。史密斯先生发现了一个有意思的情况，他说：如果把我排除在外，剩下的人中，每个人握手的次数都是不同的。这里，有两个隐含条件是：自己不会跟自己握手，夫妻之间也当然不需要握手。现在的问题是：史密斯太太握了几次手？</p>
+<p>这个问题听上去是不是有点不可思议，因为已知条件如此至少，怎么突然就问史密斯太太握了几次手？但是，根据鸽巢原理，确实可以唯一的确定史密斯太太的握手次数。请你来做一次侦探，推理出这个数字。</p>
+<p>参考文档：</p>
+<p>http://www.microlinkcolleges.net/elib/files/undergraduate/Mathematics/A%20Walk%20Through%20Combinatorics%20An%20Introduction%20to%20Enumeration%20and%20Graph%20Theory.pdf</p>
+
+
+
+ ]]></description>
+  <category>音频讲稿</category>
+  <category>趣题</category>
+  <guid>https://your-website-url.example.com/posts/2022-05-24-一千年前是一家-一些鸽巢原理趣题.html</guid>
+  <pubDate>Tue, 24 May 2022 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>欧拉遇到过的最难的积分：全体自然数的立方倒数和</title>
+  <link>https://your-website-url.example.com/posts/2022-01-10-欧拉遇到过的最难的积分全体自然数的立方倒数和.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>（本文原载于我在知乎上的回答，原问题是：“你遇到过的最难的积分题目是什么？”，略修改）</p>
+<p>这不是我遇到过的最难的积分，这是欧拉遇到过的最难的积分：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(%5Cfrac%7B1%7D%7B2%7D%5Cint_0%5E1%5Cfrac%7B(%5Cln%20x)%5E2%7D%7B1-x%7Ddx)"></p>
+<p>1734年，27岁的欧拉计算出全体自然数的平方的倒数和是 <img src="https://latex.codecogs.com/png.latex?(%5Cpi%5E2/6)"> :</p>
+<p><img src="https://latex.codecogs.com/png.latex?(1+%5Cfrac%7B1%7D%7B2%5E2%7D+%5Cfrac%7B1%7D%7B3%5E2%7D+%5Cfrac%7B1%7D%7B4%5E2%7D+%5Cfrac%7B1%7D%7B5%5E2%7D+...=%5Cfrac%7B%5Cpi%5E2%7D%7B6%7D)"></p>
+<p>这个成就使欧拉一下子名声大噪，成为数学家中的社会名人。以上这个问题后来以欧拉的家乡瑞士巴塞尔命名，称为“巴塞尔问题”。</p>
+<p>欧拉自己也很兴奋，他一鼓作气，计算了指数为偶数，直到26次方的自然数幂次倒数和的情况：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(1+%5Cfrac%7B1%7D%7B2%5E4%7D+%5Cfrac%7B1%7D%7B3%5E4%7D+%5Cfrac%7B1%7D%7B4%5E4%7D+%5Cfrac%7B1%7D%7B5%5E4%7D+...=%5Cfrac%7B%5Cpi%5E4%7D%7B90%7D)"></p>
+<p><img src="https://latex.codecogs.com/png.latex?(1+%5Cfrac%7B1%7D%7B2%5E6%7D+%5Cfrac%7B1%7D%7B3%5E6%7D+%5Cfrac%7B1%7D%7B4%5E6%7D+%5Cfrac%7B1%7D%7B5%5E6%7D+...=%5Cfrac%7B%5Cpi%5E6%7D%7B945%7D)"></p>
+<p>… <img src="https://latex.codecogs.com/png.latex?(1+%5Cfrac%7B1%7D%7B2%5E%7B26%7D%7D+%5Cfrac%7B1%7D%7B3%5E%7B26%7D%7D+%5Cfrac%7B1%7D%7B4%5E%7B26%7D%7D+%5Cfrac%7B1%7D%7B5%5E%7B26%7D%7D+...=%5Cfrac%7B%5Cpi%5E%7B26%7D%5Ccdot%202%5E%7B24%7D%5Ccdot%2076977927%7D%7B27!%7D)"></p>
+<p>那么问题就来了，指数为3的情况下，结果如何呢？这个问题意外地困难。欧拉一生中曾经多次挑战这个问题，找到了许多相关结果，比如奇数的3次幂的交错级数情况：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(1-%5Cfrac%7B1%7D%7B3%5E3%7D+%5Cfrac%7B1%7D%7B5%5E3%7D-%5Cfrac%7B1%7D%7B7%5E3%7D+%5Cfrac%7B1%7D%7B9%5E3%7D-...=%5Cfrac%7B%5Cpi%5E3%7D%7B32%7D)"></p>
+<p>然而欧拉始终不能对自然数立方倒数和问题找出一个“简单”的确切答案。他曾经“自然地”（因为偶数幂次都是这个形式）作出猜想，这个问题的答案应该是: <img src="https://latex.codecogs.com/png.latex?(%5Cfrac%7Bp%7D%7Bq%7D%5Cpi%5E3)">的形式，其中<img src="https://latex.codecogs.com/png.latex?(p/q)">是个有理数。</p>
+<p>后来，他又找到了文章开头的那个积分式：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(%5Cfrac%7B1%7D%7B2%7D%5Cint_0%5E1%5Cfrac%7B(%5Cln%20x)%5E2%7D%7B1-x%7Ddx)"> <img src="https://latex.codecogs.com/png.latex?(=%5Cfrac%7B1%7D%7B2%7D%5Cint_0%5E1(%5Cln%20x)%5E2(1+x+x%5E2+x%5E3+...)dx)"> <img src="https://latex.codecogs.com/png.latex?(=%5Cfrac%7B1%7D%7B2%7D%5Cint_0%5E1%5B%5Csum_%7Br=0%7D%5E%7B%5Cinfty%7Dx%5Er(%5Cln%20x)%5E2%5Ddx)"> <img src="https://latex.codecogs.com/png.latex?(=%5Cfrac%7B1%7D%7B2%7D%5Csum_%7Br=0%7D%5E%7B%5Cinfty%7D%5Cfrac%7B2%7D%7B(r+1)%5E3%7D)"> <img src="https://latex.codecogs.com/png.latex?(=%5Csum_%7Bk=1%7D%5E%7B%5Cinfty%7D%5Cfrac%7B1%7D%7Bk%5E3%7D)"></p>
+<p>然而这个积分看似简单，但始终无法继续计算或化简。</p>
+<p>1785年，在欧拉去世后2年出版的论文中，可以看到欧拉在生命中的最后岁月仍在尝试解决这个问题。欧拉写到“…迄今为止，没有任何办法写出这个级数的封闭形式…但是答案可能是这样一种形式”:</p>
+<p><img src="https://latex.codecogs.com/png.latex?(%5Csum_%7Bk=1%7D%5E%7B%5Cinfty%7D%5Cfrac%7B1%7D%7Bk%5E3%7D=%5Calpha%5B%5Cln%202%5D%5E3+%5Cbeta%20%5Cfrac%7B%5Cpi%20%5E2%7D%7B6%7D%5Cln%202)"></p>
+<p>其中 <img src="https://latex.codecogs.com/png.latex?(%5Calpha)">和<img src="https://latex.codecogs.com/png.latex?(%5Cbeta)">是有理数。</p>
+<p>欧拉承认：“我用过如此多的方法寻找自然数的立方倒数和，然而所有方法均徒劳无功。以上（积分式）的方法也没有产生任何结果，所以看上去放弃（研究这个问题）是正确选择…”</p>
+<p>近200年后，1978年，Roger Apery证明：全体自然数的立方倒数和是一个无理数。</p>
+<p>他证明的结论并不让人吃惊，让数学家吃惊的是，对这个问题的研究居然还能产生一些进展，因为欧拉都放弃了！现在全体自然数的立方倒数和就被被称为“Apery常数”。</p>
+<p>有人问对平方倒数和可否凑出类似的积分式？仿造欧拉的方法，很容易得到如下积分式，恰好等于全体自然数的平方倒数和：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(%5Cint_0%5E1%5Cfrac%7B%5Cln%20x%7D%7Bx-1%7D%20dx)"></p>
+<p>有wolframalpha为证：</p>
+<p><img src="https://files.mdnice.com/user/5405/29de7edb-9728-472c-bce5-9cd8e5e1ac2f.png" class="img-fluid"></p>
+<p>这个不定积分wolfram给我的答案是：</p>
+<p><img src="https://files.mdnice.com/user/5405/458d7851-1a35-43ea-ac2d-39fbccef6c2f.png" class="img-fluid"></p>
+<p>不是常见的封闭形式，而使用了对数积分函数。2021.12.8我收到知乎用户“诱宵美9”私信，她搞出一个可以积的，全体自然数平方倒数和的积分，计算过程如下：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(%5Cint_%7B0%7D%5E%7B1%7D%20%5Cfrac%7B%5Cmathrm%7Bd%7D%20x%7D%7B(1+y%20x)%20%5Csqrt%7B1-x%5E%7B2%7D%7D%7D)"></p>
+<p>用<img src="https://latex.codecogs.com/png.latex?(x=%5Csin%20t)">换元：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(%7B%5Cint_%7B0%7D%5E%7B%5Cpi%20/%202%7D%7D%20%5Cfrac%7B%5Cmathrm%7Bd%7D%20t%7D%7B1+y%20%5Csin%20t%7D)"> <img src="https://latex.codecogs.com/png.latex?(=%5Cleft.%5Cfrac%7B2%20%5Carctan%20%5Cleft(%5Cfrac%7B%5Ctan%20%5Cfrac%7Bt%7D%7B2%7D+y%7D%7B%5Csqrt%7B1-y%5E%7B2%7D%7D%7D%5Cright)%7D%7B%5Csqrt%7B1-y%5E%7B2%7D%7D%7D%5Cright%7C_%7B0%7D%20%5E%7B%5Cpi%20/%202%7D)"> <img src="https://latex.codecogs.com/png.latex?(=%5Cfrac%7B%5Carccos%20y%7D%7B%5Csqrt%7B1-y%5E%7B2%7D%7D%7D)"></p>
+<p>从而有：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(%5Cint_%7B-1%7D%5E%7B1%7D%5Cleft(%5Cint_%7B0%7D%5E%7B1%7D%20%5Cfrac%7B%5Cmathrm%7Bd%7D%20x%7D%7B(1+y%20x)%20%5Csqrt%7B1-x%5E%7B2%7D%7D%7D%5Cright)%20%5Cmathrm%7Bd%7D%20y)"></p>
+<p><img src="https://latex.codecogs.com/png.latex?(=%5Cint_%7B-1%7D%5E%7B1%7D%20%5Cfrac%7B%5Carccos%20y%7D%7B%5Csqrt%7B1-y%5E%7B2%7D%7D%7D%20%5Cmathrm%7B~d%7D%20y)"></p>
+<p><img src="https://latex.codecogs.com/png.latex?(=-%5Cleft.%5Cfrac%7B1%7D%7B2%7D%20%5Carccos%20%5E%7B2%7D%20y%5Cright%7C_%7B-1%7D%20%5E%7B1%7D=%5Cfrac%7B%5Cpi%5E%7B2%7D%7D%7B2%7D)"></p>
+<p>交换积分级数顺序:</p>
+<p><img src="https://latex.codecogs.com/png.latex?(%5Cint_%7B-1%7D%5E%7B1%7D%5Cleft(%5Cint_%7B0%7D%5E%7B1%7D%20%5Cfrac%7B%5Cmathrm%7Bd%7D%20x%7D%7B(1+y%20x)%20%5Csqrt%7B1-x%5E%7B2%7D%7D%7D%5Cright)%20%5Cmathrm%7Bd%7D%20y)"></p>
+<p><img src="https://latex.codecogs.com/png.latex?(=%5Cint_%7B0%7D%5E%7B1%7D%5Cleft(%5Cint_%7B-1%7D%5E%7B1%7D%20%5Cfrac%7B1%7D%7B(1+y%20x)%20%5Csqrt%7B1-x%5E%7B2%7D%7D%7D%20%5Cmathrm%7B~d%7D%20y%5Cright)%20%5Cmathrm%7Bd%7D%20x)"></p>
+<p><img src="https://latex.codecogs.com/png.latex?(=2%20%5Cint_%7B0%7D%5E%7B1%7D%20%5Cfrac%7B%5Carctan%20x%7D%7Bx%20%5Csqrt%7B1-x%5E%7B2%7D%7D%7D%20%5Cmathrm%7B~d%7D%20x)"></p>
+<p>从而：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(%5Csum_%7Bn=1%7D%5E%7B%5Cinfty%7D%20%5Cfrac%7B1%7D%7B(2%20n-1)%5E%7B2%7D%7D=%5Cfrac%7B%5Cpi%5E%7B2%7D%7D%7B8%7D)"> <img src="https://latex.codecogs.com/png.latex?(=%5Csum_%7Bn=1%7D%5E%7B%5Cinfty%7D%20%5Cfrac%7B1%7D%7Bn%5E%7B2%7D%7D-%5Csum_%7Bn=1%7D%5E%7B%5Cinfty%7D%20%5Cfrac%7B1%7D%7B(2%20n)%5E%7B2%7D%7D)"> <img src="https://latex.codecogs.com/png.latex?(=%5Cfrac%7B3%7D%7B4%7D%20%5Csum_%7Bn=1%7D%5E%7B%5Cinfty%7D%20%5Cfrac%7B1%7D%7Bn%5E%7B2%7D%7D)"></p>
+<p>于是有：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(%5Csum_%7Bn=1%7D%5E%7B%5Cinfty%7D%20%5Cfrac%7B1%7D%7Bn%5E%7B2%7D%7D=%5Cfrac%7B%5Cpi%5E%7B2%7D%7D%7B6%7D)"></p>
+<p>牛，这个我是想不出来的！就是有点复杂，期待还有更简单形式的积分。</p>
+<p>以下是目前有关此问题的一些进展：</p>
+<p>首先如果把指数视为自变量，则以上级数求和已被一般化，归入黎曼Zeta函数(以下定义仅适用s&gt;1的情况)：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(%5Czeta(s)=%5Csum_%7Bn=1%7D%5E%7B%5Cinfty%7D%20%5Cfrac%7B1%7D%7Bn%5E%7Bs%7D%7D)"></p>
+<p>对于s为偶数的情况，欧拉时代就已经解决：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(%5Czeta(2%20n)=%5Cfrac%7B(2%20%5Cpi)%5E%7B2%20n%7D(-1)%5E%7Bn+1%7D%20B_%7B2%20n%7D%7D%7B2%20%5Ccdot(2%20n)%20!%7D)"></p>
+<p>其中 <img src="https://latex.codecogs.com/png.latex?(B_n)">称为“伯努利数”，它们满足递推关系：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(%5Cleft(%5Cbegin%7Barray%7D%7Bc%7D%20n+1%20%5C%201%20%5Cend%7Barray%7D%5Cright)%20B_%7Bn%7D+%5Cleft(%5Cbegin%7Barray%7D%7Bc%7D%20n+1%20%5C%202%20%5Cend%7Barray%7D%5Cright)%20B_%7Bn-1%7D)"> <img src="https://latex.codecogs.com/png.latex?(+%5Cldots+%5Cleft(%5Cbegin%7Barray%7D%7Bc%7D%20n+1%20%5C%20n%20%5Cend%7Barray%7D%5Cright)%20B_%7B1%7D+1=0,%20%5Cforall%20n)"></p>
+<p>对s为奇数的情况则所知甚少。1978年Apery证明 <img src="https://latex.codecogs.com/png.latex?(%5Czeta(3))">是无理数，仍未知其是否超越数。2001年有人证明，必然有无穷多个 <img src="https://latex.codecogs.com/png.latex?(%5Czeta(2k+1))">是无理数，且 <img src="https://latex.codecogs.com/png.latex?(%5Czeta(5))"> 、<img src="https://latex.codecogs.com/png.latex?(%5Czeta(7))"> 、<img src="https://latex.codecogs.com/png.latex?(%5Czeta(9))"> 、<img src="https://latex.codecogs.com/png.latex?(%20%5Czeta(11))">中，至少有一个是无理数。</p>
+<p>开头那个积分是欧拉算不出的，以下介绍一个欧拉遇到过的，也相当难但确实是可以算的积分：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(%5Cint_0%5E%7B%5Cfrac%7B%5Cpi%7D%7B2%7D%7D%20%5Cln(%5Csin%20x)dx)"></p>
+<p>不妨自己先算算看……</p>
+<p>当代“规范”解法，先拆分：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(%5Cbegin%7Baligned%7D%20I%20&amp;=%5Cint_%7B0%7D%5E%7B%5Cpi%20/%202%7D%20%5Cln%20(%5Csin%20x)%20d%20x=%5Cint_%7B0%7D%5E%7B%5Cpi%20/%202%7D%20%5Cln%20%5Cleft(2%20%5Csin%20%5Cfrac%7Bx%7D%7B2%7D%20%5Ccos%20%5Cfrac%7Bx%7D%7B2%7D%5Cright)%20d%20x%20%5C%20&amp;=%5Cint_%7B0%7D%5E%7B%5Cpi%20/%202%7D(%5Cln%202)%20d%20x+%5Cint_%7B0%7D%5E%7B%5Cpi%20/%202%7D%20%5Cln%20%5Cleft(%5Csin%20%5Cfrac%7Bx%7D%7B2%7D%5Cright)%20d%20x+%5Cint_%7B0%7D%5E%7B%5Cpi%20/%202%7D%20%5Cln%20%5Cleft(%5Ccos%20%5Cfrac%7Bx%7D%7B2%7D%5Cright)%20d%20x%20%5Cend%7Baligned%7D)"></p>
+<p>再换元，令t=x/2：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(%5Cbegin%7Baligned%7D%20I%20&amp;=%5Cfrac%7B%5Cpi%7D%7B2%7D%20%5Cln%202+2%20%5Cint_%7B0%7D%5E%7B%5Cpi%20/%204%7D%20%5Cln%20(%5Csin%20t)%20d%20t-2%20%5Cint_%7B%5Cpi%20/%202%7D%5E%7B%5Cpi%20/%204%7D%20%5Cln%20%5Cleft(%5Ccos%20%5Cleft%5B%5Cfrac%7B%5Cpi%7D%7B2%7D-t%5Cright%5D%5Cright)%20d%20t%20%5C%20&amp;=%5Cfrac%7B%5Cpi%7D%7B2%7D%20%5Cln%202+2%20%5Cint_%7B0%7D%5E%7B%5Cpi%20/%204%7D%20%5Cln%20(%5Csin%20t)%20d%20t+2%20%5Cint_%7B%5Cpi%20/%204%7D%5E%7B%5Cpi%20/%202%7D%20%5Cln%20(%5Csin%20t)%20d%20t%20%5C%20&amp;=%5Cfrac%7B%5Cpi%7D%7B2%7D%20%5Cln%202+2%20%5Cint_%7B0%7D%5E%7B%5Cpi%20/%202%7D%20%5Cln%20(%5Csin%20t)%20d%20t=%5Cfrac%7B%5Cpi%7D%7B2%7D%20%5Cln%202+2%20I%20%5Cend%7Baligned%7D)"></p>
+<p>原积分形式复现，太好了，可以解出:</p>
+<p><img src="https://latex.codecogs.com/png.latex?(I=-%5Cfrac%7B%5Cpi%7D%7B2%7D%5Cln%202)"> .</p>
+<p>欧拉的“不规范”解法：</p>
+<p>首先，证明这样一个等式：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(%5Ccos%20x=2%5Csin%202x%20%5Csin%20x%20+2%5Csin%204x%20%5Csin%20x%20%20+2%5Csin%206x%20%5Csin%20x+...)"></p>
+<p>方法是，根据积化和差公式：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(2%5Csin%20nx%20%5Csin%20x=%5Ccos%20(n-1)x-%5Ccos%20(n+1)x)"></p>
+<p>所以：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(%5Ccos%20x%20=%20%5Ccos%20x%20+(-%5Ccos%203x%20+%20%5Ccos%203x%20)+(-%5Ccos%205x%20+%20%5Ccos%205x%20)+(-%5Ccos%207x%20+%20%5Ccos%207x%20)+...)"> <img src="https://latex.codecogs.com/png.latex?(=(%20%5Ccos%20x%20-%5Ccos%203x)%20+%20(%5Ccos%203x%20-%5Ccos%205x)%20+%20(%5Ccos%205x%20-%5Ccos%207x)%20+%20...)"> <img src="https://latex.codecogs.com/png.latex?(=2%5Csin%202x%20%5Csin%20x%20+2%5Csin%204x%20%5Csin%20x%20%20+2%5Csin%206x%20%5Csin%20x+...)"></p>
+<p>再计算<img src="https://latex.codecogs.com/png.latex?(%20y=%5Cln(%5Csin%20x))">的微分，当然，<img src="https://latex.codecogs.com/png.latex?(%5Cfrac%7Bd%20y%7D%7Bd%20x%7D=%5Cfrac%7B%5Ccos%20x%7D%7B%5Csin%20x%7D)"> ,代入以上公式：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(d%20y=%5Cfrac%7B%5Ccos%20x%7D%7B%5Csin%20x%7D%20d%20x=%5Cfrac%7B2%20%5Csin%202%20x%20%5Csin%20x+2%20%5Csin%204%20x%20%5Csin%20x+2%20%5Csin%206%20x%20%5Csin%20x+%5Ccdots%7D%7B%5Csin%20x%7D%20d%20x)"> <img src="https://latex.codecogs.com/png.latex?(=2%5B%5Csin%202%20x+%5Csin%204%20x+%5Csin%206%20x+%5Ccdots%5D%20d%20x)"></p>
+<p>再倒回去，对两边积分：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(%5Cbegin%7Baligned%7D%20y%20&amp;=%5Cint%20d%20y=2%20%5Cint%5B%5Csin%202%20x+%5Csin%204%20x+%5Csin%206%20x+%5Csin%208%20x+%5Ccdots%5D%20d%20x%20%5C%20&amp;=2%5Cleft%5B-%5Cfrac%7B1%7D%7B2%7D%20%5Ccos%202%20x-%5Cfrac%7B1%7D%7B4%7D%20%5Ccos%204%20x-%5Cfrac%7B1%7D%7B6%7D%20%5Ccos%206%20x-%5Cfrac%7B1%7D%7B8%7D%20%5Ccos%208%20x-%5Ccdots%5Cright%5D+C%20%5C%20&amp;=-%5Ccos%202%20x-%5Cfrac%7B1%7D%7B2%7D%20%5Ccos%204%20x-%5Cfrac%7B1%7D%7B3%7D%20%5Ccos%206%20x-%5Cfrac%7B1%7D%7B4%7D%20%5Ccos%208%20x-%5Cfrac%7B1%7D%7B5%7D%20%5Ccos%2010%20x-%5Ccdots+C%20%5Cend%7Baligned%7D)"></p>
+<p>C是一个待定的常数。恰好已知当 <img src="https://latex.codecogs.com/png.latex?(x=%5Cpi%20/%202)"> 时， <img src="https://latex.codecogs.com/png.latex?(y=%5Cln%20(%5Csin%20%5Cpi%20/2)=0)">，代入上式，可得：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(0=-%5Ccos%20%5Cpi-%5Cfrac%7B1%7D%7B2%7D%20%5Ccos%202%20%5Cpi-%5Cfrac%7B1%7D%7B3%7D%20%5Ccos%203%20%5Cpi-%5Cfrac%7B1%7D%7B4%7D%20%5Ccos%204%20%5Cpi-%5Cfrac%7B1%7D%7B5%7D%20%5Ccos%205%20%5Cpi-%5Ccdots+C)"></p>
+<p>那么:</p>
+<p><img src="https://latex.codecogs.com/png.latex?(C=-1+%5Cfrac%7B1%7D%7B2%7D-%5Cfrac%7B1%7D%7B3%7D+%5Cfrac%7B1%7D%7B4%7D-%5Cfrac%7B1%7D%7B5%7D+%5Ccdots)">，恰好这个级数值是已知的(这道题大概很多课本里是作为习题的吧)，为 <img src="https://latex.codecogs.com/png.latex?(-%5Cln%202)">，所以得到：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(%5Cln%20(%5Csin%20x)=-%5Cln%202-%5Ccos%202%20x-%5Cfrac%7B1%7D%7B2%7D%20%5Ccos%204%20x-%5Cfrac%7B1%7D%7B3%7D%20%5Ccos%206%20x-%5Cfrac%7B1%7D%7B4%7D%20%5Ccos%208%20x-%5Cfrac%7B1%7D%7B5%7D%20%5Ccos%2010%20x-%5Ccdots)"></p>
+<p>然后就可以求它的积分了：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(%5Cbegin%7Baligned%7D%20%5Cint_%7B0%7D%5E%7B%5Cpi%20/%202%7D%20&amp;%20%5Cln%20(%5Csin%20x)%20d%20x%20%5C%20&amp;=%5Cint_%7B0%7D%5E%7B%5Cpi%20/%202%7D%5Cleft%5B-%5Cln%202-%5Ccos%202%20x-%5Cfrac%7B1%7D%7B2%7D%20%5Ccos%204%20x-%5Cfrac%7B1%7D%7B3%7D%20%5Ccos%206%20x-%5Cfrac%7B1%7D%7B4%7D%20%5Ccos%208%20x-%5Ccdots%5Cright%5D%20d%20x%20%5C%20&amp;=%5Cleft.%5Cleft((-%5Cln%202)%20x-%5Cfrac%7B1%7D%7B2%7D%20%5Csin%202%20x-%5Cfrac%7B1%7D%7B8%7D%20%5Csin%204%20x-%5Cfrac%7B1%7D%7B18%7D%20%5Csin%206%20x-%5Cfrac%7B1%7D%7B32%7D%20%5Csin%208%20x-%5Ccdots%5Cright)%5Cright%7C_%7B0%7D%20%5E%7B%5Cpi%20/%202%7D%20%5C%20&amp;=-%5Cfrac%7B%5Cpi%7D%7B2%7D%20%5Cln%202%20%5Cend%7Baligned%7D)"></p>
+<p>以上过程中，每一项sin都正好抵消。</p>
+<p>欧拉的方法虽然看上去很繁复，但有一种把无穷级数玩弄于股掌之间的感觉。</p>
+
+
+
+ ]]></description>
+  <category>级数</category>
+  <category>欧拉</category>
+  <category>每周一题</category>
+  <guid>https://your-website-url.example.com/posts/2022-01-10-欧拉遇到过的最难的积分全体自然数的立方倒数和.html</guid>
+  <pubDate>Mon, 10 Jan 2022 08:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>“可错约数”：错误约分后得到正确结果的数</title>
+  <link>https://your-website-url.example.com/posts/2021-12-19-可错约数错误约分后得到正确结果的数.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>不久前看到知乎上有这样一个问题，题目来自于一张网络搞笑图： <img src="https://pic2.zhimg.com/v2-6db4a27dcf524a9f9c4cbbba50030895_b.jpeg" class="img-fluid"></p>
+<p>此图要点在于，163/326这个分数，经过不正确的约分方式，得到了正确的计算结果。题主就问，如何寻找到这样的，可以经过错误约分，得到正确结果的数字？其中排除像<img src="https://latex.codecogs.com/png.latex?%5Cfrac%7Bx00%7D%7By00%7D=%5Cfrac%7Bx%7D%7By%7D">这种平凡的结果。我把这种数字命名为“可错约数”。</p>
+<p>因为“错约”的可能情形非常多，所以先把问题限定为分子分母等长，且约分后，分子为1的情况。很快，有人通过计算机，找到了很多这样的数：</p>
+<p>一些3位“可错约数”：</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B127%7D%7B762%7D=%5Cfrac%7B1%7D%7B6%7D"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B139%7D%7B973%7D=%5Cfrac%7B1%7D%7B7%7D"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B145%7D%7B435%7D=%5Cfrac%7B1%7D%7B3%7D"></p>
+<p>一些4位可错约数：</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B1015%7D%7B7105%7D=%5Cfrac%7B1%7D%7B7%7D"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B1018%7D%7B6108%7D=%5Cfrac%7B1%7D%7B6%7D"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B1045%7D%7B9405%7D=%5Cfrac%7B1%7D%7B9%7D"></p>
+<p>看上去没啥规律。但我想起之前有关“走马灯数”的文章中，提到一个中技巧，可以批量寻找这种“可错约数”。比如，因为分子分母等长，且约分后，结果为1/n，则分子、分母似乎可以满足以下竖式：</p>
+<p><img src="https://files.mdnice.com/user/5405/64172d6d-d497-4b0b-ba7c-3fd8addf78de.png" class="img-fluid"></p>
+<p>那么以上竖式中，如果省略号部分的数字恰好可约，那么被乘数和积可组成一个“可错约数”。省略号部分可能的组合非常多，不过似乎最简单的一种是这种组合：</p>
+<p><img src="https://files.mdnice.com/user/5405/d1b734dc-b5ba-4d71-a476-b404be4bfd0f.png" class="img-fluid"></p>
+<p>其中a是1-9的某个数字，其余省略号部分完全相等。这种形式的乘积与“走马灯”数很类似，因此可以考虑如下循环小数的乘积形式：</p>
+<p><img src="https://files.mdnice.com/user/5405/ed93331b-9ae2-4768-b638-883d3d672dd0.png" class="img-fluid"></p>
+<p>设上式的乘积结果为x，则<img src="https://latex.codecogs.com/png.latex?10x=na.%5Coverline%7B%5Ccdot%20%5Ccdot%20%5Ccdot%20%5Ccdot%20a%7D">，所以<img src="https://latex.codecogs.com/png.latex?10x-10n-a+1">为被乘数。</p>
+<p>综合以上就有：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(10x-10n-a+1)%5Ccdot%20n%20=%20x"></p>
+<p>可解得：</p>
+<p>$x=n+(+a) $</p>
+<p>可见<img src="https://latex.codecogs.com/png.latex?%5Cfrac%7Bn%7D%7B10n-1%7D+a">的循环节就是以上的竖式中的循环节。所以只要取n和a代入: <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7Bn%7D%7B10n-1%7D+a"> 展开得到循环节，即可生成可错约数。</p>
+<p>例如希望结果为1/2，则n=2，公式为:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B2%7D%7B10%5Ccdot%202-1%7D%5Ccdot%20a=%5Cfrac%7B2%7D%7B19%7D%5Ccdot%20a"></p>
+<p>当a=1时：</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B2%7D%7B19%7D%5Ccdot%201=0.%5Coverline%7B105263157894736842%7D"> ，</p>
+<p>循环节最左边添加2，得到分母：2105263157894736842，分母除以2得到分子：1052631578947368421，最终分数为：</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B1052631578947368421%7D%7B2105263157894736842%7D"></p>
+<p><img src="https://latex.codecogs.com/png.latex?=%5Cfrac%7B1%7D%7B2%7D"></p>
+<p>a取其他值一样可以，比如a=9，</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B2%7D%7B19%7D%5Ccdot%209=0.%5Coverline%7B947368421052631578%7D">，</p>
+<p>则可以得到：</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B1473684210526315789%7D%7B2947368421052631578%7D"></p>
+<p><img src="https://latex.codecogs.com/png.latex?=%5Cfrac%7B1%7D%7B2%7D"></p>
+<p>n取1到9都可以，比如n=5, a=3时：</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B5%7D%7B49%7D%5Ccdot%203=0.%5Coverline%7B306122448979591836734693877551020408163265%7D">，</p>
+<p>则可以得到：</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B1061224489795918367346938775510204081632653%7D%7B5306122448979591836734693877551020408163265%7D"></p>
+<p><img src="https://latex.codecogs.com/png.latex?=%5Cfrac%7B1%7D%7B5%7D"></p>
+<p>以上方法稍微改动下就可以有很多变体的解，希望有人可以继续研究。</p>
+
+
+
+ ]]></description>
+  <category>每周一题</category>
+  <guid>https://your-website-url.example.com/posts/2021-12-19-可错约数错误约分后得到正确结果的数.html</guid>
+  <pubDate>Sun, 19 Dec 2021 08:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>寻找相亲配对的“最佳算法” —— 稳定婚姻问题 (Stable Marriage Problem)</title>
+  <link>https://your-website-url.example.com/posts/2021-11-28-寻找相亲配对的最佳算法-稳定婚姻问题-stable-marriage-problem.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>假设你组织了一次相亲会，男女人数相同。参会者在相亲会上互相认识后，每个人心目中都对全体异性相亲对象有了一个偏好顺序。每个男性对每个女性都有了一个喜好的排序，所有女性也对男性有了这样一个排名。</p>
+<p>作为组织者，搜集到所有人的排名信息后，你会如何考虑将男女配对，让他们后续发展？有没有一种最佳的配对方法？</p>
+<p><img src="https://pic2.zhimg.com/v2-5034de95ab3efeb2fd51d91dcc25eb07_1440w.jpg?source=172ae18b" class="img-fluid"></p>
+<p>当然，这里必须对“最佳”定个标准。在本问题中，“最佳”的首要标准是产生“稳定婚姻。“稳定婚姻”是这样定义的：</p>
+<p>首先我们要定义的是“不稳定婚姻”。“不稳定婚姻”的定义是：如果有这样两对夫妇，其中一对的丈夫认为另一对夫妇中的妻子比自己的妻子好；同时另一对夫妇中的妻子认为当前的老公也不如另一个老公好。这里的“好”和“坏”就是按之前个人的喜好排名决定。如果存在这种情况，那就意味着有两对婚姻里有一男一女，同时存在离开现任配偶，与对方重组婚姻的意愿，那么这两对婚姻就是“不稳定婚姻”。</p>
+<hr>
+<p>稳定婚姻和不稳定婚姻的例子，假设以下3男3女，有如下偏好关系，左边的为最喜欢：</p>
+<p>男1：女1，女2，女3；</p>
+<p>男2：女1，女3，女2；</p>
+<p>男3：女2，女3，女1；</p>
+<p>女1：男3，男1，男2；</p>
+<p>女2：男1，男2，男3；</p>
+<p>女3：男3，男2，男1；</p>
+<p>则： 男1女1；男2女3；男3女2；是一组稳定婚姻。</p>
+<p>男1女2；男2女1；男3女3；是一组不稳定婚姻。因为男1觉得男2的妻子女1，比现任妻子女2好；女1觉得女2的丈夫男1，比现任丈夫男2好。</p>
+<hr>
+<p>“稳定婚姻”的定义就是一组婚姻中，不存在不稳定婚姻。那么对任何一组偏好列表，是否总可以进行合理的匹配，使得最终配对的结构都是“稳定婚姻”？这就是“稳定婚姻问题”（Stable Marriage Problem）。</p>
+<p>答案：确实有这样的一个算法，可以确定地找到一种稳定婚姻方案。算法也挺有意思，其实跟生活中的行为是很有相似度的。这个算法有两个镜像版本：“男性主动”或是“女性主动”的版本。就以“男性主动”版本为例：</p>
+<p>男性循环向女性求婚（其实男性求婚顺序无关紧要，最终结果是一样的）。任何时刻，没有婚约的男性都向自己偏好列表中的排名最高的（且从未求婚过的女性）求婚。而女性第一次接到求婚请求时，暂时接受婚约。第二次接受求婚时，她显然会比较一下这个男性与现有现订婚的男性的排名，如果更高则接受，并且放弃之前的婚约；否则直接拒绝当前的求婚。</p>
+<p>每次求婚之后，总有部分男性被拒了，则继续按照自己的偏好列表继续求婚，但只向自己未求婚过的女性求婚了。而所有女性策略还是相同，如果新的求婚排名高则接受，并且拒掉之前婚约，否则直接拒绝。</p>
+<p>每次求婚之后，总有一些原先有婚约的男性不幸被拒，重新加入相亲军团。</p>
+<p>那么如此循环，直到所有人都结婚，则算法结束，问题解决。</p>
+<hr>
+<p>仍按之前三男三女为例，执行以上求婚算法，偏好列表是：</p>
+<p>男1：女1，女2，女3；</p>
+<p>男2：女1，女3，女2；</p>
+<p>男3：女2，女3，女1；</p>
+<p>女1：男3，男1，男2；</p>
+<p>女2：男1，男2，男3；</p>
+<p>女3：男3，男2，男1；</p>
+<p>则一种可能的求婚过程是：</p>
+<p>男1向女1求婚，女1接受；</p>
+<p>男2向女1求婚，因女1对男1比男2更偏好，则女1拒绝；</p>
+<p>男3向女2求婚，女2接受；</p>
+<p>男2向女3求婚，女3接受。</p>
+<p>此时，所有人都有婚约；结果如下：</p>
+<p>男1女1；男2女3，男3女2。可以验证，结果为稳定婚姻。</p>
+<p>可以看出，此结果中，男性较为满意，但女性不太满意，特别是女2。</p>
+<hr>
+<p>对此算法，你肯定会有若干疑问：</p>
+<p>第一个问题是，怎么证明算法可以在有限时间内结束？</p>
+<p>因为每名男性只可能向特定的女性求婚一次。所以，总的求婚次数最多是n²，n就是男性或女性人数。这个数字是有限的，所以算法必然在有限时间内结束。</p>
+<p>第二个问题是，怎么确定算法结束时，每个人都结婚了？</p>
+<p>可以用反证法，如果有这种情况，那么存在一个女人，她从来未被求过婚，并且有从未向这个女人求过婚的男人。但这是不可能的，因为如果只剩下这个男人和这个女人没有结婚，那么根据算法，不管这个女人在这个男人的喜好列表里的排名有多低，他还是得向这个女人求婚。所以，算法结束时，所有人都结婚了。</p>
+<p>最后一个问题：怎么证明所有婚姻是稳定的？还是用反证法，如果存在这样两对不稳定夫妻，且不稳定因素是Bob和Alice。那么因为Alice在Bob心目中的排名比其现任妻子高，则Bob必然在现任妻子之前向Alice求婚过。而Alice心目中，Bob的排名比现任丈夫高，则不管其现任丈夫在Bob之前或之后求婚，留下的必然是Bob。所以不可能出现不稳定婚姻。</p>
+<p>这个算法是1960年代，由科学家戴维·盖尔（Gale）和劳艾徳·沙普利（Shapley）提出来的，现在该算法用他们的姓氏首字母命名，称为“GS算法”。有意思的是“GS算法”在被正式提出之前，就已经在一些场合下被使用了。但不是用在相亲，而是用在一些地方的医学院接受实习医生的配对选择流程。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-b458b75f42d0fc4a5dc1a4367dd14ad2_720w.jpg" class="img-fluid"> (上图：一定人数下，可能产生的稳定婚姻组合数量。横轴为男性或女性人数，纵轴为稳定婚姻组合数。虚线为计算机采样结果，实线为Pittle的理论公式预测。一般认为，稳定婚姻组合数的增长与N*lnN同级。图片来源：Michael Dzierzawa, Marie-José Oméro, Statistics of stable marriages, Physica A 287 (1–2) (2000) 321–333.)</p>
+<p>GS算法流程是清楚了，但你肯定还有不少的疑问和思考，那以下我就讲讲这个问题的若干变种和对它们的一些分析。</p>
+<p>第一个变种是，虽然GS算法给出的结果都是稳定的婚姻，但是同样是稳定，稳定的程度是不同的。可以想到有这样一种现成的对婚姻稳定度的度量：每一对夫妇，其配偶在自己的喜好列表上的名次。名次越高，名次的数值越小，表示对配偶越满意，婚姻也越稳定。</p>
+<p>这一度量取值范围是1到n，n为男性或女性人数。对这个度量，我称其为“稳定成本”，因为它表达了婚姻的稳定度，并且越低，越稳定，所以是“成本”。</p>
+<p>有了“稳定成本”这样一种度量，我们一下子可以考虑很多有意思的问题。比如对之前男方主动求婚的GS算法，其给出配对结果，男方与女方的稳定成本比较，哪一方的稳定成本比较低，哪一方对婚姻更满意呢？答案有点出人意料：男方满意度较高，女方较低。</p>
+<p>实际上可以证明，在男方主动求婚的情况下，最后配对的结果，在所有可能的稳定配对结果中，男性总是可以与可能的最高顺位的女性配对，而女性则是所有可能结果中，与顺位最低的男性结婚。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-d2f0db0e982f42766ca475c5db6cc5a2_720w.jpg" class="img-fluid"> （上图：男性主动情况下的GS算法中，男女稳定成本的图例。横轴为人数，带○线为男性稳定成本，带黑点的实线为女性稳定成本。可以看出，在男性主动情况下，男性比女性对配偶更满意。图片来源同前。）</p>
+<p>那么当然，如果算法改成女性主动求婚的话，那么结果总是女性的满意度最高，而男性的满意度最低。总之，可以学到的一点是，在找配偶的问题上，主动出击有时是很重要的。</p>
+<hr>
+<p>仍按之前三男三女为例，以女性主动方式，执行以上求婚算法，偏好列表是：</p>
+<p>男1：女1，女2，女3；</p>
+<p>男2：女1，女3，女2；</p>
+<p>男3：女2，女3，女1；</p>
+<p>女1：男3，男1，男2；</p>
+<p>女2：男1，男2，男3；</p>
+<p>女3：男3，男2，男1；</p>
+<p>则一种可能的求婚过程是：</p>
+<p>女1向男3求婚，男3接受；</p>
+<p>女2向男1求婚，男1接受；</p>
+<p>女3向男3求婚，男3接受，女1被毁约；</p>
+<p>女1向男1求婚，男1接受，女2被毁约；</p>
+<p>女2向男2求婚，男2接受。</p>
+<p>配对结果为：</p>
+<p>女1男1，女2男2，女3男3。这种女性主动下的配对结果，女性会比较满意。</p>
+<hr>
+<p>那么，会出现另一个问题，如果要求男女满意度差不多，该怎么办？这个想法又会引出很多问题。</p>
+<p>先考虑这样一个问题：如果我们要求配对的结果是总体上稳定成本最小，即所有人的稳定成本之和最小，这种条件下，是否总是产生稳定婚姻？</p>
+<p>很可惜，答案是否定的。也就是总体上最稳定的婚姻组合，局部很可能产生不稳定婚姻。比如之前的例子，全局最小稳定成本配对结果是：</p>
+<p>男1女2，男2女1，男3女3。男性总稳定成本为：2+1+2=5，女性总稳定成本为：3+1+1=5，总成本为10。可以验证，这是一种达到最小总成本的配对方案，然而这个方案是不稳定的，不稳定因素来自男1和女1。这也是社会学领域经常遇到的情况，即因为个体的“自私”，导致社会总成本上升，这种情况非常常见。</p>
+<p>另一个问题是，怎么寻找这种总体上的最优解？算法复杂度如何？之前的GS算法是比较好的算法那，它的复杂度是n²，n是男人或女人的人数。而寻找总体最优解，如果用蛮力搜索，枚举所有组合，那么需要n!次搜索，显然不太优越。你也可以想象，如果是需要找到精确最优解的话，那它是一个指数复杂度的问题和一个NP问题。甚至还是一个“NP-困难”的问题，因为给出一个组合，验证这个组合是否是全局最优，都没有一个多项式算法。</p>
+<p>但这个情况下，有个有意思的计算，就是全局最优情况下，每个人匹配到配偶的排名期望值是多少？数学家给算出来了，这个值是1.617√N（黄金分割比？），N是男性或女性人数。也即是说，如果是100个男性和女性，如果按全局最配对，那么平均每个人能匹配到的配偶的排名是1.617√100，约等于16名。 这个结果还不错，就是每个人的配偶是自己心目中，在100个人里排名第16名左右。但这是不考虑婚姻是否稳定的，其中有可能存在不稳定婚姻的情况。</p>
+<p>那么下一个问题是，要求稳定婚姻的情况下，最低总稳定成本的情况如何？这里有一个意外的情况是，这种条件下，有了多项式时间的匹配算法。而之前，在不要求稳定婚姻情况下，反而没有多项式时间的算法。增加了约束条件后，却有了更快的算法。这是非常有意思的，问题的要求更多，计算反而更快了。原因是可以猜到的：因为在要求稳定婚姻的情况下，有很多组合不用考虑了，反而能加速了。</p>
+<p>这个具体算法略复杂，，现在的算法复杂度是N³，比GS算法的N²要复杂点，但仍然是多项式时间的算法。那么这时候平均每个人的稳定成本或配偶排名是多少呢？数学家也算出来了，答案是2√(N)，也就是100对夫妻的话，平均每个人的配偶排名大概是第20名。比之前的16名要差一些，但总体上还是挺靠前的。</p>
+<p>所以，如果你要搞相亲会的话，也许这种稳定婚姻情况下的全局最优算法，是一种比较好的匹配算法。</p>
+<p>但目前为止，我们还没有讨论过男女平等的问题。那么我们来看看怎么能做到男女平等，但我们需要先定义一个男女平等的标准。高德纳（Donald Knuth）和波利亚（George Polya）等人曾提出过这么三种标准：</p>
+<p>第一种：平等主义下的最低稳定成本（minimization of egalitarian cost）。它的意思是把全体男性看各自妻子的名次累加得到一个数值，然后把全体女性看各自丈夫的名次累加得到一个数值，两个数值<strong>相加</strong>得到一个总成本值，并寻找其最小值。其实这个标准与之前的全局最低是一摸一样的，之所以叫它“平等主义”就是不区分性别了，男女混在一起算，这可能也算一种男女平等，是现在比较流行的一种平等概念。</p>
+<p>第二种：最小后悔成本（minimization of regret cost)。这种情况下，规定这样一种“后悔成本”：一对夫妻中，夫妇看对方的名次中，比较大的那个数值，就称为这对夫妻的“后悔成本”。比如说，丈夫看妻子是排名第1，妻子看丈夫则是排名第10， 则这对夫妻的后悔成本是10。现在我们要寻找这样一种使得全体夫妻的后悔成本总和最小的配对，这种配对方案被称为“最小后悔成本”。对这种问题，现在已经找到一种算法，复杂度与GS算法是一样的N²，说明这个问题现在已经很好得被解决。</p>
+<p>第三种男女平等标准：“性别平等下的最小成本”（minimization of sex-equalness cost），它应该是大家心目中最常见的男女平等，即全体男性的稳定成本之和，与全体女性的稳定成本之和，两者比较差值的绝对值，希望越小越好。不像第一种，第一种是比较男女成本的和值，这个是比较差值，这大概是大家心目中典型的男女平等。这种条件下的稳定婚姻问题，也被称为“平衡稳定婚姻问题”（Equitable Stable Marriage Problem）。对这类问题，又有一个意外情况就是，它没有多项式算法了。如同寻找全局最优问题一样，它又变成一个NP-困难问题，虽然这种男女平等是大家很希望的一个结果。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-83eef6c7115f1ec722d5fad4a029e484_720w.jpg" class="img-fluid"> （上图：稳定婚姻情况下，男女稳定成本对比，横轴为女性，纵轴为男性。图片是在200人的情况下，产生若干随机偏好列表列表，寻找其中所有稳定婚姻组合，分别计算男性和女性稳定成本。图片来源：Physics Reports 917 (2021) 1–79）</p>
+<p>以上就是科学家提出过的三种“男女平等思想下”的度量。但我自己又考虑了下，其实还可以有其他的男女平等度量。比如基于“方差”的度量，因为人喜欢与其他人比较稳定成本，虽然这种心理不太好。</p>
+<p>但是这样，就可以另外定义三种类似的度量：</p>
+<p>“平等主义下的最小稳定方差：就是看所有人的稳定成本的方差，越小越好。</p>
+<p>“性别平等下的最小成本方差”，顾名思义，就是那女分开来看，分别计算全体男性的稳定成本方差和全体女性的稳定成本方差，越小越好。</p>
+<p>第三种，可能是“三观”最不正的，可以叫“最小夫妻嫌弃指数”：就是夫妻间，互相看对方的稳定成本，也就是排名的差值，希望越小越好。比如夫妻互看，都是第一名，那当然是最好；如果丈夫嫌弃妻子，妻子看丈夫也是哪都不行，虽然可能家庭不太和谐，但也算平等了吧。但如果一方看另一方排名很高，而另一方反过来排名很低，落差很大，那么男女就不太平等了。GS算法产生的结果往往就是这种情况，有时我们需要避免那种情况。那么就可以定义夫妻间“嫌弃指数”：双方看彼此的排名的差值的绝对值。那我们如果寻找所有夫妻的“嫌弃指数”的最小值，那么也是一种可以研究的问题。</p>
+<p>以上三种度量可能是因为“三观不正”，目前我没有看到有人研究过算法，有兴趣的听众可以自己研究下。</p>
+<p>那好了，以上对稳定婚姻问题的基本形态和目前的一些结果介绍完了，讲讲它的若干种扩展。扩展有两大类，一种是扩展配对的数量。</p>
+<p>比如有这样一种家庭组合问题：有若干男女和待收养的小孩，所有男女和小孩都对其他集合的对象有一个偏好列表，问如何将一男一女和一个小孩组合在一起，成立家庭最为合理。问题内容挺奇葩的，但确实是一个很好的算法问题。</p>
+<p>还有一种扩展，就更常见了，就是配对对象本身不分类型，希望被划分到若干组。比如一群人去吃饭，人数很多，需要分桌。每个人都有一些希望一起吃饭和希望不一起吃饭的人，那么怎样分桌可以使大家最满意，这就是一个“分桌问题”（Seating Problem）。有时它也被称为“稳定室友问题”(Stable Roommate Problem）。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-cd6cdf3f34b983e2a62feb6dde4085c6_720w.jpg" class="img-fluid"> (上图：室友关系好坏对学生是一个很重要的问题)</p>
+<p>听上去“稳定婚姻”问题都是处理一些不太正经的问题，但其实它有很多非常正经的应用场合。除了之前的分配学生去医院实习的问题，其实大学录取过程，就有点像“稳定婚姻问题”。对美国的大学录取，就更为典型。比如，美国大学的基本录取流程就是，学生可以向若干大学同时发出申请，如果其中有若干大学同意录取，那么学生就可以选择自己最想去的大学。如果全部被拒了，那么学社还有几会继续发申请给其他大学。这个流程有点像前面“GS算法”，因为学生主动申请，结果会对学生比较理想，学生总是可以进入其可能进入的最好大学。当然，学校也会意识到这个问题，所以有时大学会主动邀请他们特别想录取的学生入学。</p>
+<p>还有一种应用场合则更加性命攸关了，就是器官捐献和匹配。如果现在有三个可供移植的相同器官和三个等待移植的病人。把哪个器官分配给谁，如何做到公平合理，移植效果又最大化，这就是需要诸多权衡和考虑的问题。</p>
+<p>最后，稳定婚姻问题在物理学中也有它的意义。我们可以把稳定成本想象成一个物体的能量或者能级。一般来说，一个系统中的物体总是倾向于从能级高到能级最低的状态演变。很多学术论文里，会直接把“稳定婚姻”问题里的“稳定成本”称为“能量”，那么寻找最小总成本的问题，就相当于寻找这个系统最稳定状态的问题，这就是“稳定婚姻问题”在物理学中的意义。</p>
+<p>参考链接：</p>
+<p>https://www.sciencedirect.com/science/article/pii/S0370157321000843</p>
+<p>https://hal.archives-ouvertes.fr/jpa-00247483/document</p>
+<p>DOI: 10.1051/jphyslet:019850046017077100</p>
+
+
+
+ ]]></description>
+  <category>音频讲稿</category>
+  <guid>https://your-website-url.example.com/posts/2021-11-28-寻找相亲配对的最佳算法-稳定婚姻问题-stable-marriage-problem.html</guid>
+  <pubDate>Sun, 28 Nov 2021 08:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>幂次数的“社交距离”有多大？—— 卡塔兰猜想</title>
+  <link>https://your-website-url.example.com/posts/2021-10-02-幂次数的社交距离有多大-卡塔兰猜想.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>这次聊一个数论里的著名猜想——“卡塔兰猜想”（Catalan’s Conjecture）。其实它已经被证明了，它的名字现在应该叫做“米哈伊列斯库定理”才对。但无奈“卡塔兰猜想”的名字太著名了，用了太久了，所以没有人会用“米哈伊列斯库定理”这个名字。就像人们只知道“费马大定理”，而不会叫它“怀尔斯定理”。</p>
+<p>卡塔兰猜想是比利时数学家欧仁·查理·卡塔兰在1844年提出的一个猜想：</p>
+<p>方程：<img src="https://latex.codecogs.com/png.latex?x%5Ep-y%5Eq=1"></p>
+<p>其中x, y, p, q都是正整数，p, q大于1，</p>
+<p>只有<img src="https://latex.codecogs.com/png.latex?3%5E2-2%5E3=1"> 这样一组非平凡解。</p>
+<p>这个猜想用一种直观的描述就是：请你把自然数中幂次形式的数，也就是可以表示成<img src="https://latex.codecogs.com/png.latex?a%5Eb"> 形式的数都列出来，其中a, b都是自然数，且指数b&gt;1。那么自然数中符合这个条件的有：</p>
+<p>1, 4, 8，9, 16, 25, 27, 32, 64……</p>
+<p>现在问所有这些数字中，有没有连续的两个整数？以上已经列出来一对：8和9是连续，但后面还有没有这样连续的两个幂次数呢？卡塔兰猜想就是说：除了8和9这一对之外，再也没有连续的都是幂次形式的自然数了。</p>
+<p>这个命题的内容简单到小学生都可以理解。但一般来说，数论里这种小学生都可以理解的命题都是特别难的。</p>
+<p>那来看一下这个问题被解决的历史过程吧。其实早在卡塔兰提出这个猜想的500年前，法国中世纪的犹太哲学家，吉尔松尼德（Levi ben Gerson，1288 - 1344）就证明了卡塔兰猜想的一个最简单的特例：两个完全平方数和完全立方数之间，只有8和9是相差1的，再也没有其他的了。</p>
+<p>但是吉尔松尼德的证明当时并不为人知，所以后来欧拉又证明了同样的结论。欧拉的证明是比较复杂的，后来人们找到了相对简单的证明。我简单说说这个证明的思路。</p>
+<p>还是回到原来的不定方程，现在我们只考虑完全立方数和完全平方数之间的情况，那么方程就便成为：</p>
+<p><img src="https://latex.codecogs.com/png.latex?x%5E3-y%5E2=%5Cpm%201"></p>
+<p>其中最简单的情况是右边等于1的情况，也就是：</p>
+<p><img src="https://latex.codecogs.com/png.latex?x%5E3-y%5E2=1"></p>
+<p>这个方程，我们要证明它没有正整数解。证明第一步，我们把它改写成：</p>
+<p><img src="https://latex.codecogs.com/png.latex?x%5E3=y%5E2+1"></p>
+<p>然后我们要对右边进行因式分解。虽然右边的<img src="https://latex.codecogs.com/png.latex?y%5E2+1"> ，在中学数学课本里是无法因式分解的，但是如果你听过大老李的节目，知道有“高斯整数”这个东西，那么<img src="https://latex.codecogs.com/png.latex?y%5E2+1">就可以分解为：</p>
+<p><img src="https://latex.codecogs.com/png.latex?x%5E3=(y+i)(y-i)"></p>
+<p>其实，这是最关键的一步！虽然我们是在通常的整数范围内提出的问题，但是证明过程中，我们要跳入到“高斯整数”这个更大的“宇宙”中去。因为我们知道，如果原方程有正整数解，那么那些解也同样满足高斯整数条件下的命题。因为高斯整数包含所有整数，所以我们把<img src="https://latex.codecogs.com/png.latex?y%5E2+1">分解成<img src="https://latex.codecogs.com/png.latex?(y+i)(y-i)">是没有任何问题。</p>
+<p>一旦右边进行了因式分解，那么问题就迎刃而解。你所需要分析的是<img src="https://latex.codecogs.com/png.latex?y+i"> 和<img src="https://latex.codecogs.com/png.latex?y-i">两个数的最大公约数。你会发现，这个最大公约数必须是2的因子，也就是它只可能是2或者1。</p>
+<p>但另一方面，因为<img src="https://latex.codecogs.com/png.latex?y%5E2%5Cequiv%200%20%5C%20%5Cmbox%7Bor%7D%5C%20%201%20(%5Cbmod%204)">，<img src="https://latex.codecogs.com/png.latex?y%5E2+1%5Cequiv%201%20%5C%20%5Cmbox%7Bor%7D%5C%20%202%20(%5Cbmod%204)">。</p>
+<p>对任何偶数，其3次方必然整除4，所以<img src="https://latex.codecogs.com/png.latex?x">只能是奇数，则<img src="https://latex.codecogs.com/png.latex?y+i">和<img src="https://latex.codecogs.com/png.latex?y-i"> 的最大公约数只是1，也就是<img src="https://latex.codecogs.com/png.latex?y+i">和<img src="https://latex.codecogs.com/png.latex?y-i"> 互质。</p>
+<p>但要注意的是，在高斯整数中，“互质”表示这两个数的公因子为<img src="https://latex.codecogs.com/png.latex?%5Cpm%201">和<img src="https://latex.codecogs.com/png.latex?%5Cpm%20i">，这四种情况之一。还要注意，以上分析中用到一个重要前提是：“高斯整数”具有“唯一因子分解定理”。如果没有这个性质，那么很多讨论就进行不下去的。</p>
+<p>既然<img src="https://latex.codecogs.com/png.latex?y+i">和<img src="https://latex.codecogs.com/png.latex?y-i"> 互质，意味着<img src="https://latex.codecogs.com/png.latex?y+i">和<img src="https://latex.codecogs.com/png.latex?y-i">本身必须是一个完全立方数，即:</p>
+<p><img src="https://latex.codecogs.com/png.latex?y+i=d(a+bi)%5E3"></p>
+<p>其中a、b是整数，<img src="https://latex.codecogs.com/png.latex?d"> 是<img src="https://latex.codecogs.com/png.latex?%5Cpm%201"> 、<img src="https://latex.codecogs.com/png.latex?%5Cpm%20i">之一。因为<img src="https://latex.codecogs.com/png.latex?d%5E3"> 总是高斯整数下的一个单位元(unit)，所以<img src="https://latex.codecogs.com/png.latex?d">基本可以忽略， 于是：</p>
+<p><img src="https://latex.codecogs.com/png.latex?y+i=(a+bi)%5E3"></p>
+<p>展开后，比较等式左右两边的实部和虚部。可以解得唯一解y=0（x=1），于是方程<img src="https://latex.codecogs.com/png.latex?x%5E3-y%5E2=1">没有正整数解。</p>
+<p>对另一种情况：<img src="https://latex.codecogs.com/png.latex?x%5E3-y%5E2=-1"> ，需要证明它除了<img src="https://latex.codecogs.com/png.latex?x=2">和<img src="https://latex.codecogs.com/png.latex?y=3">以外，没有其他正整数解。第一步还是如法炮制，因式分解：</p>
+<p><img src="https://latex.codecogs.com/png.latex?x%5E3=(y+1)(y-1)"></p>
+<p>这次同样可以确定<img src="https://latex.codecogs.com/png.latex?y+1"> 和<img src="https://latex.codecogs.com/png.latex?y-1"> 的最大公因子不是2就是1。虽然到这里的步骤，是大家应该很习惯的，但后面的讨论过程其实要比之前的高斯整数下的分析麻烦些，用到的准备知识会多一些，所以这里就不详述了。</p>
+<p>以上就是现代数学中，对证明<img src="https://latex.codecogs.com/png.latex?x%5E3-y%5E2=%5Cpm%201">这个方程，仅有<img src="https://latex.codecogs.com/png.latex?x=2"> 和<img src="https://latex.codecogs.com/png.latex?y=3">基本过程。以上就是卡塔兰猜想最简单的一个特例。</p>
+<p>下一个突破是1850年，勒贝格证明了<img src="https://latex.codecogs.com/png.latex?x%5Ep-y%5E2=1">这个方程无整数解（要注意，他不是发明”勒贝格积分“的那个勒贝格，只是同一个姓）。勒贝格的证明第一步其实与之前还是一样，把方程分解为：<img src="https://latex.codecogs.com/png.latex?x%5Ep=(y+i)(y-i)"> 。</p>
+<p>再下一个突破要经过的时间就很长了。过了111年，到1961年，中国数学家柯召(1910年4月12日～2002年11月8日)证明了，如果<img src="https://latex.codecogs.com/png.latex?x%5E2-y%5Ep=1">有解，那么<img src="https://latex.codecogs.com/png.latex?x">要大于<img src="https://latex.codecogs.com/png.latex?10%5E%7B3%5Ccdot%2010%5E%7B9%7D%7D">，这样一个非常大的数字。</p>
+<p>再到1976年，美国的Joseph E.Z. Chein去掉了这个下界，最终证明了<img src="https://latex.codecogs.com/png.latex?x%5E2-y%5Eq=1">这个方程在<img src="https://latex.codecogs.com/png.latex?q%3E3">的时候无解。</p>
+<p>但以上只是固定了一个幂次为完全平方数的情况，距离卡塔兰猜想还有相当大的距离。1999年, M. Mignotte 证明如果还有其他解，那么两个指数都有上界：</p>
+<p><img src="https://latex.codecogs.com/png.latex?p%3C7.15%20%5Ctimes%2010%5E%7B11%7D"></p>
+<p><img src="https://latex.codecogs.com/png.latex?q%3C7.78%20%5Ctimes%2010%5E%7B16%7D"></p>
+<p>但两个指数还是太大，远超计算机可以枚举的范围。</p>
+<p>终于到2002年，罗马尼亚数学家普雷达·米哈伊列斯库（Preda Mihăilescu, 1955 - ）最终完成了卡塔兰猜想的证明，从而解决了这个有150多年历史的猜想。他的证明的核心技术是环理论的“零化子”（annihilator），当然也是基于前人的成果。因为之前有人证明，如果卡塔兰猜想还有其他解，那么两个指数必须是某种特殊形式的质数对（Double Wieferich Prime Pair）。米哈伊列斯库证明，即使指数是这种形式的质数对，也无解，所以完成了证明。</p>
+<p>以上介绍了”卡坦兰猜想“的历史，我知道你很想看看它的扩展。你能想到的第一个扩展大概是，两个幂次相差2的情况，之前列举过程中我们就看到了一组解是25和27。那有没有其他解？我是没找到。</p>
+<p>但一个直观感觉是幂次数之间的距离总体上是逐渐增加的，所以现在数学家猜想：<img src="https://latex.codecogs.com/png.latex?x%5Ep-y%5Eq=m">，<img src="https://latex.codecogs.com/png.latex?m">是任何正整数，这个方程只有有限多的整数解。这是目前的一个猜想。而如果”ABC猜想“为真，这个猜想也为真。</p>
+<p>卡塔兰猜想的另一个更有意思的扩展叫“费马–卡塔兰猜想”。它有点像费马大定理和卡塔兰猜想的结合体。费马大定理说<img src="https://latex.codecogs.com/png.latex?x%5Ep+y%5Ep=z%5Ep">，指数大于等于3的情况下无解。那么允许指数不同的情况下，解的情况为何？或者说，更一般的情况下，对方程：</p>
+<p><img src="https://latex.codecogs.com/png.latex?x%5Ep+y%5Eq=z%5Er"></p>
+<p>非平凡正整数解的情况如何？</p>
+<p>数学家注意到一个情况是，如果三个指数都比较小的情况下，解是很多的。比如三个指数都是2，那就是勾股定理嘛。而如果三个指数要求比较大，解就少很多。特别是，如果要求三个指数的倒数和小于1的话，解的情况非常有意思。</p>
+<p>目前已知，在<img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B1%7D%7Bp%7D+%5Cfrac%7B1%7D%7Bq%7D+%5Cfrac%7B1%7D%7Br%7D%3C1"> 的情况下，对以上方程，现在找到以下10组解：</p>
+<p><img src="https://latex.codecogs.com/png.latex?1%5E%7Bp%7D+2%5E%7B3%7D=3%5E%7B2%7D"> 其中p&gt;6；</p>
+<p><img src="https://latex.codecogs.com/png.latex?2%5E%7B5%7D+7%5E%7B2%7D%20=3%5E%7B4%7D"></p>
+<p><img src="https://latex.codecogs.com/png.latex?7%5E%7B3%7D+13%5E%7B2%7D%20=2%5E%7B9%7D"></p>
+<p><img src="https://latex.codecogs.com/png.latex?2%5E%7B7%7D+17%5E%7B3%7D%20=71%5E%7B2%7D"></p>
+<p><img src="https://latex.codecogs.com/png.latex?3%5E%7B5%7D+11%5E%7B4%7D%20=122%5E%7B2%7D"></p>
+<p><img src="https://latex.codecogs.com/png.latex?17%5E%7B7%7D+76271%5E%7B3%7D%20=21063928%5E%7B2%7D"></p>
+<p><img src="https://latex.codecogs.com/png.latex?1414%5E%7B3%7D+2213459%5E%7B2%7D%20=65%5E%7B7%7D"></p>
+<p><img src="https://latex.codecogs.com/png.latex?9262%5E%7B3%7D+15312283%5E%7B2%7D%20=113%5E%7B7%7D"></p>
+<p><img src="https://latex.codecogs.com/png.latex?43%5E%7B8%7D+96222%5E%7B3%7D%20=30042907%5E%7B2%7D"></p>
+<p><img src="https://latex.codecogs.com/png.latex?33%5E%7B8%7D+1549034%5E%7B2%7D%20=15613%5E%7B3%7D"></p>
+<p>那么费马——卡塔兰猜想就是说，除了以上10组解，这个方程没有其他解。这是一个神奇的现象，对我来说这10组解看上去都是些奇奇怪怪的数字。数学里这种出现若干特别数字特例的情况是非常少的。我不太清楚数学家如何找到这10组解的，反正对我来说这10组解太有神秘感了。</p>
+<p>而观察上面的10组解的话，你会发现，任何一组解里都有一个指数为2的数，也就是会出现完全平方数。由此出现一个”Beal猜想“，称：</p>
+<p>以上方程在指数都大于2的情况下，无（非平凡）解。</p>
+<p>Beal是美国的银行家，也是数学爱好者。他出资悬赏100万美元，证明这个猜想。当然，这个猜想与费马——卡塔兰猜想谁更难，是见仁见智了。如果你要找反例的话，那么Beal猜想更难，因为它要求反例中的指数都大于2。如果是证明猜想为真的话，那么”Beal猜想“稍微简单点。因为如果”费马——卡塔兰猜想“为真，就蕴含了Beal猜想为真，反之不然。</p>
+<p>以上猜想还能扩展到高斯整数范围内，还有一些神奇数字。比如，对原版”卡塔兰猜想“，高斯整数中有一组解：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(78+78%20i)%5E%7B2%7D-(-23%20i)%5E%7B3%7D=i"></p>
+<p>对，”费马——卡坦兰猜想“，高斯整数内也有若干解，比如：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(8+5%20i)%5E%7B2%7D+(5+3%20i)%5E%7B3%7D=(1+2%20i)%5E%7B7%7D"></p>
+<p><img src="https://latex.codecogs.com/png.latex?(20+9%20i)%5E%7B2%7D+(1+8%20i)%5E%7B3%7D=(1+i)%5E%7B15%7D"></p>
+<p>对，Beal猜想，高斯整数中找到一个反例：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(-2+i)%5E3%20+%20(-2-i)%5E3%20=%20(1+i)%5E4"></p>
+<p>当然这些解怎么找，是不是全部解，这些问题就太难了。</p>
+<p>好了，今天关于卡塔兰猜想的问题就聊到这里，最大感想还是数论的深不可测。而高斯整数在这些问题中非常有用，更加验证了“虚数不虚”。</p>
+<p>参考链接：</p>
+<p>https://mathworld.wolfram.com/Fermat-CatalanConjecture.html</p>
+<p>https://mathworld.wolfram.com/CatalansConjecture.html</p>
+<p>https://www.mathpuzzle.com/Gaussians.html</p>
+
+
+
+ ]]></description>
+  <category>每周一题</category>
+  <guid>https://your-website-url.example.com/posts/2021-10-02-幂次数的社交距离有多大-卡塔兰猜想.html</guid>
+  <pubDate>Sat, 02 Oct 2021 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>为什么你的朋友的朋友比你的朋友多？—— 友谊悖论和沃比冈湖的骰子</title>
+  <link>https://your-website-url.example.com/posts/2021-09-20-为什么你的朋友的朋友比你的朋友多-友谊悖论和沃比冈湖的骰子.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>不知道你考虑过这个问题没有：你的朋友多还是你的朋友的朋友多？你与你的朋友比较，谁更是交友达人？</p>
+<figure class="wp-block-image figure">
+<img src="https://exp-picture.cdn.bcebos.com/732a12e265e7340f4e21a29035b9763e20c2b4ec.jpg?x-bce-process=image%2Fresize%2Cm_lfit%2Cw_500%2Climit_1%2Fquality%2Cq_80" class="img-fluid figure-img">
+</figure>
+<p>当然，为公平比较，这里“你的朋友的朋友”要取一个平均数，也就是计算你所有的朋友的朋友数量之和，然后除以你的朋友数量，得到一个平均数。将这个平均数，与你自己的朋友数比较会如何？（没有特别指出的话，本文中的“朋友的朋友”都是这样一个平均数。）</p>
+<p>还有一个假定是是朋友关系总是相互的、双向的。</p>
+<p>基于以上设定，我知道各位各自心里都有一个估计了。但现在可以告诉各位一个结论：对绝大多数人来说，你的朋友的朋友数量会大于你的朋友数量。</p>
+<p>你可能会觉得这不合理啊，既然朋友关系是相互的，那么如果有的人朋友多，就应该周围的人一起多，要少就一起少，最终应该是一半对一半。但事实确实有些出人意料，现实中，大多数人的朋友会比朋友的朋友数少。</p>
+<p>第一次注意到这个现象的是美国社会学家，James Coleman。他在1960年代，对美国12所高中的学生进行了朋友关系的调查，结果发现平均每个学生有2.7个朋友，但是每个人的朋友的朋友数量平均为3.4。而只有不到1/4的人，他的朋友数多于其朋友的朋友的人数。</p>
+<figure class="wp-block-image size-large figure">
+<img src="https://pic2.zhimg.com/80/v2-6442f4a751b64f631512751346705969_720w.jpg" class="img-fluid figure-img">
+</figure>
+<p><img src="https://files.mdnice.com/user/5405/390397eb-fbc0-4458-abdf-ebc6be7b9061.png" class="img-fluid"> （上图：Coleman统计的某高中8名女生的好友关系图。每人名字上方数字是其好友数，括号内是其“好友的好友”的平均数量。）</p>
+<p>而大老李在本次节目之前，也在微信朋友圈做了一次调查，请你给你若干微信，比如10个好友发个消息，问一下他们的微信联系人数量，求个平均数，然后与自己的微信联系人数量比较一下。在这里，我就假设微信联系人相当于一个朋友关系。结果最终收到48份答复，结果有77.1%的人答复，自己朋友的朋友数量比自己的联系人数量多，所以也验证了Coleman的调查结果。我也很欢迎你做一下同样的调查，用留言形式回复我。</p>
+<p>那为什么会形成这样的现象？美国的社会学家斯科特·菲尔德，他在1991年发表了一篇论文，标题就是这期节目的标题：为什么你的朋友的朋友比你的朋友多？他依据James Coleman’的调查结果，用数学方法分析了一下这种情况发生的原因。</p>
+<p>其实原因简而言之就是：平均来讲，朋友的朋友就是会比某个人的朋友数多。看个例子吧：</p>
+<figure class="wp-block-image size-large figure">
+<img src="https://pic2.zhimg.com/80/v2-3f70bfd9b6245242a6d776a7b3cfd26d_720w.jpg" class="img-fluid figure-img">
+</figure>
+<p>我用了一张网上流传很广的王菲人际关系图，虽然其中的连线不都表示好友，但每条连线还是表示两人关系较近。你会发现这张图里只有处于人际关系核心的王菲、周迅和张亚东三人，他们的朋友比朋友的朋友数量多，其他10人都是朋友数少。</p>
+<p>而这种朋友关系网是常态：有若干交友达人，他们的朋友数特别多。而其他大多数的人，基本都与这些交友达人是朋友，而除此之外就没有几个朋友了。</p>
+<p>数学上也可以验证这一点。我们就以全部是随机的一张人际关系图来计算，假设这张图里有v个人，和k条线，也就是k个朋友关系。那么来算算这张图里，平均每个人有几个朋友呢？非常简单，是因为每一条线连接两个人，所以每个人的朋友总数应该就是2k，那么平均每个人有2k/v个朋友。</p>
+<figure class="wp-block-image size-large figure">
+<img src="https://pic2.zhimg.com/80/v2-6442f4a751b64f631512751346705969_720w.jpg" class="img-fluid figure-img">
+</figure>
+<p><img src="https://files.mdnice.com/user/5405/390397eb-fbc0-4458-abdf-ebc6be7b9061.png" class="img-fluid"> （上图：Coleman统计的图中，一共有8名学生，10对朋友关系，平均每个人有2.25个朋友）</p>
+<p>而计算一个人朋友的朋友的平均数量、期望值稍微复杂点，我可以告诉你答案，就是上述平均值(<img src="https://latex.codecogs.com/png.latex?%5Cmu">)再加上每个人朋友数量的方差(<img src="https://latex.codecogs.com/png.latex?%5Csigma%20%5E2">)，除以每个人朋友的平均值：</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cmu%20+%5Cfrac%7B%5Csigma%5E%7B2%7D%7D%7B%5Cmu%7D"></p>
+<p>因为方差总是正的，这也意味着每个人的”朋友的朋友”数的期望值确实会多于每个自己的朋友数量，是不是很反直觉！</p>
+<figure class="wp-block-image size-large figure">
+<img src="https://pic3.zhimg.com/80/v2-e418bd0cd698155bbc8283b4a1c44312_720w.jpg" class="img-fluid figure-img">
+</figure>
+<p>(上图：Coleman统计中的学生好友数分布图，横轴为好友数，纵轴为有这些好友数的人数，平均值是2.7)</p>
+<figure class="wp-block-image size-large figure">
+<img src="https://pic3.zhimg.com/80/v2-68bcbb8a8cc8bd5ecb3f231408b642be_720w.jpg" class="img-fluid figure-img">
+</figure>
+<p><img src="https://files.mdnice.com/user/5405/3aecd7de-22cd-4b6b-9bef-c89662e19bb3.png" class="img-fluid"> (上图：Coleman统计中的学生好友数分布图，横轴为“好友的好友”数，纵轴为有这些“好友的好友数”的人数，平均值是3.4)</p>
+<p>而且如果每个人朋友数量的差距越大，那么整个团体里就会有越多的人感觉自己的朋友少于朋友的朋友。一种最极端的情况是，n个人，其中有一个人交友达人，与其他n-1个人都是朋友，而其他的n-1个人只有他这一个朋友。这样所有n-1个人都会发现自己的朋友的朋友数量是n-1，而自己只有1个朋友。不幸的是这是一种朋友圈关系的常态。</p>
+<figure class="wp-block-image size-large figure">
+<img src="https://pic2.zhimg.com/80/v2-28e15119ea735c1051a9418f62513ead_720w.jpg" class="img-fluid figure-img">
+</figure>
+<p>那么有没有一种朋友关系的结构形式可以使得多数人的朋友数多过朋友的朋友？还是有的，比如如下结构：</p>
+<figure class="wp-block-image size-large figure">
+<img src="https://pic4.zhimg.com/80/v2-d94bb5103f1e4ee31e86af0eb34175f3_720w.jpg" class="img-fluid figure-img">
+</figure>
+<p>那么C,D,E,F都会感觉自己的朋友比朋友的朋友数量多。但是你也会发现这种结构是非常刻意的。如果改变任何其中两人的关系都会使整个结构失去这种性质。</p>
+<p>综上所述，大家应该接受这样一个现实：如果你感觉自己孤独，而你不多的几个朋友似乎都是社交达人，那么确实如此，说明你是一个平常人，无需悲伤难过。以上这个现象就叫“友谊悖论”。</p>
+<p>而我最近还看到一个与友谊悖论有点类似反直觉的概率现象：沃比冈湖的骰子。“沃比冈湖”是美国作家Garrison Keillor写的一本小说的名称，也是一个地名。这个地区的一个特点是：那里的家长都认为自己的小孩是天才，要超过平均水平。其实中国的父母在自己小孩进入小学前也常有这种迷思。</p>
+<p>“沃比冈湖的骰子”的是这样一组骰子。每次投掷中，每一个骰子的点数大于每个骰子平均点数的概率超过1/2。如果你把这组骰子想象成小孩，投出的点数是开始乘积，那就是它们的考试成绩超过平均成绩的概率都能过半，是不是听上去不太可能？但这样一组骰子确实存在，比如这样三个骰子，点数分布分别是：</p>
+<p>A骰子: 3, 3, 3, 3, 3, 5</p>
+<p>B和C骰子: 1, 1, 4, 4, 4, 4</p>
+<p>可以验证对这组骰子，以下三个事件的概率都大于1/2：</p>
+<p>A点数&gt;(A点数+B点数+C点数)/3</p>
+<p>B点数&gt;(A点数+B点数+C点数)/3</p>
+<p>C点数&gt;(A点数+B点数+C点数)/3</p>
+<p>比如，如果用(a, b, c)表示三个骰子的点数，则A点数大于平均点数的情形发生在以下情形：</p>
+<p>(3, 1, 1,) , (3, 1, 4)，(3, 4, 1), (5, <em>, </em>)</p>
+<p>四种情形的概率分别是：5/54, 10/54, 10/54, 1/6，总和是34/54=17/27&gt;1/2。</p>
+<p>B点数大于平均点数情形发生在以下事件：</p>
+<p>(3, 4, *), (5, 4, 1) 概率分别是5/9和1/27，总和是16/27&gt;1/2</p>
+<p>C的情形同B。</p>
+<p>这种情况看似一个悖论，但根源在于以上三个事件是相关的，而非独立事件。这个现象在中国也许叫做“别人家的骰子”更合适。</p>
+<figure class="wp-block-image size-large figure">
+<img src="https://pic4.zhimg.com/80/v2-200be9fef612377f0382fe7c8f50f7c3_720w.jpg" class="img-fluid figure-img">
+</figure>
+<hr class="wp-block-separator">
+
+
+
+ ]]></description>
+  <category>音频讲稿</category>
+  <guid>https://your-website-url.example.com/posts/2021-09-20-为什么你的朋友的朋友比你的朋友多-友谊悖论和沃比冈湖的骰子.html</guid>
+  <pubDate>Mon, 20 Sep 2021 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>“我有几个小秘密，成双成对告诉你”——异地可靠合同签署协议</title>
+  <link>https://your-website-url.example.com/posts/2021-08-26-我有几个小秘密成双成对告诉你异地可靠合同签署协议.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>上一篇<a href="https://zhuanlan.zhihu.com/p/403269523">文章</a>介绍了“1/2不经意传输协议”。这个协议能达到的效果是，一个人可以发送两条信息给位于另一地的某个接收方，并且可以确信接收方只能获取其中一条信息，而接收方也可以确信，发送方不知道他获取的是哪一条信息。</p>
+<p>这个协议解决的需求有点奇怪，它有什么实用价值吗？还真有，这个协议的发明者基于“1/2不经意传输协议”，开发了一个“远程合同签署协议”。但其中还有一个中间协议：交换部分秘密协议（Partial Secrect Exchange）。</p>
+<p>这个中间协议，顾名思义，就是要解决异地安全可靠的交换一个秘密（后面会看到，实际上可靠交换的只是部分秘密，而非全部），这个协议是非常有用的，所以先解释一下这个协议。</p>
+<p>生活中经常有这种场景，你需要与别人交换一个秘密。这个秘密可以是任何你认为有价值的信息，某人的工资、年龄，一张老照片，一段文字等等。正好你持有某个秘密，是某人想知道的。某人也持有某个秘密，是你想知道的，所以你们想交换秘密。</p>
+<p>那么就会产生一个谁先给出秘密的问题。特别是当两个人不在同一地点，这个“谁先给”的问题就尤其棘手，因为谁都不能承受我的秘密给出去了，对方却没有把他的秘密给我的结局。这种场景里影视剧里看得太多了。</p>
+<p><img src="https://files.mdnice.com/user/5405/30cdb7f5-3558-4134-a6bc-226c5b1755de.png" class="img-fluid"> （上图：如何安全交换情报，一直是特工人员必须谨慎对付的问题，取自电视剧“潜伏”剧照）</p>
+<p>现实中，有个常用的解决方法就是分部分交换秘密。比如，如果是钱货交易的话，那可以分批次给钱，对方分批次给货。这样，如果交易过程中一旦发现对方有欺诈行为，那么交易马上终止，及时止损。</p>
+<p>对数字化的秘密信息来说，分部分交易就更合适了。理论上，对数字化的秘密，最小可以拆成1比特的长度进行交换，我给你一比特，你给我一比特交换，这下够安全了吧？一方如果欺诈，他也最多比对方多得到1比特的有用信息，这是几乎可以忽略不计的一个优势（或者对另一方的损失）。</p>
+<p>这个思路很好，但是这样不能防范另一种形式的欺诈。有很多数字化的文件需要完整的文件才能打开查看。那么当你与对方按1比特的速率互相交换秘密的时候，你若无法在交换过程中对文件内容检查，而只能在对方声称完成信息交换后才能检查，若此时打开对方的文件，发现不是需要的信息，那你就要跳脚了。</p>
+<p>所以，这里需要引入一个“可识别秘密”的概念，即有办法将这个秘密与其他无关或者你不在意的信息区分出来。简单来说，你知道，别人不知道，但是别人可以检查验证的信息，就是“可识别秘密”。比如“我妈妈的身份证号码”，就是一个“可识别秘密”。我知道我妈妈的身份证号码，他人不知道，并且别人可以拿着这个号码去身份验证系统上去检查。</p>
+<p>数学上的一种可识别秘密是这样的：你自己生成两个大质数，然后两个数字乘积告诉对方。那么你手上的两个质数就是可识别秘密。因为对方知道这个乘积，但是以目前数学知识，分解大质数是很困难的。但是如果你把这个质数发给对方，对方很容易验证这两个质数乘积是否等于那个大数字。所以这也是一种“可识别秘密”。</p>
+<p>那么，就有人设计了这样一种交换可识别秘密协议，前提是交换偶数个可识别协议，数字越大越安全。那我们先看看这个协议的过程，其中会用到上一期介绍的“1/2不经意传输”。然后分析一下为什么说它是安全的，安全到什么程度。</p>
+<p>假设甲乙双方各持有相同数量的偶数个“可识别秘密”，并且每个秘密的长度是相同的，需要互相交换。我就以身份证号码为例，假设双方要交换10个身份证号码，身份证号码是可识别秘密，并且长度相同。</p>
+<p><img src="https://files.mdnice.com/user/5405/bb70fb4f-e645-41d7-aaf1-1c0ff5d46e1d.jpg" class="img-fluid"></p>
+<p>第一步是“不经意传输阶段”，甲乙双方各自将自己的10个号码任意配对，组合成5对。对这5对身份证号，以“1/2不经意传输”的方式，交替发送给对方（后面会看到，其实交替发送也是不必要的，可以全部一起发送）。那么根据之前的介绍，完成这一步骤时，双方已经互相交换了5个身份证号，但是双方都不能确切知道对方拿到的是哪个身份证号。</p>
+<p>只能知道，对方在每一对身份证中，已经拿到了一个。并且交换过程中，你随时可以检查对方发过来的身份证号，上网查一下，身份证号是否正确。如果你发现对方给的不是你要的身份证号，或者不可识别，那么交换终止。此时，对方最多比你多持有一个身份证号。</p>
+<p>第二步是“按比特交换阶段”。对这5对共10个号码，同时依次按比特位交换。即对这个10个号码，按位取1bit，一共10个bit，发送给对方，直到最后一个bit位发送完成。过程中，因为接收方已经持有了每一对号码中的一个，因此，当对方发来10个号码时，可以检查其中5个bit是否与你已经持有的那个号码吻合。如果不吻合，则证明对方在欺诈，马上终止协议。此时，对方最多比你在5个号码上，多得到1个bit位。</p>
+<p>以上就是就是这个秘密交换协议的全过程。那分析一下，它有哪些特性。对交换秘密，最不希望的就是我把我的秘密给出去了，却没有拿到对方的秘密。从以上过程我们可以看出，第一阶段，对方最多比我多得1个号码，看上去还是可以接受的。并且在后文有关这个协议的应用中可以看到，该阶段无需交替发送，对方比我多得5个号码也是可以接受的。</p>
+<p>第二阶段，对方最多比我多得5个bit位，这个差距就更小了。要指出一点的是，以上身份证号码并不是一个非常好的例子，因为身份号码的每一位之间有关联，很多位置上的数字是可以很容易猜测或计算的。所以，在实际应用中，这里的“可识别信息”应该都是长的随机数，那才是最安全的。至于如何让随机数成为可识别秘密，后面也会提到。</p>
+<p>你可能会问，为啥不直接开始按比特传输呢？效果也差不多嘛，不也是最多对方多得一个秘密吗？这是好问题。答案在于，以上这个协议的目的，并不在于安全地交换所有秘密，而是在于，安全地交换至少一对秘密。这“一对秘密”是作为一个完整的信息实体，确保接收者得到的。也就是说，如果其中一方欺诈，他无法做到在自己获得至少一对秘密的情况下，让对方一对秘密也得不到。以下简单分析一下理由。</p>
+<p>在第一阶段，双方对每一对秘密进行的是“1/2不经意传输”，那么每一方最多只能得到每一对秘密中的一个，而不会是全部。我们知道“1/2不经意传输”本身是有防止欺诈机制的，并且交换的信息都是可以识别的。每一方都可以检查收到的身份证号是否是约定的身份证号。若不是，则结束协议。不管怎样，任何一方都无法拿到完整一对秘密。</p>
+<p>第二阶段，假设一方想欺诈，他想设法对让对方一对秘密也得不到，但是他会发现没法简单做到。因为欺诈方无法知道在上一轮传输后，对方具体收到了哪些秘密，所以他不知道可以在哪一个bit位上进行欺骗。他在某一对秘密上欺骗的成功概率是二分之一，但是他要在全部5对秘密上猜对的概率就只有1/32了。如果觉得这还不够安全，那么可以增加秘密的对数。秘密的对数越多，对方欺诈的成功率就越低。</p>
+<p>这就是这个交换秘密协议的要点，它的效果是：双方交换n对秘密，如果双方诚信，则可以交换全部n对秘密。</p>
+<p>如果一方欺诈，那么可以确保这样一种情况：如果欺诈方得到了对方的一对或若干对秘密，那么诚信方<strong>至少</strong>可以得到对方一对秘密，并且n越大协议越可靠。可以证明，如果欺诈方可以通过某种计算，花费一定时间算出诚信方的秘密，那么诚信方最多花4倍的时间，也可以算出欺诈方的至少一对秘密。所以，双方算力基本相等的情况，我们相信这个协议是安全的，这就是整个协议最终要达到的效果。</p>
+<p>那这个协议有什么用呢？看上去好像不是很有用嘛？因为该协议交换的只能是偶数个可识别秘密，而只能保证至少一对秘密被交换。但如果我们能把一般的交换秘密问题转化为交换偶数个可识别秘密的问题，那就可以了。</p>
+<p>所以我们来看一个以上协议的应用：“远程合同签署协议”。通常的合同签署，需要双方在一起，当场签字，互相交换签过字的合同。但是远程的话，就有一个签字先后问题。谁也不想先签字，因为怕自己签了对方不签，或者给别人去签，做其他坏事等等。</p>
+<p><img src="https://files.mdnice.com/user/5405/62c516de-889f-4148-ac40-b5691913b666.png" class="img-fluid"></p>
+<p>那考虑一下用密码学来解决以上问题。首先，密码学里，数字签名技术已经是很成熟了。数字签名的原理还是用<a href="https://zhuanlan.zhihu.com/p/403269523">之前</a>提到过的非对称加密体系。如果一段文本是用我的某个私钥加密的，那么任何人都可以用我的公钥对其解密。如果解密出来的信息是：“我要执行某个合同……”，那么人们可以确信我是对这个合同签名了，因为这个原始的加密的信息只能是持有私钥的人才能产生，是无可抵赖的。所以某种意义上，数字签名比手写签名更可靠。</p>
+<p>那么远程合同签署协议，就变成交换各自数字签名过的合同文本的过程。这个签名过的文本确实是一个可识别秘密，但是我们需要把它转化为偶数个可识别秘密，并且数量越多越好。怎么转化呢？其实也很简单。</p>
+<p>因为身份证信息是可识别秘密，因此，我可以先声明并签署这样一段信息：</p>
+<hr>
+<p>声明：</p>
+<p>如果对方能够拿到以下10对身份证号中的至少一对号码：</p>
+<ol>
+<li>
+我爸爸，我妈妈
+</li>
+<li>
+我哥哥，我堂弟
+</li>
+<li>
+我表妹1，我表妹2
+</li>
+<li>
+…
+</li>
+<li>
+…
+</li>
+<li>
+…
+</li>
+<li>
+…
+</li>
+<li>
+…
+</li>
+<li>
+…
+</li>
+<li>
+我初中同桌，我高中同桌
+</li>
+</ol>
+<p>我就执行以下合同：</p>
+<p>……</p>
+<hr>
+<p>当然这样太费身份证号了。所以，我们数学一点的方法是：</p>
+<hr>
+<p>声明：</p>
+<p>如果对方能够给出以下10对合数中，至少一对合数的质因子：</p>
+<ol>
+<li>
+7990443202579378949，3764830991206009457
+</li>
+</ol>
+<p>….</p>
+<p>我就执行以下合同：</p>
+<p>……</p>
+<hr>
+<p>将以上文字用自己的私钥签名，发送给对方，最好还发在网上，广而告之。对方也做同样的事情，把类似信息发给你，同时广而告之。收到后，双方用对方的公钥解密，并检查一下对方的这段信息，确保没有猫腻。</p>
+<p>然后把手上的10对大合数作为可识别秘密，执行上述交换秘密协议。如果双方诚信，那么双方应该在协议结束时，得到所有20个数字的某个因子，那么合同生效。</p>
+<p>如果对方欺诈，根据之前的分析，我们知道，如果对方得到了我的某一对合数的因子，那我也应该可以在不长的时间内，同样计算出对方某一对合数的因子，从而确保双方同时签署了这个合同。</p>
+<p>从这个过程中，也可以看出，交换秘密协议还是很有用的，因为理论上只要把任何一个交换秘密问题转化成交换若干对可识别秘密，就可以使用上述协议。而“可识别秘密”很容易构造的。</p>
+<p>最后还要指出一点是，上文中用大数字的因子作为可识别秘密还是有一些小的缺陷，使得可以被用来欺诈，大家可以自己思考一下，怎么用来欺诈。另外，有人用以上这个秘密交换协议，实现了另一种远程猜硬币协议。远程猜硬币就是在网络上玩猜硬币，一个丢一个猜。怎么才能做到没有欺诈和抵赖呢？曾有人用量子物理特性设计了一个“<a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=&amp;ved=2ahUKEwiFjO3utM3yAhWvHDQIHR34D9QQFnoECAMQAQ&amp;url=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F161995081&amp;usg=AOvVaw1cxSgsGK_RSIpQriT496IH">量子猜硬币协议</a>”，有点“大炮打蚊子了”。请你考虑下，如何使用以上交换秘密协议，实现一个防抵赖和欺诈的“远程猜硬币协议”。</p>
+
+
+
+ ]]></description>
+  <category>零知识证明</category>
+  <category>密码学</category>
+  <category>每周一题</category>
+  <guid>https://your-website-url.example.com/posts/2021-08-26-我有几个小秘密成双成对告诉你异地可靠合同签署协议.html</guid>
+  <pubDate>Thu, 26 Aug 2021 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>“我知道这是二分之一的机会”——1/2不经意传输协议介绍</title>
+  <link>https://your-website-url.example.com/posts/2021-08-25-我知道这是二分之一的机会12不经意传输协议介绍.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>介绍一个密码学中的概念：“不经意传输”(Oblivious Transfer，OT)。“不经意”一词是英语“oblivious”的翻译，字典里给这个词的解释是“遗忘的、不知道”的，其实这个意思更接近这个概念的本质。</p>
+<p>“不经意传输”要解决这类问题：你需要给对方多条信息，但是你又必须确保对方只获得其中一条，但是对方又希望能够确保你不知道他看到哪一条信息。</p>
+<p>设计一个具体场景：你给你的哥们介绍相亲女朋友，你有两个可供介绍的单身女性，但是你不想同时将两人的情况和联系方式给对方。但你也无法抉择到底给哪个，所以你想让他随机抽签选择一个。但与此同时，你的哥们也不想让你知道，他最终抽到了谁。这个问题怎么解决？现实中，有个解决方法是这样的：</p>
+<p>你把两位女性朋友的资料放进两个一样的信封里，封好口。确保外观上两个信封是一样的。然后你就和你的哥们当场让他选一个信封，剩下一个信封立即烧掉，选中的信封让他带回去慢慢拆开看。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-51ed24b517f155c18ba2b3d241bbf733_720w.jpg" class="img-fluid"></p>
+<p>现在我们需要把以上的流程移植到网络上，你和你的哥们不在一处，能否通过电话、微信等手段，安全可靠实现以上的信息传输效果？答案是可以的，这就是今天要介绍的“1/2不经意传输协议”。</p>
+<p>而这个“1/2不经意传输协议”，顾名思义，发送方其实是发送了两条信息，但其中只有一条能被正确读取，被接收方收到，而具体是哪一条，但发送方并不知道，也无法决定。这个协议的具体标准一共三条：</p>
+<p>第一：如果发送方正确执行协议，并且发送两条消息给接收方，那么接收方只能恰好从两条信息收到一条，获知其中一条的内容。并且按照原版规则，接收方并不能选择接收哪一条(虽然可以做一些改变，使得接收方可以决定收哪条消息)。</p>
+<p>第二：对发送方来说，接收方获得两条消息中的任何一条的后验概率都是1/2。它的意思就是，重复不断玩这个游戏，接收方不能使自己看到某条消息的概率升高。不能出现这种情况：在玩了一百次游戏之后，接收方可以90%的概率来接收某一条消息了。可以看出，这条是与第一条有关联的，第一条规定了接收方是没有办法选择接收哪条消息的。</p>
+<p>第三条，也是最后一条规则是：如果发送方试图欺诈，使得接收方接收某一条消息的概率高于50%，那么接收方可以发现、识破这种企图。这是三条规则中最严格和难以实现的一条。它不让发送方有操纵接收方接收某一条消息概率的可能。两条消息获得的几率必须是一半对一半。发送方如果试图欺诈，就会被接收方识破。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-a9fad95bf56c53f08a8afae46dca7252_720w.jpg" class="img-fluid"></p>
+<p>当然，如果发送方根本没有发送两条不同消息，而是发送两条一模一样的消息，那当然接收方只能收到那条消息。但这种情况不在技术讨论范围内了，我们只考虑正常发送不同消息的情况下，如何防止发送方的欺诈。</p>
+<p>另外，规则里并没有说，接收方欺诈，比如同时尝试读取两条消息时，发送方是否能够识破。但看过具体实现后，你会发现，接收方没法欺诈。接收方欺诈的后果只可能是一条消息都看不见。</p>
+<p>以上就是“1/2不经意传输协议”的游戏规则，听上去是有点难的。那我们来想想看如何来实现。</p>
+<p>首先，为了简化问题，假设你已经把两位姑娘的资料放到某个网盘上，都设置了一个提取密码。现在问题就变为，你需要把两个密码发送给你的朋友，但是你必须确信他只能拿到其中一个的密码，而你的朋友需要确信你不能知道他最终看到哪个密码。</p>
+<p>如果说用视频方式重复文章开始时的那个烧信封的流程，你把两个密码放进两个信封，让对方视频里挑一个，然后把信封里的密码给对方看。这样的话，你没法证明你没看到具体的密码。</p>
+<p>如果让对方先你一个密码，然后你随机的给某个网盘的提取密码设置成对方给你的密码。但这样的话，这样你就会知道对方最终的选择。</p>
+<p>所以，这里能看出，需要实现一种机制，接收方有最终选择权。但是，你需要在不知情的情况下，获得对方的这种选择结果。</p>
+<p>这里，要实现这种机制，我们需要用一点密码学里的一个基本知识，就是“非对称”加密体系。关于非对称加密体系，我已经多次提到过，这里再简单介绍下。加密体系分为对称和非对称两种，“对称”就是加密、解密用同一把秘钥，就像你的word文件打开密码。非对称加密体系，就是加密用一个秘钥，解密用另一个秘钥。加密秘钥称为“公钥”，是可以公开的；解密秘钥，称为“私钥”，是需要严格保密的。</p>
+<p>但这里要注意的是，无论是是对称还是非对称秘钥，当你用“不正确”的秘钥去解密的时，所发生的情况并不是像你平时输错密码时，被拒绝操作。实际情况是，程序仍然去默默的“解密”。只是解密结果像是乱码，除此以外与你用正确秘钥解密发生的情况是一样的。所以，“秘钥”正确与否，全看解密后的输出。</p>
+<hr>
+<p>使用对称秘钥加解密的例子：</p>
+<p>用des-ecb加密算法，’C0FEE’为秘钥（对openssl，秘钥需要以16进制数字输入），将字符串“大老李聊数学”加密为base64编码的字符串：“7qEvJ9wvjTNffHd4Brcm4m2u0AtLS7O+”</p>
+<code>openssl enc -des-ecb -base64 -in &lt;(echo “大老李聊数学”) -K C0FEE 7qEvJ9wvjTNffHd4Brcm4m2u0AtLS7O+ </code>
+
+<p>用’C0FEE’可以正常解密：</p>
+<code>openssl enc -d -des-ecb -base64 -in &lt;(echo “7qEvJ9wvjTNffHd4Brcm4m2u0AtLS7O+”) -K C0FEE 大老李聊数学 </code>
+
+<p>用’BEEF’也可以“解密”，只是结果无意义：</p>
+<code>openssl enc -d -des-ecb -base64 -in &lt;(echo “7qEvJ9wvjTNffHd4Brcm4m2u0AtLS7O+”) -K BEEF -nopad ��^V”�SMS��.�5��x�����I </code>
+
+<hr>
+<p>那么这里有意思的一个情况出现了，如果原始信息本身就是一个随机数呢？那用任何秘钥解密出来看，也是一个随机数。这时，如果事先不知道这个数字的话，是无法判断解密结果是否“正确”的。这是一个很重要的特性，是后面需要用的。</p>
+<p>那现在我们可以这样来操作：</p>
+<ol>
+<li>
+<p>发送方随机产生两套非对称加密秘钥，然后把这两套秘钥的公钥，通过任何方式发送给接收方。</p>
+</li>
+<li>
+<p>接收方收到两个公钥后，首先产生一个随机数，然后可以作出选择。其选择就是从收到的两个公钥之中，选择一个，对自己的随机数加密，把结果返回给发送方。</p>
+</li>
+<li>
+<p>发送方收到这个加密结果后，情况有意思了。发送方当然可以用两个私钥对这个结果进行解密，得到两个数字。发送方只知道其中必然有一个是对方生成的随机数，但是并不确定具体是哪一个。那么能做的就是，把得到的两个数字作为提取密码，分别设置到两个网盘上。再通知对方可以去提取文件了。</p>
+</li>
+<li>
+<p>接收方用自己的产生的随机数，作为密码去网盘提取文件。接收方应该发现，其中只有一个位置可以提取。那么整个协议完成！</p>
+</li>
+</ol>
+<p>简单分析一下以上步骤，是否符合“1/2不经意传输协议”的三条规则。</p>
+<p>第一是：两条信息，接收方只能收到一条，且发送方不知道。那是肯定的，因为接收方没有全部2个私钥，所以他不能知道另一个私钥解密后产生的数字。</p>
+<p>第二条是：对发送方来说，获得两条消息中的任何一条的后验概率都是1/2。这也是对的，因为发送方用两个秘钥解密，得到的都是两个像随机数的数字，对发送方来说是无法区分。但这里要注意的是，这里对接收方产生的随机数有所要求的，不能使用明显有规律的数字，比如说“12346”等等。</p>
+<p>因为此后当发送方解密时，他发现其中一个数字太有规律了，就能觉察到这是接收方设置的数字，所以这个数字必须是与用任何私钥解密后的格式很像的才行。另外，我之前介绍的步骤其实是稍微简化后的“1/2不经意传输协议”，原版的协议略微复杂些，但没有这个缺陷了。</p>
+<hr>
+<p>原版“1/2不经意传输协议”的实现：</p>
+<p><img src="https://pic1.zhimg.com/80/v2-11469bf8cab796e6ee789c0b37d6a7cc_720w.jpg" class="img-fluid"> <img src="https://pic1.zhimg.com/80/v2-aa4bb11dd8995edb2e8e017bd7050730_720w.jpg" class="img-fluid"></p>
+<hr>
+<p>第三条规则是：如果发送方试图欺诈，那么接收方可以发现、识破这种企图。那么以上过程中，发送方没有任何欺诈机会。同样接收方也没有任何机会，使得自己能看到两条信息。</p>
+<p>那么以上就是1985年，由三位计算机科学家共同提出的“1/2不经意传输协议”，那这个协议思路很巧妙，那么它有没有用呢？真有的，其实这三位科学家在这个协议的基础上，开发了一种“远程合同签署”协议。它可以让不在同一个地方的两个人，安全可靠的签署合同。不会出现一方签署，另一方不签的情况。这个协议下一期介绍，敬请期待。</p>
+<p>参考链接：</p>
+<p>https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.98.7448&amp;rep=rep1&amp;type=pdf</p>
+
+
+
+ ]]></description>
+  <category>密码学</category>
+  <category>每周一题</category>
+  <category>不经意传输</category>
+  <guid>https://your-website-url.example.com/posts/2021-08-25-我知道这是二分之一的机会12不经意传输协议介绍.html</guid>
+  <pubDate>Wed, 25 Aug 2021 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>打结也能用数学研究？—— 扭结理论入门</title>
+  <link>https://your-website-url.example.com/posts/2021-07-07-打结也能用数学研究-扭结理论入门.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>这次跟大家聊聊“扭结理论”，就是研究“结”（Knot）的数学理论。数学真的是包罗万象，连打结也可以研究。</p>
+<p>相信你小时候可能也曾想过这样的问题：画出一个结的形状，怎么判定它是一个活结？也就是拉这个结的两端，最后能还原成一直线？</p>
+<p>这是最早的，研究扭结理论的一个动机。但数学家又发现，如果有两个开放端的话，对问题的描述不够简便，所以他们规定，数学里的结是把两个开放端连起来的。这样数学里的“结”就是一条封闭的绳环，在三维空间里缠绕构成的一个空间多边形。</p>
+<figure class="wp-block-image figure">
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Knot_Unfolding.gif" class="img-fluid figure-img">
+</figure>
+<p>(上图：这个结看上去很复杂，但是可以还原成一个环。有没有办法，简单判定一个结是否就是环？)</p>
+<p>因为有很多扭结形状很漂亮，所以很多公司的logo就是采用扭结的图形。比如中国联通的logo，就是取自一个中国结的形状，当然也是一个很标准的数学中的扭结。</p>
+<figure class="wp-block-image figure">
+<img src="https://www.hiboost.com/wp-content/uploads/2019/07/1200px-China_Unicom.svg_.png" class="img-fluid figure-img">
+</figure>
+<p>还有香港的亚洲电视台2010年前的Logo，就是一个标准的“三叶结”：</p>
+<p><img src="https://p1.ssl.qhimg.com/t014b1cb34dbc9e92a4.jpg" class="img-fluid"> (上图：香港的亚洲电视台2010年前的Logo，就是一个三叶结)</p>
+<p>那么可以想象，一个绳环所能构成的最简单形状当然就是一个圆环，这是最简单的一种结，这种形状被称为“unkot”，中文叫“平凡结”。</p>
+<p><img src="https://daily.upcomer.com/wp-content/uploads/2020/06/Treyarch-800x400.jpg" class="img-fluid"> （上图：动视暴雪旗下的一个游戏工作室：Treyarch的logo，很像三叶结，但我仔细看了一下之后，发现其实是平凡结。）</p>
+<p>但是显然，不是所有的绳环都能最后还原成成一个圆环，所以问题就是：给定一个结的图形，怎么判定它是不是“平凡结”？或者，更一般的问题是：给定两个结，怎么判定它们其实是同一种结？</p>
+<p>当然，对简单的结你可以目测判定，但是对很复杂形状，目测就会失效，所以数学家希望找到合适的数学方法去研究扭结。</p>
+<p>这里的一个难点是，同一个扭结，形状可以千变万化，但是需要忽略绝大多数变化，只关注我们需要的变化。所以，数学家需要寻找的是“不变量”，就是变化中的对象的某个不改变的属性。就像我们如果再次见到几十年没见到的朋友，也许他的外貌发生了很大的变化，但是你可能发现，他的声音，生态，举止没有变化。那么这些属性就是“不变量”，这些属性可以帮我们识别一个人。</p>
+<p>高斯曾经想出了一个办法，可以对一个“结”用数字串表示出来。也就是当别人看到这串数字后，可以还原出你所需要的结。但是，在他的方法，同一个结确可以有多种不同的表示，也没有简单方法判定两个数字串是否表示同一个结，所以对结的分类来说并不太有用。</p>
+<hr class="wp-block-separator">
+<p>高斯的结的数字表示法：</p>
+<figure class="wp-block-image figure">
+<img src="https://knotinfo.math.indiana.edu/descriptions/gauss_notation_files/gauss_example.gif" class="img-fluid figure-img">
+</figure>
+<p>把结画在平面上，从一个结的任何一个位置开始，给定一个方向，沿线“游历”这个结。当第一次穿过某个“交叉点”时，对这个交叉点递增编号。并且规定，如果从上方穿过交叉点，编号取正，下方穿过，编号取负。那么上图的结的“高斯数字表示”就是：</p>
+<p>1 -2 3 -4 5 6 -7 -8 4 -9 2 -10 8 11 -6 -1 10 -3 9 -5 -11 7</p>
+<p>但此法并不总能确保还原出同样的结，因此有一种稍有变化“扩展的高斯表示”：当第二次穿过某个交叉点时，数字的正负由构成交叉点的两条线段的“手性”确定，右手手性为正，左手手性为负，则上述结的“扩展高斯表示”就是：</p>
+<p>1 -2 3 -4 5 6 -7 -8 -4 -9 -2 -10 8 11 6 -1 -10 3 9 -5 -11 -7</p>
+<hr class="wp-block-separator">
+<p>那么对一个扭结来说，有什么样的不变量？你能想到的第一个属性应该就是交叉点数。一个扭结你把它放平放在桌上，通过整理，可能可以把绳与绳之间的交叉点减少若干，到一定程度后，就无法继续减少了。那么这交叉点数就是一个结的不变量。</p>
+<p>这个交叉点数确实是一个扭结的不变量，比如平凡结，它的交叉点数就是0。而最简单的一个非平凡结，“三叶结”，它的交叉点数就是3。</p>
+<figure class="wp-block-image figure">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Knot_table.svg/1280px-Knot_table.svg.png" class="img-fluid figure-img">
+</figure>
+<p>(7个交叉点以内的一些结)</p>
+<p>但可惜的是，交叉点数并不是一个很有用的扭结不变量，有两个原因：给定一个结的形状，如何判定，这个形状里的交叉点数已经不能再减少了，这没有一个确切的方法。</p>
+<p>比如看下联通的logo，图形上一共有9个交叉点，但其中有5个交叉点，并没有画出确切的上下关系。但是你可以看到，最左边和最右边的那两个交叉点显然是可以去掉的，也就是那两个圈可以去掉。</p>
+<p>那现在问，如果允许随意安排剩下三个交叉点的上下关系，这联通logo能还原成一个平凡结吗？你稍微看一下会发现，是可以。但是如果问，是否存在对那三个交叉点的某种安排，使得它不能还原成圆环呢？你会发现，这三个交叉点的上下关系，有8种组合，每一种都考虑一遍的话，那是相当麻烦，更不用说更复杂的结了。所以，不能简便判定一个结的最少交叉点数，是“交叉点数”作为扭结不变量的一个缺陷。</p>
+<p>还有一个缺陷是，相同的交叉点数下，存在很多不同的扭结，而且交叉点越多，不同的扭结也越多。这也意味着交叉点数并不能很好的区分扭结，所以这是另一个缺陷。</p>
+<p>在扭结理论历史上，有两次重大的关于扭结理论的突破。第一次是1928年，美国数学瓦德尔·亚历山大提出了一个扭结不变量，称为“亚历山大多项式”。并且他证明了，如果两个结可以互相转化，那么它们的这个特征多项式就可以互相转化。这样判定两个结是否等价就容易多了，因为多项式化简大家都会的，这要比直接看图形方便多了。所以这是第一个重大突破。亚历山大本人也对很多扭结进行了分类，给出了一个列表。</p>
+<p>1970年代，英国数学家，约翰·康威又独立发明了一种“亚历山大多项式”的变体和另一种表示法。所以，这个多项式有时也被称为“亚历山大——康威”多项式。</p>
+<p>但是亚历山大多项式也有一个缺陷，少数情况下，不同的结仍然会具有相同的亚历山大多项式，特别是一个结和它的镜像，必然有相同的亚历山大多项式。比如你打一个三叶结，再拿面镜子，你会看到镜子的三叶结的镜像。它们肯定有许多相同的性质，但是你把一个三叶结无论怎么变换，你也没法把它变成它的镜像，所以，从这个意义上说，三叶结和它的镜像是两种结，但是亚历山大多项式是无法区分它们的。</p>
+<p>一个更极端和让人吃惊的例子是平凡结，平方结的亚历山大多项式是“1”，但是还有一些其他看上去相当复杂的结，它的亚历山大多项式也是1。这是亚历山大多项式的一个缺点。</p>
+<figure class="wp-block-image size-large figure">
+<img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2021/07/p-5-7-3-the-pretzel-knot-with-the-trivial-alexander-conway-polynomial.png?w=408" class="img-fluid figure-img">
+</figure>
+<p>(上图：以上这个名为”Pretzel knot (-3 5 7)“的结的亚历山大多项式也是”1“，它有很多有趣且出人意料的特点)</p>
+<p>扭结理论的再一次重大突破，是在1984年。新西兰数学家沃恩·琼斯（Vaughan Jones，1952年12月31日－2020年9月6日），发现了另一个扭结不变量，现在成为“琼斯多项式”。这个多项式在区分和表达扭结的能力上比“亚历山大多项”式更好。</p>
+<figure class="wp-block-image size-large figure">
+<img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2021/07/screenshot-2021-07-07-at-08-50-01-markdown-e8aea9e68e92e78988e58f98-nice.png?w=780" class="img-fluid figure-img">
+</figure>
+<p>更为奇妙的是，在琼斯发表了琼斯多项式之后不久，美国物理学家爱德华·威腾（Edward Witten，）发现了琼斯多项式与量子场论之间有着奇妙的联系。爱德华·威腾的名字，相信很多读者是很熟悉的，他是弦理论和量子场论的顶尖专家，并且是“M理论”的创立者。而M理论是目前一种比较有希望的“大统一理论”。</p>
+<p>爱德华·威腾发现琼斯多项式可以运用到量子场论里，这个发现是如此让人遐想连篇：难道宇宙的微观结构中存在一个个扭结？</p>
+<p>不管怎样，琼斯和威腾的发现也是如此重要，使得二人双双在1990年，获得了数学界的最高荣誉之一：菲尔兹奖。而这有两个不寻常之处，一个是威腾是目前仅有的以物理学家身份获得菲尔兹奖的人。琼斯则被认为是以最短的论文，获得菲尔兹奖的人。琼斯的关于琼斯多项式的论文一共就8页，而且其中有4页是一些扭结的多项式数据表格和引用之类。论文实际内容也就4页。仅凭4页的论文获得菲尔兹奖也是绝无仅有的例子。</p>
+<p>那么以上我们简单聊了扭结两种多项式表示的不变量：亚历山大多项式和琼斯多项式。下面我再简单聊聊扭结的另外一种有趣的性质：扭结的分解和加法组合。</p>
+<p>这里先得定义结的组合，也经常简称为加法。其实可以想象结的加法就是设法把两个结连接起来。把结连起来的方法有很多种，所以我们需要精确定义，避免产生歧义。那么数学中结的加法是大概这样的：</p>
+<figure class="wp-block-image size-large figure">
+<img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2021/07/screenshot-2021-07-06-at-12-09-48-connected-sum-wikipedia.png?w=434" class="img-fluid figure-img">
+</figure>
+<p>（结的“加法”：把两个结尽量放平在桌面上，互不重合。在两个结之间，找某个比较靠近的部分，画一个矩形。要求矩形两对边分别在两个结上，矩形本身不覆盖任何结。在矩形两对边处，各剪一刀，得到4个开放端，上面的两个开放端连在一起，下面的两个开放端连在一起，就得到了一个新的结。这个结称为原先两个结的”连接和“（connected sum）。 图片来源：维基百科）</p>
+<p>此加法定义马上带来的一个有趣问题是：两个结的加法结果是否是唯一的？以上定义只说了选择靠近的两部分进行连接，所以连接的位置是可以任意选择的。那么连接不同的部分，所得的结是否仍然一样？还好数学家证明了，在严格的定义下，这种加法的结果是唯一的。</p>
+<p>结的加法有了，那么它的逆操作就是结的分解。有了组合和分解操作后，一下子就可以考虑很多有意思的问题。结的加法有没有交换律和结合律？答案是肯定，你可以自己做些实验验证。</p>
+<p>还有一个“显然”的结论是：一个结加上平凡结，所得结果是其本身。那么是否存在两个或多个非平凡结，它们相加后变为平凡结呢？可能有人会有这种想法：一个结加上它镜子里的图像，两者就会互相“抵消”，最后变成一个环呢。但答案有点意外，是否定的。这是1949年，数学家舒伯特（Schubert）证明的：一个非平凡结，无论再给它加上怎样的结，也没法对它“抵消”，最后变成一个环。</p>
+<p>再说两个有关结的加法的有趣例子：三叶结的相加。三叶结是最简单的非平凡三叶结。三叶结加三叶结所得图形被称为“granny knot”，我叫它“老奶奶结”。</p>
+<figure class="wp-block-image figure">
+<img src="https://mathworld.wolfram.com/images/eps-gif/GrannyKnotSum_600.gif" class="img-fluid figure-img">
+</figure>
+<p>三叶结+三叶结的镜像所得结，称为“suqare knot”，中文叫“平结”。这个“平结”知道的人应该更多些，因为这是很实用的一种捆扎方式，急救时也经常用平结来固定绷带。而这个老奶奶结和平结也是攀岩运动中，非常实用的两种结的类型，我相信玩攀岩的和海员，应该对这两种结很熟悉。</p>
+<figure class="wp-block-image figure">
+<img src="https://mathworld.wolfram.com/images/eps-gif/SquareKnotSum_700.gif" class="img-fluid figure-img">
+</figure>
+<p>平结和老奶奶结具有相同的亚历山大多项式，但琼斯多项式可以区分它们。</p>
+<p>再看看结的分解，就更有意思了。结的分解就是结加法的逆运算。显然，存在这样一些结，对它们没法分解了。如果继续分解，也只能分出平凡结，比如三叶结。那么对这种没法分解的解，数学家给它起了个名字（也许你猜到了）：“素结”（Prime Knot）。</p>
+<p>这里，我们可以把结想象成整数，平凡结想象成数字1，结的分解想象成质因数分解，那么“素结”就像素数，所以命名为“素结”。</p>
+<p>这就马上带来一个有意思的问题：结的世界中，有“唯一因子分解定理”吗？也就是，当一个结不是素结，而是一个“合结”的时候，把这个“合结”分解为若干素结的组合，那么分解结果是唯一的吗？</p>
+<p>答案是肯定的，1949年，还是数学家舒伯特证明了（把结的方向定向之后），合结的分解结果是唯一的。</p>
+<p>那有没有一个办法判定一个结是素结呢？答案如同质因数分解，目前没有一个简单的方法或者快捷算法，判定一个结是否是素结。所以，给定一个结，如何对其“素结分解”也就是一个比较困难的问题。由此，甚至有人设想可以用“结”，构造一个非对称加密体系。</p>
+<p>好了，以上就是我给大家讲的扭结理论的一些入门知识，主要是亚历山大多项式和琼斯多项式，它们都是“扭结不变量”，而琼斯多项式还与物理中的量子场论有关系，并且琼斯因此获得了菲尔兹奖。后半段讲了扭结的加法和分解操作，扭结在这方面的很多性质与整数的质因子分解很像。扭结理论的起因是非常简单，就是来源于人们希望对“结”进行分类和整理，但衍生出的话题确实非常之多，甚至于物理学中最前沿的理论联系起来，不得不令人叹为观止。</p>
+<p>参考链接：</p>
+<p>https://www.britannica.com/science/knot-theory</p>
+<p>https://www.maa.org/press/periodicals/convergence/unreasonable-effectiveness-of-knot-theory</p>
+<p>https://knotinfo.math.indiana.edu/descriptions/gauss_notation.html</p>
+<p>https://mathworld.wolfram.com/KnotSum.html</p>
+<p>https://mathworld.wolfram.com/GrannyKnot.html</p>
+<p>https://mathworld.wolfram.com/SquareKnot.html</p>
+<figure class="wp-block-embed is-type-rich is-provider-embed wp-block-embed-embed figure">
+<div class="wp-block-embed__wrapper">
+https://graphics.stanford.edu/courses/cs468-02-fall/projects/desanti.pdf
+</div></figure>
+<p>http://katlas.math.toronto.edu/</p>
+<p>https://knotinfo.math.indiana.edu</p>
+
+
+ ]]></description>
+  <category>每周一题</category>
+  <guid>https://your-website-url.example.com/posts/2021-07-07-打结也能用数学研究-扭结理论入门.html</guid>
+  <pubDate>Wed, 07 Jul 2021 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>心算某一天是星期几——康威裁决日算法</title>
+  <link>https://your-website-url.example.com/posts/2021-05-22-心算某一天是星期几康威裁决日算法.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>英国数学家约翰·霍顿·康威在1972年，发明了一个十分简易的，可以心算某一天是星期几的算法。本人尝试了一下，确实非常简易，因此介绍给大家。</p>
+<figure class="wp-block-image figure">
+<img src="https://www.princeton.edu/sites/default/files/styles/scale_1440/public/images/2020/04/20090310_ConwayKochen_DJA_066-copy.jpg?itok=BbmXyoCQ" class="img-fluid figure-img">
+</figure>
+<p>(上图：数学家约翰·何顿·康威 / John Horton Conway，1937年12月26日－2020年4月11日)</p>
+<p>基本原理：当我们知道某一个月某天是星期几时，在推算当月其他某天是星期几会非常容易。比如，如果已知：2021年5月21日是星期五，则：可知21±7天的日子都是星期五，比如5月28日，5月14日。要计算其他日子，则只要“就近”推算即可。</p>
+<p>比如：要计算5月31日是星期几。因为5月28日是星期5，则31号是28号后面3天，则31号是星期“5+3”=星期“8”=星期1。</p>
+<p>再比如要计算5月1日是星期几。因为知道5月21日是星期5，21-7-7-7=0。所以5月”0”日是星期5，则5月1日是星期6。</p>
+<p>知道以上基本原理后，我们知道：只要能够对某年1-12月中，都能找到一天确切知道它是星期几，则可以快速推算出当年任何一天是星期几。因此需要找出这样12个日期。</p>
+<p>又因为，一年中，2月最特殊，且其长度可变，因此康威把2月的最后一天作为2月的特殊日子，称其为“Doomsday”。Doomsday原意是“末日”，我翻译它为“裁决日”，因为基督教的教义中，Doomsday会发生“末日裁决”，且这一天确实也起到了裁决作用。</p>
+<p>接下来，我们希望在其他每个月也找一个“裁决日”，我们希望它总是与2月的最后一天的星期数相同，且容易记忆。康威帮我们找出了这样一些日期：</p>
+<p>对偶数月：4月4日，6月6日，8月8日，10月10日，12月12日。这一组十分容易记忆。</p>
+<p>奇数月：1月的最后一天（1月31日，闰年为“1月32日”），3月7日，5月9日，9月5日，7月11日，11月7日。对这一组日期，我用这个口诀记忆：</p>
+<p><strong>“每年1月2月的最后一天和女神节的前一天，我会朝9晚5的在7-11便利店打工”</strong>。（请自行体会这句口诀与上述日期的关系）</p>
+<p>以上这组日期被称为“裁决日”，它们的特点是：<strong>它们的星期数总是相同的，无论是哪一年</strong>！（请查看手机日历确认。）对2021年，裁决日是星期日（可以记忆为星期7或星期0）。</p>
+<p>那么，推算2021年某天是星期几就很容易了，比如推算教师节9月10日是星期几：</p>
+<p>根据口诀中的”朝九晚五“，可知9月5日是裁决日，则为星期日。9月10日是5日后面的5天，所以是“星期日+5”=星期5。</p>
+<p>以上完成了对今年所有日子的，心算星期数的方法介绍。要计算其他上世纪和本世纪的其他年份，需要些额外的计算。基本思路与之前的思路类似，先背出某个基础年份的裁决日星期数，再计算目标年份与基础年份的“偏移量”，由此得此目标年份的裁决日的星期数。基础年份取每个世纪的第一年，因此先把1900年和2000年的裁决日的星期数背出来：</p>
+<p><strong>1900年的裁决日是星期3。2000年的裁决日是星期2。</strong></p>
+<p>然后要计算目标年份的“偏移量”。介绍两个算法，康威的原版算法，：</p>
+<ol>
+<li>
+取年份后两位（比如2021年，取“21”）
+</li>
+<li>
+除以12，求商和余数（21➗12=1余9）
+</li>
+<li>
+余数除以4求商（余数忽略，9➗4商是2）
+</li>
+<li>
+以上三个相加，即“偏移量”（1+9+2=12)
+</li>
+<li>
+偏移量+基准年，模7，即为结果（12+星期2=“星期14”，所以2021年裁决日是星期日）
+</li>
+</ol>
+<p>2010年，有人提出一个改进的“奇+11算法”，心算更为便利。该算法如下：</p>
+<ol>
+<li>
+取年份后两位。（比如2021年，取“21”）
+</li>
+<li>
+判断该数字是否为奇数，若是奇数则加11，偶数则不操作。（21+11=32)
+</li>
+<li>
+将数字除以2. (32/2=16)
+</li>
+<li>
+判断该数字是否为奇数，若是奇数则加11，偶数则不操作。（16不变）
+</li>
+<li>
+将数字除以7，求余数（16/7余2）
+</li>
+<li>
+用7减去这个数字，即为偏移量。（7-2=5。星期2+5=星期日，所以2021年裁决日是星期日)
+</li>
+</ol>
+<p>最后举两个例子：</p>
+<p>例1：北京奥运会开幕是在2008年8月8日，这一天是星期几？</p>
+<p>用康威算法：8/12=0余8，8除以4，商2。0+8+2=10，为偏移量。2000年裁决日是周二，所以2008年裁决日是：星期2+10=星期12=星期5。8月8日恰为裁决日，所以2008年8月8日是星期5。</p>
+<p>例2：2020年1月1日星期几？</p>
+<p>用“奇+11算法”：20是偶数，20/2=10，10/7余3。7-3=4，即为偏移量。所以2020年裁决日是：星期2+4=星期6。</p>
+<p>注意到2020年是闰年，所以1月裁决日为1月32日，可得：1月(32-28)日=1月4日，是星期6。1月1日是1月4日前面3天，所以1月1日是：星期6-3=星期3。</p>
+<p>福利：<a href="https://www.zybuluo.com/webcraft/note/1797841">康威裁决日算法速记卡</a></p>
+<p>喜马拉雅FM：https://www.ximalaya.com/keji/6310606/</p>
+<p>微信关注：dalaoli_shuxue</p>
+<p>B站: https://space.bilibili.com/423722633</p>
+<p>知乎：https://zhuanlan.zhihu.com/dalaoli-shuxue/</p>
+<p>电邮&nbsp;：dalaoliliaoshuxue@gmail.com</p>
+
+
+
+ ]]></description>
+  <category>每周一题</category>
+  <guid>https://your-website-url.example.com/posts/2021-05-22-心算某一天是星期几康威裁决日算法.html</guid>
+  <pubDate>Sat, 22 May 2021 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>“笨办法”的一次巧用——毕达哥拉斯三元组的二染色问题</title>
+  <link>https://your-website-url.example.com/posts/2021-05-21-笨办法的一次巧用毕达哥拉斯三元组的二染色问题.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>这次的话题与勾股数组有关。勾股数组就是三个自然数，a, b,c 满足<img src="" alt="a^2+b^2=c^2\">，比如大家熟悉的（3，4，5）和（5，12，13）。因为勾股定理也被称为“毕达哥拉斯定理”，它们也被称为“毕达哥拉斯三元组”。</p>
+<p>考虑这样一个问题，有没有可能把全体自然数分成两组，使得每一组中，找不出任何勾股数组？</p>
+<p>这个问题也被称为“毕达哥拉斯三元组的二染色问题”。因为它相当于是把自然数的用了两种颜色染色，每个数字被染上某种颜色，但是如果三个数字属于同一组勾股数组，则它们不能被赋予同一种颜色。问有没有可能完成这样的染色？(注：<strong>不要求同一组中的三个数字互质</strong>。）</p>
+<p>让我们先简单思考一下这个问题。如果这个问题的答案是“可以完成”，那么最简单的证明方式就是，通过勾股数组的性质，把自然数分成两组，能够确保任何一组中没有勾股数组，那将是最简单的证明方法。</p>
+<p>但是，稍微分析一下，你会发现找不出这样的简单分割方法。因为对任何一个自然数来说，它很可能可以作为某个勾股数组的一个数字。有些整数还可能出现多个勾股数组内，这样情况就更复杂了。不管怎样，找不出这样一种简单的，对自然数分割的方法。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-b43b0ea988eaefccba3a70a5b6990086_720w.jpg" class="img-fluid"> （上图：勾股数组的“散射图”，其中每个蓝点的(x,y)是整数点，且为某一组勾股数组的两条直角边，负数部分也对称着色，便于识别。其中的“射线”是因为(x,y)和(2x,2y)之类的情况。）</p>
+<p>那么，就考虑一下问题的反面。如果我们猜想，无法完成二染色，该如何证明？最简单方法就是找出一个反例。对这个问题来说，找反例的意思：要找出一组自然数，无论怎样把这些自然数分为两组，总有一组里包含至少一个勾股数组。</p>
+<p>看上去，找反例的任务是简单一些。对这个问题，比较理想的一种反例情况就是，对不多的一些整数，比如10个整数，它们之间可以互相组成勾股数组的情况非常多，导致不能二染色。</p>
+<p>但是，稍微分析一下，会发现很难找到这种，以勾股数组形式，互相纠缠，紧密联系的一系列整数。比如说，可以证明，不可能存在两组勾股数组，其中共享了两个数字。也就是不存在如下形式的勾股数组： <img src="" alt="a^2+b^2=c^2">和<img src="" alt="b^2+c^2=d^2">。所有勾股数组中，最多有一个数字相同。因此，用手算方法，找出若干互相“纠缠”的勾股数组，就太困难了。</p>
+<p>接下来能想到的方法就是用计算机枚举。从少数几个自然数开始，逐步加入更多的数字，尝试对这些数字分组。直到发现，加入某个数字之后，再也找不出合适的二染色方案了。</p>
+<p>这个方案技术上很简单，问题是计算规模非常大。因为需要证明不存在二染色方案，理论上需要尝试全部着色可能。那么对n个自然数，就大致需要枚举<img src="" alt="2^n">种着色方案，这个数字增长太快了。基本上在<img src="">100”&gt;之后，一般的个人计算机是无能为力的。</p>
+<p>基于以上理由，很久以来，虽然一直有这样一个猜想：存在某个自然数n，从1到n的自然数，按照勾股数不同色规则，不能完成二染色。或者说，无论如何染色，总能在某个颜色的数组中，找到一组勾股数组。猜想存在这样的一个n，但是不知道是多少。</p>
+<p>这个问题在2015年迎来了一个突破。来自于美国南加州大学的研究者确认，这个n至少是7664。这个数字比之前的结果来说是一个很大的提高。他们仍然使用了计算机来测试，但是在其中加入了一些技巧。</p>
+<p>首先，他们把这个二染色问题转换成计算机算法中的“SAT问题”。“SAT”是英语“SATISFIABILITY”，“可满足性”的一个缩写。SAT问题就是在给出一个布尔表达式的情况下，计算能否对表达式中的每某个变量赋予一个“真”或“假”的值，从而使得表达式的值为真。举一个著名的悖论的例子，有两句话：</p>
+下面这句话是假的。上面这个话是真的。问：以上两句话谁真谁假？
+
+<p>如果把这个问题转化成SAT问题来思考，则可以设有两个布尔变量x, y，分别表示这两句话的真或假。那么第一句话，“下面这句话是假的”，用布尔变量表示就是：</p>
+<p>( x&amp;^y | ^x&amp;y )</p>
+<p>第二句话用布尔表达式表示就是：</p>
+<p>( y&amp;x | <sup>y&amp;</sup>x )</p>
+<p>两者用”&amp;“连接后，得：</p>
+<p>( x&amp;^y | ^x&amp;y ) &amp; ( y&amp;x | <sup>y&amp;</sup>x )</p>
+<p>现在，对x,y进行赋值。如果某种赋值结果可以使上面这个表达式为真，那么x,y的赋值结果就是原先问题的答案。但是显然，无论如何赋值，都不能使这个表示为真，所以这个两句话就构成了悖论。这就是SAT问题的一个简单例子。</p>
+<p>而SAT问题在计算机科学中很重要，因为很多算法问题，都可以转化为SAT问题。而SAT问题，又是一个典型的NP问题。关于什么是”P vs NP问题”，可以听我之前的一期节目介绍。所以，当某人宣称证明了“P=NP”的时候，可以问他，请给出一个多项式时间的SAT问题算法。如果给不出，那就有足够理由去怀疑他的证明。这是题外话了，反正SAT问题很重要，它是一种典型的，也是比较好理解的一种NP问题。</p>
+<p>那再看下怎么把这个勾股数组的二染色问题转化为SAT问题，还是比较容易的。因为是二染色，可以认为这两种颜色就是布尔代数里的“真”和“假”。那么问题中，需要避免的就是某一组勾股数组的两个数字同时被赋予“真”或“假”。比如，对某一组勾股数组中的三个数字，我们用布尔变量x, y, z表示它们的值。那么需要避免的就是x,y,z同时为真，且x,y,z同时为假的情况：</p>
+<p>^( x &amp; y &amp; z ) &amp; ^( ^x &amp; ^y &amp; ^z )，化简后：</p>
+<p>( x | y | z ) &amp; ( ^x | ^y | ^z )</p>
+<p>理解上面这一点就好办了，只要把需要考察的自然数都用一个布尔变量表示，并且枚举其中的所有勾股数组，写出以上的表达式。最后把所有的表达式都用“并且”关系连接，得到一个非常长的布尔表达式。</p>
+<p>只要能够找出对这个表达式每个变量的某个赋值，使得总的表达式结果为“真”，那就意味着这些自然数能够二染色；如果找不到这样的方案，则表示不行。如此，就把原来的问题转化成了一个标准的SAT问题。</p>
+<p>转化成SAT问题后，问题就好办了，因为市面上已经有很多好的SAT求解程序。虽然SAT问题是多项式时间的，但不表示求解算法就只能傻傻的枚举是吧？比如表达式里如果要求某个变量同时为真和假，那就马上可以输出无解。其中还有很多可以优化加速的地方。甚至每年，都会进行SAT比赛，就是给出一系列变量很多、表达式很长的SAT问题，让各种求解器一起求解，看谁求解速度快。</p>
+<p><img src="https://files.mdnice.com/user/5405/1f71844a-8da3-497b-811b-9b2817a2fee0.png" class="img-fluid"> (上图：https://satcompetition.github.io关于2021年SAT Competition的页面)</p>
+<p>2015年，南加州大学的这个团队，尝试了市面上的几种优秀的SAT求解器，最后选择了一种方便拆分问题，并行求解的求解器，对7664以内的自然数进行了求解。问题在10台服务器上并行求解，每台机器是12核的CPU。在执行了10多分钟后，确认7664以内的自然数，是可以按照前述规则二染色的。</p>
+<p>当然，我们更希望的结论是找出某个数字，不能完成二染色。但鉴于之前有关这个问题的结论是非常少的， 一下子把这个问题的下限提高到7664，也是一个非常大的突破。所以，这仍然是一个很优秀的成果，这篇论文还被评为当年关于SAT问题的最佳论文。</p>
+<figure class="wp-block-image figure">
+<img src="https://pic4.zhimg.com/80/v2-160742b35d026a0dda64bf3b3b85d4e3_720w.jpg" class="img-fluid figure-img">
+</figure>
+<p>（上图：1到7664的二染色方案，白色点表示着任意颜色均可）</p>
+<p>而一年以后，2016年5月，美国的三名研究者根据以上的思路，加以改进，使用了更多的计算机算力，终于确认，需要寻找的这个数字是7825。也就是，从1到7825，对这些自然数，你无法把它们分成两组，使得两组中都没有勾股数组，而对1到7824，是可以做到的。</p>
+<p>他们的计算过程的最后中间文件多达200T，并且如果是用单个CPU计算的话，他们估计需要4年的时间。</p>
+<p>以上有关勾股数组的二染色问题，算是解决了。这个问题是计算机帮助解决数学问题的一个很好的例子，而且有一个启发是，有些过去不能用计算机解决的问题，随着技术发展，可能在某个时刻，就可以用计算机解决了。目前来看，7000个左右的布尔变量的SAT问题，大概就是目前计算机求解的上限了。</p>
+<p>照例，考虑一些延伸问题，比如三染色情况会如何？如果还是转化成SAT问题，第一个难点就是变量数要爆炸了。二染色的时候，可以认为一种颜色为“真”，一种颜色为“假”，三染色就没有那么直接了，肯定没法做到一个整数对应一个变量。另外，可以三染色的整数下限，可能非常非常大，因此目前用计算机求解不可行。</p>
+<p>另一个略让人吃惊的一个猜想是：无论分组数有多少，只要整数够多，那么就无法做到任何一组里没有勾股数组。比如说，允许分100组，那么还是存在一个很大的整数，从1到这个整数，请你划分100组，你还是无法做到其中任何一组没有勾股数组。并且这个100可以是任意大，这是目前的猜想。</p>
+<p>另一个延伸思考是：从1到7825，这些整数是无法二染色的。那么，能否找出一组最少的整数，它们是无法二染色。因为从1到7825，其中有很多数组不属于任何勾股数组，当然可以拿走。另外之所以，7825加入后，导致不能二染色，必然是有不止一组整数的平方和等于7825，数组纠结在一起，导致无法分组了。而7824肯定不能与7825构成勾股数组，所以拿走7824后，剩下的数字肯定还是不能二染色。</p>
+<p>有一种可能是通过分析与7825相关的勾股数组，顺藤摸瓜，找出一组互相关联纠缠的勾股数组，使得它们不能二染色，有兴趣的读者可以自己研究下。提示：7825出现在以下两组勾股数字中：<img src="" alt="7825^2=5180^2+5865^2=625^2+7800^2
+\"></p>
+<p>参考资料：</p>
+<figure class="wp-block-embed is-type-rich is-provider-embed wp-block-embed-embed figure">
+<div class="wp-block-embed__wrapper">
+https://arxiv.org/pdf/1505.02222.pdf
+</div></figure>
+<figure class="wp-block-embed is-type-rich is-provider-embed wp-block-embed-embed figure">
+<div class="wp-block-embed__wrapper">
+https://arxiv.org/pdf/1605.00723.pdf
+</div></figure>
+
+
+ ]]></description>
+  <category>每周一题</category>
+  <guid>https://your-website-url.example.com/posts/2021-05-21-笨办法的一次巧用毕达哥拉斯三元组的二染色问题.html</guid>
+  <pubDate>Fri, 21 May 2021 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>TREE(3)为什么是有限的？——克鲁斯卡尔树定理</title>
+  <link>https://your-website-url.example.com/posts/2021-03-31-tree3为什么是有限的克鲁斯卡尔树定理.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>本文接上一期有关<a href="https://dalaoliblog.wordpress.com/2021/03/15/%e8%b2%8c%e4%bc%bc%e6%97%a0%e9%99%90%e7%9a%84%e6%9c%89%e9%99%90-%e8%89%af%e6%8b%9f%e5%ba%8fwell-quasi-orders%e5%85%b3%e7%b3%bb/">良拟序</a>的话题，聊聊<a href="https://www.bilibili.com/video/av50806444/">TREE(3)</a>为什么是有限的。</p>
+<p>关于这个问题，我想从解答上期节目开头的那个”写数列“游戏开始：</p>
+<hr class="wp-block-separator">
+<p>请你玩玩看如下的这个写数列游戏，游戏目标是写出尽可能长的数字序列。但要符合以下规则：</p>
+<ol>
+<li>
+数列的第n项，最多有n位。
+</li>
+<li>
+数列左边的项，不能“嵌入”所有其右边的项。“嵌入”的定义如下：
+</li>
+</ol>
+<p>有数字字符串a和b，b的长度大于等于字符a，且存在以下情况：可以从b中删除若干字符，留下与a相等长度的字符串，留下的字符前后位置关系保持不变，并记作b’。如果a比b’按位比较，每一位数字上，a的数字都小于等于b’上的数字，称a可以“嵌入”b。比如：</p>
+<p>a=“2” 可以嵌入 b=“3”，其中取b’=‘3’</p>
+<p>a=“321” 可以嵌入 b=“13312”，其中取b’=‘332’</p>
+<p>a=“132” 不可以嵌入 b=“2131”，因为b中找不到符合要求的3个字符的子串。</p>
+<p>以上是游戏的定义。当用n个数字玩以上游戏，可以写出的数列的最长长度，记作s(n)。</p>
+<p>当用一个数字“1”玩这个游戏时：</p>
+<p>第一项为：1，再也无法写出第二项。因此s(1)=1。</p>
+<p>当用两个数字“1”和”2”玩这个游戏时：</p>
+<p>第一项可以写“2”，第二项可以写“1”。如此再也无法写出第三项。但如果第二项写“11“，则还可以写第三项”1“。整个数列是：</p>
+<p>2, 11, 1。</p>
+<p>所以s(2)=3。</p>
+<p>请简单试试写写s(3)的前几项，重点思考两个问题：</p>
+<p>是否对任意大的n，s(n)总是有限的？另外，如果去掉游戏中第一个规则，数列长度是否总是有限的？</p>
+<hr class="wp-block-separator">
+<p>熟悉TREE(3)的读者，一定能发现这道题的描述与TREE(3)非常像，你大概也能猜到了，在这个写数列游戏中，无论用多少个符号写，最终的数列长度总是有限的。我先来证明这一点，证明的方法就是用上一期讲的“良拟序”关系。</p>
+<p>“良拟序”有两个特性：</p>
+<p>没有”无穷递降链“（逐渐减小的序列）和无穷”不可比较链“（任意两项都不可比较的序列）。而我们的游戏规则里的嵌入，就好比是一种“小于等于”关系，那么游戏规则是说，不能写出一个比之前元素大的字符串，但可以写更小的或者不可比的。</p>
+<p>在游戏中，如果能写出无穷长的序列，那数列中必然存在一个无穷递降链或者无穷不可比子序列，这两个情况都是与良拟序集性质矛盾的。</p>
+<p>所以只要证明，那个“嵌入”是一个良拟序关系，那么就证明了，无论如何都无法写出无穷长的序列。</p>
+<p>首先，这个“写字符串”游戏中的“嵌入”显然是一个拟序，也就是满足“自反”、“反对称”和“传递性”，请各位自行验证。那么问题就是，怎么证明它是一个“良拟序”（w.q.o.），也就是证明其中不存在无穷递降链和无穷不可比链。</p>
+<p>对这个写字符串游戏来说，不存在无穷递降链是比较明显的。因为要递降的话，总的字符串长度迟早要开始递减，这样总是有尽头的。</p>
+<p>证明其中不存在无穷不可比链的情况就比较奥妙了，需要些技巧。其实它有一个相当精巧的证明，以下证明来自Graham Higman 1952年的证明（稍改写、翻译和简化）：</p>
+<hr class="wp-block-separator">
+<p>以下讨论都在无穷字符串集合上，先定义以下概念：</p>
+<p>好序列：一个无穷字符串序列，存在左边某项可以“嵌入”（以下有时也写作<img src="https://latex.codecogs.com/png.latex?(%5Cleq)">）右边某项。</p>
+<p>坏序列：不是“好序列”的序列。</p>
+<p>最小坏序列（带递归的定义）：设<img src="https://latex.codecogs.com/png.latex?(t_1)">是所有坏序列中，某个首项长度最短的字符串, 作为某最小坏序列的首项。则当某个最小坏序列的前n项是 <img src="https://latex.codecogs.com/png.latex?(t_1)">, <img src="https://latex.codecogs.com/png.latex?(t_2)">, <img src="https://latex.codecogs.com/png.latex?(t_3)">,… <img src="https://latex.codecogs.com/png.latex?(t_n)">时，考察所有以<img src="https://latex.codecogs.com/png.latex?(t_1)">, <img src="https://latex.codecogs.com/png.latex?(t_2)">, <img src="https://latex.codecogs.com/png.latex?(t_3)">,… <img src="https://latex.codecogs.com/png.latex?(t_n)">开头的坏序列，取某个长度最短的项作为<img src="https://latex.codecogs.com/png.latex?(t_%7Bn+1%7D)">。如此所得的坏序列t称为“最小坏序列”。</p>
+<p>现在用反证法证明“写字符串”游戏中的“嵌入”是一个“良拟序”。设这个“嵌入”不是“良拟序”，则其中必然存在某个最小坏序列：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(t_1)">, <img src="https://latex.codecogs.com/png.latex?(t_2)">, <img src="https://latex.codecogs.com/png.latex?(t_3)">,… <img src="https://latex.codecogs.com/png.latex?(t_n)">…</p>
+<p>记<img src="https://latex.codecogs.com/png.latex?(t_i)">最左边的<strong>字符</strong>是<img src="https://latex.codecogs.com/png.latex?(a_i)">，余下部分的字符串是<img src="https://latex.codecogs.com/png.latex?(s_i)">：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(t_i=a_is_i)"></p>
+<p>则<img src="https://latex.codecogs.com/png.latex?(a_1)">, <img src="https://latex.codecogs.com/png.latex?(a_2)">,…,<img src="https://latex.codecogs.com/png.latex?(a_n)">,…构成了一个无穷字符序列a，<img src="https://latex.codecogs.com/png.latex?(s_1)">, <img src="https://latex.codecogs.com/png.latex?(s_2)">,…,<img src="https://latex.codecogs.com/png.latex?(s_n)">,…也构成了一个无穷字符串序列s，</p>
+<p>因为字符之间的<img src="https://latex.codecogs.com/png.latex?(%5Cleq)">关系是一个良拟序，所以a序列中必存在一个无穷递增子序列（<a href="https://dalaoliblog.wordpress.com/2021/03/15/%e8%b2%8c%e4%bc%bc%e6%97%a0%e9%99%90%e7%9a%84%e6%9c%89%e9%99%90-%e8%89%af%e6%8b%9f%e5%ba%8fwell-quasi-orders%e5%85%b3%e7%b3%bb/">上一篇文章</a>中提到过：良拟序集中的每个无穷序列中，必有”无穷递增子序列”），即存在序列a’：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(a%5E%7B'%7D=(a_%7Bf(i)%7D)_%7Bi%5Cgeq%201%7D)"></p>
+<p>使得其中每一对相邻项，左项小于等于右项：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(a_%7Bf(i)%7D%5Cleq%20a_%7Bf(i+1)%7D)"></p>
+<p>则我们证明<img src="https://latex.codecogs.com/png.latex?(s%5E%7B'%7D=(s_%7Bf(i)%7D)_%7Bi%5Cgeq%201%7D)"> 是一个好序列。用反证法， 设s’是一个坏序列，有两种情况：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(f(1)=1)">， 但<img src="https://latex.codecogs.com/png.latex?(s_1)">的长度小于<img src="https://latex.codecogs.com/png.latex?(t_1)">，这与t是最小坏序列矛盾。</p>
+<p><img src="https://latex.codecogs.com/png.latex?(f(1)%3E1)">，则<img src="https://latex.codecogs.com/png.latex?(t%5E%7B%5Cprime%7D=%5Cleft%5Clangle%20t_%7B1%7D,%20%5Cldots,%20t_%7Bf(1)-1%7D,%20s_%7Bf(1)%7D,%20s_%7Bf(2)%7D,%20%5Cldots,%20s_%7Bf(j)%7D,%20%5Cldots%5Cright%5Crangle)">也是坏序列(这点比较容易，请自行思考验证)。但如此情况下，<img src="https://latex.codecogs.com/png.latex?(s_%7Bf(1)%7D)">长度小于<img src="https://latex.codecogs.com/png.latex?(t_%7Bf(1)%7D)">，这与t是最小坏序列矛盾。</p>
+<p>因此<img src="https://latex.codecogs.com/png.latex?(s%5E%7B'%7D=(s_%7Bf(i)%7D)_%7Bi%5Cgeq%201%7D)"> 是一个好序列, 则存在某对整数i,j，使得：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(f(i)%5Cleq%20f(j))">且<img src="https://latex.codecogs.com/png.latex?(s_%7Bf(i)%7D%5Cleq%20s_%7Bf(j)%7D)">，又因为a’是递增序列，所以：<img src="https://latex.codecogs.com/png.latex?(a_%7Bf(i)%7D%5Cleq%20a_%7Bf(j)%7D)">，则：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(a_%7Bf(i)%7Ds_%7Bf(i)%7D%5Cleq%20a_%7Bf(j)%7Ds_%7Bf(j)%7D)"></p>
+<p>所以，t是一个好序列，这与t是一个坏序列矛盾。</p>
+<hr class="wp-block-separator">
+<p>那么既然不可能写出无穷递降序列和无穷不可比序列，那么这个写字符串游戏的嵌入关系就是一个良拟序关系。那么根据游戏规则，游戏必然在有限步骤内结束，就是这样简单。</p>
+<p>你有没有发现这么一点，以上推理过程中，并没有用到“第n步只能写出n个数字”这个条件，也就是说，去掉这个条件，序列仍然必定在有限步骤内结束！这是让我一开始非常吃惊和难以想象的一点。</p>
+<p>它是为何如此反直觉呢？原因在于，去掉了关于每一项长度的限制后，整个序列的长度其实是可以达到“任意大”，要多大有多大。比如，你希望序列至少有1亿位，那第一项写个1亿位的数字就肯定可以。甚至于第一项写过1亿位之后，很可能整个序列的长度还是可以达到任意大。</p>
+<p>甚至整个序列在写下前若干项后，长度还是可以达到任意大（比如，用2个数字玩，第一个数字写了“2”，突然要求序列长度达到1亿，则可以在第二项写1亿个“1”）。而“任意大”与不能“无穷大”这两点观念本身是有冲突的，所以整个事实是非常反直觉的。</p>
+<p>那现在讲讲为什么TREE(3)是有限的。你大概也猜出来了，那就是TREE(3)游戏中定义的，关于树之间的“嵌入”也是一种良拟序，这句话也就是“克鲁斯卡树定理”（Kruskal’s Tree Theorem）的内容。所以TREE(3)是有限的，就是这么简单。</p>
+<p>TREE(3)游戏中那个“嵌入”，具有自反、反对称和传递性是非常明显的，所以它是拟序。那它为什么是良拟序呢？有很多种证明方法，基本思路就是把树的每个结点打一个标签，那么树之间的“嵌入”其实就是建立标签的“嵌入”，那只要证明这个标签之间的嵌入是一种良拟序关系就可以了。具体过程留给各位思考。</p>
+<p>那么，同样这里有个非常令人吃惊的结论就是，TREE游戏中，“第n棵树中最多只能有n个结点”，去掉这个规则，TREE游戏仍然不能无限的玩下去。那为什么要加入这个规则呢？</p>
+<p>这里面有点历史故事。“克鲁斯卡尔树定理”是克鲁斯卡尔在1960年证明的。其实克鲁斯卡尔树定理后来也衍生出好几个版本，不同版本里关于那个嵌入的定义稍微有点区别，但不管那个版本，要点就是确保那个嵌入的定义是一个“良拟序”。</p>
+<p><img src="https://files.mdnice.com/user/5405/780f1719-9cd6-4515-873e-ed3ff19e264a.png" class="img-fluid"> (Joseph Kruskal，January 29, 1928 – September 19, 2010)</p>
+<p>而我们现在熟悉的那个TREE游戏中的定义，其实是现年73岁的，俄亥俄州立大学教授，哈维·弗里德曼（Harvey Friedman）在1980年代提出的，他把的这个版本的“嵌入”称为克鲁斯卡尔树定理的“小型化”。叫“小型化”是因为，原版的树定理其描述是一个二阶逻辑的命题，而改造后的版本变成了一阶逻辑的，所以变得更为“通俗易懂”，当然还有一些数学上的意义。</p>
+<p><img src="https://files.mdnice.com/user/5405/ddf9dce6-910a-4649-bd1a-ff541649e08f.png" class="img-fluid"> (Harvey Friedman, born 23 September 1948)</p>
+<p>而到2006年前后，弗里德曼又提出了大家熟悉的这个TREE游戏。在游戏中，他加入了结点数量的限制。其原因就是为了让这个TREE游戏从“任意大”变成一个确切的有限的数字。不加入结点数条件的话，这个TREE游戏的长度是任意大，很难让人理解。加入结点数条件后，每个TREE(n)都变成一个确切的有限数字，这使的TREE序列一下子名声大噪，获得了非常好的传播效果，这就是TREE游戏的来龙去脉。</p>
+<p>知道了TREE游戏的来龙去脉，理解另外两个比TREE还大的序列就太容易了，它们就是SSCG序列和SCG序列，它们也都是弗里德曼发明。它们其实就是把TREE游戏中树之间的嵌入，推广到图上。就是两个图，也可以定义嵌入关系，你要做的就是保证这种嵌入是一个良拟序，那么你就可以产生一个大数序列，是不是非常简单？</p>
+<hr class="wp-block-separator">
+<p>simple subcubic graph (SSCG)：有限简单图，其中每个顶点的度数最多为3。SSCG上也可以类似TREE游戏定义一个“嵌入”关系，从而定义SSCG序列。已知：</p>
+<p>SSCG(0) = 2, SSCG(1) = 5</p>
+<p>SSCG(3)远大于 TREE(3) 和 TREE(3)<img src="https://latex.codecogs.com/png.latex?(%5E%7BTREE(3)%7D)"></p>
+<p>subcubic graph(SCG)则是从SSCG中去掉“简单图”的限制。</p>
+<hr class="wp-block-separator">
+<p>最后，分析一下我对上期出的那个写字符串思考题的思考。其实这道题是一个开放题，没有现成答案。那道题里的那个“嵌入”定义其实是来自于英国数学家Graham Higman在1952的的一篇论文，他证明了这样一个嵌入是一种“良拟序”。既然是良拟序，那好办了，大老李就直接拿过来，构造了那个写字符串的游戏，并且我们能确信，这个游戏可以在有限步骤能完成。你也能发现这个游戏有点像TREE(3)游戏限制在一条直线上玩。</p>
+<p>以下我用s(n)表示用n个字符玩这个游戏时，最大的序列长度 游戏征答发布后我到现在只收到3个读者来信解答，其中署名金承锦的听众解答最为认真，她手动在Excel表里排列出了s(4)的可能的最长序列，这已经是非常细心的工作了。她也发现s(4)的最终数值是非常大，远超出可以手动解决的程度。那么以下我们来分析下，会发现s(4)的数值也超过了通过简单编程暴力求解的程度。</p>
+<p>用s(n)表示用n个字符玩这个游戏时，可以写出的最长序列长度，那么s(1)=1和s(2)=3是很明显的。求s(3)用手动排会有点麻烦，大老李写了个程序，去求解了一下s(3)。算法就是贪心算法，对每一个数字尽可能写得长，并且从左到右，每个数字尽可能写得大。</p>
+<p>用这个程序求解，得到s(3)=17，就是用3个数字玩这个游戏，可以写出的最长17个数字的数列：</p>
+<p>[‘3’, ‘22’, ‘211’, ‘1121’, ‘11112’, ‘111111’, ‘11111’, ‘1112’, ‘1111’, ‘121’, ‘112’, ‘111’, ‘21’, ‘12’, ‘11’, ‘2’, ‘1’]</p>
+<p>但是用这个程序求解s(4)是等不到答案了，因为这个贪心算法明显效率太低了。只得到以下开头的几项：</p>
+<p>[‘4’, ‘33’, ‘322’, ‘3211’, ‘31121’, ‘311112’, ‘3111111’, ‘22311111’, ‘222231112’, ‘2222231111’, ‘22222223121’, ‘222222223112’, ‘2222222223111’]</p>
+<p>当然，我们可以分析一下s(n)的可能范围。关于s(n)的范围，最重要一点是算出s(n)中的最长的字符串长度，记作。</p>
+<p>关于|max(s(n))|，我有个猜想：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(%7Cmax(s(n))%7C%20%5Capprox%20%7Cmax(s(n-1))%7C%5E2)"></p>
+<p>对s(4)，金承锦排出的|max(s(4))|是48，可能确切结果也就是49或50了。</p>
+<p>另外，我还有一个对s(n)的下界保守估计：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(s(n)%20%3E%20(n-1)%5E%7B2%5E%7B2%5E%7Bn-2%7D%7D%7D)"></p>
+<p>可以证明<img src="https://latex.codecogs.com/png.latex?(s(4)%3E3%5E%7B20%7D)"></p>
+<p>也非常欢迎有人给出s(n)更加精确的大小估计。</p>
+<p>总结：</p>
+<p>TREE(3)的有限性是“克鲁斯卡尔树定理”的一个简单推论。</p>
+<p>“克鲁斯卡尔树定理”是说TREE游戏中的那个“嵌入”关系，是一种良拟序。</p>
+<p>良拟序有两个性质：没有无穷递降链，没有不穷不可比链。</p>
+<p>根据这两个性质，就自然地导出了TREE游戏必然在有限步骤内结束。</p>
+<p>由此，我们也可以构造一些产生大数序列的游戏，方法就是找到某个无穷集合上的一种良拟序关系，利用良拟序的性质，我们可以非常简单得构造很大，但是有限的数字。</p>
+
+
+
+ ]]></description>
+  <category>音频讲稿</category>
+  <guid>https://your-website-url.example.com/posts/2021-03-31-tree3为什么是有限的克鲁斯卡尔树定理.html</guid>
+  <pubDate>Wed, 31 Mar 2021 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>貌似无限的有限——良拟序(well quasi orders)关系</title>
+  <link>https://your-website-url.example.com/posts/2021-03-15-貌似无限的有限良拟序well-quasi-orders关系.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>我很久前录制过一期音频节目：“画树画出一个大数——TREE(3)介绍”，那期节目是我一直以来很受欢迎的一期节目。那期节目之后，就不断有听众问：为什么TREE(3)是有限的？虽然我在节目里提到，这个有限性是“克鲁斯卡尔树定理”（Kruskal Tree Theorem）的一个推论，但那时候，我并不知道“克鲁斯卡尔树定理”的具体内容。前段时间，我终于去研究了一下这个定理，发现又是一次大开眼界、脑洞大开的过程，所以准备给大家讲讲这个“克鲁斯卡尔树定理”。</p>
+<p>讲之前，我还是准备给大家出一个思考题，这道题我不久前在公众号里推送过，思考一下这道题非常有益于理解今天的话题。</p>
+<hr class="wp-block-separator">
+<p>请你玩玩看如下的这个写数列游戏，游戏目标是写出尽可能长的数字序列。但要符合以下规则：</p>
+<ol>
+<li>
+数列的第n项，最多有n位。
+</li>
+<li>
+数列左边的项，不能“嵌入”所有其右边的项。“嵌入”的定义如下：
+</li>
+</ol>
+<p>有数字字符串a和b，b的长度大于等于字符a，且存在以下情况：可以从b中删除若干字符，留下与a相等长度的字符串，留下的字符前后位置关系保持不变，并记作b’。如果a比b’按位比较，每一位数字上，a的数字都小于等于b’上的数字，称a可以“嵌入”b。比如：</p>
+<p>a=“2” 可以嵌入 b=“3”，其中取b’=‘3’</p>
+<p>a=“321” 可以嵌入 b=“13312”，其中取b’=‘332’</p>
+<p>a=“132” 不可以嵌入 b=“2131”，因为b中找不到符合要求的3个字符的子串。</p>
+<p>以上是游戏的定义。当用n个数字玩以上游戏，可以写出的数列的最长长度，记作s(n)。</p>
+<p>当用一个数字“1”玩这个游戏时：</p>
+<p>第一项为：1，再也无法写出第二项。因此s(1)=1。</p>
+<p>当用两个数字“1”和”2”玩这个游戏时：</p>
+<p>第一项可以写“2”，第二项可以写“1”。如此再也无法写出第三项。但如果第二项写“11“，则还可以写第三项”1“。整个数列是：</p>
+<p>2, 11, 1。</p>
+<p>所以s(2)=3。</p>
+<p>请简单试试写写s(3)的前几项，重点思考两个问题：是否对任意大的n，s(n)总是有限的？另外，如果去掉游戏中第一个规则，数列长度是否总是有限的？</p>
+<hr class="wp-block-separator">
+<p>“克鲁斯卡尔树定理”与数学中许多优美的定理一样，它的最终命题形式非常短，但准备知识多，这个准备知识就是“良拟序”（Well Quasi Ordering，简写为“<strong>wqo</strong>”）。</p>
+<p>这个“良拟序”与我之前介绍过的“<a href="https://zhuanlan.zhihu.com/p/348673044">良序</a>”概念非常类似，所以我们只需要了解两者的区别。</p>
+<p>你不知道“良序”概念也没关系，其实它与我们平时所熟悉的“小于等于”的概念别无二致。“序关系”就是数学家从“小于等于”这种比较性质中抽象出来的条件。“<img src="https://latex.codecogs.com/png.latex?(%5Cleq)">”有这样三个性质：</p>
+<p>自反：就是对任意的a, 有a<img src="https://latex.codecogs.com/png.latex?(%5Cleq)">a；</p>
+<p>反对称：如果a<img src="https://latex.codecogs.com/png.latex?(%5Cleq)">b 且b<img src="https://latex.codecogs.com/png.latex?(%5Cleq)">a，则a=b；</p>
+<p>传递性：如果 a<img src="https://latex.codecogs.com/png.latex?(%5Cleq)">b，且b<img src="https://latex.codecogs.com/png.latex?(%5Cleq)">c，则a<img src="https://latex.codecogs.com/png.latex?(%5Cleq)">c；</p>
+<p>这三条规则，就是我们熟悉到不能再熟悉的“<img src="https://latex.codecogs.com/png.latex?(%5Cleq)">“的性质，没有任何新奇的东西。</p>
+<p>“全序关系”就是再增加一条规则：所有元素之间能够比较。</p>
+<p>“良序关系”就是再增加一条规则：所有非空子集必有一个最小元素。</p>
+<p>那么现在说说“拟序”(quasi orders)关系，“拟序关系”其实就是“全序关系”里，去掉一个条件：“所有元素之之间可以比较”，去掉这个条件，就是拟序。也就是一个比大小的关系，符合自反，反对称和传递性质，就是拟序。带有拟序关系的集合称为“拟序集”。</p>
+<hr class="wp-block-separator">
+<p>严格来说，数学中的拟序或预序(pre-order)对“自反”这个条件是可选的，而不是必须的。所以满足“反对称“和”传递性”的二元关系就可以称为“拟序”或“预序”。而加入“自反”性质后，这个序关系被称为“非严格偏序”，具有“反自反”性质的序关系则称为“偏序”。</p>
+<p>本文中涉及的拟序都带有自反特性，为简化起见，直接加入了“自反”性质到拟序定义中。</p>
+<hr class="wp-block-separator">
+<p>“拟”字的来历是一个拉丁语的单词“quasi”，意思是“接近的，类似的”。其实这个词在很多科技术语中都会出现，但它一般都会翻译成“准”，比如“准晶体“（quasicrystal），“准分子”（quasimolecule）等等。但可能因为“准序”这个词听上去太奇怪了，所以翻译成了“拟序”，但听上去还是很奇怪。但理解意思就好，”拟序“说白了，就是“接近”一个完整的序关系。之所以说“接近”，是因为元素之间有可能不能比较，而元素之间如果都能互相比较，那这个序关系完整，完全了，所以叫“全序”（total ordering）。</p>
+<p>知道了拟序概念，有没有实际的例子呢？貌似数学里多数序关系都是全序的。这里大老李想到了一个很不错的带有拟序关系的集合例子，这个例子我也准备贯穿在文中使用，所以先给大家说一下这个例子。</p>
+<p>我想的这个拟序集合例子就是复数中，实部和虚部都是自然数的那些复数，这个集合我姑且叫它“自然复数”：</p>
+<p>自然复数: <img src="https://latex.codecogs.com/png.latex?(%7B%20a+bi%20:%20a%5Cin%20%5Cmathbb%7BN%7D,%20b%5Cin%20%5Cmathbb%7BN%7D%7D)"></p>
+<p>但是“自然复数”里的数本身是不能比大小的，但我可以定义这样一个“<img src="https://latex.codecogs.com/png.latex?(%5Cleq)">”的关系：</p>
+<p><img src="https://latex.codecogs.com/png.latex?(a+bi%5Cleq%20c+di)"> iff <img src="https://latex.codecogs.com/png.latex?(a%5Cleq%20c,%20b%5Cleq%20d)"></p>
+<p>自然复数中的两个数，a<img src="https://latex.codecogs.com/png.latex?(%5Cleq)">b，当且仅当a的实部小于等于b的实部，且a的虚部小于等于b的虚部。</p>
+<p><img src="https://static01.imgkr.com/temp/2e38ea1ccf9245f985615eed7b3826cc.png" class="img-fluid"> (上图中：A&lt;=C&lt;=B,而C,D,E之间不可比较)</p>
+<p>也就是从图像上来看，偏左下角的数会小于等于偏右上角的的数。那么，我请各位自行验证，这样一个“<img src="https://latex.codecogs.com/png.latex?(%5Cleq)">”构成了“自然复数”里的一个拟序关系，就是满足自反、反对称、传递性。这些是很显然的。</p>
+<p>那么这个”<img src="https://latex.codecogs.com/png.latex?(%5Cleq)">“是全序关系吗？显然不是，因为存在两个不可比较的元素，比如1+2i和2+i，这两者就不可比较，谁都没有小于等于谁。从图像上看，即一个数与其左上和右下区域的数是不可比的。所以这个“<img src="https://latex.codecogs.com/png.latex?(%5Cleq)">”不是全序关系。</p>
+<p>以上，我给出了一个是拟序，但不是全序关系的例子。现在希望把“良序关系”的概念推广到“拟序”上，因为“非空子集必有最小元素”这个性质非常有用，特别是在无穷集合上。</p>
+<p>但我们发现，如果直接给“拟序集”套用“非空子集必有最小元素”这个性质不再适用，因为拟序集合中可能存在元素两两不可比较的情况，那么这个“最小”的意思就是不明确的。</p>
+<p>但数学家曲线救国，他们这样来定义“良拟序”：</p>
+<hr class="wp-block-separator">
+<p>某个集合X和其上的某个拟序关系<img src="https://latex.codecogs.com/png.latex?(%5Cleq)">，对X中的<strong>所有无穷</strong>序列<img src="https://latex.codecogs.com/png.latex?(x_1,%20x_2,%5Ccdots%20,x_i,%20%5Ccdots%20)">，存在某个“递增对”<img src="https://latex.codecogs.com/png.latex?(x_i)">, <img src="https://latex.codecogs.com/png.latex?(x_j)"> :</p>
+<p><img src="https://latex.codecogs.com/png.latex?(x_i%5Cleq%20x_j)">且x&lt;j。</p>
+<hr class="wp-block-separator">
+<p>也就是，如果你从拟序集里写出一个无穷数列，那么你不可避免地，会写出两个元素，左边的元素小于等于其右边的某一个，就是总有两个元素是有序的，那么这个序关系就是良拟序关系。</p>
+<p>这里能马上得出一个推论，就是良拟序集中的每个无穷序列中，必有”无穷递增子序列”(infinity increasing chain)。</p>
+<p>可以用反证法，证明以上结论。如果某个无穷序列中，只有有限个递增对的话，且最右边的一对是a&lt;=b，那把b之前的元素全部丢弃，剩下的序列仍然是无穷序列，但不存在有序对了，那么它就不符合良拟序定义，这不可能。所以良拟序的每个无穷序列中，必有无穷递增子序列。</p>
+<p>以上这个拟序集的定义中，因为需要判断所有的无穷序列，所以它在判断一个拟序关系是否是良拟序的情况下，不太好用。所以经常用到的是以下良拟序的性质或者等价定义，它是把原来的定义反过来考察。</p>
+<p>原先的定义形式是：对所有的无穷序列，存在一对排序好的元素。那它反过来就是，不存在某个无穷序列，其中没有排序好的元素。那么对拟序集来说，没有排序好意味着两种情况：左边的大于右边的，或者不可比。所以我们这里得到了两个良拟序的性质：</p>
+<p>良拟序集中，不存在”无穷递降序列”（infinity decreasing chain）。也就是其中的元素越来越小，且无穷多，这样的序列不存在。</p>
+<p>良拟序集中，不存在”无穷不可比(较)序列”(infinity anti-chain)，也就是不能写出一个无穷子集，其中没有任何两个元素是可以比较的。</p>
+<p>以上就是良拟序集的两个重要性质，并且可以证明，只要拟序集符合这两条性质，那么它就是良拟序集，所以它也是良拟序的一个等价定义。</p>
+<p>分析一下之前提到的的“自然复数”集合和那个<img src="https://latex.codecogs.com/png.latex?(%5Cleq)">关系，它构成“良拟序”吗？那就看看“自然复数”是否符合以上两条性质。</p>
+<p>第一：“自然复数”中是否存在一个“无穷递降序列”呢？显然是不存在，因为递降的话，也就是序列中的数在图像上会越来越靠左下角发展，那么迟早会撞上原点，那就没法再往小的数字写了，所以“自然复数”中不存在无穷递降序列。</p>
+<figure class="wp-block-image figure">
+<img src="https://static01.imgkr.com/temp/1bd50e55d78244fb9f74a9118bc4a59d.png" class="img-fluid figure-img">
+</figure>
+<p>第二：“自然复数”中是否存在“无穷不可比序列”呢？这个问题稍微难一点，但是，你会发现，自然复数中也不存在无穷不可比序列。可以用反证法考虑。假设写出了一个无穷不可比序列，里面任何两个元素都不可比。之前说了，一个元素只有与其左上或者右下的元素不可比。</p>
+<p>如果考虑序列第一项之后的序列，必定存在无穷多个元素位于第一项的左上角或者右下角，不妨假设有无穷多个元素在第一项的右下角。</p>
+<p>考察这无穷多个右下角的元素，因为仍然需要保持其中的元素两两不可比，那么你会发现你不得不把数字不断的往右下角发展。因为向左上的发展是受第一项的位置限制的，向右上或左下发展那就会产生可比的数字，那只有不断的往右下发展，迟早会撞上x轴，再也写不下去了。而对左上角的分析结果是类似的，你需要不断的往左上写数字，那么迟早会撞上y轴。</p>
+<p>因此，我们的“自然复数”集中就不可能存在无穷不可比序列。</p>
+<p>以上我们证明了我们“自然复数”集中不存在无穷递降序列和无穷不可比序列，所以它是一个良拟序集。</p>
+<p>以上结论有一个一般化后的结论(由Nash-Williams给出)：</p>
+<p>如果有拟序集: <img src="https://latex.codecogs.com/png.latex?(%5Cleft%5Clangle%5Cpreceq_%7B1%7D,%20A_%7B1%7D%5Cright%5Crangle)">和<img src="https://latex.codecogs.com/png.latex?(%5Cleft%5Clangle%5Cpreceq_%7B2%7D,%20A_%7B2%7D%5Cright%5Crangle)">，并定义<img src="https://latex.codecogs.com/png.latex?(A_1)">和<img src="https://latex.codecogs.com/png.latex?(A_2)">的笛卡尔积<img src="https://latex.codecogs.com/png.latex?(A_1%20%5Ctimes%20A_2)">上的拟序关系<img src="https://latex.codecogs.com/png.latex?(%5Cpreceq)">：</p>
+<p><img src="https://latex.codecogs.com/png.latex?((a_1,a_2)%5Cpreceq%20(a_1%5E%7B'%7D,a_2%5E%7B'%7D))">当且仅当<img src="https://latex.codecogs.com/png.latex?(a_1%5Cpreceq_%7B1%7D%20a_1%5E%7B'%7D)">且<img src="https://latex.codecogs.com/png.latex?(a_2%5Cpreceq_%7B2%7D%20a_2%5E%7B'%7D)"></p>
+<p>则有如下定理：</p>
+<p>如果<img src="https://latex.codecogs.com/png.latex?(%5Cpreceq_%7B1%7D)">和<img src="https://latex.codecogs.com/png.latex?(%5Cpreceq_%7B1%7D)">是wqo(“良拟序”关系)，则<img src="https://latex.codecogs.com/png.latex?(%5Cpreceq)">是wqo。</p>
+<p>比如之前我们所说的”自然复数”，其实就可以看作是自然数集合的笛卡尔积，且自然数上的<img src="https://latex.codecogs.com/png.latex?(%5Cleq)">是一个良拟序关系（其实是良全序关系，但没关系，是全序关系就必然是拟序关系），那么一对自然数上的<img src="https://latex.codecogs.com/png.latex?(%5Cleq)">，必然也是良拟序。</p>
+<p>同理，三个自然数、四个自然数甚至100个自然数构成一组，互相比，仍然是良拟序关系。</p>
+<p>到这里，不知道你有没有体会到良拟序的性质中的“优良”的那个部分：就是以少得多，以很少的要求，得到很强的结论。因为拟序关系其实要求是很宽松的，<img src="https://latex.codecogs.com/png.latex?(%5Cleq)">这样的比较是很常见的，而且甚至于都不要求所有元素之间可比。但是你能看到它能推出的结论不是那么明显，甚至是反直觉的。</p>
+<p>比如，那个“自然复数”中不存在无穷递降序列和无穷不可比序列就已经不那么明显了，但是用良拟序集的笛卡尔积的性质，这个结论是直接推出的，这就非常强悍了。</p>
+<p>下一篇专栏，正式讲TREE(3)为什么是有限的。</p>
+<p>参考文档：</p>
+<p><a href="https://www.cis.upenn.edu/~jean/kruskal.pdf">https://www.cis.upenn.edu/~jean/kruskal.pdf</a></p>
+<p>https://www.jstor.org/stable/2370405?seq=2#metadata_info_tab_contents</p>
+
+
+
+ ]]></description>
+  <category>音频讲稿</category>
+  <guid>https://your-website-url.example.com/posts/2021-03-15-貌似无限的有限良拟序well-quasi-orders关系.html</guid>
+  <pubDate>Mon, 15 Mar 2021 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>漫长却有限的游戏——古德斯坦序列</title>
+  <link>https://your-website-url.example.com/posts/2021-02-26-漫长却有限的游戏古德斯坦序列.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>不久前我讲过一些<a href="https://zhuanlan.zhihu.com/p/348673044">序数</a>方面的知识，今天跟大家聊一个序数的应用。这个应用本身也是一个非常好玩的大数。关于这个大数，我先回顾一个可能大家已经非常熟悉的，有关国际象棋的故事：</p>
+<p>古代印度某个国王很喜欢下国际象棋，他决定给国际象棋的发明者一点奖赏。他就把这个发明者叫到了皇宫来，问他要什么奖赏。这个发明者说：“陛下，我要这样的一个奖励。请你在棋盘的第一个格子里放上一粒麦子，第二格放两粒麦子，第三格放四粒麦子。以此类推，每一格都放上前一格两倍数量的麦子，直到把64格都放满，这就是我要的奖励。”</p>
+<figure class="wp-block-image figure">
+<img src="https://static01.imgkr.com/temp/bc5d7dcbbd964b338e62868c16f0d592.png" class="img-fluid figure-img">
+</figure>
+<p>国王一听，这还不简单吗，马上让人来把麦子拿进来，开始往棋盘上放麦子。但是很快，国王发现麦子完全不够用了，填满64格是一个不可能完成的任务。如果你具体算一下大概需要多少麦子的话，你会发现这个奖励需要地球上两千年的麦子产量。</p>
+<p>这个故事我小时候看过之后，印象是很深的，它说明人对指数增长的数字大小感受能力是有限的。故事里实际需要的麦子数量，如果写出来也就是<img src="https://latex.codecogs.com/png.latex?2%5E%7B64%7D-1">粒麦子，这个数字看上去一点都不大，但是实际大小已经远超过了常人的感受能力了。</p>
+<p>那么现在我把这个故事稍微改造下，改成一个拿走麦子的游戏，并且可以构造出一个更大的数字。方法是这样：</p>
+<p>一开始先在棋盘的64格里，每一格放一粒麦子。然后按如下规则，从棋盘上拿走麦子。每一步执行如下的操作：</p>
+<ol start="0">
+<li>
+开始时步数为1.
+</li>
+<li>
+如果第一个格里有麦子，则从第一格拿走1粒麦子。当前步骤完成，步数增加1，重复执行下一步。
+</li>
+<li>
+如果第一格里没有麦子，则从第二格“借麦子”。借麦子的规则是：如果当前在执行第n步，第a格里的麦子，可以转换成第a-1格里的n粒麦子。比如第二格里的1粒麦子，可以转换成第一格里的n粒麦子。第三格里的1粒麦子，可以转换成第二格里的n粒麦子等等。其实这个规则就是类似于减法借位规则，只不过借位不是固定以10进制为转换单位，而是以当前步数为单位。不管怎样，借位转换完成后，当第一个里有麦子了，那么就从第一格里拿走一粒麦子，当前步骤完成，步数增加1，重复执行下一步。
+</li>
+</ol>
+<p>稍微推演下这个流程：</p>
+<figure class="wp-block-image figure">
+<img src="https://static01.imgkr.com/temp/9f62496ff7ad48eba9bdb70a0567572e.png" class="img-fluid figure-img">
+</figure>
+<p>(上图：拿走麦子游戏中，对1-4格在前65步情况的推演。数字为该步骤开始时，格子里的麦子数)</p>
+<p>第一步时，第一格有一粒麦子，那么直接拿走，进入第二步。</p>
+<p>第二步时，第一格没有麦子，需要向第二格借。按规则，因为现在是第二步，所以第二格的那一粒麦子可以转换为第一格的2粒麦子。那么就拿走第二格的那粒麦子，在第一格放入两粒麦子。现在第一格有麦子了，那么从第一个拿走一粒麦子。</p>
+<p>第三步：第一格里还有一粒麦子，直接拿走，进入第四步。</p>
+<p>第四步时：第一格没有麦子了，向第二格借。第二格此时也没有麦子了，那么要向第三格借。则拿走第三格的一粒麦子，转换成第二格的4粒麦子，因为现在是第4步，转换比例是1比4。再拿走第二格的1粒，转换成第一格的4粒麦子。此时再从第一格拿走1粒麦子。这一步结束。结束状态就是第三格空了，第二格有3粒麦子，第一格也有3粒麦子。</p>
+<p>之后的推演就不一一解说了，可以想象到，到第8步时，第一格又空了，要向第二格借。此后每次到了<img src="https://latex.codecogs.com/png.latex?2%5En">步时，第一个格会为空，需要向第二格借。每次约到了<img src="https://latex.codecogs.com/png.latex?2%5E%7B2%5En%7D">步（读者可以自己考虑推导一下准确的表达式）时，第一格和第二格会空，需要向第三格借，等等。</p>
+<p>现在的问题是，如此操作，有可能把棋盘上所有麦子拿空吗？稍微想一下，你会发现肯定能拿空。</p>
+<p>因为无论第一格有多少粒麦子，总能拿空。第一格拿空的话，总需要向第二格借。那么无论第二格有多少粒麦子，也迟早能拿空，第二格也总需要向上一格借。如此，有点像数学归纳法，我们知道第64格也总能被拿空。第64格能拿空，后面的格子自然也会拿空，总体必然能在有限步骤内结束。</p>
+<p>如果要定量分析的话，也很简单。你会发现其实棋盘在任何一步的状态其实是表示了一个64位的数字，这个数字的进制数就是当前的步数。比如第10步的时候，这个棋盘第64格里的1粒麦子就相当于<img src="https://latex.codecogs.com/png.latex?10%5E%7B63%7D">粒麦子，第11步的时候就变成<img src="https://latex.codecogs.com/png.latex?11%5E%7B63%7D">粒。所以，这个棋盘就相当于一个64位的数字，但是进制数是每步递增1，所以整个数字一开始增加是非常快的。</p>
+<p>但你也会发现，这个过程中，最高位的数字是不会增加，只是底数在增加，所以它迟早最会被拿空。虽然需要的步数大的非常恐怖了，但是还是有限的。</p>
+<p>那么以上游戏中，我们的整个操作步骤，等价于“弱古德斯坦序列”。</p>
+<hr class="wp-block-separator">
+<p>对于任意正整数n，第n个弱古德斯坦序列 {<img src="https://latex.codecogs.com/png.latex?g_1">, <img src="https://latex.codecogs.com/png.latex?g_2">, <img src="https://latex.codecogs.com/png.latex?g_3">, …}按如下方式定义：</p>
+<p><img src="https://latex.codecogs.com/png.latex?g_1%20=%20n"></p>
+<p>对于k &gt; 1，将<img src="https://latex.codecogs.com/png.latex?g_%7Bk-1%7D">写成k进制表示，然后将其视为k+1进制的数，最后减去1，得到<img src="https://latex.codecogs.com/png.latex?g_k">。</p>
+<p>当<img src="https://latex.codecogs.com/png.latex?g_k">变为0时序列终止。</p>
+<p>例如，第6个弱古德斯坦序列为{6, 11, 17, 25, …}：</p>
+<p><img src="https://latex.codecogs.com/png.latex?g_1%20=%206"></p>
+<p><img src="https://latex.codecogs.com/png.latex?g_2%20=%2011">，因为<img src="https://latex.codecogs.com/png.latex?6%20=%20110_2"> (下标的2表示2进制表示)，然后<img src="https://latex.codecogs.com/png.latex?110_3%20=%2012">，最后<img src="https://latex.codecogs.com/png.latex?12%20-%201%20=%2011">。</p>
+<p><img src="https://latex.codecogs.com/png.latex?g_3%20=%2017">，因为<img src="https://latex.codecogs.com/png.latex?11%20=%20102_3">，然后<img src="https://latex.codecogs.com/png.latex?102_4%20=%2018">，最后<img src="https://latex.codecogs.com/png.latex?18%20-%201%20=%2017">。</p>
+<p><img src="https://latex.codecogs.com/png.latex?g_4%20=%2025">，因为<img src="https://latex.codecogs.com/png.latex?17%20=%20101_4">，然后<img src="https://latex.codecogs.com/png.latex?101_5%20=%2026">，最后<img src="https://latex.codecogs.com/png.latex?26%20-%201%20=%2025">。</p>
+<p>依此类推。</p>
+<p>如果用g(n)表示以n开始的弱古德斯坦序列的长度，即游戏结束所需步数，则有如下上下界：</p>
+<p><img src="https://latex.codecogs.com/png.latex?g(7)=2045"></p>
+<p><img src="https://latex.codecogs.com/png.latex?g(8)=3%20%5Ctimes%202%5E%7B402,653,211%7D-3"></p>
+<p>$2^{n-1} n &lt;g(2<sup>n)&lt;2</sup>{n} n $</p>
+<p>(“<img src="https://latex.codecogs.com/png.latex?%5Cuparrow">” 为 “高德纳箭号表示法”)</p>
+<hr class="wp-block-separator">
+<p>当然它是一个增长很快的大数序列，但是既然它叫“弱古德斯坦序列”，那么必然还有一个比它更强的原版的古德斯坦序列。</p>
+<p>原版的古德斯坦序列是对弱古德斯坦序列进行这样一个扩展：</p>
+<p>假设一开始的国际级象棋棋盘的每个格子里，又有一个更小的有若干格子的棋盘，这个小棋盘的每一格里，又可以嵌套若干层更小的棋盘，其他规则不变，那么情况会如何？</p>
+<p>稍微思索一下，你会发现这样一个惊人事实：</p>
+<p>无论一开始的棋盘有多少个格子，每个格子里嵌套了多少重棋盘，在每个格子里放入了多少粒麦子，只要一开始的状态是确定，那么最终总能拿走所有麦子！</p>
+<figure class="wp-block-image figure">
+<img src="https://imgkr2.cn-bj.ufileos.com/f85c45da-0dc0-40a5-91c1-a090dd123ceb.png?UCloudPublicKey=TOKEN_8d8b72be-579a-4e83-bfd0-5f6ce1546f13&amp;Signature=1ITp8YYr6UhvhrckkCbGZuT676c%253D&amp;Expires=1614396769" class="img-fluid figure-img">
+</figure>
+<p>其实这个道理还是很容易想的，因为我们分析过弱古德斯坦序列的情况，我们知道只要任意一格能拿完，那么它的上一格就能拿完。上一格能拿完，这一层的棋盘就能拿完。这一层能拿完，那么就表示承托这一层棋盘的格子能拿完，那么就又回到开始的推理了。这一层层递归推理下去，整个棋盘必能拿完。</p>
+<hr class="wp-block-separator">
+<p>数学中古德斯坦序列的确切构造方法（文字部分参考了 https://zhuanlan.zhihu.com/p/106647826）：</p>
+<p>（1）随便给出一个自然数，比如本文题图中的那个数——100，设为<img src="https://latex.codecogs.com/png.latex?M_1"> ；</p>
+<p>（2）把<img src="https://latex.codecogs.com/png.latex?M_1"> 表示成以2为底数的各个幂的和，也就是表示为二进制的形式；然后把所有的大于2的指数也表示成二进制的形式；如果指数上的指数还有大于2的，也将其表示为二进制的形式，以此类推，直到出现的所有数都小于等于2:</p>
+<p>$M_1=100 = 2<sup>{6}+2</sup>{5}+2<sup>2=2</sup>{2^{2} + 2} + 2<sup>{2</sup>{2} + 1} + 2^{2} $</p>
+<p>（3）把（2）里面表达形式中的数字2替换为3，然后把得到的新的数再减去1，得到<img src="https://latex.codecogs.com/png.latex?M_2">:</p>
+<p><img src="https://latex.codecogs.com/png.latex?M_2=3%5E%7B3%5E%7B3%7D%20+%203%7D%20+%203%5E%7B3%5E%7B3%7D%20+%201%7D%20+%203%5E%7B3%7D-1"></p>
+<p>$=3<sup>{3</sup>{3} + 3} + 3<sup>{3</sup>{3} + 1} + 2^{2} + 2 + 2 $</p>
+<p><img src="https://latex.codecogs.com/png.latex?=228767924549636"></p>
+<p>（4）再把得到的<img src="https://latex.codecogs.com/png.latex?M_2">表示成以3为底数的各个幂的和，也就是表示为三进制的形式；然后把所有大于3的指数也表示成三进制的形式；以此类推，直到出现的所有数都小于等于3；</p>
+<p>（5）把（4）中的表达形式中的数字3替换为4，然后把得到的新的数再减去1，得到<img src="https://latex.codecogs.com/png.latex?M_3">；</p>
+<p><img src="https://latex.codecogs.com/png.latex?M_3=4%5E%7B4%5E%7B4%7D%20+%204%7D%20+%204%5E%7B4%5E%7B4%7D%20+%201%7D%20+%202%5Ccdot%204%5E%7B2%7D%20+%202%5Ccdot%204"></p>
+<p><img src="https://latex.codecogs.com/png.latex?+%202%5Ccdot%201%20-1"></p>
+<p>（6）一直按照这种模式做下去……，得到的数列<img src="https://latex.codecogs.com/png.latex?%7BM_%7B1%7D,%20M_%7B2%7D,%20M_%7B3%7D,%20%5Cldots%20%5Cldots%7D">被称为以<img src="https://latex.codecogs.com/png.latex?M_1"> 为初始值的古德斯坦数列；</p>
+<p>（7）古德斯坦定理预言，无论初始值是哪个自然数，古德斯坦数列都会在有限步之后收敛到 0 ！</p>
+<p>如果G(n)记作以n开始的古德斯坦序列的长度，那么n=1到10时，有如下上下界：</p>
+<figure class="wp-block-image figure">
+<img src="https://imgkr2.cn-bj.ufileos.com/9f583c50-456b-4fcc-b43d-7f9c7b5a64ba.png?UCloudPublicKey=TOKEN_8d8b72be-579a-4e83-bfd0-5f6ce1546f13&amp;Signature=DBR3CG5CzPqahvhJ9DVXTf%252FduHs%253D&amp;Expires=1614396700" class="img-fluid figure-img">
+</figure>
+<hr class="wp-block-separator">
+<p>更有意思的一点是，古德斯坦序列有一个性质，它的有限性在皮亚诺算术公理系统中是无法证明的。这一点粗看有点令人惊讶，因为之前用那种启发性的思考，我们已经可以相信这个拿走麦子的游戏可以在有限步骤内结束。但如果仔细想想，你还是能发现它不能用皮亚诺算术证明的蛛丝马迹。</p>
+<hr class="wp-block-separator">
+<p>皮亚诺算术公理介绍（转自维基百科）：</p>
+<p>皮亚诺的这五条公理用非形式化的方法叙述如下：</p>
+<ol>
+<li>
+0是自然数；
+</li>
+<li>
+每一个确定的自然数a，都有一个确定的后继数a’ ，a’ 也是自然数；
+</li>
+<li>
+对于每个自然数b、c，b=c当且仅当b的后继数=c的后继数；
+</li>
+<li>
+0不是任何自然数的后继数；
+</li>
+<li>
+任意关于自然数的命题，如果证明：它对自然数0是真的，且假定它对自然数a为真时，可以证明对a’ 也真。那么，命题对所有自然数都真。
+</li>
+</ol>
+<p>其中，一个数的后继数指紧接在这个数后面的数，例如，0的后继数是1，1的后继数是2等等；公理5保证了数学归纳法的正确性，从而被称为归纳法原理。</p>
+<hr class="wp-block-separator">
+<p>对这种命题，你可能直接能想到的就是数学归纳法。数学归纳法的基本方法就是，对某个命题在n-1的情况你假设命题成立，然后考虑在n的情况，命题仍然成立。 但是对这个拿走麦子的游戏，有个问题是，无法准确的说出n-1和n的情况到底是啥？因为每个棋盘上的每个格子里可能存在另一个拿走麦子的游戏，这种层层嵌套的结构，形成了一种你中有我，我中有你的形式，使得用数学归纳法的时候总是陷入循环论证的困境。</p>
+<p>就是说，当假设n-1的成立的时候，似乎就是在假设原命题成立了，这是不允许的。所以皮亚诺算数公理证明不出这个命题。</p>
+<p>而如果<a href="https://zhuanlan.zhihu.com/p/348673044">序数</a>理论的话，证明古德斯坦序列的有限性则是出奇得简单。这里我们要用到序数的两个简单性质：</p>
+<p>第一个：序数是良序集。也就是序数本身都可以比较大小，并且任何一组序数在一起比较少时，总有一个最小的序数。这个性质有一个推论：序数序列中，不存在无穷递降链。当把一群序数从大到小排列，那么这个序列就叫<strong>递降链</strong>，且这个递降序列长度必然是有限的，因为总有一个最小的序数。这个性质也是所有良序集的性质，即：<strong>良序集中不存在无穷递降链</strong>。</p>
+<p>第二：序数可以做加法和乘法运算，而且运算规则与我们的常规熟悉很像。但我们要特别关注<img src="https://latex.codecogs.com/png.latex?%5Comega">这个序数。<img src="https://latex.codecogs.com/png.latex?%5Comega">这个序数是最小的一个无穷序数，它比所有的有穷序数都大，也就是“比所有的自然数都大”，这使它在比大小时，大小关系的判定上非常简便。</p>
+<p>那我们看看怎么用序数证明那个拿走麦子的游戏可以在有限步骤内结束。仍以之前<img src="https://latex.codecogs.com/png.latex?M_1=100">的情况为例。</p>
+<p>那么我们考虑对这个数列的每一个数，如果把底数换成序数里的<img src="https://latex.codecogs.com/png.latex?%5Comega">会怎样？并且我们比较一下变换前的数字和改成<img src="https://latex.codecogs.com/png.latex?%5Comega">为底的数字的大小。</p>
+<p><img src="https://latex.codecogs.com/png.latex?M_1=100%20=%202%5E%7B6%7D+2%5E%7B5%7D+2%5E2="></p>
+<p>$2<sup>{2</sup>{2} + 2} + 2<sup>{2</sup>{2} + 1} + 2^{2} $</p>
+<p>底数换成<img src="https://latex.codecogs.com/png.latex?%5Comega">后：</p>
+<p>$O_1=<sup>{</sup>{} + } + <sup>{</sup>{} + 1} + ^{} $</p>
+<p>原先的<img src="https://latex.codecogs.com/png.latex?M_2">:</p>
+<p><img src="https://latex.codecogs.com/png.latex?M_2=3%5E%7B3%5E%7B3%7D%20+%203%7D%20+%203%5E%7B3%5E%7B3%7D%20+%201%7D%20+%203%5E%7B3%7D-1"></p>
+<p>底数换成<img src="https://latex.codecogs.com/png.latex?%5Comega">后：</p>
+<p><img src="https://latex.codecogs.com/png.latex?O_2=%5Comega%5E%7B%5Comega%5E%7B%5Comega%7D%20+%20%5Comega%7D%20+%20%5Comega%5E%7B%5Comega%5E%7B%5Comega%7D%20+%201%7D%20+%20%5Comega%5E%7B%5Comega%7D-1"></p>
+<p>原先的<img src="https://latex.codecogs.com/png.latex?M_3">:</p>
+<p><img src="https://latex.codecogs.com/png.latex?M_3=4%5E%7B4%5E%7B4%7D%20+%204%7D%20+%204%5E%7B4%5E%7B4%7D%20+%201%7D%20+%202%5Ccdot%204%5E%7B2%7D%20+%202%5Ccdot%204%20+%201"></p>
+<p>底数换成<img src="https://latex.codecogs.com/png.latex?%5Comega">后:</p>
+<p><img src="https://latex.codecogs.com/png.latex?O_3=%5Comega%5E%7B%5Comega%5E%7B%5Comega%7D%20+%20%5Comega%7D%20+%20%5Comega%5E%7B%5Comega%5E%7B%5Comega%7D%20+%201%7D%20+%202%5Ccdot%20%5Comega%5E%7B2%7D%20+%202%5Ccdot%20%5Comega%20+1"></p>
+<p>原版游戏的每一步的<img src="https://latex.codecogs.com/png.latex?M_n">，当改成<img src="https://latex.codecogs.com/png.latex?%5Comega">为底时，它都会小于对应的<img src="https://latex.codecogs.com/png.latex?O_n">。</p>
+<p>那么再看一下转换过后的<img src="https://latex.codecogs.com/png.latex?O_n">序列。你会发现，因为每一次的减一操作，它构成了一个递降序列！</p>
+<p>前面说了良序集有个特性，不存在无穷的递降序列，那么就说明<img src="https://latex.codecogs.com/png.latex?O_n">序列只能是有限长度的。</p>
+<p>而一个正数构成的数列<img src="https://latex.codecogs.com/png.latex?M_n">的每一项都小于另一个数列<img src="https://latex.codecogs.com/png.latex?O_n">，且<img src="https://latex.codecogs.com/png.latex?O_n">长度是有限的，那只能说明<img src="https://latex.codecogs.com/png.latex?M_n">也是有限长度的，这样古德斯坦序列的有限性得证！</p>
+<p>从以上过程中，我们会发现序数理论是非常有用，它甚至能证明皮亚诺算数中不能证明的命题，<strong>比全体自然数更大的数是有用的</strong>！这是非常令人吃惊但有意思的事情。</p>
+<p>更有意思的是序数理论还能帮我们做定量分析。从之前的分析你可以看出，在古德斯坦序列中，每次底数的增加完全可以不是递增1的模式。实际上，对任何递增的自然数序列<img src="https://latex.codecogs.com/png.latex?%7Ba_%7B1%7D,%20a_%7B2%7D,%20a_%7B3%7D,%20%5Cldots%20%5Cldots%7D">，在古德斯坦序列中，底数以<img src="https://latex.codecogs.com/png.latex?a_n">的方式增加，最终还是会在有限步骤内会到0.</p>
+<p>最后解答一个问题，既然皮亚诺算术公理不能证明古德斯坦序列有限，那在以上的证明中一定用到了皮亚诺算术里没有的公理。这个公理是啥呢？</p>
+<p>这个公理就是对皮亚诺算术里的“数学归纳法”的扩展。皮亚诺算术公理中，只说数学归纳法对自然数有效，而没有说对序数集有效。而之前的证明用到的一个前提就是，数学归纳法可对包含<img src="https://latex.codecogs.com/png.latex?%5Comega">，及直到<img src="https://latex.codecogs.com/png.latex?%5Comega">幂次的序数的情况都有效，这是皮亚诺算术公理没有的。</p>
+<p>这种数学归纳法数数学里有个名称：叫超限或者超穷归纳法(transfinite induction)，就是超越无穷大之后的归纳法。有兴趣的可以自行研究一下。</p>
+<p>总结：</p>
+<p>文章中向大家介绍一个拿走麦子的游戏，这个游戏虽然步骤长，但却总是有限的。甚至游戏本身可以像套娃一样嵌套，它仍然是有限步骤内可以结束的游戏。这个游戏等价于古德斯坦序列。</p>
+<p>古德斯坦序列的有限性，已经不能用皮亚诺算术公理系统来证明，但却可以用来序数理论非常简单的证明，这是序数理论的一个强大之处。</p>
+<p>参考资料:</p>
+<p>https://zh.wikipedia.org/zh/%E5%8F%A4%E5%BE%B7%E6%96%AF%E5%9D%A6%E5%AE%9A%E7%90%86</p>
+<p>http://blog.kleinproject.org/?p=674</p>
+<p>https://googology.wikia.org/wiki/Goodstein_sequence</p>
+
+
+
+ ]]></description>
+  <category>音频讲稿</category>
+  <guid>https://your-website-url.example.com/posts/2021-02-26-漫长却有限的游戏古德斯坦序列.html</guid>
+  <pubDate>Fri, 26 Feb 2021 08:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>数到无穷大之后–无穷序数简介</title>
+  <link>https://your-website-url.example.com/posts/2021-02-26-数到无穷大之后-无穷序数简介.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>本文的标题叫“数到无穷大之后”，这里的“数”就是数（第三声）数的意思。数数大家都会数，但是今天我带大家看看数学家是如何开脑洞，数数数到无穷大之后还能继续数。其中的主要概念叫“<strong>序数</strong>”（ordinal number）。相关的一个概念叫“基数”（cardinal number）。</p>
+<p>英语里有本身就有基数词和序数词， 基数词就是one, two, three……，序数词就是first, second, third等等。在中国人看来这很多余，但是我们从中学到了基数词和序数词使用的场合，老师会说：基数词用于表示数量，序数词用于表示顺序的场合。</p>
+<p>而对应的，集合论里有一套“无穷基数”理论和”无穷序数”理论，都是康托发明的。无穷基数理论是衡量无穷集合大小的一套理论。基本理念就是，两个集合如果其中元素可以建立一一对应或叫双射，则认为这两个集合大小相等。根据这个理念，康托得到两个基本结论就是自然数集合是最小的无穷基数，也被称为可数集。而实数集大小要大于自然数，叫不可数集。</p>
+<p><img src="https://imgkr2.cn-bj.ufileos.com/69f1ac78-beb7-406e-8b91-9fa5ecbd19d6.png?UCloudPublicKey=TOKEN_8d8b72be-579a-4e83-bfd0-5f6ce1546f13&amp;Signature=Kbwaajs798WZZKsJUPFLHNpbtEk%253D&amp;Expires=1612227083" class="img-fluid"> （在无穷基数理论中，两个集合中的元素如果能建立一一对应的关系，则认为这两个集合大小相等，具有相同的“基数”）</p>
+<p>有关无穷基数理论网上有很多科普，相信听众中很多也了解。你可以上网搜索“希尔伯特旅馆”几个字，因为曾经希尔伯特用一个有无穷多个房间的旅馆来形象解释了一下无穷基数理论，非常有意思。</p>
+<p>但是当你了解过无穷基数理论后，会发现用无穷基数去衡量无穷集合的话，这把“尺子”的刻度太粗糙了。从“可数集”跳跃到“不可数集”，跳跃非常大。而且根据关于“连续统假设”的结论，我们永远不知道“可数集”和“不可数集”之间还有没有其他的无穷基数。这样总感觉无穷基数这个工具实在有点太粗糙了。</p>
+<figure class="wp-block-image figure">
+<img src="https://imgkr2.cn-bj.ufileos.com/7db6affb-851a-4807-88ae-8fd2a23f49e3.png?UCloudPublicKey=TOKEN_8d8b72be-579a-4e83-bfd0-5f6ce1546f13&amp;Signature=CgFY3oy%252BnLG94zQ9yQpYScnYLxM%253D&amp;Expires=1612227533" class="img-fluid figure-img">
+</figure>
+<p>另一方面，尽管实数是不可数集，但我们感觉上实数也可以某种程度程度上被数出来，因为实数是可以比大小的。给定两个实数，我总能比较出它们的大小，因此直觉有一种数实数的方法，就是按从小到大的次序来数。</p>
+<p>因此，数学家就考虑，如果给集合元素添加一个顺序的属性，那我们有没有可能得到另一套衡量集合大小和其他一些性质的“尺子”？康托在发明无穷基数理论的同时，也发明了一套叫“无穷序数”理论，就是解决这样一个问题。</p>
+<p>既然要对集合的元素添加“顺序”这个属性，那先要定义什么是“顺序”。直观上，我们认为“顺序”就是能把元素排成一串，但这个定义一下子把集合限制在可数集范围内，这个条件太强了。数学家这样定义顺序：集合中任意两个元素都能按某种方式比大小，这种比大小的关系，称为“序关系”，经常用“<img src="https://latex.codecogs.com/png.latex?(%5Cleq)">”符号来表示。</p>
+<p>如果我把这种序关系小于等于，我们还要求这种比大小符合以下三个条件：</p>
+<p>反自反：如果<img src="https://latex.codecogs.com/png.latex?(a%5Cleq%20b)">且<img src="https://latex.codecogs.com/png.latex?(b%5Cleq%20a)">，则a=b。</p>
+<p>传递性：如果<img src="https://latex.codecogs.com/png.latex?(a%5Cleq)">b,且<img src="https://latex.codecogs.com/png.latex?(b%5Cleq%20c)">，则<img src="https://latex.codecogs.com/png.latex?(a%5Cleq%20c)">。</p>
+<p>完备性：即<img src="https://latex.codecogs.com/png.latex?(a%5Cleq%20b)">或<img src="https://latex.codecogs.com/png.latex?(b%5Cleq%20a)">。不存在不能比较的情况。</p>
+<p>以上三个条件都是非常自然的，我们熟悉的自然数到实数里的“<img src="https://latex.codecogs.com/png.latex?(%5Cleq)">”都符合这些性质，数学里把一个集合上的这种比大小操作叫做“<strong>全序关系</strong>”。</p>
+<p>那是否一个集合里存在这种全序关系，我们就可以考虑这个集合的序数了呢？还差一点，我们还要加入一个条件：就是这个我们希望这个集合的任何非空自己总有最小元素。当一个集合当它有某种全序关系，并且任何非空自己都有最小元素时，我们就称这个集合为“<strong>良序集</strong>”，well-ordered。“良序”的意思就是它的性质优良，比如自然数就是良序集，因为0就是最小的自然数，并且自然数的任何子集里总有一个最小的数。但整数就不是良序集，因为没有最小的整数。</p>
+<p>为什么我们要加入这个条件呢？其实是被迫加入的，因为我们希望能按元素的大小关系从小到大开始数数。如果不加入这个条件，一串数字，往小往大都是无穷无尽的，怎么开始数呢？但为什么不加入有最大值这个条件呢？因为稍后你会发现这个没必要，根据奥卡姆剃刀原则，如无必要，勿增实体。</p>
+<p>以上说了半天，其实就是解释了“良序集”这个概念，说白了就是集合元素能排序，且有最小值，就这么简单。但是没办法，数学语言需要精确，就不得不啰嗦。而这个良序集里的比大小的方法，我们经常称为“良序关系”。</p>
+<p>到现在我们还没有定义什么是“序数”，但我们知道我们定义序数的目标是，使序数在某种程度上也能成为衡量（良序）集合大小的一个标尺。基数情况下，我们用一一对应来识别两个集合大小相同。类似的，我们可以这样定义序数：</p>
+<p>序数也是一个良序集合，如果某一个良序集可以与这个序数建立一一对应的关系，并且对应的结果保持自己的良序关系，那么就称两个集合“同序数”。(顺便说一句，数学里有很多这种通过某种一一对应的变换，来建立两个对象性质相似性的定义，术语经常是以“同”开始的，比如同构，同调，同态……）</p>
+<p>这个同序数听上去有点抽象，举个例子就明白了。比如军棋的棋子，从司令开始，军长，师长，旅长，团长，营长，连长，排长，到工兵。一共10个棋子，按子力大小，从大到小构成了一个良序集。那么自然数从1到10，也构成了一个良序集。显然可以构造从军棋的这些棋子到自然数1到10之间的一一对应，并且这个对应结构是保持了顺序的。所以，可以说这些军棋的棋子与自然数1到10这个集合同序数，经常也简单说成“序数是10”。</p>
+<p><img src="https://static01.imgkr.com/temp/5b3aac6519bd4fe8a0ba70838468e07e.png" class="img-fluid"> （上图：军棋棋子里如果加入地雷的话，就不是良序集了，请大家可以考虑下为什么）</p>
+<p>那明显对任何自然数n，它都是一个序数，因为从1到n，就构成了一个良序集，但这只是有限集的情况。那全体自然数能否构成一个序数呢？你想一下，它也可以啊。因为全体自然数，天生可以比大小，是一个全序集。而且有最小的自然数，不管你认为是0还是1啦，它总有最小元素。所以全体自然数是一个良序集，所以它也是一个序数。我们就得到了第一个无穷序数——全体自然数。</p>
+<p>有没有可能从全体自然数里拿走一些元素，构成一个更小的无穷序数呢？稍微想一下，你会发现这就像“希尔伯特旅馆问题”里描述的一样，从自然数里那走任意多的元素后，只要剩下无穷多个元素，那么它的序数还是与全体自然数同序数。</p>
+<p>那么当目前为止，我们的序数理论还是非常的平淡无奇，与基数理论几乎没有区别。但不要急，激动人心的部分马上就要来了。我们要考虑这么一件事：怎么在自然数集合中增加一个元素，得到一个更大的序数（集合）？</p>
+<p>听上去这好像是不可能的？自然数集合已经有无穷多个元素，再加入一个元素，仍然要保持良序集的性质，那这个元素往哪里加？如之前所述，往中间加没有意义，得到的还是与自然数集合等大小的序数集。 这里，康托做了一个听上去不可能的操作：</p>
+<p>在所有自然数<strong>后面</strong>添加一个元素！</p>
+<p>但自然数有无穷多个，怎么能在所有自然数后面添加一个元素？</p>
+<p>那现在到了本文的第一个也是唯一的难点了。如果你理解了怎么在全体自然数后面添加一个元素，那么你会发现后面的内容就太顺理成章，而且有一种突破天际、冲出宇宙的感觉。那我们就开一下脑洞，看看怎么在全体自然数后面加入一个元素。</p>
+<p>先考虑一下，为什么要在自然数“后面”添加一个元素？原因就在于我们希望得到一个比自然数集大的序数。根据序数的定义，序数必须是一个良序集，可以排序的。我们已经有一串排列好的自然数，要扩大它，那么当然只能在自然数末尾再添加元素。</p>
+<p>但是按照原先自然数自带的比大小的方法，我们显然找不到一个比全体自然数都大的数。所以，这时我们需要改一改序数里的序关系的定义，找另一种比大小的方法，使得我们仍然可以排序下去。</p>
+<p>因为我们一直在讨论集合，集合里天生就有一种很自然的比大小的方法，就是“子集”或者叫“包含”关系。所以我们考虑试着把自然数用集合的方法定义出来（以下有关自然数的定义方法据说是冯诺依曼发明的）。</p>
+<p>一开始，最小的集合是空集，我们先把0就定义为空集。即：<img src="https://latex.codecogs.com/png.latex?(0:=%5Cvarnothing)"></p>
+<p>1的话，我们就定义为有一个元素的集合，这个元素就是0，这是不是很自然？即：<img src="https://latex.codecogs.com/png.latex?(1:=%7B%20%5Cvarnothing%20%7D=%7B0%7D)"></p>
+<p>那找规律题来了，有了以上关于0和1的定义，你怎么定义2？你可能认为2就是以1为元素的集合。这不是不行，但在今天的情形下不太合适。因为如此一来，3就是以2为元素的集合。你会发现1和3谁都不是谁的子集，不能比大小了，但我们需要的序关系是全序的，必须任意两个元素都能比大小，所以这样定义不合适。</p>
+<p>但稍微改进一下，我们定义2就是以0和1为元素的集合就可以了，即</p>
+<p><img src="https://latex.codecogs.com/png.latex?(2:=%7B0,1%7D)"></p>
+<p>那么，<img src="https://latex.codecogs.com/png.latex?(3:=%7B0,1,2%7D)">。以此类推，自然数n就是以0到n-1，有n个元素的集合，即：</p>
+<p><img src="https://latex.codecogs.com/png.latex?n:=%7B0,1,2,%20%5Cldots%20n-1%7D"></p>
+<p>如此定义自然数后，再结合“子集”关系，全体自然数仍然是一个良序集，符合序数的条件。</p>
+<p>那现在我们就可以考虑在自然数集的最后面再加入一个元素了。其实还是一道找规律题，根据之前构造自然数的规律，你会发现每个自然数都可以这样构造：</p>
+<p>把前一个自然数自身作为一个元素加入到自身的集合中。</p>
+<p>那么我们现在就问：如果把自然数集合本身作为一个元素加入到自然数集合中，会得到啥？通常我们把自然数集合记作N，但是在序数语境中，我们经常把自然数集合记作 <img src="https://latex.codecogs.com/png.latex?(%5Comega)">：</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Comega:=%7B0,1,2,3,4,%20%5Cldots,%20n%20%5Cldots%7D"></p>
+<p>那么将<img src="https://latex.codecogs.com/png.latex?(%5Comega)">加入自身所得集合就是:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%7B0,1,2,3,4,%5Cldots%20n,%20%5Cldots%20%5Comega%20%7D"></p>
+<p>这个集合是良序集吗？它是！</p>
+<p>因为其中任何两个元素都可以比较，而且<img src="https://latex.codecogs.com/png.latex?(%5Comega)">包含所有其他元素，其他所有元素都是<img src="https://latex.codecogs.com/png.latex?(%5Comega)">的子集，这个<img src="https://latex.codecogs.com/png.latex?(%5Comega)">在排序时应该排在最后！因此，我们确实在所有自然数的末尾添加了一个元素！</p>
+<p><img src="https://static01.imgkr.com/temp/216887435e78430e833bdb0eaeb97ca9.png" class="img-fluid"> （序数序列从0到<img src="https://latex.codecogs.com/png.latex?(%5Comega%5E%7B%5Comega%7D)">的一个螺旋生成图示）</p>
+<p>这样太棒了，我们得到一个比全体自然数还大的序数！那这个序数我们如何命名呢？很自然的，你发现把它命名成<img src="https://latex.codecogs.com/png.latex?(%5Comega%20+1)">是最贴切了。当然，这里还我还留个思考题，如何证明<img src="https://latex.codecogs.com/png.latex?(%5Comega%20+1)">与<img src="https://latex.codecogs.com/png.latex?(%5Comega)">是不同的序数呢？也就是证明<img src="https://latex.codecogs.com/png.latex?(%5Comega%20+1)">与自然数集之间不可能存在一种保持次序关系的一一对应。这个留给各位思考。</p>
+<p>有了<img src="https://latex.codecogs.com/png.latex?(%5Comega%20+1)">后，之后的推理就可以大大加速了。你当然可以把<img src="https://latex.codecogs.com/png.latex?(%5Comega%20+1)">加入自身，那就得到了<img src="https://latex.codecogs.com/png.latex?(%5Comega%20+2)">。<img src="https://latex.codecogs.com/png.latex?(%5Comega%20+2)">加入自身，就得到<img src="https://latex.codecogs.com/png.latex?(%5Comega%20+3)">。</p>
+<p>那么以此类推，会不会有<img src="https://latex.codecogs.com/png.latex?(%5Comega%20+%5Comega)">呢？当然可以啊？<img src="https://latex.codecogs.com/png.latex?(%5Comega%20+%5Comega)">就是<img src="https://latex.codecogs.com/png.latex?%5Comega%20+1+1+%5Cldots">，加了无穷多次之后的一个结果。那么对<img src="https://latex.codecogs.com/png.latex?(%5Comega%20+%5Comega)">，我们自然就叫它<img src="https://latex.codecogs.com/png.latex?(2%5Comega)">。</p>
+<p>但是要注意，跟之前的加法情况类似，序数集也没有乘法交换律。<img src="https://latex.codecogs.com/png.latex?(2%5Ctimes%20%5Comega)">其实等于是2+2+…..，加了<img src="https://latex.codecogs.com/png.latex?(%5Comega)">次，其结果还是<img src="https://latex.codecogs.com/png.latex?(%5Comega)">；而<img src="https://latex.codecogs.com/png.latex?(%5Comega%20%5Ctimes%202=%5Comega%20+%20%5Comega)">，真的是另一个序数。这一点还是请各位自行验证。</p>
+<p>为了书写简便，我一下还是把<img src="https://latex.codecogs.com/png.latex?(%5Comega%20+%20%5Comega)">叫做<img src="https://latex.codecogs.com/png.latex?(2%5Comega)">。但你要知道它不等于<img src="https://latex.codecogs.com/png.latex?(2%5Ctimes%5Comega)">。那么<img src="https://latex.codecogs.com/png.latex?(2%5Comega)">之后，我们当然还可以有<img src="https://latex.codecogs.com/png.latex?(2%5Comega+1)">, <img src="https://latex.codecogs.com/png.latex?(2%5Comega+2)">, <img src="https://latex.codecogs.com/png.latex?(2%5Comega+3)">等等，如此到了<img src="https://latex.codecogs.com/png.latex?(2%5Comega%20+%20%5Comega)">之后，我们就得到了<img src="https://latex.codecogs.com/png.latex?(3%5Comega)">。</p>
+<p>现在我们进一步加速了，得到<img src="https://latex.codecogs.com/png.latex?(3%5Comega)">之后，当然有<img src="https://latex.codecogs.com/png.latex?(4%5Comega)">, <img src="https://latex.codecogs.com/png.latex?(5%5Comega)">。顺理成章，我们就会得到 <img src="https://latex.codecogs.com/png.latex?(%5Comega%20%5Ctimes%20%5Comega)">，这个序数。对<img src="https://latex.codecogs.com/png.latex?(%5Comega%20%5Ctimes%20%5Comega)">你会怎么称呼它呢？当然是<img src="https://latex.codecogs.com/png.latex?(%5Comega%20%5E%7B2%7D)">嘛。那么继续“顺理成章”，我们会得到<img src="https://latex.codecogs.com/png.latex?(%5Comega%20%5E%7B3%7D)">, <img src="https://latex.codecogs.com/png.latex?(%5Comega%20%5E%7B4%7D)">等等。</p>
+<p>这里，事情听上去已经有点疯狂了，但远远没有结束。我们有了<img src="https://latex.codecogs.com/png.latex?(%5Comega%20%5E%7B3%7D)">, <img src="https://latex.codecogs.com/png.latex?(%5Comega%20%5E%7B4%7D)">等等之后，我们就会想到会有<img src="https://latex.codecogs.com/png.latex?(%5Comega%20%5E%7B%5Comega%7D)">这个序数。</p>
+<p>有了<img src="https://latex.codecogs.com/png.latex?(%5Comega%20%5E%7B%5Comega%7D)">这个序数后，你会发现我们可以有<img src="https://latex.codecogs.com/png.latex?(%5Comega%20%5E%7B2%5Comega%7D)">，<img src="https://latex.codecogs.com/png.latex?(%5Comega%20%5E%7B3%5Comega%7D)">，<img src="https://latex.codecogs.com/png.latex?(%5Comega%20%5E%7B4%5Comega%7D)">等等，当然，这一切不妨碍存在<img src="https://latex.codecogs.com/png.latex?(%5Comega%20%5E%7B%5Comega%20%5E%7B%5Comega%7D%7D)">序数。</p>
+<p><img src="https://latex.codecogs.com/png.latex?(%5Comega%20%5E%7B%5Comega%20%5E%7B%5Comega%7D%7D)">可以的话，<img src="https://latex.codecogs.com/png.latex?(%5Comega%20%5E%7B%5Comega%20%5E%7B%5Comega%5E%7B%5Comega%7D%7D%7D)">，<img src="https://latex.codecogs.com/png.latex?(%5Comega%20%5E%7B%5Comega%20%5E%7B%5Comega%5E%7B%5Comega%5E%7B%5Comega%7D%7D%7D%7D)">等等当然都可以。</p>
+<p>所以，我们就会……来到了<img src="https://latex.codecogs.com/png.latex?(%5Comega)">层指数，我们得到了这样一个序数：<img src="https://latex.codecogs.com/png.latex?(%5Comega%20%5E%7B%5Comega%20%5E%7B%5Comega%5E%7B.%5E%7B.%5E%7B.%7D%7D%7D%7D%7D)">，一共<img src="https://latex.codecogs.com/png.latex?(%5Comega)">层，有没有比这个序数更大的序数？说老实话，我写这句话的时候已经有一种问：“宇宙的外面还有什么？”的感觉。</p>
+<p>现在的情况是，对<img src="https://latex.codecogs.com/png.latex?(%5Comega%20%5E%7B%5Comega%20%5E%7B%5Comega%5E%7B.%5E%7B.%5E%7B.%7D%7D%7D%7D%7D)">这个序数，一个情况是你对它再加<img src="https://latex.codecogs.com/png.latex?(%5Comega)">，乘<img src="https://latex.codecogs.com/png.latex?(%5Comega)">，叠加更多层<img src="https://latex.codecogs.com/png.latex?(%5Comega)">的指数都没有太大意义了，无法对其有效扩大。那么还能对它扩大吗？</p>
+<p>诡异的是，仍然可以。数学家的处理方法有点偷懒，他们就直接定义了一个符号<img src="https://latex.codecogs.com/png.latex?(%5Cepsilon_0)">，来表示这样一个序数。并且，通过观察这个序数的形式，我们知道这个<img src="https://latex.codecogs.com/png.latex?(%5Cepsilon_0)">有一个性质，即<img src="https://latex.codecogs.com/png.latex?(%5Comega%5E%7B%5Cepsilon_0%7D=%5Cepsilon_0)">，也就是说<img src="https://latex.codecogs.com/png.latex?(%5Comega)">的指数叠加已经无法突破<img src="https://latex.codecogs.com/png.latex?(%5Cepsilon_0)">的牢笼了，这个性质就被用作<img src="https://latex.codecogs.com/png.latex?(%5Cepsilon_0)">的定义(准确的说<img src="https://latex.codecogs.com/png.latex?(%5Cepsilon_0)">是符合这个性质的最小序数)。</p>
+<p>有了<img src="https://latex.codecogs.com/png.latex?(%5Cepsilon_0)">之后，序数叠加游戏就像重置了，又可以重新开始了。这里，可以说游戏进入了第三阶段（第一阶段是有限序数，即自然数，第二阶段是从<img src="https://latex.codecogs.com/png.latex?(%5Comega)">开始，到<img src="https://latex.codecogs.com/png.latex?(%5Cepsilon_0)">），此时有效扩大序数，需要采取一些其他方法。接下来的游戏我就不一一叙述了，因为这个扩大序数的游戏是无穷无尽的。</p>
+<p>那总结一下无穷序数的构造过程和主要性质：</p>
+<ol>
+<li>
+无穷序数可以理解成一个这样的游戏：从空集开始，在后面写更多的集合，要求是每一个集合都以之前所有的集合为其元素。那么这些集合都是有穷序数。
+</li>
+<li>
+这个游戏的第一个奇点是：可以定义一个序数，它包含所有有穷的序数，这个序数就叫<img src="https://latex.codecogs.com/png.latex?(%5Comega)">，它是一个无穷序数。以这个无穷序数为起点，你可以继续这个游戏。
+</li>
+<li>
+继续这个游戏到下一个奇点：可以定义一个序数<img src="https://latex.codecogs.com/png.latex?(%5Cepsilon_0)">，它使得<img src="https://latex.codecogs.com/png.latex?(%5Comega%5E%7B%5Cepsilon_0%7D=%5Cepsilon_0)">。从<img src="https://latex.codecogs.com/png.latex?(%5Cepsilon_0)">开始，继续这个游戏。可怕的是，这个游戏可以无穷无尽地继续下去。
+</li>
+<li>
+序数的最重要性质就是，它们本身都是良序集合，并且所有序数之间也有良序关系。即它们互相之间都有包含关系，并且最小的序数就是空集。
+</li>
+</ol>
+<p>有意思的是，序数不只是这样一套集合上的游戏，它对许多命题的证明有帮助。一个直观的印象就是序数的粒度要比基数精细的多。本文所讨论的所有序数，其大小还都是可数的，我们还远没到达不可数序数那一层。所以可数集范围内，就有那么多序数。这就好比一把尺子，它的粒度精细很多，就会变得很有用。另外，良序性本身也是很有用的，否则也不会叫它“良序”。后面几期节目中我会跟大家讲一些序数理论的应用。</p>
+<p>今天，大老李教了大家，怎么数数，数到无穷大之后。这实在是一次脑洞大开，冲出天际的过程。</p>
+<p>参考链接：</p>
+<p>https://zh.wikipedia.org/wiki/%E5%BA%8F%E6%95%B0</p>
+<p>https://www.cut-the-knot.org/WhatIs/Infinity/Ordinals.shtml</p>
+<p>https://zhuanlan.zhihu.com/p/98566798</p>
+<p>https://en.wikipedia.org/wiki/Ordinal_number</p>
+
+
+
+ ]]></description>
+  <category>音频讲稿</category>
+  <guid>https://your-website-url.example.com/posts/2021-02-26-数到无穷大之后-无穷序数简介.html</guid>
+  <pubDate>Fri, 26 Feb 2021 08:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>

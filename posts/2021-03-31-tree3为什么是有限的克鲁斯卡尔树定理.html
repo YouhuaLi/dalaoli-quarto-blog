@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2021-03-31">
+
+<title>TREE(3)为什么是有限的？——克鲁斯卡尔树定理 – dalaoli_quarto_blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">dalaoli_quarto_blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">TREE(3)为什么是有限的？——克鲁斯卡尔树定理</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">音频讲稿</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 31, 2021</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>本文接上一期有关<a href="https://dalaoliblog.wordpress.com/2021/03/15/%e8%b2%8c%e4%bc%bc%e6%97%a0%e9%99%90%e7%9a%84%e6%9c%89%e9%99%90-%e8%89%af%e6%8b%9f%e5%ba%8fwell-quasi-orders%e5%85%b3%e7%b3%bb/">良拟序</a>的话题，聊聊<a href="https://www.bilibili.com/video/av50806444/">TREE(3)</a>为什么是有限的。</p>
+<p>关于这个问题，我想从解答上期节目开头的那个”写数列“游戏开始：</p>
+<hr class="wp-block-separator">
+<p>请你玩玩看如下的这个写数列游戏，游戏目标是写出尽可能长的数字序列。但要符合以下规则：</p>
+<ol>
+<li>
+数列的第n项，最多有n位。
+</li>
+<li>
+数列左边的项，不能“嵌入”所有其右边的项。“嵌入”的定义如下：
+</li>
+</ol>
+<p>有数字字符串a和b，b的长度大于等于字符a，且存在以下情况：可以从b中删除若干字符，留下与a相等长度的字符串，留下的字符前后位置关系保持不变，并记作b’。如果a比b’按位比较，每一位数字上，a的数字都小于等于b’上的数字，称a可以“嵌入”b。比如：</p>
+<p>a=“2” 可以嵌入 b=“3”，其中取b’=‘3’</p>
+<p>a=“321” 可以嵌入 b=“13312”，其中取b’=‘332’</p>
+<p>a=“132” 不可以嵌入 b=“2131”，因为b中找不到符合要求的3个字符的子串。</p>
+<p>以上是游戏的定义。当用n个数字玩以上游戏，可以写出的数列的最长长度，记作s(n)。</p>
+<p>当用一个数字“1”玩这个游戏时：</p>
+<p>第一项为：1，再也无法写出第二项。因此s(1)=1。</p>
+<p>当用两个数字“1”和”2”玩这个游戏时：</p>
+<p>第一项可以写“2”，第二项可以写“1”。如此再也无法写出第三项。但如果第二项写“11“，则还可以写第三项”1“。整个数列是：</p>
+<p>2, 11, 1。</p>
+<p>所以s(2)=3。</p>
+<p>请简单试试写写s(3)的前几项，重点思考两个问题：</p>
+<p>是否对任意大的n，s(n)总是有限的？另外，如果去掉游戏中第一个规则，数列长度是否总是有限的？</p>
+<hr class="wp-block-separator">
+<p>熟悉TREE(3)的读者，一定能发现这道题的描述与TREE(3)非常像，你大概也能猜到了，在这个写数列游戏中，无论用多少个符号写，最终的数列长度总是有限的。我先来证明这一点，证明的方法就是用上一期讲的“良拟序”关系。</p>
+<p>“良拟序”有两个特性：</p>
+<p>没有”无穷递降链“（逐渐减小的序列）和无穷”不可比较链“（任意两项都不可比较的序列）。而我们的游戏规则里的嵌入，就好比是一种“小于等于”关系，那么游戏规则是说，不能写出一个比之前元素大的字符串，但可以写更小的或者不可比的。</p>
+<p>在游戏中，如果能写出无穷长的序列，那数列中必然存在一个无穷递降链或者无穷不可比子序列，这两个情况都是与良拟序集性质矛盾的。</p>
+<p>所以只要证明，那个“嵌入”是一个良拟序关系，那么就证明了，无论如何都无法写出无穷长的序列。</p>
+<p>首先，这个“写字符串”游戏中的“嵌入”显然是一个拟序，也就是满足“自反”、“反对称”和“传递性”，请各位自行验证。那么问题就是，怎么证明它是一个“良拟序”（w.q.o.），也就是证明其中不存在无穷递降链和无穷不可比链。</p>
+<p>对这个写字符串游戏来说，不存在无穷递降链是比较明显的。因为要递降的话，总的字符串长度迟早要开始递减，这样总是有尽头的。</p>
+<p>证明其中不存在无穷不可比链的情况就比较奥妙了，需要些技巧。其实它有一个相当精巧的证明，以下证明来自Graham Higman 1952年的证明（稍改写、翻译和简化）：</p>
+<hr class="wp-block-separator">
+<p>以下讨论都在无穷字符串集合上，先定义以下概念：</p>
+<p>好序列：一个无穷字符串序列，存在左边某项可以“嵌入”（以下有时也写作<span class="math inline">\((\leq)\)</span>）右边某项。</p>
+<p>坏序列：不是“好序列”的序列。</p>
+<p>最小坏序列（带递归的定义）：设<span class="math inline">\((t_1)\)</span>是所有坏序列中，某个首项长度最短的字符串, 作为某最小坏序列的首项。则当某个最小坏序列的前n项是 <span class="math inline">\((t_1)\)</span>, <span class="math inline">\((t_2)\)</span>, <span class="math inline">\((t_3)\)</span>,… <span class="math inline">\((t_n)\)</span>时，考察所有以<span class="math inline">\((t_1)\)</span>, <span class="math inline">\((t_2)\)</span>, <span class="math inline">\((t_3)\)</span>,… <span class="math inline">\((t_n)\)</span>开头的坏序列，取某个长度最短的项作为<span class="math inline">\((t_{n+1})\)</span>。如此所得的坏序列t称为“最小坏序列”。</p>
+<p>现在用反证法证明“写字符串”游戏中的“嵌入”是一个“良拟序”。设这个“嵌入”不是“良拟序”，则其中必然存在某个最小坏序列：</p>
+<p><span class="math inline">\((t_1)\)</span>, <span class="math inline">\((t_2)\)</span>, <span class="math inline">\((t_3)\)</span>,… <span class="math inline">\((t_n)\)</span>…</p>
+<p>记<span class="math inline">\((t_i)\)</span>最左边的<strong>字符</strong>是<span class="math inline">\((a_i)\)</span>，余下部分的字符串是<span class="math inline">\((s_i)\)</span>：</p>
+<p><span class="math inline">\((t_i=a_is_i)\)</span></p>
+<p>则<span class="math inline">\((a_1)\)</span>, <span class="math inline">\((a_2)\)</span>,…,<span class="math inline">\((a_n)\)</span>,…构成了一个无穷字符序列a，<span class="math inline">\((s_1)\)</span>, <span class="math inline">\((s_2)\)</span>,…,<span class="math inline">\((s_n)\)</span>,…也构成了一个无穷字符串序列s，</p>
+<p>因为字符之间的<span class="math inline">\((\leq)\)</span>关系是一个良拟序，所以a序列中必存在一个无穷递增子序列（<a href="https://dalaoliblog.wordpress.com/2021/03/15/%e8%b2%8c%e4%bc%bc%e6%97%a0%e9%99%90%e7%9a%84%e6%9c%89%e9%99%90-%e8%89%af%e6%8b%9f%e5%ba%8fwell-quasi-orders%e5%85%b3%e7%b3%bb/">上一篇文章</a>中提到过：良拟序集中的每个无穷序列中，必有”无穷递增子序列”），即存在序列a’：</p>
+<p><span class="math inline">\((a^{'}=(a_{f(i)})_{i\geq 1})\)</span></p>
+<p>使得其中每一对相邻项，左项小于等于右项：</p>
+<p><span class="math inline">\((a_{f(i)}\leq a_{f(i+1)})\)</span></p>
+<p>则我们证明<span class="math inline">\((s^{'}=(s_{f(i)})_{i\geq 1})\)</span> 是一个好序列。用反证法， 设s’是一个坏序列，有两种情况：</p>
+<p><span class="math inline">\((f(1)=1)\)</span>， 但<span class="math inline">\((s_1)\)</span>的长度小于<span class="math inline">\((t_1)\)</span>，这与t是最小坏序列矛盾。</p>
+<p><span class="math inline">\((f(1)&gt;1)\)</span>，则<span class="math inline">\((t^{\prime}=\left\langle t_{1}, \ldots, t_{f(1)-1}, s_{f(1)}, s_{f(2)}, \ldots, s_{f(j)}, \ldots\right\rangle)\)</span>也是坏序列(这点比较容易，请自行思考验证)。但如此情况下，<span class="math inline">\((s_{f(1)})\)</span>长度小于<span class="math inline">\((t_{f(1)})\)</span>，这与t是最小坏序列矛盾。</p>
+<p>因此<span class="math inline">\((s^{'}=(s_{f(i)})_{i\geq 1})\)</span> 是一个好序列, 则存在某对整数i,j，使得：</p>
+<p><span class="math inline">\((f(i)\leq f(j))\)</span>且<span class="math inline">\((s_{f(i)}\leq s_{f(j)})\)</span>，又因为a’是递增序列，所以：<span class="math inline">\((a_{f(i)}\leq a_{f(j)})\)</span>，则：</p>
+<p><span class="math inline">\((a_{f(i)}s_{f(i)}\leq a_{f(j)}s_{f(j)})\)</span></p>
+<p>所以，t是一个好序列，这与t是一个坏序列矛盾。</p>
+<hr class="wp-block-separator">
+<p>那么既然不可能写出无穷递降序列和无穷不可比序列，那么这个写字符串游戏的嵌入关系就是一个良拟序关系。那么根据游戏规则，游戏必然在有限步骤内结束，就是这样简单。</p>
+<p>你有没有发现这么一点，以上推理过程中，并没有用到“第n步只能写出n个数字”这个条件，也就是说，去掉这个条件，序列仍然必定在有限步骤内结束！这是让我一开始非常吃惊和难以想象的一点。</p>
+<p>它是为何如此反直觉呢？原因在于，去掉了关于每一项长度的限制后，整个序列的长度其实是可以达到“任意大”，要多大有多大。比如，你希望序列至少有1亿位，那第一项写个1亿位的数字就肯定可以。甚至于第一项写过1亿位之后，很可能整个序列的长度还是可以达到任意大。</p>
+<p>甚至整个序列在写下前若干项后，长度还是可以达到任意大（比如，用2个数字玩，第一个数字写了“2”，突然要求序列长度达到1亿，则可以在第二项写1亿个“1”）。而“任意大”与不能“无穷大”这两点观念本身是有冲突的，所以整个事实是非常反直觉的。</p>
+<p>那现在讲讲为什么TREE(3)是有限的。你大概也猜出来了，那就是TREE(3)游戏中定义的，关于树之间的“嵌入”也是一种良拟序，这句话也就是“克鲁斯卡树定理”（Kruskal’s Tree Theorem）的内容。所以TREE(3)是有限的，就是这么简单。</p>
+<p>TREE(3)游戏中那个“嵌入”，具有自反、反对称和传递性是非常明显的，所以它是拟序。那它为什么是良拟序呢？有很多种证明方法，基本思路就是把树的每个结点打一个标签，那么树之间的“嵌入”其实就是建立标签的“嵌入”，那只要证明这个标签之间的嵌入是一种良拟序关系就可以了。具体过程留给各位思考。</p>
+<p>那么，同样这里有个非常令人吃惊的结论就是，TREE游戏中，“第n棵树中最多只能有n个结点”，去掉这个规则，TREE游戏仍然不能无限的玩下去。那为什么要加入这个规则呢？</p>
+<p>这里面有点历史故事。“克鲁斯卡尔树定理”是克鲁斯卡尔在1960年证明的。其实克鲁斯卡尔树定理后来也衍生出好几个版本，不同版本里关于那个嵌入的定义稍微有点区别，但不管那个版本，要点就是确保那个嵌入的定义是一个“良拟序”。</p>
+<p><img src="https://files.mdnice.com/user/5405/780f1719-9cd6-4515-873e-ed3ff19e264a.png" class="img-fluid"> (Joseph Kruskal，January 29, 1928 – September 19, 2010)</p>
+<p>而我们现在熟悉的那个TREE游戏中的定义，其实是现年73岁的，俄亥俄州立大学教授，哈维·弗里德曼（Harvey Friedman）在1980年代提出的，他把的这个版本的“嵌入”称为克鲁斯卡尔树定理的“小型化”。叫“小型化”是因为，原版的树定理其描述是一个二阶逻辑的命题，而改造后的版本变成了一阶逻辑的，所以变得更为“通俗易懂”，当然还有一些数学上的意义。</p>
+<p><img src="https://files.mdnice.com/user/5405/ddf9dce6-910a-4649-bd1a-ff541649e08f.png" class="img-fluid"> (Harvey Friedman, born 23 September 1948)</p>
+<p>而到2006年前后，弗里德曼又提出了大家熟悉的这个TREE游戏。在游戏中，他加入了结点数量的限制。其原因就是为了让这个TREE游戏从“任意大”变成一个确切的有限的数字。不加入结点数条件的话，这个TREE游戏的长度是任意大，很难让人理解。加入结点数条件后，每个TREE(n)都变成一个确切的有限数字，这使的TREE序列一下子名声大噪，获得了非常好的传播效果，这就是TREE游戏的来龙去脉。</p>
+<p>知道了TREE游戏的来龙去脉，理解另外两个比TREE还大的序列就太容易了，它们就是SSCG序列和SCG序列，它们也都是弗里德曼发明。它们其实就是把TREE游戏中树之间的嵌入，推广到图上。就是两个图，也可以定义嵌入关系，你要做的就是保证这种嵌入是一个良拟序，那么你就可以产生一个大数序列，是不是非常简单？</p>
+<hr class="wp-block-separator">
+<p>simple subcubic graph (SSCG)：有限简单图，其中每个顶点的度数最多为3。SSCG上也可以类似TREE游戏定义一个“嵌入”关系，从而定义SSCG序列。已知：</p>
+<p>SSCG(0) = 2, SSCG(1) = 5</p>
+<p>SSCG(3)远大于 TREE(3) 和 TREE(3)<span class="math inline">\((^{TREE(3)})\)</span></p>
+<p>subcubic graph(SCG)则是从SSCG中去掉“简单图”的限制。</p>
+<hr class="wp-block-separator">
+<p>最后，分析一下我对上期出的那个写字符串思考题的思考。其实这道题是一个开放题，没有现成答案。那道题里的那个“嵌入”定义其实是来自于英国数学家Graham Higman在1952的的一篇论文，他证明了这样一个嵌入是一种“良拟序”。既然是良拟序，那好办了，大老李就直接拿过来，构造了那个写字符串的游戏，并且我们能确信，这个游戏可以在有限步骤能完成。你也能发现这个游戏有点像TREE(3)游戏限制在一条直线上玩。</p>
+<p>以下我用s(n)表示用n个字符玩这个游戏时，最大的序列长度 游戏征答发布后我到现在只收到3个读者来信解答，其中署名金承锦的听众解答最为认真，她手动在Excel表里排列出了s(4)的可能的最长序列，这已经是非常细心的工作了。她也发现s(4)的最终数值是非常大，远超出可以手动解决的程度。那么以下我们来分析下，会发现s(4)的数值也超过了通过简单编程暴力求解的程度。</p>
+<p>用s(n)表示用n个字符玩这个游戏时，可以写出的最长序列长度，那么s(1)=1和s(2)=3是很明显的。求s(3)用手动排会有点麻烦，大老李写了个程序，去求解了一下s(3)。算法就是贪心算法，对每一个数字尽可能写得长，并且从左到右，每个数字尽可能写得大。</p>
+<p>用这个程序求解，得到s(3)=17，就是用3个数字玩这个游戏，可以写出的最长17个数字的数列：</p>
+<p>[‘3’, ‘22’, ‘211’, ‘1121’, ‘11112’, ‘111111’, ‘11111’, ‘1112’, ‘1111’, ‘121’, ‘112’, ‘111’, ‘21’, ‘12’, ‘11’, ‘2’, ‘1’]</p>
+<p>但是用这个程序求解s(4)是等不到答案了，因为这个贪心算法明显效率太低了。只得到以下开头的几项：</p>
+<p>[‘4’, ‘33’, ‘322’, ‘3211’, ‘31121’, ‘311112’, ‘3111111’, ‘22311111’, ‘222231112’, ‘2222231111’, ‘22222223121’, ‘222222223112’, ‘2222222223111’]</p>
+<p>当然，我们可以分析一下s(n)的可能范围。关于s(n)的范围，最重要一点是算出s(n)中的最长的字符串长度，记作。</p>
+<p>关于|max(s(n))|，我有个猜想：</p>
+<p><span class="math inline">\((|max(s(n))| \approx |max(s(n-1))|^2)\)</span></p>
+<p>对s(4)，金承锦排出的|max(s(4))|是48，可能确切结果也就是49或50了。</p>
+<p>另外，我还有一个对s(n)的下界保守估计：</p>
+<p><span class="math inline">\((s(n) &gt; (n-1)^{2^{2^{n-2}}})\)</span></p>
+<p>可以证明<span class="math inline">\((s(4)&gt;3^{20})\)</span></p>
+<p>也非常欢迎有人给出s(n)更加精确的大小估计。</p>
+<p>总结：</p>
+<p>TREE(3)的有限性是“克鲁斯卡尔树定理”的一个简单推论。</p>
+<p>“克鲁斯卡尔树定理”是说TREE游戏中的那个“嵌入”关系，是一种良拟序。</p>
+<p>良拟序有两个性质：没有无穷递降链，没有不穷不可比链。</p>
+<p>根据这两个性质，就自然地导出了TREE游戏必然在有限步骤内结束。</p>
+<p>由此，我们也可以构造一些产生大数序列的游戏，方法就是找到某个无穷集合上的一种良拟序关系，利用良拟序的性质，我们可以非常简单得构造很大，但是有限的数字。</p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/your-website-url\.example\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

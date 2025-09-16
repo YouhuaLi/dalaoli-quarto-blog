@@ -1,0 +1,160 @@
+---
+title: '形形色色的素数 -- 费马小定理和伪素数'
+date: "2019-12-09"
+categories:
+  - "每周一题"
+---
+
+形形色色的素数 – 费马小定理和伪素数
+
+大家好，我是大老李。我准备开一个有关素数（质数）的系列节目。我知道质数相关的内容一直是大家喜闻乐见的，相关内容非常多，也非常深奥，值得一聊。而第一集我们来
+
+“打打假”，聊一聊“伪素数”。伪素数，顾名思义，就是假素数，它们都是合数。但叫它们伪素数，说明它们符合一些素数才有的性质，关于这个性质，我们先要聊一下费马小定理。
+
+费马大定理大家应该很熟悉了，就是<span class="katex--inline"><span class="katex"><span class="katex-mathml">xn+yn=znx^n+y^n=z^n</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.747722em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.858832em;vertical-align:-.19444em;"></span><span class="mord"><span style="margin-right:.03588em;" class="mord mathdefault">y</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.664392em;vertical-align:0;"></span><span class="mord"><span style="margin-right:.04398em;" class="mord mathdefault">z</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span></span></span>在<span class="katex--inline"><span class="katex"><span class="katex-mathml">n≥3n\geq3</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.77194em;vertical-align:-.13597em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">3</span></span></span></span></span>时，没有正整数解这个定理。费马大定理是费马认为他证明了，但其实没有正确证明的一个定理。费马小定理则是他先提出，但同样没有给出证明的一个定理。
+
+![enter image description here](https://upload.wikimedia.org/wikipedia/commons/f/f3/Pierre_de_Fermat.jpg)
+
+（皮埃尔·德·费马（姓氏依发音亦作费尔玛。Pierre de Fermat，1607年－1665年1月12日，法国律师、业余数学家。他在数学上的成就不低于职业数学家，似乎对数论最有兴趣，亦对现代微积分的建立有所贡献。）
+
+费马当时就是这么一个癖好，不断的发现各种命题和公式，但就是不给出证明，而是带些嘲弄般的分发给同时代的数学家，说：你们来证明吧，你们专业的，我业余的。而其中很多命题的证明要等到100多年后的欧拉才给出，包括这个费马小定理。
+
+而后世又发现费马小定理很重要、很有用，所以才对费马如此中多的发现中，挑选出这个命题，命名为“费马小定理”。
+
+而费马小定理其实内容很简单，我觉得完全可以放入中学数学课本中，它的内容是这样的：
+
+如果p是一个素数，则对任意整数a, <span class="katex--inline"><span class="katex"><span class="katex-mathml">ap−aa^p-a</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.747722em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">p</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault">a</span></span></span></span></span>整除p。
+
+另一种常用表述形式是 ：如果a不是p的倍数，则：
+
+<span class="katex--inline"><span class="katex"><span class="katex-mathml">ap−1≡1    （mod  p)a^{p-1} \equiv 1\;\;  （\mod p)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.814108em;vertical-align:0;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mord cjk_fallback">（</span><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:.666667em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:.166667em;"></span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord mathdefault">p</span><span class="mclose">)</span></span></span></span></span>
+
+比如，5是一个素数，那你可以验证下，是不是任意整数的5次方减这个整数，可以整除5。比如<span class="katex--inline"><span class="katex"><span class="katex-mathml">25−2=302^5-2=30</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.897438em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">2</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">3</span><span class="mord">0</span></span></span></span></span>，可以整数5。你还可以验证<span class="katex--inline"><span class="katex"><span class="katex-mathml">35−33^5-3</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.897438em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord">3</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">3</span></span></span></span></span>，<span class="katex--inline"><span class="katex"><span class="katex-mathml">45−44^5-4</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.897438em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord">4</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">4</span></span></span></span></span>等等，都能整除5。
+
+关于这个命题的证明很简单，写出来甚至比勾股定理的证明还简短，请各位自行上网搜索，当然更好的方法是自己思考下如何证明，看看自己的数学思维能否比肩费马和欧拉。无论如何，这个问题完全可以进入中学课本。唯一难点在于，肯定有学生会问：用这个定理能干嘛？
+
+这个问题很好，这是启发思维的好机会。可以看到原命题很显然是关于质数的一个性质，那么你会想到，如果p是合数，那么是否<span class="katex--inline"><span class="katex"><span class="katex-mathml">ap−aa^p-a</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.747722em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">p</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault">a</span></span></span></span></span>就不能整除p呢？也就是考虑费马小定理的逆命题。这里有一道很好的思考题是，请你说出费马小定理的逆否命题和逆命题。
+
+费马小定理的逆否命题是：
+
+对整数p，如果存在某个整数a，使得<span class="katex--inline"><span class="katex"><span class="katex-mathml">ap−aa^p-a</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.747722em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">p</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault">a</span></span></span></span></span>不能整除p，则p是合数。
+
+我们知道一个命题成立，它的逆否命题必然成立，所以，以上这个命题是真命题。
+
+而费马小定理的逆命题是：
+
+对整数p，和**所有**整数a，有<span class="katex--inline"><span class="katex"><span class="katex-mathml">ap−aa^p-a</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.747722em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">p</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault">a</span></span></span></span></span>能整除p，则p是一个质数。
+
+如果这个逆命题成立，那么太好了，我们得到了一个对一个整数是否为质数的判定定理。虽然，这个判定要考虑所有的整数底数a，有点麻烦，但是质数的判定定理几乎没有，所以有一个就很珍贵了。但遗憾的是，这个逆命题并不成立。
+
+也就是，存在一个合数q，对所有整数a，仍然有<span class="katex--inline"><span class="katex"><span class="katex-mathml">aq−aa^q-a</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.747722em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span style="margin-right:.03588em;" class="mord mathdefault mtight">q</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault">a</span></span></span></span></span>能整除这个q。但要找到这样一个合数并不容易。比如，你就取a=2，然后你一个个尝试合数，你会发现<span class="katex--inline"><span class="katex"><span class="katex-mathml">24−22^4-2</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.897438em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">2</span></span></span></span></span>不能整除4，<span class="katex--inline"><span class="katex"><span class="katex-mathml">26−22^6-2</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.897438em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">2</span></span></span></span></span>不能整除6, <span class="katex--inline"><span class="katex"><span class="katex-mathml">28−22^8-2</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.897438em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">8</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">2</span></span></span></span></span>不能整除8等等。
+
+你需要尝试到341时，能发现<span class="katex--inline"><span class="katex"><span class="katex-mathml">2341−22^{341}-2</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.897438em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">4</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">2</span></span></span></span></span>能整除341，而<span class="katex--inline"><span class="katex"><span class="katex-mathml">341=11×31341=11\times 31</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">3</span><span class="mord">4</span><span class="mord">1</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">1</span><span class="mord">1</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">3</span><span class="mord">1</span></span></span></span></span>，是一个合数。这是一个很重要也让人遗憾的发现。但是仅凭这点，341并不能作为费马小定理逆命题的反例，因为费马小定理的逆命题要求对任何的底数，只考察2为底数是不够的。
+
+![enter image description here](https://pic2.zhimg.com/80/v2-d773592df03c9a0bf0644ee7e222ef0d_hd.jpg)
+
+（前50个以2为底的费马伪素数）
+
+而这里，仅考虑2为底数的情况下，341确实可以成为一个名为”中国猜想”的命题的反例。“中国猜想”是这样说的：一个整数p为质数，当且仅当<span class="katex--inline"><span class="katex"><span class="katex-mathml">2p−22^p-2</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.747722em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">p</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">2</span></span></span></span></span>整除p。它显然是费马小定理的一个特例。
+
+它的名称确切来历仍然是个迷，但大致故事是这样：清代数学家李善兰和他的同僚聊天时提出了这么一个猜想。但不久后李善兰发现，原来西方早有人证明了这个猜想的正命题，就是费马小定理。而它的逆命题也有人找到了它的一个反例，就是341。所以，李善兰很快收回了这个猜想。但不知怎么，1882年，清末的另一位数学家华蘅芳在他的书中，把这个命题作为真命题传播了出来。又到1898年前后，西方有人在某本书中声称中国人在孔子时代就提出了这个猜想，导致这个命题就被称为“中国猜想”。
+
+![enter image description here](https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Li_Shanlan.jpg/600px-Li_Shanlan.jpg)
+
+（李善兰（1810年－1882年），字壬叔，号秋纫，中国清朝数学家。浙江省杭州府海宁县人。为清代数学史上的杰出代表，中国近代数学的先驱。通诗文，曾帮基督教传教士翻译圣经。 ）
+
+那现在341确实是中国猜想的反例，那它是不是费马小定理的反例呢？也就是：是否对任意的底数a，<span class="katex--inline"><span class="katex"><span class="katex-mathml">a341−aa^{341}-a</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.897438em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">4</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault">a</span></span></span></span></span>都能整除341？很可惜不是，比如<span class="katex--inline"><span class="katex"><span class="katex-mathml">3341−33^{341}-3</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.897438em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord">3</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">4</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">3</span></span></span></span></span>就不能整除341。
+
+但也不是底数越大，这种反例就越稀有，越难找。比如以3为底的话，<span class="katex--inline"><span class="katex"><span class="katex-mathml">391−33^{91}-3</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.897438em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord">3</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">9</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">3</span></span></span></span></span>就可以被91整数，而91是个合数。
+
+![enter image description here](https://pic4.zhimg.com/80/v2-dc0c35d3e29ccc81d11fbe40c832fb33_hd.jpg)
+
+（以1到200为底的，最小的费马伪素数表）
+
+而真正的费马小定理逆命题的反例，就要求对任意底数都要符合以上性质。这个真正的反例要等到1910年，才由美国数学家卡迈克尔证明和发现，它是561。此时已经距离费马提出费马小定理已经有将近300年时间。
+
+这里其实能看出费马的厉害之处。当他提出费马小定理的时候，他可没说这个命题逆定理是正确的，说明他绝对是考虑过这个命题的逆命题的。虽然这个逆命题看上去很像真的，以致于它的反例要等300年才出现，而且人们也很希望这个逆命题的是真的。但费马没说，说明他意识到这个反例存在的可能性，这就是他的过人之处。
+
+另外，卡迈克尔自己计算出了前15个类似的反例。这些数字后来被称为卡迈克尔数。并且卡迈克尔猜想，存在无穷多个卡迈克尔数。1954年，埃尔德什给出了一个构造大的卡迈克尔数的方法。又过了40年，1994年，才由William Alford等三位数学家证明了存在无穷多个卡迈克尔数。
+
+<code>前几个卡迈克尔数及其因子分解：
+561  = 3x11x17
+1105 = 5×13×17 
+1729 = 7×13×19 
+2465 = 5×17×29 
+2821 = 7×13×31
+6601 = 7×23×41 
+8911 = 7×19×67 
+</code></pre>
+
+好了，总结以上情况就是，有些合数在特定的底数a的情况下，能符合费马小定理性质，后世对这种合数称为“以a为底的费马伪素数”，比如341，就是最小的，以2为底的费马伪素数。
+
+而有些合数则对所有底数都符合费马小定理，它们就被称为绝对伪素数，或卡迈克尔数。
+
+现在，把费马小定理作为素数判定定理的希望是破灭了，但有无可能，如果对费马小定理进行某种加强，使得素数仍然符合某种性质，但是合数不符合呢？数学家还真做了不少尝试。
+
+欧拉就对费马小定理做了一个扩展，（又) 被称为“欧拉定理”：
+
+<blockquote>
+费马小定理是欧拉定理的一个特殊情况：如果n和a的最大公因数是1，那么
+
+<span class="katex--inline"><span class="katex"><span class="katex-mathml">aϕ(n)≡1    (mod  n)a^{\phi(n)} \equiv 1 \;\;(\mod n)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.888em;vertical-align:0;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.888em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">ϕ</span><span class="mopen mtight">(</span><span class="mord mathdefault mtight">n</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mopen">(</span><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:.666667em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:.166667em;"></span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></span>
+
+这里φ(n)是欧拉函数。欧拉函数的值是所有小于或等于n的正整数中与n互质的数的个数。假如n是一个素数（质数），则φ(n) = n-1，即费马小定理。
+</blockquote>
+
+但情况是，全体素数都符合这个加强版的费马小定理，但是仍然有少量合数同样符合这个定理给出的性质，那些合数就被称为欧拉伪素数。但是欧拉伪素数就比费马伪素数数量少多了。
+
+总结一下，以下定理是从“弱”到“强”的排序，后面的命题都能推出前面的命题，它们是：
+
+中国猜想的正命题，费马小定理，欧拉定理。
+
+而它们的逆命题都不成立，推翻它们的逆命题的合数分别被称为：
+
+以2为底的费马伪素数，卡迈克尔数，欧拉伪素数。
+
+这些合数可以认为是对质数从“低仿”到“高仿”的一个排序。
+
+另一方面，虽然人们对找到一个素数的简单判定定理的希望破灭了，但是以上定理还是很有用的，因为毕竟例外的情况是少数。比如一万以内的卡迈克尔数也就只有7个，卡迈克尔也给出过卡迈克尔数在前n个自然数中的数量上限。
+
+如果用c(n)表示前n个自然数中，卡迈克尔数的数量，则有如下上下限：
+
+<span class="katex--inline"><span class="katex"><span class="katex-mathml">n2/7<c(n)<nexp⁡(−ln⁡nln⁡ln⁡ln⁡nln⁡ln⁡n)n^{2/7}<c(n)<n\exp(-\frac{\ln n \ln \ln \ln  n}{\ln\ln n})</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.9271em;vertical-align:-.0391em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.888em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mord mtight">/</span><span class="mord mtight">7</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel"><</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord mathdefault">c</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel"><</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1.22511em;vertical-align:-.345em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mop">exp</span><span class="mopen">(</span><span class="mord">−</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.880108em;"><span class="" style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight">ln</span><span class="mspace mtight" style="margin-right:.195167em;"></span><span class="mop mtight">ln</span><span class="mspace mtight" style="margin-right:.195167em;"></span><span class="mord mathdefault mtight">n</span></span></span></span><span class="" style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span class="" style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight">ln</span><span class="mspace mtight" style="margin-right:.195167em;"></span><span class="mord mathdefault mtight">n</span><span class="mspace mtight" style="margin-right:.195167em;"></span><span class="mop mtight">ln</span><span class="mspace mtight" style="margin-right:.195167em;"></span><span class="mop mtight">ln</span><span class="mspace mtight" style="margin-right:.195167em;"></span><span class="mop mtight">ln</span><span class="mspace mtight" style="margin-right:.195167em;"></span><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.345em;"><span class=""></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span></span></span></span></span>
+
+如果把这个数量上限除以n，作为卡迈克尔数的密度上限，这个密度上限在n趋向于无穷大时，是趋向于0的，所以可以说“几乎所有合数都不是卡迈克尔数”。在检验素数的时候，只要提防这些伪素数就好了。
+
+以上简单介绍了一下费马小定理和伪素数的概念。可以看出，素数确实是数字界中最神秘的一个存在。好不容易，人们找出了一个比较简单的素数的性质定理 ：费马小定理，而偏偏有些合数又过来捣乱，使得它无法作为素数的判定定理。
+
+而费马小定理本身表述非常简单，但含义很深刻，值得玩味。
+
+聊过伪素数，下一期，我们可以聊聊真素数里的强者，强素数。让我们下期再见。
+
+<hr>
+
+参考链接：
+
+<a href="https://zh.wikipedia.org/wiki/%E6%AC%A7%E6%8B%89%E4%BC%AA%E7%B4%A0%E6%95%B0">https://zh.wikipedia.org/wiki/欧拉伪素数</a>
+
+<a href="http://mathworld.wolfram.com/FermatsLittleTheorem.html">http://mathworld.wolfram.com/FermatsLittleTheorem.html</a>
+
+<a href="https://zh.wikipedia.org/wiki/%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86">https://zh.wikipedia.org/wiki/%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86</a>
+
+<a href="http://mathworld.wolfram.com/FermatsLittleTheorem.html">http://mathworld.wolfram.com/FermatsLittleTheorem.html</a>
+
+<a href="http://mathworld.wolfram.com/Pseudoprime.html">http://mathworld.wolfram.com/Pseudoprime.html</a>
+
+<a href="https://zh.wikipedia.org/zh-cn/%E5%8D%A1%E9%82%81%E5%85%8B%E7%88%BE%E6%95%B8">https://zh.wikipedia.org/zh-cn/%E5%8D%A1%E9%82%81%E5%85%8B%E7%88%BE%E6%95%B8</a>
+
+<a href="http://mathworld.wolfram.com/CarmichaelNumber.html">http://mathworld.wolfram.com/CarmichaelNumber.html</a>
+
+<hr>
+
+喜马拉雅：<a href="https://www.ximalaya.com/keji/6310606/">https://www.ximalaya.com/keji/6310606/</a>
+
+微信关注：dalaoli_shuxue
+
+B站: <a href="https://space.bilibili.com/423722633">https://space.bilibili.com/423722633</a>
+
+知乎：<a href="https://zhuanlan/">https://zhuanlan</a>.<a href="http://zhihu.com/dalaoli-shuxue/">zhihu.com/dalaoli-shuxue/</a>
+
+电邮：dalaoliliaoshuxue@gmail.com

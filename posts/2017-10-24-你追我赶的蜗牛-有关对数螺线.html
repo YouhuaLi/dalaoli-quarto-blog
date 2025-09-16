@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2017-10-24">
+
+<title>你追我赶的蜗牛–有关对数螺线 – dalaoli_quarto_blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">dalaoli_quarto_blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">你追我赶的蜗牛–有关对数螺线</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Uncategorized</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 24, 2017</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>大家好，我是大老李。今天的节目是过去节目的补充。之前我有一集关于三体问题的节目，在节目最后出了道题，是有关四只你追我赶蜗牛。题目是这样：在一个正方形的四个顶点上各有一只蜗牛，每只蜗牛都按逆时针方向看着另一只蜗牛。然后某一时刻，一声令下，所有蜗牛开始以相同的速度匀速率朝自己看到的那只蜗牛爬去，并且爬的过程中，能随时调整方向，始终保持朝目标爬行。你可以想见它们最终会在正方形的中央撞在一起。现在已知正方形边长和蜗牛的爬行速度，请问你最终它们花了多久会撞在一起，撞在一起时又爬了多远？</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2017/10/screen-shot-2017-10-23-at-5-44-04-pm.png" class="img-fluid figure-img"></p>
+<figcaption>Screen Shot 2017-10-23 at 5.44.04 PM</figcaption>
+</figure>
+</div>
+<p>(四蜗牛追逐路线模拟图)</p>
+<p>我当初出这道题主要是感觉它跟三体问题有点像，而且有一个很简单的解法。本来我把解法放在后面一期节目讲了，但因为一些原因，那期节目下架了，所以我就今天单独讲讲这个问题以及它好玩的一些地方。</p>
+<p>首先这道题你要用微积分方法去算自然是可以，但会很麻烦。有一个简单的方法，也是借用物理原理，就是运动相对性原理。怎么借用呢？你可以把自己想象成一直蜗牛，而且你感觉很迟钝，你在爬的时候就是直勾勾的朝目标爬去，你感觉不到你的目标也在爬，也就是把你的目标作为一个静止点来看，此时你会发现，你自己就变成直线运动了，而且运动过程中，你始终看到目标蜗牛的头是与你爬行方向成90度的，直到你追到它。然后你发现整个过程，跟什么情况是一样的？那就是你的目标蜗牛确实待在正方形的一个顶点上没动，你沿正方形一条边爬过去，两者是一样的，对不对？如果你想通这一点，你就能知道蜗牛撞到一起之前走的路径长度就是正方形的边长，时间也就很容易算了。</p>
+<p>这个问题告诉我们曲线运动，通过改变参考系，可以变为直线运动。不过其实我前面说两种参考性下，蜗牛感受一样，其实是不对的，因为曲线运动你肯定会感受到一个加速度啊，对不对？但我们这道数学题里面这样变更参考系对我们的计算是完全不影响的。记得那集节目之后还有人问我如果不是正方形，而是三只蜗牛在正三角形的三个顶点上，五只蜗牛和正五边形情况，等等，这些情况下会如何？</p>
+<p>其实这些情况一样可以用我前述的变更参考系的方法，比如正三角形，我作为蜗牛的感受还是直勾勾的朝对方蜗牛冲过去，但是这次对方蜗牛的头不是成90度朝侧面了，而是有点面向我，但是有60度的夹角偏向一边。所以此时你不能再当对方静止了，因为对方在爬行过程中，朝我的前进方向上投影还是有速度的。这个速度就是爬行速度v乘以cos60度，也就是v/2，而且是朝向我的。所以，总体上我跟对方靠近的速度是我的速度v加对方速度在我前进方向上的投影v/2也就是1.5v。那么我最终追到对方蜗牛的时间就是正方形边长除以1.5v，就是答案。五边形情况下也是一样处理，只是此时对方蜗牛在我前进方向上是有一个远离我的投影速度的，所以我此时靠近对方蜗牛的速度就要小于v。总之，无论是正几边形都可以以此类推。</p>
+<p>不过你可能还是要问，这种蜗牛追逐所走的路径到底是啥呢？这就不能靠前面那种变更参考系的方法来解决了，当然结论也早有数学家研究过，就是所谓对数螺线，今天的节目就趁机跟大家多聊几句这种螺线。</p>
+<p>对数螺线最早是笛卡尔发现的，但是研究最深入的是雅各布.伯努利，就是我们节目中经常提到的伯努利家族中的大哥。雅各布伯努利发现了很多对数螺线的美妙性质，特别是有一个性质，就是多数螺线经过等比例放大是可以与自身重合，使他产生一个灵感，说我要在自己墓碑上要刻上一句话，中文翻译过来叫“虽然我改变了，但结果跟原来一样”，然后还要在这话边上刻上一条对数螺线的样子。这也是效法古希腊的阿基米德，因为大家知道阿基米德在墓碑上刻了一条等速螺线。但谁知后来阴差阳错，刻墓碑的师傅显然数学没学好，他以为伯努利就是要一条螺线吗，结果他直接就把等速螺线的样子刻上去了。其实等速螺线和对数螺线的外观区别是很明显的，不知道雅各布.伯努利泉下有知，是否捶胸顿足。</p>
+<p>那对数螺线与等速螺线的外观区别到底在哪里？等速螺线顾名思义，螺线向外扩展的速度是均匀的，所以从螺线起点向外延伸一条射线穿越螺线多次之后，你会发现这条射线被螺线分割成的每一段是等长。而对数螺线来说，同样的情况下，分割成的每一段是成几何级数方式递增的，也就是越往外圈，往外旋的趋势就越来越快。这点从两种螺线的极坐标方程上也能明显看出区别。等速螺线的极坐标方程是<span class="math inline">\(r=a+b\theta\)</span>也就是这个角度坐标参数是作为1次方项存在的。而对数螺线的极坐标方程式是<span class="math inline">\(r=ae^{b\theta}\)</span>，这个角度坐标参数是作为指数存在的，而底数是自然对数的底数e，这也是它为啥叫对数螺线的原因。</p>
+<p>我在节目介绍里放了了雅各布努利的墓碑图片和对数螺线的图片。大家可以看看是不是有明显区别。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2017/10/basel_-_grabstein_bernoulli.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Basel_-_Grabstein_Bernoulli</figcaption>
+</figure>
+</div>
+<p>（上图为雅各布伯努利墓碑）</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2017/10/500px-logarithmic_spiral_pylab.png" class="img-fluid figure-img"></p>
+<figcaption>500px-Logarithmic_Spiral_Pylab.png</figcaption>
+</figure>
+</div>
+<p>（上图为一条对数螺线）</p>
+<p>对数螺线还有一个重要性质就是从螺线起点向外延伸的射线穿越螺线时，螺线与这条射线的夹角都是一样的。这一点从前面的蜗牛追逐问题里也能看出来，比如你考虑原先的正方形的一条对角线，蜗牛在追逐过程中，肯定会多次经过这条对角线，经过对角线时，四只蜗牛应该同时都在对角线上，而且形状仍然是一个正方形，所以蜗牛前进方向与对角线的夹角总是45度。而且你会发现不管怎样的一条直线，只要是经过正方形中点的，蜗牛穿过这条直线的夹角总是45度，这也是多数螺线也叫做等角螺线的原因，而这个45度就被称为等角螺线的定角。定角的取值范围是0到90度，而定角一旦等于90度，这条螺线就退化成一个圆了。</p>
+<p>对数螺线还有一个有趣的性质是这条螺线在原点附近实际上是绕圈无数多次的，也就是四只蜗牛在互相在原点处撞见之前实际上是需要转向无穷多次的，虽然这条螺线的总长度却是有限的。当蜗牛越接近原点，越小的一次移动，都出引发更大的前进角度变化，以致于到原点前，大家都要无数次转向。</p>
+<p>以上性质是意大利人托里切利发现的，有意思的他其实主要是物理学家，最出名的成就是发明了气压计。他还发现了对数螺线的长度公式，就是螺线上某一点到起点的长度，就是该点到螺线起点距离乘以螺线定角的正割，就是sec，或者说余弦的倒数。如果你听不明白，请看我节目说明中的一张图，一看即明。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2017/10/sm_20_09_1_07.gif" class="img-fluid figure-img"></p>
+<figcaption>sm_20_09_1_07</figcaption>
+</figure>
+</div>
+<p>（上图中，若螺线沿PT滚动，则O点会落在T点上，移动轨迹就是OT，OPT为直角三角形）</p>
+<p>节目最后，我想告诉大家对数螺线最为神奇的就是它似乎在自然界中经常可以看到，小到比如就是蜗牛背上的壳，还有鹦鹉螺壳上的花纹，大到漩涡星系的旋臂形状，似乎都很像对数螺线。另外还有人发现老鹰接近猎物时盘旋的路径，以及昆虫接近光源是飞行的路径也是对数螺线？这是为什么呢？其实生物学上可能有一些解释，比如最节省能量或者最均匀的吸收和生长。但我觉得最根本的还是对数螺线的数学性质默默的支配了自然界的一些行为模式，你说对不对？好了，今天对数螺线就讲到这里，如果你在生活中发现有对数螺线的形状的东西，不妨留意下，也可以告诉我，也许是个很有意思的发现。下期再见！</p>
+<p>[gallery ids=“387,388” type=“rectangular”]</p>
+<p>（鹦鹉螺和漩涡星系都表现出对数螺线的形式）</p>
+<p>收听“大老李聊数学”音频：</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2017/10/ximalaya.png" class="img-fluid figure-img"></p>
+<figcaption>ximalaya</figcaption>
+</figure>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/your-website-url\.example\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

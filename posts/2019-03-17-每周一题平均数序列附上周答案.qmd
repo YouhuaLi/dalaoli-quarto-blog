@@ -1,0 +1,96 @@
+---
+title: '每周一题：平均数序列（附上周答案）'
+date: "2019-03-17"
+categories:
+  - "每周一题"
+---
+
+<h3 id="本期题目：平均数序列">本期题目：平均数序列</h3>
+
+来源：<a href="http://brilliant.org">brilliant.org</a>
+
+有以下5个数：
+
+45, a,b,c,d,100
+
+从b开始，每个数都是前两个数的平均数，问a是多少？
+
+请直接留言解答。
+
+<hr>
+
+<h3 id="本期加餐题：自定义的骰子">本期加餐题：自定义的骰子</h3>
+
+（题目来源：<a href="http://brilliant.org">brilliant.org</a>）
+
+你和朋友一起玩掷骰子比大小的游戏，如果打平则重掷。你有一个便利条件是你可以自由安排一个骰子点数的位置：
+
+![enter image description here](https://pic4.zhimg.com/80/v2-98e0a6303add19cd765f6ab5142ff1d3_hd.jpg)
+
+即你可以将21个黑点任意分配到6面上，不能有负数或分数的点数。
+
+请问：是否存在一种点数分配方案，使得你的骰子比对手的标准骰子有优势？如果有，胜率最高可以达到多少？点数是如何安排的？
+
+请直接留言或发邮件至：liyouhua @gmail.com 解答
+
+<hr>
+
+<h3 id="上周题目：哪一盘的“派”多？">上周题目：哪一盘的“派”多？</h3>
+
+![enter image description here](https://pic4.zhimg.com/80/v2-297cbd0789de7148818eab0ca56913ff_hd.jpg)
+
+<blockquote>
+以上三盒“派”（pie，英文中煎饼的意思）中，那一盒的派最多（面积大）？假设所有派的高度相同。
+</blockquote>
+
+答案当然是：一样多！最简单的分析：B, C里的派都是A的派的相似形的重复，因此派所占比例是不会有区别的。
+
+所有答对的答案已置为精华留言。
+
+<hr>
+
+<h3 id="上期加餐题：电脑会全被病毒感染吗？">上期加餐题：电脑会全被病毒感染吗？</h3>
+
+![enter image description here](https://pic1.zhimg.com/80/v2-6c26a7d30e0a2f95dc84d24b6d23a908_hd.jpg)
+
+<blockquote>
+100台电脑连接成如下10 X 10的网络。其中一些橙色位置的电脑被感染病毒了。已知，任何一台电脑如果与至少两台已经感染病毒的电脑相邻，它也会被感染。
+
+问：是否所有100台电脑都会被感染病毒？
+
+注：以上图片仅是一个示意图，你当然可以通过着色找出答案。但请考虑下这个问题的一般解法。 这道题与<span class="katex--inline"><span class="katex"><span class="katex-mathml">π\pi</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span style="margin-right:.03588em;" class="mord mathit">π</span></span></span></span></span>也有一点关系呢。
+</blockquote>
+
+答案：不会感染全部电脑。对某个特例，我们当然可以慢慢着色，得出答案，但让我们对这个问题的一般解法做些分析。
+
+这里，我们先定义感染范围的“周长”，考虑这种线段的数量：一端是是感染的电脑，另一端为未收感染电脑。将这种线段数量的综合定义为感染范围的“周长”。比如单台收感染电脑的周长就是4：
+
+![enter image description here](https://pic1.zhimg.com/80/v2-6a7ecfdb597c73e5b9f65119d06afa74_hd.jpg)
+
+受感染范围电脑的边界长度如果要感染所有10x10台电脑，那么感染范围的“周长”就是40（假设网格外围无限延伸）。
+
+当然，感染范围可能是一整片，也可能是多个小区域。如果是多个小区域，则我们需要把所有区域的周长相加。
+
+对本问题来说，有意思的一点在于，无论初始感染电脑位置如何，感染区域的“周长”不会增加，只可能减少！
+
+![enter image description here](https://pic1.zhimg.com/80/v2-87ed84a222ad3d0b16f23b4b33aad694_hd.jpg)
+
+比如上图A中，一开始有两台受感染电脑，“周长”是8。当它们感染另外两台电脑，分别变为图B和图C后，你会发现感染范围的周长始终为8。
+
+而对某台电脑被三台或四台电脑感染的情况，经过类似分析，你会发现“周长”分别会减少2和4。因此感染范围的周长只减不增。
+
+因为原题中，总感染电脑的数量是9，其“周长”至多是4x9=36，小于40。因此不可能感染全部电脑。我们也知道，若要感染全部电脑，至少需要10台电脑，而且需要特别的排列才行（请考虑应如何排列）。另外也可以考虑，至多可以有多少台电脑，使其总周长小于40，从而不会感染全部电脑？
+
+要问这道题与<span class="katex--inline"><span class="katex"><span class="katex-mathml">π\pi</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span style="margin-right:.03588em;" class="mord mathit">π</span></span></span></span></span>的关系，其实就是因为周长与直径之比在古希腊被称为“**periphery**”（周长在英语里是perimeter），因此古希腊人选择了<span class="katex--inline"><span class="katex"><span class="katex-mathml">π\pi</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span style="margin-right:.03588em;" class="mord mathit">π</span></span></span></span></span>（读音与periphery接近）来命名圆周率。
+
+所有答对的答案已置为精华留言。
+
+<hr>
+
+<h3 id="在喜马拉雅fm收听：大老李聊数学”：">在喜马拉雅FM收听："大老李聊数学”：</h3>
+
+![enter image description here](https://pic1.zhimg.com/80/v2-8d13d5180712a2921dbf634a4ab3ce78_hd.jpg)
+
+<h3 id="关注“大老李聊数学”公众号：-dalaoli_shuxue">关注“大老李聊数学”公众号： dalaoli_shuxue</h3>
+
+<h3 id="知乎专栏：httpszhuanlan.zhihu.comdalaoli-shuxue">知乎专栏：<a href="https://zhuanlan.zhihu.com/dalaoli-shuxue">https://zhuanlan.zhihu.com/dalaoli-shuxue</a></h3>

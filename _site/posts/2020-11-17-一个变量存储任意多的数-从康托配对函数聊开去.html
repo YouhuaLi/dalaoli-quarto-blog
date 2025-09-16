@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2020-11-17">
+
+<title>一个变量“存储”任意多的数– 从“康托配对函数”聊开去 – dalaoli_quarto_blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">dalaoli_quarto_blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">一个变量“存储”任意多的数– 从“康托配对函数”聊开去</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">每周一题</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">November 17, 2020</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>这篇文章的话题源自来自于大老李最近的一次编程经历。上两月，我在用一个很奇怪的语言编程。这种编程语言里变量类型只有正整数，没有小数和负数。变量的操作也只有加、减和乘，没有除法，有些基本的循环结构和变量大小的判断等等。</p>
+<p>这种编程语言听上去是很简陋，你先不用管为什么我要用这种语言编程，以后有机会聊。就这种语言，我遇到了一个很大的编程困难是，我需要一个堆栈(Stack)数据结构。在其他任何支持数组或者列表的编程语言里，实现堆栈完全不是问题。堆栈就是从数组最末尾开始存取的一个数据结构。</p>
+<p>但我现在使用的这种编程语言里，内置的除了整数型变量，没有任何数据结构。那有没有办法实现一个堆栈呢？上网搜了下，还真有，而且方法其实很简单。这个方法是先考虑这样一个问题：有没有可能找到一对自然数与全体自然数的一一对应。</p>
+<p>这里简单介绍下无穷基数理论。简单来说，无穷基数理论提出了这样一种比较具有无穷多元素的集合大小的方法，就是看两个无穷集合中的元素是否能建立一一对应的关系，其实在函数语言里，这种性质叫“双射”。稍微解释下双射函数。其实先得知道两个概念，“单射”和“满射”。</p>
+<hr>
+<p>比如有个函数叫y=f(x)，如果代入不同的x，总是得到不同的y，那么这个函数就叫“单射”。单射是一种很重要的函数性质，比如二次曲线和多数三角函数都不是单射。</p>
+<p>还有一个概念叫“满射”，意思是函数的值域被填满了。也就是任何一个值域里的值，代入y，总能找到一个x，使得f(x)=y。实数函数<span class="katex--inline"><span class="katex"><span class="katex-mathml">y=x2y=x^2</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.625em;vertical-align:-.19444em;"></span><span class="mord mathdefault" style="margin-right:.03588em;">y</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.814108em;vertical-align:0;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span>就不是满射，因为y是负数的时候，就找不到对应的x。</p>
+<p>那一个函数即是单射又是满射的时候，我们就叫它“双射”。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pic1.zhimg.com/80/v2-518c69dca18286b04168c076a9ef4890_720w.jpg" class="img-fluid figure-img"></p>
+<figcaption>（插入单射满射示意图）</figcaption>
+</figure>
+</div>
+<hr>
+<p>如果存在两个无穷集合元素之间的双射，我们就认为这两个无穷集合的“大小”是一样的。而且已经证明，无穷集合中，“最小”的就是自然数集合。有意思的是，可以建立偶数到全体自然数的双射，也就是在无穷基数理论的范畴下，偶数与全体自然数“一样多”。这是“无穷”概念给我们造成的反直觉结论之一。</p>
+<p>那现在考虑这样一个集合，其元素是自然数对，比如(1,2), (100,200 )等等，也包括（0, 0)。本文中，自然数是包括0的。那么这个成对自然数的集合直观形象就是笛卡尔坐标系第一象限中的纵横坐标都是整数的点，再加上x和y轴正方向上的整数点和原点。有时我们说这种成对的自然数集合，为自然数集合的“笛卡尔积”就是这个道理。</p>
+<p>现在的问题是：自然数集合的笛卡尔积能否建立与自然数的一一对应，即双射呢？</p>
+<p>从直觉上来看确实是可以，我们只要想一个办法把这些点按某种顺序罗列出来，做到既不重复也不遗漏就可以了。排列出来后，就相当于给这些点用自然数编了号，那么双射就自然成立了。</p>
+<p>具体怎么做呢？其实有不止一种方法，数学家康托当初使用了一种像一笔画一样方法，按对角线方向来回往复的对这些点进行连接和排序。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-ef41b729fb79c138568e36d79bfbc440_720w.jpg" class="img-fluid"></p>
+<p>比如，按他的方法，自然数对排列的最开始三项就是(0,0)， (1,0)和(0，1)。它们就会对应自然数0到2。它的通项公式如下：</p>
+<p><span class="katex--inline"><span class="katex"><span class="katex-mathml">π(k1,k2):=12(k1+k2)(k1+k2+1)+k2(k_1,k_2):=(k_1+k_2)(k_1+k_2+1)+k_2</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord mathdefault" style="margin-right:.03588em;">π</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.03148em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.03148em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">:</span></span><span class="base"><span class="strut" style="height:.36687em;vertical-align:0;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1.19011em;vertical-align:-.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.845108em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.03148em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.03148em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.03148em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.84444em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.03148em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.84444em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.03148em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p>这个通项公式就被称为“康托配对函数”，因为它取了一对自然数作为参数，产生了另一个自然数的输出，有点像把这一对函数打包，用另一个自然数编了号。</p>
+<p>而且这个函数是双射，也就是不同的自然数对，打包后必然对应不同的自然数。反过来，给定一个自然数，它也必然唯一的对应一对自然数。当然，这需要找出康托配对函数的逆函数形式，这个问题要比找配对函数的通项公式稍微困难点，有兴趣的读者可以挑战自己，去找一下这个逆函数的计算公式。</p>
+<p>不管怎么说，康托配对函数的特点就是一个自然数包含了两个自然数的信息。如果拿到一对自然数，只要代入配对函数，存储计算结果，就等价于存储了这一对自然数，而且是有序对。这也是“配对函数”名称的来历。</p>
+<p>有了这样的思路，用一个变量实现一个堆栈就很容易了，基本想法就是对配对的结果继续配对。比如这个变量初值就设为0。当数字a需要入栈时，就对(0, a)代入配对函数，把结果存储到这个变量中，假设是b。当再有数字c需要入栈时，就对(b,c)配对，得到d，存入变量。总之，当有新数字入栈时就与当前变量值配对，存入变量即可。</p>
+<hr>
+<p>用康托配对函数实现堆栈的例子：</p>
+<p>设变量a的初值为0，需要先后入栈1,2,3。</p>
+<p>1入栈，则将(0,1)代入配对函数，并将结果存入a:</p>
+<p><span class="katex--inline"><span class="katex"><span class="katex-mathml">a=12(0+1)(0+1+1)+1=1a=(0+1)(0+1+1)+1=1</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1.19011em;vertical-align:-.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.845108em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mopen">(</span><span class="mord">0</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mopen">(</span><span class="mord">0</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span></span></span></span></span></p>
+<p>2入栈，将(1,2)代入配对函数，并将结果存入a:</p>
+<p><span class="katex--inline"><span class="katex"><span class="katex-mathml">a=12(1+2)(1+2+1)+2=8a=(1+2)(1+2+1)+2=8</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1.19011em;vertical-align:-.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.845108em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">2</span><span class="mclose">)</span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">2</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">8</span></span></span></span></span></p>
+<p>3入栈，将(8,3)代入配对函数，并将结果存入a:</p>
+<p><span class="katex--inline"><span class="katex"><span class="katex-mathml">a=12(8+3)(8+3+1)+3=69a=(8+3)(8+3+1)+3=69</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1.19011em;vertical-align:-.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.845108em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mopen">(</span><span class="mord">8</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">3</span><span class="mclose">)</span><span class="mopen">(</span><span class="mord">8</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">3</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">6</span><span class="mord">9</span></span></span></span></span></p>
+<p>数字出栈时，将a的值反复代入配对函数的逆函数即可。</p>
+<hr>
+<p>以上方法，我们就很简单找到了一个用一个变量就实现堆栈结构的方法。当然，实践中我们几乎不用这种方法，一个是因为这种方法的计算效率低，速度慢；另一个问题是康托配对函数的数值增长速度很快，入栈数字一多，很容易超过单个变量值的上限；所以不实用。但以上两个问题在我节目开头谈到的那种编程语言中都不是问题，所以用它来实现堆栈再合适不过了。</p>
+<p>不管怎么说，我们成功地用配对函数实现了一个自然数集的笛卡尔积到自然数上的双射，因此我们可以确定它们的无穷基数是一样的。</p>
+<p>那我们会联想到这样一个问题，有没有其他无穷集合上的配对函数？比如，有没有办法对全体整数配对，建立一对整数到整数集合上的双射？</p>
+<p>方法当然是有的。因为已经有了自然数集上的配对函数，那么只要建立整数到自然数的双射，问题就解决的。而全体整数要映射到自然数，方法有很多。一种常见方法就是把负数按次序映射到奇数，正数按次序映射到偶数，0映射到0。它的转换公式如下：</p>
+<span class="katex--inline"><span class="katex"><span class="katex-mathml">f(n)={2n&nbsp;if&nbsp;n≥02∣n∣−1&nbsp;otherwise&nbsp;f(n)=\left{
+<span class="math display">\[\begin{array}{ll}
+2 n &amp; \text { if } n \geq 0 \
+2|n|-1 &amp; \text { otherwise }
+\end{array}\]</span>
+<p>ext { otherwise } \end{array}.<span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord mathdefault" style="margin-right:.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:2.40003em;vertical-align:-.95003em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0;"><span class="delimsizing size3">{</span></span><span class="mord"><span class="mtable"><span class="arraycolsep" style="width:.5em;"></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.45em;"><span style="top:-3.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mord mathdefault">n</span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mord">∣</span><span class="mord mathdefault">n</span><span class="mord">∣</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.95em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:.5em;"></span><span class="arraycolsep" style="width:.5em;"></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.45em;"><span style="top:-3.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">&nbsp;if&nbsp;</span></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mord">0</span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">&nbsp;otherwise&nbsp;</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.95em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:.5em;"></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></p>
+<p>这种函数数学中称为folding function/折叠函数，因为它有点像把数轴按原点对折了一下。</p>
+<p>有折叠函数，那么整数的配对就简单了，只要把一对整数分别代入折叠函数，转换为一对自然数，然后再代入康托配对函数，这样就得到一个自然数结果。那么再把这个函数代入折叠函数的反函数，那么能把这个自然数再对应回某个整数，从而构造出了整数集的配对函数。</p>
+<p>这个过程虽然有点曲折，但确实数学中很常用的一个思路，就是把未知问题向已知问题转化的过程。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-573496db1136ed53486492a0543e21bf_720w.jpg" class="img-fluid">（上图：另一种建立坐标系上整点到整数的双射的方法。请想一下通项公式怎么写。）</p>
+<p>整数的配对函数有了，那么有理数的配对函数也有了，因为有理数也是可数集，也能建立到自然数的双射。</p>
+<p>但是以上得到的关于整数和有理数的配对函数，它们都是分段函数，不像康托配对函数，就是一个简单的多项式表达形式。</p>
+<p>美国数学家哈维·弗里德曼就提出了这样一个问题，能否构建一个二元的多项式函数，能够实现有理数集上的配对函数？</p>
+<p>它的意思是：找一个多项式函数f(x,y)，代入后可以算出另一个有理数。并且对不同的x,y，总能得到不同的有理数。并且，对任何一个有理数，我们总能找到恰好一对x,y，使得函数值是这个有理数，这就是双射。</p>
+<p>但略感意外的这是到目前还未解决的问题。比如我们可以稍微求其次，先考虑单射函数。 就是只要不同的x,y，总能得到不同的函数值就可以。</p>
+<p>你可以稍微思考一下，你会感觉到这似乎是有可能的。当然，首先因为负负得正的关系，你会考虑要避免指数上出现偶数， 感觉上指数是奇数再稍微复杂点就可以。比如有人猜想， <span class="katex--inline"><span class="katex"><span class="katex-mathml">x7+3y7x<sup>7+3y</sup>7</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.897438em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">7</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1.00855em;vertical-align:-.19444em;"></span><span class="mord">3</span><span class="mord"><span class="mord mathdefault" style="margin-right:.03588em;">y</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">7</span></span></span></span></span></span></span></span></span></span></span></span>就是这样一个单射函数。</p>
+<p>比如对方程:</p>
+<p><span class="katex--inline"><span class="katex"><span class="katex-mathml">x7+3y7=4x<sup>7+3y</sup>7=4</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.897438em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">7</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1.00855em;vertical-align:-.19444em;"></span><span class="mord">3</span><span class="mord"><span class="mord mathdefault" style="margin-right:.03588em;">y</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">7</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">4</span></span></span></span></span></p>
+<p>除了(1,1) 以外，还有没有其他的有理数解呢？看上去是没有了。但是意外的是目前数学家还没能确切地证明<span class="katex--inline"><span class="katex"><span class="katex-mathml">x7+3y7x<sup>7+3y</sup>7</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.897438em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">7</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1.00855em;vertical-align:-.19444em;"></span><span class="mord">3</span><span class="mord"><span class="mord mathdefault" style="margin-right:.03588em;">y</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">7</span></span></span></span></span></span></span></span></span></span></span></span>是一个单射函数。</p>
+<p>如果再加入“满射”这一条件，那问题当然就更难了。根据陶哲轩的一篇<a href="https://terrytao.wordpress.com/2019/06/08/ruling-out-polynomial-bijections-over-the-rationals-via-bombieri-lang/">博客</a>，他几乎肯定不存在哈维·弗里德曼问的那个二元有理数函数到有理数集合上的双射多项式函数。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pic1.zhimg.com/80/v2-8d3739a0dffc7d820ce39b40e0d9b71c_720w.jpg" class="img-fluid figure-img"></p>
+<figcaption>（插入陶哲轩博客截图）</figcaption>
+</figure>
+</div>
+<p>那今天的内容就到这里。我的感想是，我从一个实践中的编程问题，了解到了配对函数这个数学中非常有意思的概念，进而最后还发现数学中还未解决的哪怕是二元有理数多项式的单射证明，这数论里面的“水”真的是深不可测！</p>
+<p>参考链接：</p>
+<p><a href="https://mathworld.wolfram.com/PairingFunction.html">https://mathworld.wolfram.com/PairingFunction.html</a></p>
+<p><a href="https://stackoverflow.com/questions/919612/mapping-two-integers-to-one-in-a-unique-and-deterministic-way">https://stackoverflow.com/questions/919612/mapping-two-integers-to-one-in-a-unique-and-deterministic-way</a></p>
+<p><a href="https://terrytao.wordpress.com/2019/06/08/ruling-out-polynomial-bijections-over-the-rationals-via-bombieri-lang/">https://terrytao.wordpress.com/2019/06/08/ruling-out-polynomial-bijections-over-the-rationals-via-bombieri-lang/</a></p>
+
+
+
+</span></span></span></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/your-website-url\.example\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

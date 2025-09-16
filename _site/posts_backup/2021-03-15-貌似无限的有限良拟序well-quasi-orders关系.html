@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2021-03-15">
+
+<title>貌似无限的有限——良拟序(well quasi orders)关系 – dalaoli_quarto_blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">dalaoli_quarto_blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">貌似无限的有限——良拟序(well quasi orders)关系</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">音频讲稿</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 15, 2021</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>我很久前录制过一期音频节目：“画树画出一个大数——TREE(3)介绍”，那期节目是我一直以来很受欢迎的一期节目。那期节目之后，就不断有听众问：为什么TREE(3)是有限的？虽然我在节目里提到，这个有限性是“克鲁斯卡尔树定理”（Kruskal Tree Theorem）的一个推论，但那时候，我并不知道“克鲁斯卡尔树定理”的具体内容。前段时间，我终于去研究了一下这个定理，发现又是一次大开眼界、脑洞大开的过程，所以准备给大家讲讲这个“克鲁斯卡尔树定理”。</p>
+<p>讲之前，我还是准备给大家出一个思考题，这道题我不久前在公众号里推送过，思考一下这道题非常有益于理解今天的话题。</p>
+<hr class="wp-block-separator">
+<p>请你玩玩看如下的这个写数列游戏，游戏目标是写出尽可能长的数字序列。但要符合以下规则：</p>
+<ol>
+<li>
+数列的第n项，最多有n位。
+</li>
+<li>
+数列左边的项，不能“嵌入”所有其右边的项。“嵌入”的定义如下：
+</li>
+</ol>
+<p>有数字字符串a和b，b的长度大于等于字符a，且存在以下情况：可以从b中删除若干字符，留下与a相等长度的字符串，留下的字符前后位置关系保持不变，并记作b’。如果a比b’按位比较，每一位数字上，a的数字都小于等于b’上的数字，称a可以“嵌入”b。比如：</p>
+<p>a=“2” 可以嵌入 b=“3”，其中取b’=‘3’</p>
+<p>a=“321” 可以嵌入 b=“13312”，其中取b’=‘332’</p>
+<p>a=“132” 不可以嵌入 b=“2131”，因为b中找不到符合要求的3个字符的子串。</p>
+<p>以上是游戏的定义。当用n个数字玩以上游戏，可以写出的数列的最长长度，记作s(n)。</p>
+<p>当用一个数字“1”玩这个游戏时：</p>
+<p>第一项为：1，再也无法写出第二项。因此s(1)=1。</p>
+<p>当用两个数字“1”和”2”玩这个游戏时：</p>
+<p>第一项可以写“2”，第二项可以写“1”。如此再也无法写出第三项。但如果第二项写“11“，则还可以写第三项”1“。整个数列是：</p>
+<p>2, 11, 1。</p>
+<p>所以s(2)=3。</p>
+<p>请简单试试写写s(3)的前几项，重点思考两个问题：是否对任意大的n，s(n)总是有限的？另外，如果去掉游戏中第一个规则，数列长度是否总是有限的？</p>
+<hr class="wp-block-separator">
+<p>“克鲁斯卡尔树定理”与数学中许多优美的定理一样，它的最终命题形式非常短，但准备知识多，这个准备知识就是“良拟序”（Well Quasi Ordering，简写为“<strong>wqo</strong>”）。</p>
+<p>这个“良拟序”与我之前介绍过的“<a href="https://zhuanlan.zhihu.com/p/348673044">良序</a>”概念非常类似，所以我们只需要了解两者的区别。</p>
+<p>你不知道“良序”概念也没关系，其实它与我们平时所熟悉的“小于等于”的概念别无二致。“序关系”就是数学家从“小于等于”这种比较性质中抽象出来的条件。“<span class="math inline">\((\leq)\)</span>”有这样三个性质：</p>
+<p>自反：就是对任意的a, 有a<span class="math inline">\((\leq)\)</span>a；</p>
+<p>反对称：如果a<span class="math inline">\((\leq)\)</span>b 且b<span class="math inline">\((\leq)\)</span>a，则a=b；</p>
+<p>传递性：如果 a<span class="math inline">\((\leq)\)</span>b，且b<span class="math inline">\((\leq)\)</span>c，则a<span class="math inline">\((\leq)\)</span>c；</p>
+<p>这三条规则，就是我们熟悉到不能再熟悉的“<span class="math inline">\((\leq)\)</span>“的性质，没有任何新奇的东西。</p>
+<p>“全序关系”就是再增加一条规则：所有元素之间能够比较。</p>
+<p>“良序关系”就是再增加一条规则：所有非空子集必有一个最小元素。</p>
+<p>那么现在说说“拟序”(quasi orders)关系，“拟序关系”其实就是“全序关系”里，去掉一个条件：“所有元素之之间可以比较”，去掉这个条件，就是拟序。也就是一个比大小的关系，符合自反，反对称和传递性质，就是拟序。带有拟序关系的集合称为“拟序集”。</p>
+<hr class="wp-block-separator">
+<p>严格来说，数学中的拟序或预序(pre-order)对“自反”这个条件是可选的，而不是必须的。所以满足“反对称“和”传递性”的二元关系就可以称为“拟序”或“预序”。而加入“自反”性质后，这个序关系被称为“非严格偏序”，具有“反自反”性质的序关系则称为“偏序”。</p>
+<p>本文中涉及的拟序都带有自反特性，为简化起见，直接加入了“自反”性质到拟序定义中。</p>
+<hr class="wp-block-separator">
+<p>“拟”字的来历是一个拉丁语的单词“quasi”，意思是“接近的，类似的”。其实这个词在很多科技术语中都会出现，但它一般都会翻译成“准”，比如“准晶体“（quasicrystal），“准分子”（quasimolecule）等等。但可能因为“准序”这个词听上去太奇怪了，所以翻译成了“拟序”，但听上去还是很奇怪。但理解意思就好，”拟序“说白了，就是“接近”一个完整的序关系。之所以说“接近”，是因为元素之间有可能不能比较，而元素之间如果都能互相比较，那这个序关系完整，完全了，所以叫“全序”（total ordering）。</p>
+<p>知道了拟序概念，有没有实际的例子呢？貌似数学里多数序关系都是全序的。这里大老李想到了一个很不错的带有拟序关系的集合例子，这个例子我也准备贯穿在文中使用，所以先给大家说一下这个例子。</p>
+<p>我想的这个拟序集合例子就是复数中，实部和虚部都是自然数的那些复数，这个集合我姑且叫它“自然复数”：</p>
+<p>自然复数: <span class="math inline">\(({ a+bi : a\in \mathbb{N}, b\in \mathbb{N}})\)</span></p>
+<p>但是“自然复数”里的数本身是不能比大小的，但我可以定义这样一个“<span class="math inline">\((\leq)\)</span>”的关系：</p>
+<p><span class="math inline">\((a+bi\leq c+di)\)</span> iff <span class="math inline">\((a\leq c, b\leq d)\)</span></p>
+<p>自然复数中的两个数，a<span class="math inline">\((\leq)\)</span>b，当且仅当a的实部小于等于b的实部，且a的虚部小于等于b的虚部。</p>
+<p><img src="https://static01.imgkr.com/temp/2e38ea1ccf9245f985615eed7b3826cc.png" class="img-fluid"> (上图中：A&lt;=C&lt;=B,而C,D,E之间不可比较)</p>
+<p>也就是从图像上来看，偏左下角的数会小于等于偏右上角的的数。那么，我请各位自行验证，这样一个“<span class="math inline">\((\leq)\)</span>”构成了“自然复数”里的一个拟序关系，就是满足自反、反对称、传递性。这些是很显然的。</p>
+<p>那么这个”<span class="math inline">\((\leq)\)</span>“是全序关系吗？显然不是，因为存在两个不可比较的元素，比如1+2i和2+i，这两者就不可比较，谁都没有小于等于谁。从图像上看，即一个数与其左上和右下区域的数是不可比的。所以这个“<span class="math inline">\((\leq)\)</span>”不是全序关系。</p>
+<p>以上，我给出了一个是拟序，但不是全序关系的例子。现在希望把“良序关系”的概念推广到“拟序”上，因为“非空子集必有最小元素”这个性质非常有用，特别是在无穷集合上。</p>
+<p>但我们发现，如果直接给“拟序集”套用“非空子集必有最小元素”这个性质不再适用，因为拟序集合中可能存在元素两两不可比较的情况，那么这个“最小”的意思就是不明确的。</p>
+<p>但数学家曲线救国，他们这样来定义“良拟序”：</p>
+<hr class="wp-block-separator">
+<p>某个集合X和其上的某个拟序关系<span class="math inline">\((\leq)\)</span>，对X中的<strong>所有无穷</strong>序列<span class="math inline">\((x_1, x_2,\cdots ,x_i, \cdots )\)</span>，存在某个“递增对”<span class="math inline">\((x_i)\)</span>, <span class="math inline">\((x_j)\)</span> :</p>
+<p><span class="math inline">\((x_i\leq x_j)\)</span>且x&lt;j。</p>
+<hr class="wp-block-separator">
+<p>也就是，如果你从拟序集里写出一个无穷数列，那么你不可避免地，会写出两个元素，左边的元素小于等于其右边的某一个，就是总有两个元素是有序的，那么这个序关系就是良拟序关系。</p>
+<p>这里能马上得出一个推论，就是良拟序集中的每个无穷序列中，必有”无穷递增子序列”(infinity increasing chain)。</p>
+<p>可以用反证法，证明以上结论。如果某个无穷序列中，只有有限个递增对的话，且最右边的一对是a&lt;=b，那把b之前的元素全部丢弃，剩下的序列仍然是无穷序列，但不存在有序对了，那么它就不符合良拟序定义，这不可能。所以良拟序的每个无穷序列中，必有无穷递增子序列。</p>
+<p>以上这个拟序集的定义中，因为需要判断所有的无穷序列，所以它在判断一个拟序关系是否是良拟序的情况下，不太好用。所以经常用到的是以下良拟序的性质或者等价定义，它是把原来的定义反过来考察。</p>
+<p>原先的定义形式是：对所有的无穷序列，存在一对排序好的元素。那它反过来就是，不存在某个无穷序列，其中没有排序好的元素。那么对拟序集来说，没有排序好意味着两种情况：左边的大于右边的，或者不可比。所以我们这里得到了两个良拟序的性质：</p>
+<p>良拟序集中，不存在”无穷递降序列”（infinity decreasing chain）。也就是其中的元素越来越小，且无穷多，这样的序列不存在。</p>
+<p>良拟序集中，不存在”无穷不可比(较)序列”(infinity anti-chain)，也就是不能写出一个无穷子集，其中没有任何两个元素是可以比较的。</p>
+<p>以上就是良拟序集的两个重要性质，并且可以证明，只要拟序集符合这两条性质，那么它就是良拟序集，所以它也是良拟序的一个等价定义。</p>
+<p>分析一下之前提到的的“自然复数”集合和那个<span class="math inline">\((\leq)\)</span>关系，它构成“良拟序”吗？那就看看“自然复数”是否符合以上两条性质。</p>
+<p>第一：“自然复数”中是否存在一个“无穷递降序列”呢？显然是不存在，因为递降的话，也就是序列中的数在图像上会越来越靠左下角发展，那么迟早会撞上原点，那就没法再往小的数字写了，所以“自然复数”中不存在无穷递降序列。</p>
+<figure class="wp-block-image figure">
+<img src="https://static01.imgkr.com/temp/1bd50e55d78244fb9f74a9118bc4a59d.png" class="img-fluid figure-img">
+</figure>
+<p>第二：“自然复数”中是否存在“无穷不可比序列”呢？这个问题稍微难一点，但是，你会发现，自然复数中也不存在无穷不可比序列。可以用反证法考虑。假设写出了一个无穷不可比序列，里面任何两个元素都不可比。之前说了，一个元素只有与其左上或者右下的元素不可比。</p>
+<p>如果考虑序列第一项之后的序列，必定存在无穷多个元素位于第一项的左上角或者右下角，不妨假设有无穷多个元素在第一项的右下角。</p>
+<p>考察这无穷多个右下角的元素，因为仍然需要保持其中的元素两两不可比，那么你会发现你不得不把数字不断的往右下角发展。因为向左上的发展是受第一项的位置限制的，向右上或左下发展那就会产生可比的数字，那只有不断的往右下发展，迟早会撞上x轴，再也写不下去了。而对左上角的分析结果是类似的，你需要不断的往左上写数字，那么迟早会撞上y轴。</p>
+<p>因此，我们的“自然复数”集中就不可能存在无穷不可比序列。</p>
+<p>以上我们证明了我们“自然复数”集中不存在无穷递降序列和无穷不可比序列，所以它是一个良拟序集。</p>
+<p>以上结论有一个一般化后的结论(由Nash-Williams给出)：</p>
+<p>如果有拟序集: <span class="math inline">\((\left\langle\preceq_{1}, A_{1}\right\rangle)\)</span>和<span class="math inline">\((\left\langle\preceq_{2}, A_{2}\right\rangle)\)</span>，并定义<span class="math inline">\((A_1)\)</span>和<span class="math inline">\((A_2)\)</span>的笛卡尔积<span class="math inline">\((A_1 \times A_2)\)</span>上的拟序关系<span class="math inline">\((\preceq)\)</span>：</p>
+<p><span class="math inline">\(((a_1,a_2)\preceq (a_1^{'},a_2^{'}))\)</span>当且仅当<span class="math inline">\((a_1\preceq_{1} a_1^{'})\)</span>且<span class="math inline">\((a_2\preceq_{2} a_2^{'})\)</span></p>
+<p>则有如下定理：</p>
+<p>如果<span class="math inline">\((\preceq_{1})\)</span>和<span class="math inline">\((\preceq_{1})\)</span>是wqo(“良拟序”关系)，则<span class="math inline">\((\preceq)\)</span>是wqo。</p>
+<p>比如之前我们所说的”自然复数”，其实就可以看作是自然数集合的笛卡尔积，且自然数上的<span class="math inline">\((\leq)\)</span>是一个良拟序关系（其实是良全序关系，但没关系，是全序关系就必然是拟序关系），那么一对自然数上的<span class="math inline">\((\leq)\)</span>，必然也是良拟序。</p>
+<p>同理，三个自然数、四个自然数甚至100个自然数构成一组，互相比，仍然是良拟序关系。</p>
+<p>到这里，不知道你有没有体会到良拟序的性质中的“优良”的那个部分：就是以少得多，以很少的要求，得到很强的结论。因为拟序关系其实要求是很宽松的，<span class="math inline">\((\leq)\)</span>这样的比较是很常见的，而且甚至于都不要求所有元素之间可比。但是你能看到它能推出的结论不是那么明显，甚至是反直觉的。</p>
+<p>比如，那个“自然复数”中不存在无穷递降序列和无穷不可比序列就已经不那么明显了，但是用良拟序集的笛卡尔积的性质，这个结论是直接推出的，这就非常强悍了。</p>
+<p>下一篇专栏，正式讲TREE(3)为什么是有限的。</p>
+<p>参考文档：</p>
+<p><a href="https://www.cis.upenn.edu/~jean/kruskal.pdf">https://www.cis.upenn.edu/~jean/kruskal.pdf</a></p>
+<p>https://www.jstor.org/stable/2370405?seq=2#metadata_info_tab_contents</p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/your-website-url\.example\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

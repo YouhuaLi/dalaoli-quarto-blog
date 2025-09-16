@@ -1,0 +1,112 @@
+---
+title: '每周一题：蓝色三角形的面积（附上周答案）'
+date: "2019-02-18"
+categories:
+  - "每周一题"
+---
+
+<h3>本期题目：蓝色三角形的面积</h3>
+
+<figure class="wp-block-image">![enter image description here](https://i.guim.co.uk/img/media/f441758feba067f6570b14a0c38b36892a8a7e67/166_322_1617_970/master/1617.jpg?width=620&quality=45&auto=format&fit=max&dpr=2&s=202d71b4049b42d0f49b9d1d20b1d62d)</figure>
+
+（题目来源：theguardian.com）
+
+以上有若干正方形，左下的那个面积为5。问蓝色三角形面积是多少？
+
+请直接留言作答。
+
+<hr class="wp-block-separator" />
+
+<h3>本期加餐题：整除100的概率</h3>
+
+(题目来源：fivethirtyeight.com)
+
+给定任意三个正整数x, y, z，它们的积：xyz，能被100整除的概率是多少？
+
+请直接留言或发邮件至liyouhua @ gmail.com 解答。
+
+<hr class="wp-block-separator" />
+
+<h3>上周题目：双螺旋结构</h3>
+
+<figure class="wp-block-image">![enter image description here](https://pic4.zhimg.com/v2-81f1dc783a63040689aa2e9b14a866a4_1200x500.jpg)</figure>
+
+<blockquote class="wp-block-quote">
+如图，纵向10个等距离的点通过半圆弧连接，构成双螺旋结构。请问：图中红色和橙色的面积相等吗？若不等，相差多少？
+</blockquote>
+
+答案：红色面积比橙色大$4\pi$。一种简便方法是将上图“变形”一下，沿中线切开，并将左半边向下“滑动”一些：
+
+<figure class="wp-block-image">![enter image description here](https://i.guim.co.uk/img/media/7a8044e71f923c8033082675445fffadb63f3793/153_214_2336_1049/master/2336.jpg?width=620&quality=45&auto=format&fit=max&dpr=2&s=4ea6c489e0bac95df481da574087c203)</figure>
+
+这样可以看出红色与橙色的形状在每个同心圆中都是对称的，除了最内部多了一个纯红色圆！
+
+那么红色比橙色多出的面积就是这个直径为4的圆的面积，所以答案是$4\pi$。
+
+所有答对的答案已置为精华留言。
+
+<hr class="wp-block-separator" />
+
+<h3>上期加餐题：胡乱组合的信封和信</h3>
+
+<blockquote class="wp-block-quote">
+你有n封信发给n个地址。但你胡乱地把信任意塞进随机一个信封里。最终，所有信都被放入不正确的信封的概率是多少？即所有人都收到错误的信的概率是多少？
+</blockquote>
+
+答案：
+
+所有人都收到错误信件的概率为：
+
+$latex $\sum_{k=0}^{n} \frac{(-1)^k}{k!}$
+
+以上式子是不是很眼熟？对，它就是$e^{-1}$的级数展开式，所以，当信封很多时，这个概率约为 $e^{-1}\approx 37\%$，真是无所不在的$e$!
+
+一种解法：
+
+对信封数N采用归纳法。令$B_N$表示N封信的情况下，所有信放入错误信封的组合数。我们可证明：
+
+$B_{N+1}=N(B_N+B_{N-1})$，证明如下：
+
+<ul><li>当有N个已经全部放错的信封时，我们可以把第N+1封信与前面的N封信中的任何一封交换，这样必可得到N+1封放错的信。这样我们得到$NB_N$种组合。</li><li>当N个信封中，恰有一封信装入正确信封是，我们可以把这封信与第N+1封信交换，这样也可以得到N+1封放错的信。这样我们得到$NB_{N-1}$种组合。</li></ul>
+
+因此，我们得到：$B_{N+1}=N(B_N+B_{N-1})$。N封信全部放错的概率是：$P_N=B_N/N!$，因此$B_N=N!P_N$。并且：
+
+$latex $(N+1)!P_{N+1}=N(N!P_N+(N-1)!P_{N-1})$
+
+$latex $\Rightarrow (N+1)P_{N+1}=NP_N+P_{N-1}$
+
+为解出以上递推方程，可将上述方程改写为：
+
+$latex $P_{N+1}-P_N=-\frac{1}{N+1}(P_N-P_{N-1})$
+
+因为$P_1=0$，$P_2=1/2$，所以$P_2-P_1=1/2$。我们可以推出：
+
+$latex $P_k-P_{k-1}=(-1)^k/k!$
+
+因此
+
+$latex $P_N=P_1+\sum_{k=2}^{N}(P_k-P_{k-1})$
+
+$latex $=1-1+\sum_{k=2}^{N}\frac{(-1)^k}{k!}$
+
+$latex $=\sum_{k=0}^{N}\frac{(-1)^k}{k!}$
+
+此题据说是一道历史名题，欧拉也曾做过。大老李出题后，意外收到一位群友陈漱文的电子邮件，他提到其32年前（1988年），于《中学生数学杂志》上的文章：
+
+<figure class="wp-block-image">![enter image description here](https://pic3.zhimg.com/80/v2-6112dd0a1ace847757e39a6919cca9e6_hd.jpg)</figure>
+
+👍！这位读者经过那么多年还热爱数学，肃然起敬。
+
+而这道题也让我想到了著名的“<a href="https://zhuanlan.zhihu.com/p/30652564">应该相亲多少次问题</a>”，答案也是相亲过你预计人数的37%就应该收心了。这两道题是不是有点异曲同工之妙呢？
+
+所有答对的答案已置为精华留言。
+
+<hr class="wp-block-separator" />
+
+<h3>在喜马拉雅FM收听："大老李聊数学”：</h3>
+
+<figure class="wp-block-image">![enter image description here](https://pic1.zhimg.com/80/v2-ea394cf045d754a4633051c5e90c8014_hd.png)</figure>
+
+<h3>关注“大老李聊数学”公众号： dalaoli_shuxue</h3>
+
+<h3>知乎专栏：https://zhuanlan.zhihu.com/dalaoli-shuxue</h3>

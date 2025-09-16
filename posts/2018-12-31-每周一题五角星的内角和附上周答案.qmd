@@ -1,0 +1,106 @@
+---
+title: '每周一题：五角星的内角和（附上周答案）'
+date: "2018-12-31"
+categories:
+  - "每周一题"
+---
+
+<h3 id="本期题目：五角星的内角和">本期题目：五角星的内角和</h3>
+（题目来源：<a href="http://brilliant.org" data-mce-href="http://brilliant.org">brilliant.org</a>）
+
+![enter image description here](https://ds055uzetaobb.cloudfront.net/image_optimizer/face58ad9c3a7643ee1beffd7bd390637fa671d4.png)
+
+有一个不规则五角星如上图，请问：角A, B, C度数之和是多少？
+
+请直接留言或发邮件至liyouhua @ <a href="http://gmail.com" data-mce-href="http://gmail.com">gmail.com</a> 解答。
+<h3 id="本期加餐题：多火山的群岛">本期加餐题：多火山的群岛</h3>
+（题目来源：<a href="http://fivethirtyeight.com" data-mce-href="http://fivethirtyeight.com">fivethirtyeight.com</a>）
+
+你住在一片群岛上。这个群岛一共由N个岛屿组成，每座岛上有一座火山。岛与岛之间有桥相连，且每两座岛之间有且仅有一条路径连通。
+
+某天岛屿上的火山开始爆发，岛上居民撤离到了大陆上。已知每座岛上的火山喷发概率是p，一旦火山爆发，**这座岛和与其相连的桥就全沉没消失了**。每座岛上的火山喷发是独立事件，互不相干。
+
+当火山喷发结束，你在大陆上观察了一下曾经的群岛，不但岛屿数量少了，而且它们之间也断开成了若干**互不相通**区域，区域数量是x。
+
+现在的问题是：对特定的p，x的期望值是多少？要使x最大，p的值应该是多少？
+
+提示：这道题看似条件不足，实际是够的。
+
+请直接留言或发邮件至liyouhua @ <a href="http://gmail.com" data-mce-href="http://gmail.com">gmail.com</a> 解答。
+<h3 id="上周题目：朋友家的门牌号">上周题目：朋友家的门牌号</h3>
+<blockquote>拉马努金在剑桥时的好友，就读于国王学院的马哈拉诺比斯有一次想要考一考拉马努金，便拿杂志上让自己大伤脑筋的一道题让拉马努金来解。题目大致是说，威廉先生的朋友住在卢万的一条街里，这条街每户人家都有门牌，并按1、2、3……的顺序编号。已知他朋友家左边的门牌号相加与右边门牌号相加得到的结果相等，又知这条街上的住户数量在50到500之间，问如何求得朋友家的门牌号。</blockquote>
+答案：朋友家的门牌号是204。一种解法是：设总门牌号数是n，朋友家的门牌号是x。
+
+则1到x-1号的门牌号之和是：
+
+$\frac{1}{2}x(x-1)$；
+
+从x+1号到第n号的门牌号之和是：
+
+<span class="katex--inline"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="mclose">$\frac{1}{2}n(n-1)-\frac{1}{2}x(x+1)$</span></span></span></span></span>。
+
+已知两者相等，即：
+
+$\frac{1}{2}x(x-1)=\frac{1}{2}n(n-1)-\frac{1}{2}x(x+1)$，
+
+化简得：
+
+<span class="katex--inline"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord"><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;" data-mce-style="height: .814108em;"><span class="" style="top:-3.063em;margin-right:.05em;" data-mce-style="top: -3.063em; margin-right: .05em;"><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">$\frac12n(n+1) = x^2$</span></span></span></span></span></span></span></span></span></span></span></span>
+
+因为n, n+1比互质，因此n，n+1必须满足$\{p^2, 2q^2\}$的形式，且p，q是佩尔方程：
+
+<span class="katex--inline"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord">$p^2-2q^2=\pm 1$</span></span></span></span></span>
+
+的整数解。上述方程可以化简为：
+
+$p_n+q_n\sqrt{2}=(1+\sqrt{2})^n\qquad \qquad n \in \mathbb{N}$，
+
+其对应的x为$p_nq_n$​。在50<x<500之间，唯一的整数解是: p=17, q=12，x=204，n=288，得解。
+
+以上解法固然可以，但免不了有一种“凑数字”的感觉。而原故事后面还有一段趣闻：
+<blockquote>拉马努金想也不想，便让朋友记下答案。他说的答案是一个连分数——就是分母上是一个数加上另一个分数，如此递推，这个连分数正是这一类题目的通解！马哈拉诺斯比听了惊得目瞪口呆，他问拉马努金是怎么得到的结果，拉马努金说“我一听这个问题就明白，它的解显然是一个连分数，然后我就想，是哪一个连分数，于是答案就来到了我的头脑里。”
+
+后人评价拉马努金时说“于是答案就来到了我的头脑里”——这才是属于拉马努金最大的荣耀。他的信仰赐予了他如同神一般的直觉，使他能够在仅在中学数学基础的情况下，发现并创造了无数高深无比而又美妙万分的方程。</blockquote>
+那么拉马努金想到的连分数是啥呢？大老李从 <a href="http://www.quantamagazine.org" data-mce-href="http://www.quantamagazine.org">www.quantamagazine.org</a> 找到了如下解法：
+
+我们已经找到了方程：$\frac12n(n+1) = x^2$，对此方程做如下变换：
+
+<span class="katex--inline"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord"><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;" data-mce-style="height: .814108em;"><span class="" style="top:-3.063em;margin-right:.05em;" data-mce-style="top: -3.063em; margin-right: .05em;"><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">$n(n+1)=2x^2 \rightarrow n^2+n=2x^2$</span></span></span></span></span></span></span></span></span></span></span></span>
+
+$2x^2+\frac14=(n+\frac12)^2\rightarrow(2n+1)^2-8x^2=1$，
+
+等价于解佩尔方程：
+
+<span class="katex--inline"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord">$x^2-8y^2=1$</span></span></span></span></span>
+
+因为x必为奇数，所以该方程的解可由$\sqrt8$的连分数表示求得：
+
+<span class="katex--inline"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord"><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.845108em;" data-mce-style="height: .845108em;"><span class="" style="top:-3.394em;" data-mce-style="top: -3.394em;"><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">$2+\frac{1}{1+\frac{1}{4+\frac{1}{1+\frac{1}{4+\frac{1}{1+......}}}}}$</span></span></span></span></span><span class="vlist-s">​</span></span></span></span></span></span></span></span></span>
+
+只要对上述连分数在不同层取近似值，即可得到上述方程的解：
+
+2，$2+\frac11=3$，
+
+$2+\frac{1}{1+\frac{1}{4}}=14/5$，
+
+17/6，82/29，99/35，478/169，577/204…
+
+分母为偶数情况都是本问题的解。但还有人指出<span class="katex--inline"><span class="katex"><span class="katex-mathml">8\sqrt8</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.90722em;" data-mce-style="height: .90722em;"><span class="svg-align" style="top:-3em;" data-mce-style="top: -3em;"><span class="mord" style="padding-left:.833em;" data-mce-style="padding-left: .833em;">8</span></span></span><span class="vlist-s">​</span></span></span></span></span></span></span></span>的另一种连分数表示更可能是拉马努金想到的连分数：
+
+<span class="katex--inline"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord"><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.845108em;" data-mce-style="height: .845108em;"><span class="" style="top:-3.394em;" data-mce-style="top: -3.394em;"><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">$3-\frac{1}{6-\frac{1}{6-\frac{1}{6-\frac{1}{6-\frac 1\ddots}}}}$</span></span></span></span></span><span class="vlist-s">​</span></span></span></span></span></span></span></span></span>
+
+请试算一下以上连分数的各层近似值。我们无从去窥探拉马努金的当时的思想了，但连分数确实很神奇！
+
+答对的读者很多，有： **清都御马君, <img data-mce-resize="false" data-mce-placeholder="1" data-wp-emoji="1" class="emoji" alt="😤" src="https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/72x72/1f624.png" data-mce-src="https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/72x72/1f624.png"><img data-mce-resize="false" data-mce-placeholder="1" data-wp-emoji="1" class="emoji" alt="😤" src="https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/72x72/1f624.png" data-mce-src="https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/72x72/1f624.png"><img data-mce-resize="false" data-mce-placeholder="1" data-wp-emoji="1" class="emoji" alt="😤" src="https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/72x72/1f624.png" data-mce-src="https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/72x72/1f624.png">, Huangjl, 闲来无事，zhi，邮递员, 佥与佥寻，钊， 张向阳，gromit , 赵宇(Justin), 半缘君，王春明, 金承锦，大鹏，姜峰， 常大欣， Lian, 来，二咏**。
+
+**祝所有读者2019新年快乐！**
+
+<hr>
+
+<h3 id="在喜马拉雅fm收听：大老李聊数学”：">在喜马拉雅FM收听："大老李聊数学”：</h3>
+![](https://upload-images.jianshu.io/upload_images/348687-157cd7585d8e4ebc?imageMogr2/auto-orient/strip%7CimageView2/2/w/432)
+<h3 id="关注“大老李聊数学”公众号：-dalaoli_shuxue">关注“大老李聊数学”公众号： dalaoli_shuxue</h3>
+<h3 id="征题启事">征题启事</h3>
+大老李征求好题，要求要求就是好玩！原创尤佳。请尽量附上答案。
+
+请将你的题目发送至： liyouhua @ <a href="http://gmail.com" data-mce-href="http://gmail.com">gmail.com</a>，欢迎投稿。

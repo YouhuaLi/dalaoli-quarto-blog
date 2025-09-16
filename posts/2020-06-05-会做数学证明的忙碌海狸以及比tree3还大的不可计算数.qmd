@@ -1,0 +1,154 @@
+---
+title: '会做数学证明的“忙碌海狸”，以及比TREE(3)还大的“不可计算数”'
+date: "2020-06-05"
+categories:
+  - "每周一题"
+---
+
+大家好，我是大老李。继续<a href="https://zhuanlan.zhihu.com/p/143834012">上期</a>有关图灵机的话题。上期我说图灵证明了“万物皆图灵机”，即所有判定一阶逻辑数学命题真伪的问题，都能转化为判定一个图灵机是否停机的问题。那到底有没有办法真的设计出这样的图灵机呢？
+
+在我过去的想象中，给图灵机“编程”，也就是设计转移指令集是非常麻烦的事。因为没有什么编程语言可以用，而图灵机的结构又是那么简陋。有人设计过可以做加法的图灵机，但哪怕是做一次一位数的加法，这个转移指令的设计过程就已经非常复杂了。
+
+![enter image description here](https://pic2.zhimg.com/v2-d0d3ffaf442d36bb36437b0c03d5a205_b.jpg)（上图：一个图灵机运行过程的动画演示）
+
+但我最近看到了一篇2016年的<a href="https://www.scottaaronson.com/busybeaver.pdf">论文</a>，作者是麻省理工学院的博士生Adam Yedidia，及其导师Scott Aaronson。Scott Aaronson是目前世界顶尖的复杂度理论和量子计算的专家，他目前在德州大学奥斯汀分校任教，我在之前有关量子计算新闻的节目里也提到过他。
+
+![enter image description here](https://pic2.zhimg.com/v2-02470c129455fa508dd765c45e46b17d_b.jpg)（Scott Aaronson，现任职于 The University of Texas at Austin，转自: <a href="https://www.scottaaronson.com/%EF%BC%89">https://www.scottaaronson.com/）</a>
+
+在这篇论文里，Yedidia和Aaronson开发出了一个非常简便的对图灵机编程的工具，并且开发出了可以判定哥德巴赫猜想和黎曼猜想是否正确的图灵机程序。要理解他们的论文，我必须先介绍一种特别的图灵机：Busy Beaver——“忙碌海狸”。
+
+这个名称的来历我后面再说，我先说说什么是“忙碌海狸”，busy beaver。busy beaver是符合以下几个性质的图灵机：
+
+第一：符号数，或叫色数，为2。上一期讲过，图灵机有两大属性，符号数和状态数。而符号中至少有一种是空白符。所以对一台有意义的图灵机，其色数最小值就是2。
+
+第二：初始输入全为空白，”接受状态“仅有”停机状态“。
+
+第三：对以上这种2色，初始输入全为空白的图灵机，我们考虑某个状态数n。对所有这种2色-n状态的图灵机，我们知道其中有些能停机，有些则不会停机。考察其中所有能停机的图灵机，如果其中某台图灵机运行时间最久，或者说，在停机前运行的步数最多，我们就叫这种图灵机为busy beaver-”忙碌海狸“。
+
+而且我们会发现，对任何状态数n，这种busy beaver图灵机是必然存在的。因为上期讲过，标识一台图灵机的，是七个属性。我之前的叙述中，我们已经框定4个属性，状态数也确定为n， 那么只剩两个属性不确定：转移函数集合和初始内部状态。
+
+而转移函数集合的组合是有限的，这是一道很简单的排列组合题，你可以计算一下：对“2色-n状态”的图灵机，最多有多少种转移函数集合。而初始状态也是有限的。所以，总的可以设计出的“2色-n状态”图灵机的数量是有限的。
+
+这些有限的图灵机中，必然只有有限多个可以停机。有限多个可以停机的图灵机中，必然有一个停机前执行步数最多的图灵机，所以busy beaver必然存在。
+
+现在可以说说busy beaver名称的来历。英语里有一个短语:  as busy as a bee，像蜜蜂一样忙碌。但在北美地区，Beaver海狸是一种人们喜闻乐见的动物，beaver又与bee发音相近，所以就有人说 “as busy as a beaver”，虽然我是不觉得海狸有啥忙碌的。
+
+最早考察以上这种图灵机性质的，是匈牙利裔，后来移民美国的数学家蒂博尔·拉多 (Tibor Rado），他在1960年，把以上这种图灵机命名为busy beaver。因为这台图灵机在同状态数的图灵机里运行最久，所以显得比较“忙”。
+
+![enter image description here](https://pic3.zhimg.com/80/v2-e29d15144ddbb0ad589ff950e32f3552_720w.jpg)（匈牙利裔数学家，Tibor Rado，1895-1965）
+
+拉多还把n-状态的busy beaver图灵机停机前，所能执行的步数称为“busy beaver函数”，简称为BB(n)， n是这个图灵机的状态数。其实这个BB(n)还有一个学名叫“<span class="katex--inline"><span class="katex"><span class="katex-mathml">Σ\Sigma</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.68333em;vertical-align:0;"></span><span class="mord">Σ</span></span></span></span></span>函数”或“S函数”。但是很明显，从传播效果看，“忙碌海狸”函数这样的名字的传播效果远比“<span class="katex--inline"><span class="katex"><span class="katex-mathml">Σ\Sigma</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.68333em;vertical-align:0;"></span><span class="mord">Σ</span></span></span></span></span>函数”好。
+
+所以函数BB(n)，就是2色-n状态的可停机的图灵机的最大运行步数。这次在Adam Yedidia的论文中，他给出了一个程序，把哥德巴赫猜想编码为有4888个状态的Busy Beaver图灵机。编码逻辑很简单，就是从小到大验证每一个偶数。如果发现某个偶数可以表示成两个质数之和，则考察下一个偶数。如果发现某个偶数不能表示成两个质数之和，则停机。
+
+<code>States: 4888
+
+START start_read_:
+        a -> start_write_next; R; b
+        b -> ERROR; -; b
+
+start_write_next:
+        a -> write_var_counter_1_read_; R; b
+        b -> ERROR; -; b
+
+write_var_counter_H_read_:
+        a -> write_var_counter_H_move; R; b
+        b -> ERROR; -; b
+
+write_var_counter_H_move:
+        a -> write_var_counter_out_read_; R; a
+        b -> write_var_counter_out_read_; R; b
+</code></pre>
+（Yedidia对判定哥德巴赫猜想所设计的图灵机的状态转移表的开头部分，一共有4888个状态）
+
+对这个程序，其含义就是，如果我们让这台图灵机跑起来，只要跑了BB(4888)步后，如果它还没有停机，那它就证明了哥德巴赫猜想为真！因为BB(4888)是4888个状态的可以停机的Busy Beaver图灵机所能运行的最大步数。那既然这台图灵机跑过了BB(4888)步，那我们可以断定这台图灵机不会停机，所以哥德巴赫猜想为真。如果在那个步数之前停机，则哥德巴赫猜想为假。
+
+这太厉害了。以前大老李认为的那种用程序验证哥德巴赫猜想方法，只能在哥德巴赫猜想猜想为假的情况下有用。但是哥德巴赫猜想为真的情况，你的程序有无穷无尽的偶数需要去验证，是等不到结果的。  但现在这个图灵机程序，不管哥德巴赫猜想是真是假，理论上我们可以在有限时间内得到结果，这个就太棒了。
+
+现在的问题就是，跑那个程序的结果到底是啥？你应该猜到我们没有得到结果，否则哥德巴赫猜想就不是猜想了。要解释为什么会这样，需要介绍两个概念：“不可计算数”（uncomputable number）和“快速增长序列”（Fast-growing Sequences），BB(n)就是一个“不可计算数”和“快速增长序列”。
+
+“不可计算数”的概念就是在图灵介绍图灵机的同一篇论文里提出的。图灵先定义了“可计算数”：当一个实数所有的位数，包括小数点后的所有位，都可以在有限步骤内用某种算法计算出来，它就是可计算数。如果一个实数不是“可计算数”，它就是“不可计算数”。
+
+不幸的是BB(n)就是一个不可计算数。事实上，如果它是可以计算的，那么就与停机问题不可判定有矛盾了。因为如果有办法算BB(n)，应该就有个办法算某个图灵机的运行步数，当然就能判定一个图灵机是否停机。
+
+关于不可计算数，还有一个意料之外和情理之中的结论：”几乎”所有的实数都是不可计算数。这个结论的由来与另两个相似结论几乎是一样的：”几乎”所有的实数都是无理数，和”几乎”所有的实数都是超越数，因为无理数，超越数和不可计算数都是无穷集合中的不可数集合，而有理数是可数的。
+
+虽然BB(n)是不可计算的，但既然2色-n状态的图灵机数量是有限的，那我们能不能就枚举所有图灵机，去看看BB(n)到底是多少？这里有两个难点，一个是当你在模拟一个图灵机的时候，它没有停机前你是不知道它是否会停机的（除非进入循环状态），你不知道是否应该继续等下去。
+
+更不幸的是，BB(n)是一个快速增长序列。所谓快速增长序列就是一个序列的数值大小随序号增长非常的快。之前介绍过的最典型的快速增长序列就是<a href="https://dalaoliblog.wordpress.com/2017/12/12/%E7%94%BB%E6%A0%91%E7%94%BB%E5%87%BA%E4%B8%80%E4%B8%AA%E5%A4%A7%E6%95%B0-tree3%E6%BC%AB%E8%B0%88/">TREE()函数</a>，TREE(1)=1， TREE(2)=3，TREE(3)就是一个我无法描述的大数的。
+
+BB(n)也是一个快速增长序列，目前只有前4个BB(n)的数值是确切知道的，分别是1,6, 21,107。
+
+![enter image description here](https://pic3.zhimg.com/v2-c6564f37783dd2f4fabee53597d3502a_b.jpg)（2，3，4状态的Busy Beaver运行全过程示意图）
+
+从BB(5)开始，确切数值都不知道了，因为已经远超可以枚举的范围。目前我们只知道一些下限。比如
+
+<span class="katex--inline"><span class="katex"><span class="katex-mathml">BB(5)≥7,176,870BB(5)\ge7,176,870</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span style="margin-right:.05017em;" class="mord mathdefault">B</span><span style="margin-right:.05017em;" class="mord mathdefault">B</span><span class="mopen">(</span><span class="mord">5</span><span class="mclose">)</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.83888em;vertical-align:-.19444em;"></span><span class="mord">7</span><span class="mpunct">,</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord">1</span><span class="mord">7</span><span class="mord">6</span><span class="mpunct">,</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord">8</span><span class="mord">7</span><span class="mord">0</span></span></span></span></span>
+<span class="katex--inline"><span class="katex"><span class="katex-mathml">BB(6)≥3.00233×101730BB(6)\ge3.00233\times 10^{1730}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span style="margin-right:.05017em;" class="mord mathdefault">B</span><span style="margin-right:.05017em;" class="mord mathdefault">B</span><span class="mopen">(</span><span class="mord">6</span><span class="mclose">)</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">3</span><span class="mord">.</span><span class="mord">0</span><span class="mord">0</span><span class="mord">2</span><span class="mord">3</span><span class="mord">3</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.814108em;vertical-align:0;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">7</span><span class="mord mtight">3</span><span class="mord mtight">0</span></span></span></span></span></span></span></span></span></span></span></span></span>
+
+而且已经有人证明知道BB(64)就大于另一个出名的大数葛立恒数。现在你肯定很想问我BB(n)与TREE(3)比谁大？那我告诉你一个结论，虽然BB(n)与TREE(n)都是快速增长序列，但是BB(n)的增长速度更快。也就是存在一个自然数n，从这个n往后，每个BB(n)都大于TREE(n)。具体是哪个n我是不知道了，反正都已经是“神仙打架”的事情了。
+
+![enter image description here](https://pic2.zhimg.com/80/v2-e0ecb1e788a5c3afdbc5c41f4b831249_720w.jpg)（一些BB(n)的已知值，摘自：<a href="https://googology.wikia.org/wiki/Busy_beaver_function%EF%BC%89">https://googology.wikia.org/wiki/Busy_beaver_function）</a>
+
+那为什么BB(n)增长如此之快？其实也比较好理解，可以参考下围棋。对围棋棋盘，如果每增加一个点，那么棋局的变化数量大约增加两倍，或者说是原来的三倍。因为这新增的一点可以是空点，黑子和白子这三种状态。但如果问，棋盘每增加一点，棋局合理的流程变化数会增加多少？这就增加的太恐怖了。因为这新增的一点你可以在第一 步就下在那里，也可以在第100步下在那里。围棋的棋子又是可以提走再放回的，所以增加一个点，这棋局的流程变化数增加数量是难以想象的。
+
+<hr>
+
+![enter image description here](https://pic1.zhimg.com/80/v2-659629ee20b8bd5c634b89bb860a2ad4_720w.jpg)
+
+n <span class="katex--inline"><span class="katex"><span class="katex-mathml">×\times</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.66666em;vertical-align:-.08333em;"></span><span class="mord">×</span></span></span></span></span> n的围棋盘上，理论上最长的一盘棋可以下多少步呢？目前还没有准确答案。我们可以把 <span class="katex--inline"><span class="katex"><span class="katex-mathml">×\times</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.66666em;vertical-align:-.08333em;"></span><span class="mord">×</span></span></span></span></span> n的围棋盘上，一盘棋的最长手数称为“Busy Panda”（忙碌熊猫）函数？检查为BP(n)。
+
+根据这位知乎网友的<a href="https://www.zhihu.com/question/326529051/answer/698592571">文章</a>，BP(n)的增长速度约为<span class="katex--inline"><span class="katex"><span class="katex-mathml">O(n22n2/2−O(n))O(n^{2}2^{n^2/2-O(n)})</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.23692em;vertical-align:-.25em;"></span><span style="margin-right:.02778em;" class="mord mathdefault">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.98692em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.891314em;"><span class="" style="top:-2.931em;margin-right:.0714286em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord mtight">/</span><span class="mord mtight">2</span><span class="mbin mtight">−</span><span style="margin-right:.02778em;" class="mord mathdefault mtight">O</span><span class="mopen mtight">(</span><span class="mord mathdefault mtight">n</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span>。
+
+<hr>
+
+而图灵机就像一个人下的一盘棋，增加一个系统状态，貌似转移函数集的增加数还是在人类可以理解的范围内，但是Busy Beaver图灵机可以延长运行的步骤数的增加就远超人类想象了。
+
+所以，综合以上，我们只能知道BB(4888)是一个不可计算，且比葛立恒数还要大许多的一个数。因此Yedidia所设计的有关哥德巴赫猜想的图灵机程序，是运行不到能让我们确切知道哥德巴赫猜想真伪的那一步的。
+
+但是他的程序还是让我觉得非常有意思，他还写了一个验证黎曼猜想的图灵机，有5372个状态。这两个程序其实是告诉我们世界上存在有限时间内可以证明哥德巴赫猜想和黎曼猜想的程序，光想到这一点就很让人遐想联翩了。在我看来，它至少保证了哥德巴赫猜想和黎曼猜想是可被证明的，而不会是那种“不可证明”的命题。
+
+Yedidia还写了这样一个程序，它验证这样一个命题: 策梅洛-弗拉克尔公理系统是一致（自洽）的，它有7918个状态。策梅洛-弗拉克尔公理系统，简称是ZFC系统（加“选择公理"后），是我们现在最常用的集合论公理系统，也是数学的推理基础。
+
+ZFC公理系统的一致性是指，从ZFC公理系统出发，我们不会推导出互相矛盾的两个命题，也就是不能同时证明一个命题和它的否命题。
+
+了解“哥德尔（第二）不完备定理”的听众应该知道，哥德尔证明了：ZFC公理系统是无法证明自己是一致的。而现在，这个7918个状态的图灵机则是一个可以证明ZFC公理系统一致性的，所以有几个推论：
+<ul>
+ 	<li>
+这个图灵机在ZFC公理系统下，是不可判定其是否停机的。</li>
+ 	<li>
+这个图灵机如果在BB(7918)步之前停机，那就证明ZFC公理系统是不一致的，那将是数学的一场大灾难。还好这不太可能发生。</li>
+ 	<li>
+这个图灵机的实现过程，是靠从ZFC公理开始，枚举所有可以从这个公理系统推出的命题，所以这个图灵机的运行过程，有点像莱布尼兹所设想的自动推理机，只不过是一种枚举式的过程。如果可以将皮亚诺算术公理也编码进去，那么这个图灵机的运行过程简直就像是包含了数学全部的奥秘，这个过程太有魔幻色彩了。</li>
+</ul>
+还有网友问我，量子计算机对运行这种忙碌海狸图灵机有加速作用吗？我的结论是没有。因为图灵机运行过程是顺序性的，前面的没运行过，后面的就运行不了，所以量子计算机的并行运算对它使不上劲。
+
+总结一下今天节目内容：
+<ol>
+ 	<li>
+Busy Beaver是那种2色-n状态的图灵机中，在停机前可以运行最久的图灵机。BB(n)函数就是停机前它运行的步数.</li>
+ 	<li>
+BB(n)是不可计算数，也是一个快速增长序列。</li>
+ 	<li>
+理论上，已经有电脑程序可以在有限步骤内验证哥德巴赫猜想和黎曼猜想的正确性。只是步数之多，大到类无法想象的长。</li>
+ 	<li>
+有一个可以判定ZFC公理是否一致的程序，这个程序如果停机，那就是数学体系的崩塌，还好，我们有充分信心它是不会停机的。</li>
+</ol>
+参考链接：
+<a href="http://grail.cba.csuohio.edu/%7Esomos/bb.html">http://grail.cba.csuohio.edu/%7Esomos/bb.html</a>
+
+<a href="https://www.scottaaronson.com/writings/bignumbers.html">https://www.scottaaronson.com/writings/bignumbers.html</a>
+
+<a href="https://www.scottaaronson.com/busybeaver.pdf">https://www.scottaaronson.com/busybeaver.pdf</a>
+
+<a href="https://www.scottaaronson.com/blog/?p=2725">https://www.scottaaronson.com/blog/?p=2725</a>
+
+<a href="https://github.com/adamyedidia/parsimony">https://github.com/adamyedidia/parsimony</a>
+
+<a href="https://mathworld.wolfram.com/TuringMachine.html">https://mathworld.wolfram.com/TuringMachine.html</a>
+
+<a href="https://mathworld.wolfram.com/BusyBeaver.html">https://mathworld.wolfram.com/BusyBeaver.html</a>
+
+<a href="https://googology.wikia.org/wiki/Busy_beaver_function">https://googology.wikia.org/wiki/Busy_beaver_function</a>
+
+<a href="http://mrob.com/pub/math/ln-notes1-4.html">http://mrob.com/pub/math/ln-notes1-4.html</a>

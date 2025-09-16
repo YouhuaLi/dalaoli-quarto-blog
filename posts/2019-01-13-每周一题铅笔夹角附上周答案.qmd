@@ -1,0 +1,118 @@
+---
+title: '每周一题：铅笔夹角（附上周答案）'
+date: "2019-01-13"
+categories:
+  - "每周一题"
+---
+
+<h1 id="每周一题：铅笔夹角（附上周答案）">每周一题：铅笔夹角（附上周答案）</h1>
+
+<h3 id="本期题目：铅笔夹角">本期题目：铅笔夹角</h3>
+
+<figure class="wp-block-image">![enter image description here](https://ds055uzetaobb.cloudfront.net/image_optimizer/3825f3d212e2f3c309884049fed23dcc8c41e035.png)</figure>
+
+（题目来源：<a href="http://brilliant.org">brilliant.org</a>）
+
+两支铅笔摆成如图的样子，问角y的度数是多少？其中，两支铅笔都削的很好，所以AB=AC，BC垂直于CE，另一支笔亦然。
+
+请直接留言回答。
+
+<h3 id="本期加餐题：篮球上的网球">本期加餐题：篮球上的网球</h3>
+
+<figure class="wp-block-image">![enter image description here](https://pic1.zhimg.com/80/v2-1aa6da2972795ff277f70673b194e940_hd.jpg)</figure>
+
+（题目来源：<a href="http://www.physics.harvard.edu">www.physics.harvard.edu</a>）
+
+一个篮球上紧靠着有一个网球，篮球底部距地面为h，网球底部距地面为h+d。从静止释放两球。问网球反弹的高度是多少？
+
+其中，篮球的质量远大于网球，且认为所有反弹都是完全弹性的（无能量损失）。
+
+<figure class="wp-block-image">![enter image description here](https://pic2.zhimg.com/80/v2-c8c1e143f5d0f455bc5dccdb2f3aac61_hd.jpg)</figure>
+
+加餐的加餐：
+
+如果有n个球，<span class="katex--inline"><span class="katex"><span class="katex-mathml">B1</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"><span class="mord"><span style="margin-right:.05017em;" class="mord mathit"><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span class="" style="top:-2.55em;margin-left:-.05017em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"></span></span></span><span class="vlist-s"></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span class=""></span></span></span></span></span></span></span></span></span>，<span class="katex--inline"><span class="katex"><span class="katex-mathml">B2</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"><span class="mord"><span style="margin-right:.05017em;" class="mord mathit"><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span class="" style="top:-2.55em;margin-left:-.05017em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"></span></span></span><span class="vlist-s"></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span class=""></span></span></span></span></span></span></span></span></span>，…<span class="katex--inline"><span class="katex"><span class="katex-mathml">Bn</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"><span class="mord"><span style="margin-right:.05017em;" class="mord mathit"><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.151392em;"><span class="" style="top:-2.55em;margin-left:-.05017em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight"></span></span></span><span class="vlist-s"></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span class=""></span></span></span></span></span></span></span></span></span>，且每个下面的球质量都远大于上面的球，<span class="katex--inline"><span class="katex"><span class="katex-mathml"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"><span class="mord"><span style="margin-right:.05017em;" class="mord mathit">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span class="" style="top:-2.55em;margin-left:-.05017em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span class=""></span></span></span></span></span></span></span></span></span>距地面h，<span class="katex--inline"><span class="katex"><span class="katex-mathml"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"><span class="mord"><span style="margin-right:.05017em;" class="mord mathit">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.151392em;"><span class="" style="top:-2.55em;margin-left:-.05017em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span class=""></span></span></span></span></span></span></span></span></span>距地面<span class="katex--inline"><span class="katex"><span class="katex-mathml"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.77777em;vertical-align:-.08333em;"><span class="mord mathit">h</span><span class="mspace" style="margin-right:.222222em;"><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span><span class="base"><span class="strut" style="height:.69444em;vertical-align:0;"><span style="margin-right:.01968em;" class="mord mathit">l</span></span></span></span></span>，如前一样开始坠落。</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>
+
+如果h=1m，则至少需要多少个球，可以使最上面的球反弹到1km？假设所有反弹都是完全弹性的，且<span class="katex--inline"><span class="katex"><span class="katex-mathml"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.69444em;vertical-align:0;"><span style="margin-right:.01968em;" class="mord mathit">l</span></span></span></span></span>是可以忽略的。
+
+请复习完高中物理后（<sup>：）</sup>），直接留言或发邮件 liyouhua @ gmail.com解答
+
+<h3 id="上周题目：五角星的内角和">上周题目：五角星的内角和</h3>
+
+<figure class="wp-block-image">![enter image description here](https://ds055uzetaobb.cloudfront.net/image_optimizer/face58ad9c3a7643ee1beffd7bd390637fa671d4.png)</figure>
+
+<blockquote class="wp-block-quote">
+
+有一个不规则五角星如上图，请问：角A, B, C度数之和是多少？
+
+请直接留言或发邮件至liyouhua @ <a href="http://gmail.com">gmail.com</a> 解答。
+
+</blockquote>
+
+答案：110°
+
+此题非常简单，快速但“偷懒”思考方法是这样：
+
+既然这道题能出，那假设这道题不是”错题“。既然不是错题，那说明五角星的形状是与答案无关的。则可尝试加入一个条件：“假设”这个五角星有一个外接圆，则显然五角星的内角和为180°，因此剩下三个角之和为110°。
+
+以上是偷懒但很有用的快速答题方法。如果要科学证明，也挺容易（无数种方法之一）：
+
+观察上图可以发现：内部五边形的所有外角和的两倍，加上五角星的五个角之和，应该是5个三角形的内角和。五边形的外角和是360°。因此五角星的内角和是：
+
+<span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml">5×180−2×360=180</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord"></span></span></span></span></span>
+
+答对的读者非常多，无法一一列举了，所有微信上答对的读者我都设置为精华答案了。也感谢知乎专栏上的几位答友的<a href="https://zhuanlan.zhihu.com/p/53757364#comments">精彩解答</a>。
+
+<h3 id="上期加餐题：多火山的群岛">上期加餐题：多火山的群岛</h3>
+
+<blockquote class="wp-block-quote">
+
+你住在一片群岛上。这个群岛一共由N个岛屿组成，每座岛上有一座火山。岛与岛之间有桥相连，且每两座岛之间**有且仅有一条路径连通**。
+
+某天岛屿上的火山开始爆发，岛上居民撤离到了大陆上。已知每座岛上的火山喷发概率是p，一旦火山爆发，**这座岛和与其相连的桥就全沉没消失了**。每座岛上的火山喷发是独立事件，互不相干。
+
+当火山喷发结束，你在大陆上观察了一下曾经的群岛，不但岛屿数量少了，而且它们之间也断开成了若干**互不相通**区域，区域数量是x。
+
+现在的问题是：对特定的p，x的期望值是多少？要使x最大，p的值应该是多少？
+
+</blockquote>
+
+答案是：x的期望值是: <span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml">1−p+(N−1)p(1−p)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="mclose"></span></span></span></span>
+ 要使x最大，p的值应该是<span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml">$p=\frac{2-N}{2-2N}$</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.625em;vertical-align:-.19444em;"><span class="mord mathit"></span><span class="base"><span class="mord"><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span class="" style="top:-3.677em;"><span class="mord"></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.76933em;"><span class=""></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></span></span></span></span>
+
+首先，当若干岛与其他岛屿之间有且仅有一条路径时，我们知道所有的岛屿和桥构成了图论中的一棵“<a href="https://zh.wikipedia.org/wiki/%E6%A0%91_%28%E5%9B%BE%E8%AE%BA%29">树</a>”结构。
+
+<figure class="wp-block-image">![enter image description here](https://fivethirtyeight.com/wp-content/uploads/2018/10/black1.png?w=1150)</figure>
+
+假设岛屿之间构成如图的结构：
+
+红点是我们任取的这棵树的“根”。随着火山爆发，会形成其他的树，而最终树的数量就是留下的连通的区域数量。考虑这个问题：什么情况下，一个节点机会变成新的“根”结点？显然需要两个条件：
+
+<ol><li>该结点的父结点消失了。</li><li>该节点自己没有消失。</li></ol>
+
+令随机变量<span class="katex--inline"><span class="katex"><span class="katex-mathml"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"><span class="mord"><span style="margin-right:.07847em;" class="mord mathit">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.311664em;"><span class="" style="top:-2.55em;margin-left:-.07847em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span class=""></span></span></span></span></span></span></span></span></span>表示第i个岛屿最终能否成为根结点，即<span class="katex--inline"><span class="katex"><span class="katex-mathml"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"><span class="mord"><span style="margin-right:.07847em;" class="mord mathit">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.311664em;"><span class="" style="top:-2.55em;margin-left:-.07847em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span class=""></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"><span class="mord">1</span></span></span></span></span>，当第i个岛屿是根结点，否则<span class="katex--inline"><span class="katex"><span class="katex-mathml"><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord"><span style="margin-right:.07847em;" class="mord mathit">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.311664em;"><span class="" style="top:-2.55em;margin-left:-.07847em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span class=""></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"><span class="mord">0</span></span></span></span></span>。
+
+则根据前面的分析，当岛屿一开始不是根结点时，<span class="katex--inline"><span class="katex"><span class="katex-mathml"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.58056em;vertical-align:-.15em;"><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.311664em;"><span class="" style="top:-2.55em;margin-left:0;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span class=""></span></span></span></span></span></span></span></span></span>的期望值<span class="katex--inline"><span class="katex"><span class="katex-mathml">$E(X_i)=p(1−p)$</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="mclose"></span></span></span></span>。而原先的根结点最终还是根结点的概率为1-p。因此，很接单可以得到所有<span class="katex--inline"><span class="katex"><span class="katex-mathml"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"><span class="mord"><span style="margin-right:.07847em;" class="mord mathit">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.311664em;"><span class="" style="top:-2.55em;margin-left:-.07847em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span class=""></span></span></span></span></span></span></span></span></span>期望值之和：
+
+<span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml">$[\sum_{i} X_i]=1-p+(N-1)p(1-p)$</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.32767em;vertical-align:-1.27767em;"></span><span class="base"><span class="mclose"></span></span></span></span></span>
+
+此即剩下的连通区域期望值。要求上式的最大值，则可对p求导，求极值：
+
+<span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml">$\frac{\partial}{\partial p}(1-p+(N-1)p(1-p))=(2-2N)p+N-2$</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.25188em;vertical-align:-.88044em;"><span class="mord"><span class="mopen nulldelimiter"><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.37144em;"><span class="" style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span></span></span></span></span></span></span><span class="base"><span class="mord"></span></span></span></span></span>
+
+<span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml">$(2-2N)p+N-2=0</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"><span class="mopen">$</span></span><span class="base"><span class="mord"></span></span></span></span></span>
+ 解得：
+ <span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml">$p=\frac{2-N}{2-2N}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.625em;vertical-align:-.19444em;"><span class="mord mathit">$</span></span><span class="base"><span class="mord"><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span class="" style="top:-3.677em;"><span class="mord"><span style="margin-right:.10903em;" class="mord mathit"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.76933em;"><span class=""></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+ 可以看出，当岛屿数增加时，p=1/2可以使的留下的连通区域最多。
+
+答对的有：知乎上的<a href="https://www.zhihu.com/people/mysterious-lancer-x">谜之枪兵X</a>，👍一个。
+
+<hr class="wp-block-separator" />
+
+<h3 id="在喜马拉雅fm收听：大老李聊数学”：">在喜马拉雅FM收听："大老李聊数学”：</h3>
+
+<figure class="wp-block-image">![enter image description here](https://pic3.zhimg.com/80/v2-fe88907293f518b2c6817941edc0507a_hd.jpg)</figure>
+
+<h3 id="关注“大老李聊数学”公众号：-dalaoli_shuxue">关注“大老李聊数学”公众号： dalaoli_shuxue</h3>
+
+<h3 id="知乎专栏：httpszhuanlan.zhihu.comdalaoli-shuxue">知乎专栏：<a href="https://zhuanlan.zhihu.com/dalaoli-shuxue">https://zhuanlan.zhihu.com/dalaoli-shuxue</a></h3>

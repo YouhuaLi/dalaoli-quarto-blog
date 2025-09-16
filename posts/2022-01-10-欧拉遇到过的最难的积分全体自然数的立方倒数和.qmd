@@ -1,0 +1,185 @@
+---
+title: '欧拉遇到过的最难的积分：全体自然数的立方倒数和'
+date: "2022-01-10"
+categories:
+  - "级数"
+  - "欧拉"
+  - "每周一题"
+---
+
+（本文原载于我在知乎上的回答，原问题是：“你遇到过的最难的积分题目是什么？”，略修改）
+
+这不是我遇到过的最难的积分，这是欧拉遇到过的最难的积分：
+
+$(\frac{1}{2}\int_0^1\frac{(\ln x)^2}{1-x}dx)$
+
+1734年，27岁的欧拉计算出全体自然数的平方的倒数和是 $(\pi^2/6)$ :
+
+$(1+\frac{1}{2^2}+\frac{1}{3^2}+\frac{1}{4^2}+\frac{1}{5^2}+...=\frac{\pi^2}{6})$
+
+这个成就使欧拉一下子名声大噪，成为数学家中的社会名人。以上这个问题后来以欧拉的家乡瑞士巴塞尔命名，称为“巴塞尔问题”。
+
+欧拉自己也很兴奋，他一鼓作气，计算了指数为偶数，直到26次方的自然数幂次倒数和的情况：
+
+$(1+\frac{1}{2^4}+\frac{1}{3^4}+\frac{1}{4^4}+\frac{1}{5^4}+...=\frac{\pi^4}{90})$
+
+$(1+\frac{1}{2^6}+\frac{1}{3^6}+\frac{1}{4^6}+\frac{1}{5^6}+...=\frac{\pi^6}{945})$
+
+...
+$(1+\frac{1}{2^{26}}+\frac{1}{3^{26}}+\frac{1}{4^{26}}+\frac{1}{5^{26}}+...=\frac{\pi^{26}\cdot 2^{24}\cdot 76977927}{27!})$
+
+那么问题就来了，指数为3的情况下，结果如何呢？这个问题意外地困难。欧拉一生中曾经多次挑战这个问题，找到了许多相关结果，比如奇数的3次幂的交错级数情况：
+
+$(1-\frac{1}{3^3}+\frac{1}{5^3}-\frac{1}{7^3}+\frac{1}{9^3}-...=\frac{\pi^3}{32})$
+
+然而欧拉始终不能对自然数立方倒数和问题找出一个“简单”的确切答案。他曾经“自然地”（因为偶数幂次都是这个形式）作出猜想，这个问题的答案应该是: $(\frac{p}{q}\pi^3)$的形式，其中$(p/q)$是个有理数。
+
+后来，他又找到了文章开头的那个积分式：
+
+$(\frac{1}{2}\int_0^1\frac{(\ln x)^2}{1-x}dx)$
+$(=\frac{1}{2}\int_0^1(\ln x)^2(1+x+x^2+x^3+...)dx)$
+$(=\frac{1}{2}\int_0^1[\sum_{r=0}^{\infty}x^r(\ln x)^2]dx)$
+$(=\frac{1}{2}\sum_{r=0}^{\infty}\frac{2}{(r+1)^3})$
+$(=\sum_{k=1}^{\infty}\frac{1}{k^3})$
+
+然而这个积分看似简单，但始终无法继续计算或化简。
+
+1785年，在欧拉去世后2年出版的论文中，可以看到欧拉在生命中的最后岁月仍在尝试解决这个问题。欧拉写到“...迄今为止，没有任何办法写出这个级数的封闭形式...但是答案可能是这样一种形式”:
+
+$(\sum_{k=1}^{\infty}\frac{1}{k^3}=\alpha[\ln 2]^3+\beta \frac{\pi ^2}{6}\ln 2)$
+
+其中 $(\alpha)$和$(\beta)$是有理数。
+
+欧拉承认：“我用过如此多的方法寻找自然数的立方倒数和，然而所有方法均徒劳无功。以上（积分式）的方法也没有产生任何结果，所以看上去放弃（研究这个问题）是正确选择...”
+
+近200年后，1978年，Roger Apery证明：全体自然数的立方倒数和是一个无理数。
+
+他证明的结论并不让人吃惊，让数学家吃惊的是，对这个问题的研究居然还能产生一些进展，因为欧拉都放弃了！现在全体自然数的立方倒数和就被被称为“Apery常数”。
+
+有人问对平方倒数和可否凑出类似的积分式？仿造欧拉的方法，很容易得到如下积分式，恰好等于全体自然数的平方倒数和：
+
+$(\int_0^1\frac{\ln x}{x-1} dx)$
+
+有wolframalpha为证：
+
+![](https://files.mdnice.com/user/5405/29de7edb-9728-472c-bce5-9cd8e5e1ac2f.png)
+
+这个不定积分wolfram给我的答案是：
+
+![](https://files.mdnice.com/user/5405/458d7851-1a35-43ea-ac2d-39fbccef6c2f.png)
+
+不是常见的封闭形式，而使用了对数积分函数。2021.12.8我收到知乎用户“诱宵美9”私信，她搞出一个可以积的，全体自然数平方倒数和的积分，计算过程如下：
+
+$(\int_{0}^{1} \frac{\mathrm{d} x}{(1+y x) \sqrt{1-x^{2}}})$
+
+用$(x=\sin t)$换元：
+
+$({\int_{0}^{\pi / 2}} \frac{\mathrm{d} t}{1+y \sin t})$
+$(=\left.\frac{2 \arctan \left(\frac{\tan \frac{t}{2}+y}{\sqrt{1-y^{2}}}\right)}{\sqrt{1-y^{2}}}\right|_{0} ^{\pi / 2})$
+$(=\frac{\arccos y}{\sqrt{1-y^{2}}})$
+
+从而有：
+
+$(\int_{-1}^{1}\left(\int_{0}^{1} \frac{\mathrm{d} x}{(1+y x) \sqrt{1-x^{2}}}\right) \mathrm{d} y)$
+
+$(=\int_{-1}^{1} \frac{\arccos y}{\sqrt{1-y^{2}}} \mathrm{~d} y)$
+
+$(=-\left.\frac{1}{2} \arccos ^{2} y\right|_{-1} ^{1}=\frac{\pi^{2}}{2})$
+
+交换积分级数顺序:
+
+$(\int_{-1}^{1}\left(\int_{0}^{1} \frac{\mathrm{d} x}{(1+y x) \sqrt{1-x^{2}}}\right) \mathrm{d} y)$
+
+$(=\int_{0}^{1}\left(\int_{-1}^{1} \frac{1}{(1+y x) \sqrt{1-x^{2}}} \mathrm{~d} y\right) \mathrm{d} x)$
+
+$(=2 \int_{0}^{1} \frac{\arctan x}{x \sqrt{1-x^{2}}} \mathrm{~d} x)$
+
+从而：
+
+$(\sum_{n=1}^{\infty} \frac{1}{(2 n-1)^{2}}=\frac{\pi^{2}}{8})$
+$(=\sum_{n=1}^{\infty} \frac{1}{n^{2}}-\sum_{n=1}^{\infty} \frac{1}{(2 n)^{2}})$
+$(=\frac{3}{4} \sum_{n=1}^{\infty} \frac{1}{n^{2}})$
+
+于是有：
+
+$(\sum_{n=1}^{\infty} \frac{1}{n^{2}}=\frac{\pi^{2}}{6})$
+
+牛，这个我是想不出来的！就是有点复杂，期待还有更简单形式的积分。
+
+以下是目前有关此问题的一些进展：
+
+首先如果把指数视为自变量，则以上级数求和已被一般化，归入黎曼Zeta函数(以下定义仅适用s>1的情况)：
+
+$(\zeta(s)=\sum_{n=1}^{\infty} \frac{1}{n^{s}})$
+
+对于s为偶数的情况，欧拉时代就已经解决：
+
+$(\zeta(2 n)=\frac{(2 \pi)^{2 n}(-1)^{n+1} B_{2 n}}{2 \cdot(2 n) !})$
+
+其中 $(B_n)$称为“伯努利数”，它们满足递推关系：
+
+$(\left(\begin{array}{c} n+1 \ 1 \end{array}\right) B_{n}+\left(\begin{array}{c} n+1 \ 2 \end{array}\right) B_{n-1})$
+$(+\ldots+\left(\begin{array}{c} n+1 \ n \end{array}\right) B_{1}+1=0, \forall n)$
+
+对s为奇数的情况则所知甚少。1978年Apery证明 $(\zeta(3))$是无理数，仍未知其是否超越数。2001年有人证明，必然有无穷多个 $(\zeta(2k+1))$是无理数，且 $(\zeta(5))$ 、$(\zeta(7))$ 、$(\zeta(9))$ 、$( \zeta(11))$中，至少有一个是无理数。
+
+开头那个积分是欧拉算不出的，以下介绍一个欧拉遇到过的，也相当难但确实是可以算的积分：
+
+$(\int_0^{\frac{\pi}{2}} \ln(\sin x)dx)$
+
+不妨自己先算算看......
+
+当代“规范”解法，先拆分：
+
+$(\begin{aligned} I &=\int_{0}^{\pi / 2} \ln (\sin x) d x=\int_{0}^{\pi / 2} \ln \left(2 \sin \frac{x}{2} \cos \frac{x}{2}\right) d x \ &=\int_{0}^{\pi / 2}(\ln 2) d x+\int_{0}^{\pi / 2} \ln \left(\sin \frac{x}{2}\right) d x+\int_{0}^{\pi / 2} \ln \left(\cos \frac{x}{2}\right) d x \end{aligned})$
+
+再换元，令t=x/2：
+
+$(\begin{aligned} I &=\frac{\pi}{2} \ln 2+2 \int_{0}^{\pi / 4} \ln (\sin t) d t-2 \int_{\pi / 2}^{\pi / 4} \ln \left(\cos \left[\frac{\pi}{2}-t\right]\right) d t \ &=\frac{\pi}{2} \ln 2+2 \int_{0}^{\pi / 4} \ln (\sin t) d t+2 \int_{\pi / 4}^{\pi / 2} \ln (\sin t) d t \ &=\frac{\pi}{2} \ln 2+2 \int_{0}^{\pi / 2} \ln (\sin t) d t=\frac{\pi}{2} \ln 2+2 I \end{aligned})$
+
+原积分形式复现，太好了，可以解出:
+
+$(I=-\frac{\pi}{2}\ln 2)$ .
+
+欧拉的“不规范”解法：
+
+首先，证明这样一个等式：
+
+$(\cos x=2\sin 2x \sin x +2\sin 4x \sin x  +2\sin 6x \sin x+...)$
+
+方法是，根据积化和差公式：
+
+$(2\sin nx \sin x=\cos (n-1)x-\cos (n+1)x)$
+
+所以：
+
+$(\cos x = \cos x +(-\cos 3x + \cos 3x )+(-\cos 5x + \cos 5x )+(-\cos 7x + \cos 7x )+...)$
+$(=( \cos x -\cos 3x) + (\cos 3x -\cos 5x) + (\cos 5x -\cos 7x) + ...)$
+$(=2\sin 2x \sin x +2\sin 4x \sin x  +2\sin 6x \sin x+...)$
+
+再计算$( y=\ln(\sin x))$的微分，当然，$(\frac{d y}{d x}=\frac{\cos x}{\sin x})$ ,代入以上公式：
+
+$(d y=\frac{\cos x}{\sin x} d x=\frac{2 \sin 2 x \sin x+2 \sin 4 x \sin x+2 \sin 6 x \sin x+\cdots}{\sin x} d x)$
+$(=2[\sin 2 x+\sin 4 x+\sin 6 x+\cdots] d x)$
+
+再倒回去，对两边积分：
+
+$(\begin{aligned} y &=\int d y=2 \int[\sin 2 x+\sin 4 x+\sin 6 x+\sin 8 x+\cdots] d x \ &=2\left[-\frac{1}{2} \cos 2 x-\frac{1}{4} \cos 4 x-\frac{1}{6} \cos 6 x-\frac{1}{8} \cos 8 x-\cdots\right]+C \ &=-\cos 2 x-\frac{1}{2} \cos 4 x-\frac{1}{3} \cos 6 x-\frac{1}{4} \cos 8 x-\frac{1}{5} \cos 10 x-\cdots+C \end{aligned})$
+
+C是一个待定的常数。恰好已知当 $(x=\pi / 2)$ 时， $(y=\ln (\sin \pi /2)=0)$，代入上式，可得：
+
+$(0=-\cos \pi-\frac{1}{2} \cos 2 \pi-\frac{1}{3} \cos 3 \pi-\frac{1}{4} \cos 4 \pi-\frac{1}{5} \cos 5 \pi-\cdots+C)$
+
+那么:
+
+$(C=-1+\frac{1}{2}-\frac{1}{3}+\frac{1}{4}-\frac{1}{5}+\cdots)$，恰好这个级数值是已知的(这道题大概很多课本里是作为习题的吧)，为 $(-\ln 2)$，所以得到：
+
+$(\ln (\sin x)=-\ln 2-\cos 2 x-\frac{1}{2} \cos 4 x-\frac{1}{3} \cos 6 x-\frac{1}{4} \cos 8 x-\frac{1}{5} \cos 10 x-\cdots)$
+
+然后就可以求它的积分了：
+
+$(\begin{aligned} \int_{0}^{\pi / 2} & \ln (\sin x) d x \ &=\int_{0}^{\pi / 2}\left[-\ln 2-\cos 2 x-\frac{1}{2} \cos 4 x-\frac{1}{3} \cos 6 x-\frac{1}{4} \cos 8 x-\cdots\right] d x \ &=\left.\left((-\ln 2) x-\frac{1}{2} \sin 2 x-\frac{1}{8} \sin 4 x-\frac{1}{18} \sin 6 x-\frac{1}{32} \sin 8 x-\cdots\right)\right|_{0} ^{\pi / 2} \ &=-\frac{\pi}{2} \ln 2 \end{aligned})$
+
+以上过程中，每一项sin都正好抵消。
+
+欧拉的方法虽然看上去很繁复，但有一种把无穷级数玩弄于股掌之间的感觉。

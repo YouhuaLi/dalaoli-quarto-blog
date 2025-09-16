@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2018-12-24">
+
+<title>寻找图中的宝石–强正则图（音频讲稿） – dalaoli_quarto_blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">dalaoli_quarto_blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">寻找图中的宝石–强正则图（音频讲稿）</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">每周一题</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 24, 2018</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>大家好，我是大老李。节目标题不知是否使你联想到我曾经的一期节目：<a rel="noreferrer noopener" href="http://link.zhihu.com/?target=https%3A//www.ximalaya.com/keji/6310606/29262463" target="_blank">寻找数字中的宝石–梅森素数</a>。之所以把梅森素数叫做数字中的宝石，是因为我们已经知道一个<span class="math inline">\(a^b\)</span> 这种形式的数字如果是要素数的话，那么这种数字必须是<span class="math inline">\(2^p-1\)</span> （其中p是素数）这种形式。但这是<span class="math inline">\(2^p-1\)</span> 为素数的一个必要条件，不是充分条件。也许根本找不出一个充分条件，所以人们只能一个个去检查<span class="math inline">\(2^p-1\)</span> 是否为素数。而<span class="math inline">\(2^p-1\)</span> 不是素数的非常多，所以梅森素数才显得“珍贵”，称得上“数字中的宝石”。</p>
+<p>而今天要跟大家聊的图论中的一个问题“强正则图”也有类似情况，所以这个“图中的宝石”的不是说某一副具体的图，而是图论中的“图”。图论中的图，是一些点和它们之间的连线构成的图。而点的位置和连线的形状，长度是完全不考虑的。我们今天更简化到只考虑“无向简单图”，即“连线是没有方向的，且两个点之间最多只有一条连线”。</p>
+<p>要理解什么是强正则图，我们还是从一道智力题开始，请问：能否找出9个人，使得其中每个人都认识4个人，且如果任何两人互相认识，则恰好有另一人与他们认识；如果任何两人不认识，则恰好有另外2个人与这两人互相认识。</p>
+<p>这个题目听上去有点拗口，不过老听众一听这种“几个人认识不认识”的题就知道其实这是一道“画图”题。翻译成画图题就是：有9个点，每个点都有四条线连接到其他点，用术语说叫每个点的“度数”为4，也称每个点有4个“邻居”。</p>
+<p>且如果两个点之间有连线，则这两点恰好属于一个三角形或称： 恰好有另一个点是这两点的邻居；如果两个点之间没有连线，则这两点恰好属于一个四边形，或称：恰好有另两个点与其这两点是邻居。答案如下：</p>
+<div class="wp-block-image">
+<figure class="aligncenter figure">
+<img src="https://pic2.zhimg.com/80/v2-e5dfcc3b2bda3fb81fe554c1ea5ad051_hd.jpg" class="img-fluid figure-img">
+<figcaption>
+上图：强正则图（9,4,1,2），所有图片如果未说明，均来自于mathwrold）
+</figcaption>
+</figure>
+<p>这幅图在图论里就称为“强正则图”。先了解下，什么是正则图。正则图的定义是：如果一个图的所有点的度数，也就是所有点的邻居数量相等，则它就是正则图。正则图非常好画，比如一个图中任何两个点之间都有连线，即n个点的图中，每个点的度数都是n-1，则它必是正则图，而且我们称它为“完全图”或“满图”，因为其中的连线数已经满了。</p>
+<p>另一种简单的正则图就是把所有点连起来，构成一个圈，这样每个点的度数为2，称为“环图”(cycle</p>
+<p>graph)。这两种都是很平凡的正则图，还有很多不那么平凡的正则图。一道很好的智力题就是，对n个点的图，当每个点的度数是多少时，可以构成正则图。这道题是难度中等的一道智力题，供大家思考挺不错的。（<a href="http://link.zhihu.com/?target=https%3A//zh.wikipedia.org/zh-cn/%25E6%25AD%25A3%25E5%2589%2587%25E5%259C%2596" target="_blank" rel="noreferrer noopener">答案</a>）</p>
+<p>因为正则图很多，所以不好玩，但是强正则图就好玩多了。强正则图，顾名思义，其要求要比正则图强。它需要在正则图基础上再多两个条件：</p>
+<ol>
+<li>
+对任意两个相邻的点，同时与这两点相邻的点的数目相等，这个数字通常记作希腊字母λ
+</li>
+<li>
+对任意两个不相邻的点，同时与这两点相邻的点数目也相等，这个数字记作希腊字母μ。
+</li>
+</ol>
+<p>通常我们把一个图的总的点数记作v，每个点的度数记作k，所以v, k, λ, μ四个参数，决定了一个强正则图的基本特征，我们常把这个四个数字连写，来称呼一个强正则图。比如之前9个点的图就被称为（9,4,1,2）-强正则图。</p>
+<p>此时又有一个有意思的智力题，对一个强正则图来说， 它的四个参数v, k, λ, μ是互相独立的吗？你稍微想一下，会发现，它们不是独立的，需要满足一定关系。可以从图中某个点A考虑。这个点A的有k个邻居。对这个k个邻居，每个点也有k个邻居，考虑其中某个邻居B。B的邻居中必有一个是A点，另外还有λ个是A的邻居。所以B的邻居中有k-1-λ个邻居不是A的邻居，且到A的距离是2。总体而言就有 k(k-1-λ)个点到A的距离是2。这里，距离的定义就是两点之间最短的路径长度。</p>
+<p>另一方面，A的邻居有k个，则图中有v-k-1个点不是A的邻居。而这v-k-1个点到A的距离都是2，一共有μ个这样的点，所以总共有μ(v-k-1)个点到A的距离是2。这个表达式与之前的表达式都是到A距离为2的点数量，应该相等，由此我们就得到了一个含有v, k, λ, μ的等式！所以这个四个变量不是独立的，以上听上去有点绕，但强烈推荐你自己在纸上画画，算算看，相信你也能找到这个等式:</p>
+<figure class="wp-block-image figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.zhihu.com/equation?tex=k%28k-1-%CE%BB%29%3D%CE%BC%28v-1-k%29.png" class="img-fluid figure-img"></p>
+<figcaption>k(k-1-λ)=μ(v-1-k)</figcaption>
+</figure>
+</div>
+</figure>
+<p>而一般我们是先确定v,λ,μ去计算k，你会发现计算k，是一个解一元二次方程的过程，那意味着只有这个方程有正整数解，才表示这组v, k, λ, μ可能构成一个强正则图。</p>
+<p>既然v,k,λ,μ要满足如此强的条件，才能构成强正则图，那是不是这也是构成强正则图的充分条件？很可惜不是。接下来我带大家浏览一下点数比较少的情况下的一些强正则图，你会发现这是一个不断有惊喜也不断有意外的过程。</p>
+<p>再说明一下，接下来我默认排除完全图的情况，即任何两点之间都有连线的情况。因为n个点完全图必然是(n, n-1, n-2, n-2)的强正则图，这是一种很平凡的情况。另外，我还要排除μ等于0。μ等于0，图会断开，但我们只考虑连通图。</p>
+<p>还有一点，如果一个图是强正则图，则它的“补图”也是强正则图。“补图”是：当你有一个图之后，你看看还要添加哪些边可以补成一个完全图，你添加的这些边就是原图的补图。你可以体会下一个v, k, λ, μ的强正则图的补图的四个参数是啥。总之强正则图经常成对出现，除非它的补图就是它自身。</p>
+<p>那我们先看3个点，三个点的强正则图只有三角形，即三个点的完全图。4个点的强正则图出现第一个非完全图的强正则图，即4边型，参数是(4,2,0,2)，五边形也是强正则图，其参数是(5,2,0,1)。稍思考下，你会发现6边型及以上就没有强正则图了。</p>
+<p>但6个点的话，会出现两种其他类型的强正则图。构造方法如下：6个点分成两组，每组三个点，然后把属于不同组的点互相都连线，同一组的则不连线，这样你很轻易的得到一个（6, 3, 0, 3）的强正则图。这种图也被称作“完全双边图”（Complete Bipartite Graph），因为其中的点可以分成两组，同一组的点不连线，不同组的必连线。你也能发现，任何完全双边图中，只要两边的点数一样，则必然得到一个强正则图。</p>
+<div class="wp-block-image">
+<figure class="aligncenter figure">
+<img src="https://pic2.zhimg.com/80/v2-73ef9f5c43b9d404311fde66658dd661_hd.jpg" class="img-fluid figure-img">
+<figcaption>
+（6，3，0，3）强正则图，也称utility graph（水电煤图：)）
+</figcaption>
+</figure>
+<p>类似，6个点你也可以分成三组，每组两个点。同样，同一组的2点不连线，不同组的点都连线，则你又轻易得到一个（6，4，2，4）的强正则图：</p>
+<div class="wp-block-image">
+<figure class="aligncenter figure">
+<img src="https://pic1.zhimg.com/80/v2-a8c81d29219ab68b88322ed56a2b46f4_hd.jpg" class="img-fluid figure-img">
+<figcaption>
+上图：(6,4,2,4)强正则图，也称“八面体图”
+</figcaption>
+</figure>
+<p>这种图你可以猜到被命名为：完全3方图。你也可以发现，只要点数是合数，那只要做质因数分解，把点数分解成若干相等的份，总能搞出一个“完全n方图”，而且是强正则图。因为这种强正则图构造很简单，所以也是无趣的。幸好除去这种图之外，还有很多强正则图。所以后面的介绍我就忽略这种“完全n方图”，也把它算一种平凡强正则图。</p>
+<p>7个点就没有强正则图了，你可能认为这是因为7是一个质数，所以其中无法构造这种强对称性。确实11个点也没有强正则图，但是13个点的情况下又有了！稍后你会看到。</p>
+<p>8个点没有非平凡的强制图。</p>
+<p>9个点情况，在节目开始的智力题里已经介绍过，存在一个（9，4，1，2）的强正则图。而这个图也被称为“广义四边形”（Generalized</p>
+<p>Quadrangle）。我一开始看到这个名词也很迷惑，四边形还不够“一般化”吗，它怎么还能推广？我们来想一下，四边形要推广，那我们就要去掉四边形的一些性质，但尽可能保留四边形的其他性质。显然，我们得去掉4个点和4条边的要求，但去掉4个点和4条边，四边形还剩啥?!</p>
+<p>数学家就是会来事，他们说四边形还有这条性质：如果两个点不相邻，则可以找到另外两个点与它们同时相邻，这样这四个点就构成一个四边形。如果一个图符合上述性质，则就是一个“弱广义四边形”。确切的广义四边形和广义n边型定义，请各位自行查阅思考了。</p>
+<p>接下来10个点的情况下，有一个很有意思的强正则图：（10, 3, 0, 1），这个图形状是一五角星外面套一个五边形，然后把五角星的角和五边形的角连接起来，两两连接起来。这个图又被称为佩特森图（Petersen Graph）。佩特森（Julius Peter Christian Petersen，1839年6月16日－1910年8月5日）是19世纪后期的丹麦数学家。佩特森图有一些很有意思的性质，最有意思的一条是它必有哈密尔顿路，但没有哈密尔顿回路。也就是你可以在佩特森图中找出一笔画的方法通过所有点，但是你无法找到一笔画的路径通过所有点之后还能回到起点的。而且可以证明，佩特森图里只要再任意添加一条边，就可以找到哈密尔顿回路。</p>
+<div class="wp-block-image">
+<figure class="aligncenter figure">
+<img src="https://pic3.zhimg.com/80/v2-f9e86d7d9b23d7f8fd29c35693195c52_hd.jpg" class="img-fluid figure-img">
+<figcaption>
+上图：(10,3,0,1)-佩特森图
+</figcaption>
+</figure>
+<p>再接下来，我们要跳到13个点的情况了。前面说了7个点和11个点都没有非平凡强正则图，但是13个点却有一个，这就是（13, 6, 2, 3）图! 它又被称为佩里图。 佩里是20世纪初的英国数学家Raymond Paley (7 January 1907 – 7 April 1933，因滑雪事故去世）。佩里图的特点是点的个数必须是单个素数的幂次；此外还必须是除以4余1。这个条件蕴含了只要是除以4余1的素数都可以，13正好是符合条件的。符合这一条件的点数，必然可以构造出佩里图，而佩里图必然是强正则图；它也是哈密尔顿图，即它必然含有哈密尔顿回路；它也必然是“自补图”，它的补图就是自身。以上就是佩里图的部分有趣性质。</p>
+<div class="wp-block-image">
+<figure class="aligncenter figure">
+<img src="https://pic2.zhimg.com/80/v2-b6bd3293cd4f3cfbce119547e0ef9b11_hd.jpg" class="img-fluid figure-img">
+<figcaption>
+上图：一些佩里图的例子，点数都是单个素数的幂次，且除以4余1
+</figcaption>
+</figure>
+<p>13个点之后，我们再看看16个点的强正则图，这里又出现了一个有意思的情况。前面我们已经讨论了这么多，不知你有没有发现一个问题，就是给定一组强正则图的四个参数(v, k, λ, μ)，这四个参数如果可以构成强正则图，是否唯一确定一个图？我们前面真还没说这件事。当然这里要排除那种把A点换到B点，B点换A点之类这种置换情况下构成的新的图，术语叫“同构”。我们问的是，排除同构的情况，4个参数是否唯一确定一个强正则图？</p>
+<p>感觉上强正则图对参数已经有很严格要求了，所以你可能认为四个参数是唯一确定一个强正则图，但是错了，（16, 6, 2, 2）就能确定两种强正则图！其中一种图中文可以叫“车(ju)图”（rook graph）。不管是国际象棋还是中国象棋里的车都是直线前进的。如果你在一个4*4的国际象棋棋盘上，把一个车可以移动的路线全部画出，就到了（16, 6, 2, 2）的车图。</p>
+<div class="wp-block-image">
+<figure class="aligncenter figure">
+<img src="https://pic2.zhimg.com/80/v2-5263af1ca835815d85ad9bef15a2f1a5_hd.jpg" class="img-fluid figure-img">
+<figcaption>
+上图：一些“车图”的例子
+</figcaption>
+</figure>
+<p>（16, 6, 2, 2）还可以确定的一种图叫“西力克汉特”图(Shrikhande graph)，它是1959年印度数学家西力克汉特首先发表的：</p>
+<div class="wp-block-image">
+<figure class="aligncenter figure">
+<img src="https://pic3.zhimg.com/80/v2-5392becb94964f53fc6204e19252f456_hd.jpg" class="img-fluid figure-img">
+<figcaption>
+上图：西力汉克特图
+</figcaption>
+</figure>
+<p>它的特点是一种“距离规则图”(distance-regular</p>
+<p>graph)，即在图中你任取两点a,b，然后你任取数值，比如2和3。数一下与a距离为2的点和与b距离为3的点数量，记录一下这两个数字。然后你换一对a,b，同样统计这两个数字。你会发现，无论取怎样的a和b，你的统计结果总是一样的。所以它叫距离规则图。</p>
+<p>而西力克汉特图又是一种“非距离传递图”（non distance-transive graph），所谓”距离传递“就是从a到b的距离加b到c的距离，等于a到c的距离。所有距离传递图都是距离规则图，但是它的逆命题并不成立。西力克汉特图不是距离传递图，却是距离规则图，它是这种反例中点数最少的一个，（请观察一下反例在何处）所以它是很特别的。</p>
+<p>以上就是(16,6,2,2)的强正则图。16个点还有一个强正则图是：（16, 5, 0, 2），它又叫克勒布施图（Clebsch Graph），因为它与1868年，德国数学家Alfrad Clebsch发现的四次曲面的16条线的配置有关。同时它又是距离规则图和16个点的分圆图（Cyclotomic Graph）。而分圆图就是佩里图在三维空间里的一个模拟。</p>
+<div class="wp-block-image">
+<figure class="aligncenter figure">
+<img src="https://pic1.zhimg.com/80/v2-11d51124d70630e0eaf4f3afb6a2a390_hd.jpg" class="img-fluid figure-img">
+<figcaption>
+上图：克勒布施图
+</figcaption>
+</figure>
+<p>接下来17个点，因为17除以4余1，所以有17个点的佩里图，就不讲了。</p>
+<p>接下来，21个点又有一个新图了，(21, 10, 3, 6)，又有一个新名字叫：克内泽尔图（Kneser’s Graph）。这个名字来自于数学家克内泽尔1955年提出的一个组合数学中猜想：对2n+k个元素的集合，取n个不相交子集，并把子集分为k个类，则其中至少有两个不相交子集属于同一类。1978年匈牙利数学家拉兹洛·洛瓦兹（László Lovász’）就用图论的方法证明了克內泽尔的这个猜想，其中图中的点代表一个子集，每条边连接两个不想交子集。因此这个图就被叫做克内泽尔图。也许更应该叫洛瓦兹图，但数学对象的命名是相当随意的，需要一些运气。</p>
+<div class="wp-block-image">
+<figure class="aligncenter figure">
+<img src="https://pic3.zhimg.com/80/v2-933aabc64f1863fd5bbc80cf13d80086_hd.jpg" class="img-fluid figure-img">
+<figcaption>
+上图：一些“克内泽尔图”
+</figcaption>
+</figure>
+<p>17点之后，我们略过一些之前讲过的图，比如25个点，因为25是5的平方，且除4余1，所以也有25个点的佩里图（25,12,5,6）。25个点可以构造一个5*5的象棋棋盘，所以也必有一个“车图”，还有很多图我必须略过。</p>
+<p>但36个点的时候有一个非常令人吃惊的情况，就是（36, 15, 6, 6）这个图。之前我们说过一个正则图的参数不一定只决定一个图，比如（16, 6, 2, 2）就有两种图，但大多数情况只有一种图。但是（36, 15, 6, 6）对应的强正则图有32548个！为什么会突然爆发，完全不知道。</p>
+<p>你可能认为36这个数字因子比较多？但是36个点之后，再没有哪个参数能达到那么多。我一开始以为是不是36这个数字基础因子只有2和3，所以图种类多。但我看了下48或者72个点，这两个点数居然完全没有非平凡的强正则图。当然，也可能是数学家没有办法去枚举更多点数的情况。总之数学家用计算机枚举了（36, 15, 6, 6）不同构强正则图的数量，就有那么多。之后很多参数下确切的强正则图的数量数学家都是不知道的，因为枚举是无法穷尽的。</p>
+<p>接下来一个有意思的图是（50, 7, 0, 1）图，人称霍夫曼-辛格尔顿图(Hoffman-Singleton Graph)。这个图是唯一的一个，所有点度数达到7，直径为2，周长为5的图。要解释一下图的直径和周长。其实很简单，这是对圆直径和周长概念的模拟。图的直径就是图中最远距离的两个点的路径长度。周长就是图中最短的一个环路长度。</p>
+<div class="wp-block-image">
+<figure class="aligncenter figure">
+<img src="https://pic4.zhimg.com/80/v2-d38e9259ff159f77717d00147519114b_hd.jpg" class="img-fluid figure-img">
+<figcaption>
+上图：霍夫曼-辛格尔顿图的构造过程
+</figcaption>
+</figure>
+<p>一般来说，一个图直径越短，它的周长也会越短。但是霍夫曼-辛格尔顿图直径只有2，也就是任何2点，只要走两条边，必可到达；但是周长又达到5，也就是图中你要找个环路，必须要走5条边。而且图中每个点都有7条边相连，说明图中的边是很多的，所以这个图就更难得了。这绝对是非常有意思的一个图。</p>
+<div class="wp-block-image">
+<figure class="aligncenter figure">
+<img src="https://pic1.zhimg.com/80/v2-da3a8f1dc5550b5465208422b14dce94_hd.jpg" class="img-fluid figure-img">
+<figcaption>
+完整的“霍夫曼-辛格尔顿图”
+</figcaption>
+</figure>
+<p>接下来有意思的是（56, 10, 0, 2）图，人称格维兹图（Gewirtz graph)。这个图好玩之处在于，可以用一下方法来构造了这个图：画了一个7*8的格子，然后在每个格子里填入6个字母。然后检查任何两格之间的字母有没有相同的。没有相同的字母，则就在两格之间连一条线。当你把所有格子的连线都完成后，你就画出了这幅格维兹图。</p>
+<div class="wp-block-image">
+<figure class="aligncenter figure">
+<img src="https://pic1.zhimg.com/80/v2-0cd93aa9fc20b1f9f7267b5d04ac6dc4_hd.jpg" class="img-fluid figure-img">
+<figcaption>
+上图：格威兹图
+</figcaption>
+</figure>
+<figure class="wp-block-image figure">
+<img src="https://pic3.zhimg.com/80/v2-eaa18d35d62b61129de7078fd999d2ea_hd.jpg" class="img-fluid figure-img">
+<figcaption>
+上图：以上表格中，将任意没有相同字母的两格连线，就可以得到格威兹图
+</figcaption>
+</figure>
+<p>有人还在7*11的格子里做了类似的事情，这样能够构造出（77, 16, 0, 4）这个图，而这个目又称 图。这个 名字你听起来是否耳熟？这不是一种武器或战斗机型号。我之前在介绍散在单群时，就介绍过马蒂厄群，其中的一个就是 。而这个强正则图，恰好蕴含了这个散在单群的结构！这也不奇怪，因为强正则图本身是高度对称的，而有限群就是体现对称性的一个最佳抽象，所以强正则图与群联系是毫不意外。</p>
+<div class="wp-block-image">
+<figure class="aligncenter figure">
+<img src="https://pic4.zhimg.com/80/v2-9af35013d2a3472b5d4b502020f7da2b_hd.jpg" class="img-fluid figure-img">
+<figcaption>
+上图：<span class="math inline">\(M_{22}\)</span>图
+</figcaption>
+</figure>
+<p>好了，接下来准备收尾，讲最后一个特定的图：（100，22，0，6），人称“西格曼-西姆斯图”（Higman-Sims Graph）。这个图点数正好100，而且它的一种构造方法是利用M22加上施泰纳系统（3，6，22），就可以得到！</p>
+<div class="wp-block-image">
+<figure class="aligncenter figure">
+<img src="https://pic1.zhimg.com/80/v2-fbbcfb3d2b90c02d9e16db801fdd3b88_hd.jpg" class="img-fluid figure-img">
+<figcaption>
+西格曼-西姆斯图的组件，其中可以看出它由很多“对称”性组合而来
+</figcaption>
+</figure>
+<p>这个施泰纳系统正好是大老李上一期节目提到过的。 有77个点，施泰纳系统(3，6，22）有22个点，每6个点连一条线，每3个点恰好在一条线上。此外再加1个独立点，有点像画龙点睛一般，完成77+22+1=100，就可以完成西格曼-西姆斯图。具体构造过程也请大家自己思考下。</p>
+<p>希望听到这里你能感受到听大老李节目的一个好处就是，以前的内容能在后面的节目中不经意的串联起来。大老李在刚开始做这期的节目是，完全没想到强正则图还能与散在单群和施泰纳系统联系起来，但正好大老李之前看过单群和施泰纳系统的内容，所以再看到这里就感觉容易理解多了。希望你也有同样感觉。</p>
+<p>讲到这里，我大概已经把点数100以内，非平凡的强正则图中，最有意思和特点的一些讲给大家听了。但每个图我也只能浮光掠影般的介绍一下，有很多图本身都可以做一期节目。目前人们找到的最大非平凡的强正则图已经到了点数几十万，但还有很多点数很少的参数组合，我们还不能确定是否存在。</p>
+<p>看到这些强正则图，我一个感想就感觉好像在集邮。完全图和完全n边图都可以算作普通邮票，佩里图稍微特殊点，但很多，可以算纪念邮票。剩下的就可以算作特种邮票了。如果把这些图发行邮票放在一起看真的是会很好看的。</p>
+<figure class="wp-block-image figure">
+<img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2018/12/Screenshot-from-Safari-of-en.wikipedia.org-841x576-201204041348.png" class="img-fluid figure-img">
+<figcaption>
+强正则图做成图册也会很好看
+</figcaption>
+</figure>
+<p>另外我也想到了元素周期表。如果你把非平凡强正则图按点数从小到大排列，很像一个元素周期表。而点数一样的不同的图，就像同位素。而像（16，6，2，2）可以对应两种图的情况，则就像碳，石墨，金刚石的这种同素异形体。</p>
+<p>更妙的是，跟化学元素一样，数学家也预言了在某些位置上，可能有强正则图。比如（100，33，8，12） 这组参数，是可能存在强这则图的，甚至于如果它存在，它的很多性质都能算出来了，但是就是不能证明它存在。</p>
+<p>这也是强正则图神秘的地方，除了少数几种，比如佩里图这种，我们知道它存在的充分必要条件，其他的我们都只知道必要条件，不知道充分条件，所以数学家只能一个个去验证。所以我把它们叫做图中的宝石，你知道在某个很确切的地方可以有宝石，但是你挖下去可能还是没有。</p>
+<p>而目前有一块宝石，有人悬赏1000美元去发掘，这就是我在不久前一期节目中，提到过的<a rel="noreferrer noopener" target="_blank" href="http://link.zhihu.com/?target=http%3A//www.ximalaya.com/swf/sound/red.swf%3Fid%3D130726143"></a>康威<a href="http://link.zhihu.com/?target=http%3A//www.ximalaya.com/swf/sound/red.swf%3Fid%3D130726143">四道悬赏题</a>中的一道。其中一道是问：是否存在一个99点的图，如果图中两个点相邻，则这两个点恰好属于一个三角形；如果两个点不相邻，则这两个点恰好属于一个四边形。你应该听出来，这道题就是问是否存在这样一个99个点的强正则图！但是康威没有给出每一个点应该有多少个邻居，这个问题就留给听众自行计算了，是一道非常好的智力题。</p>
+<p>如果问我是否存在这个99点的图，我现在倾向于它不存在。因为证明一个东西存在要比不存在简单很多，但是这么久时间都没有人证明它存在，所以我倾向于它不存在。要证明不存在，用电脑枚举是一种方法，但是99个点暴力枚举是不可能等到结果的，这就是难度所在。</p>
+<p>好了，今天聊的够久了，希望大家喜欢强正则图，它们很对称，很漂亮，确实可称宝石。</p>
+<div class="wp-block-image">
+<figure class="aligncenter figure">
+<img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2017/10/ximalaya.png?w=298" class="img-fluid figure-img">
+<figcaption>
+在喜马拉雅FM收听“大老李聊数学”：
+</figcaption>
+</figure>
+<p>参考链接：</p>
+<p><a href="http://mathworld.wolfram.com/StronglyRegulyeGraph.html">http://mathworld.wolfram.com/StronglyRegulyeGraph.html</a></p>
+<p><a href="http://www.maths.gla.ac.uk/~es/srgraphs.php">http://www.maths.gla.ac.uk/~es/srgraphs.php</a></p>
+<p><a href="https://www.win.tue.nl/~aeb/graphs/srg/srgtab.html">https://www.win.tue.nl/~aeb/graphs/srg/srgtab.html</a></p>
+<p><a href="http://users.cecs.anu.edu.au/~bdm/data/graphs.html">http://users.cecs.anu.edu.au/~bdm/data/graphs.html</a></p>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/your-website-url\.example\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2019-12-22">
+
+<title>形形色色的素数– 费马素数 – dalaoli_quarto_blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">dalaoli_quarto_blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">形形色色的素数– 费马素数</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">每周一题</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 22, 2019</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>大家好，我是大老李。本来这期想讲一下强素数，但是发现还需要一些准备知识。所以，让我用几期节目给大家一些做点铺垫。这期让我们聊一种很有意思的数，费马数。这期节目内容，你一定要结合我之前一期介绍梅森素数的节目一起听。如果你还没听过那期节目，强烈建议你先去听我很早的一期节目：<a href="https://www.ximalaya.com/keji/6310606/29262463">寻找数字中的宝石-梅森素数</a>。</p>
+<p>我们知道，梅森素数就是那种形式上是<span class="katex--inline"><span class="katex"><span class="katex-mathml">2n−12^n-1</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.747722em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span></span></span></span></span>类型的素数。很自然地，我们会问：是否有形式为<span class="katex--inline"><span class="katex"><span class="katex-mathml">2n+12^n+1</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.747722em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span></span></span></span></span>类型的素数。这里，第一个洞察是：如果一个<span class="katex--inline"><span class="katex"><span class="katex-mathml">2n+12^n+1</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.747722em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span></span></span></span></span>数是素数，那么这个指数n本身，必须是<span class="katex--inline"><span class="katex"><span class="katex-mathml">2n2^n</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.664392em;vertical-align:0;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span></span></span>形式的数，具体证明不难，请各位自行思考了。</p>
+<p>这很像梅森素数中，如果<span class="katex--inline"><span class="katex"><span class="katex-mathml">2n−12^n-1</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.747722em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span></span></span></span></span>是素数，那这个n本身必须是素数。而对<span class="katex--inline"><span class="katex"><span class="katex-mathml">2n+12^n+1</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.747722em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span></span></span></span></span>这种类型的数，要找素数的话，我们只需要考察指数本身是2的幂次的情况。所以我们的问题就变为：什么情况下有<span class="katex--inline"><span class="katex"><span class="katex-mathml">22n+12<sup>{2</sup>n}+1</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.96331em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.87998em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.738543em;"><span style="top:-2.931em;margin-right:.0714286em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span></span></span></span></span>这样类型的素数。</p>
+<p>因为费马当初考察过这种类型的数，并作出过几个论断，所以后世把<span class="katex--inline"><span class="katex"><span class="katex-mathml">22n+12<sup>{2</sup>n}+1</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.96331em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.87998em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.738543em;"><span style="top:-2.931em;margin-right:.0714286em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span></span></span></span></span>类型的数称为“费马数”。如果一个费马数是素数，那么它就被称为“费马素数”。并且，根据n的取值，经常把相应的费马数称为<span class="katex--inline"><span class="katex"><span class="katex-mathml">FnF_n</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.151392em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>。比如<span class="katex--inline"><span class="katex"><span class="katex-mathml">F0=220+1=3F_0=2<sup>{2</sup>0}+1=3</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1.07025em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.98692em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.891314em;"><span style="top:-2.931em;margin-right:.0714286em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">0</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">3</span></span></span></span></span>, <span class="katex--inline"><span class="katex"><span class="katex-mathml">F1=221+1=5F_1=2<sup>{2</sup>1}+1=5</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1.07025em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.98692em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.891314em;"><span style="top:-2.931em;margin-right:.0714286em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">5</span></span></span></span></span>等等。</p>
+<p>你可以很快计算一下前几个<span class="katex--inline"><span class="katex"><span class="katex-mathml">FnF_n</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.151392em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>的值，会发现从<span class="katex--inline"><span class="katex"><span class="katex-mathml">F0F_0</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>到<span class="katex--inline"><span class="katex"><span class="katex-mathml">F4F_4</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>，它们的数值分别是3, 5, 17, 257, 65537，这些数都是素数。但接下来的<span class="katex--inline"><span class="katex"><span class="katex-mathml">F5F_5</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>，它等于4,294,967,297。它是不是素数呢？不太容易判定了 。</p>
+<p>1640年，费马曾经做出过猜想：所有的费马数都是素数。但是1732年，欧拉发现：<span class="katex--inline"><span class="katex"><span class="katex-mathml">F5=641×6700417F_5=641 </span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">6</span><span class="mord">4</span><span class="mord">1</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">6</span><span class="mord">7</span><span class="mord">0</span><span class="mord">0</span><span class="mord">4</span><span class="mord">1</span><span class="mord">7</span></span></span></span></span>，它是一个合数！据说当初欧拉宣布这个发现的时候，场下是欢声雷动， 不知道是不是有人在想：好嘛，总算你费马也有出错的时候！（开个玩笑）</p>
+<p>你可能会说，费马不是知道费马小定理吗，难道他没有用费马小定理去检验一下<span class="katex--inline"><span class="katex"><span class="katex-mathml">F5F_5</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>？这是个好问题。首先，我们可以排除<span class="katex--inline"><span class="katex"><span class="katex-mathml">F5F_5</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>是上期节目提到过的“卡迈克尔数”。上期说过，如果一个数是卡迈克尔数，那么它总是符合费马小定理的性质，从而你无法断定它是质数。但是卡迈克尔数有个性质 ，对它做质因数分解的话，它至少有3个质数因子。而欧拉的分解结果说明<span class="katex--inline"><span class="katex"><span class="katex-mathml">F5F_5</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>只有两个质因子，所以它肯定不是卡迈克尔数。</p>
+<p>也就是必然存在一个底数<span class="katex--inline"><span class="katex"><span class="katex-mathml">aa</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault">a</span></span></span></span></span>，使得<span class="katex--inline"><span class="katex"><span class="katex-mathml">aF5−aa^{F_5}-a</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.924661em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.841331em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.317314em;"><span style="top:-2.357em;margin-left:-.13889em;margin-right:.0714286em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.143em;"><span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault">a</span></span></span></span></span>整除<span class="katex--inline"><span class="katex"><span class="katex-mathml">F5F_5</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>。但这里有个难点是，这个<span class="katex--inline"><span class="katex"><span class="katex-mathml">aa</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault">a</span></span></span></span></span>的取值范围是从2到<span class="katex--inline"><span class="katex"><span class="katex-mathml">F5−1F_5-1</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span></span></span></span></span>，都有可能，你也不知道具体是几。会编程的听众可能马上想开始写程序检验一下了，这是一道非常好的编程题：找出一个底数<span class="katex--inline"><span class="katex"><span class="katex-mathml">aa</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault">a</span></span></span></span></span>，使<span class="katex--inline"><span class="katex"><span class="katex-mathml">aF5−aa^{F_5}-a</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.924661em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.841331em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.317314em;"><span style="top:-2.357em;margin-left:-.13889em;margin-right:.0714286em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.143em;"><span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault">a</span></span></span></span></span>不能整除<span class="katex--inline"><span class="katex"><span class="katex-mathml">F5F_5</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>，<span class="katex--inline"><span class="katex"><span class="katex-mathml">F5=225−1=232−1F5=2<sup>{2</sup>5}-1=2^{32}-1</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.68333em;vertical-align:0;"></span><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="mord">5</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1.07025em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.98692em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.891314em;"><span style="top:-2.931em;margin-right:.0714286em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.897438em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span></span></span></span></span>。当然，更方便的方法是使用费马小定理的等价形式 ，检查哪个a，使<span class="katex--inline"><span class="katex"><span class="katex-mathml">aF5−1a^{F_5-1}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.841331em;vertical-align:0;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.841331em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.317314em;"><span style="top:-2.357em;margin-left:-.13889em;margin-right:.0714286em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.143em;"><span></span></span></span></span></span></span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span></span>除以<span class="katex--inline"><span class="katex"><span class="katex-mathml">F5F_5</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>，余数不是1。而且这道编程题还不能用蛮力，因为数字太大了。你需要使用一点点数学知识，使得这道题可以控制在合适的时间和空间范围内，让电脑能够处理，所以这是一道很好的编程题。</p>
+<p>其实大老李已经编过程序了，发现这个底数<span class="katex--inline"><span class="katex"><span class="katex-mathml">aa</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault">a</span></span></span></span></span>并不大，欢迎你也把你的编程结果发给我，我们互相验证下。我相信费马当初是过于自信加上懒，而作出了那个猜想。而欧拉当初也是用费马小定理先确定了<span class="katex--inline"><span class="katex"><span class="katex-mathml">F5F_5</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>不是质数，所以才着手对<span class="katex--inline"><span class="katex"><span class="katex-mathml">F5F_5</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>进行质因数分解的。但对<span class="katex--inline"><span class="katex"><span class="katex-mathml">F5F_5</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>盲目开始手算，进行质因数分解，那无论如何都是很蠢的行为。所以，得继续用些技巧。</p>
+<p>这里，欧拉发现费马数有一个非常重要的性质，即：</p>
+<p>任何费马数<span class="katex--inline"><span class="katex"><span class="katex-mathml">FnF_n</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.151392em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>如果有质因子，则这个质因子必须是<span class="katex--inline"><span class="katex"><span class="katex-mathml">k2n+1+1k2^{n+1}+1</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.897438em;vertical-align:-.08333em;"></span><span class="mord mathdefault" style="margin-right:.03148em;">k</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span></span></span></span></span>的形式（卢卡斯后来改进为<span class="katex--inline"><span class="katex"><span class="katex-mathml">k2n+2+1k2^{n+2}+1</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.897438em;vertical-align:-.08333em;"></span><span class="mord mathdefault" style="margin-right:.03148em;">k</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="mbin mtight">+</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span></span></span></span></span>。发现这点问题就容易多了，因为<span class="katex--inline"><span class="katex"><span class="katex-mathml">F5F_5</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>可选的质因子就少多了，欧拉只要对<span class="katex--inline"><span class="katex"><span class="katex-mathml">F5F_5</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>试除那些<span class="katex--inline"><span class="katex"><span class="katex-mathml">k25+1+1k2^{5+1}+1</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.897438em;vertical-align:-.08333em;"></span><span class="mord mathdefault" style="margin-right:.03148em;">k</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">5</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span></span></span></span></span>即<span class="katex--inline"><span class="katex"><span class="katex-mathml">64k+164k+1</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.77777em;vertical-align:-.08333em;"></span><span class="mord">6</span><span class="mord">4</span><span class="mord mathdefault" style="margin-right:.03148em;">k</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span></span></span></span></span>是质数的那些数。只要试除到k=10（k=10之前，64k+1是质数的其实很少），就会发现641这个因子。</p>
+<p>以上就是欧拉对F5分解的思路，相信你按这个思路，再借助电脑，对<span class="katex--inline"><span class="katex"><span class="katex-mathml">F6F_6</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>分解也不难。后来，人们对形状是<span class="katex--inline"><span class="katex"><span class="katex-mathml">k2n+1k2^n+1</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.77777em;vertical-align:-.08333em;"></span><span class="mord mathdefault" style="margin-right:.03148em;">k</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span></span></span></span></span>这种形式的数称为“普罗斯数”（Proth Number，其中要求<span class="katex--inline"><span class="katex"><span class="katex-mathml">2n&gt;k2^n&gt;k</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.703492em;vertical-align:-.0391em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.69444em;vertical-align:0;"></span><span class="mord mathdefault" style="margin-right:.03148em;">k</span></span></span></span></span>)，因为Proth发现了一个定理：</p>
+<p><span class="katex--inline"><span class="katex"><span class="katex-mathml">k2n+1k2^n+1</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.77777em;vertical-align:-.08333em;"></span><span class="mord mathdefault" style="margin-right:.03148em;">k</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span></span></span></span></span>是质数，当且仅当：存在<span class="katex--inline"><span class="katex"><span class="katex-mathml">aa</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault">a</span></span></span></span></span>，使得 <span class="katex--inline"><span class="katex"><span class="katex-mathml">a(N−1)/2≡−1(modN)a^{(N-1)/2}N</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.888em;vertical-align:0;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.888em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight" style="margin-right:.10903em;">N</span><span class="mbin mtight">−</span><span class="mord mtight">1</span><span class="mclose mtight">)</span><span class="mord mtight">/</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">−</span><span class="mord">1</span><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:.444444em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:.333333em;"></span><span class="mord mathdefault" style="margin-right:.10903em;">N</span><span class="mclose">)</span></span></span></span></span></p>
+<p>当然，多数时候，我们只想检测费马数是否为素数，不需要分解。此时如果费马小定理，结果并不可靠，而且要检测许多不同的底数。幸好，就像对梅森素数可以用卢卡斯萊默检测法进行素性检验一样，对费马数也有一个快捷的检测方式，现在被称为“佩平测试”（ Pépin’s Test）。用这个测试，可以对费马数在多项式时间内鉴定。</p>
+<hr>
+<p>佩平测试:</p>
+<p>一个费马数<span class="katex--inline"><span class="katex"><span class="katex-mathml">Fn=22n+1F_n=2<sup>{2</sup>n}+1</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.151392em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.96331em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.87998em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.738543em;"><span style="top:-2.931em;margin-right:.0714286em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span></span></span></span></span>为质数，当且仅当，存在<span class="katex--inline"><span class="katex"><span class="katex-mathml">k&gt;=2k&gt;=2</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.73354em;vertical-align:-.0391em;"></span><span class="mord mathdefault" style="margin-right:.03148em;">k</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">&gt;</span></span><span class="base"><span class="strut" style="height:.36687em;vertical-align:0;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">2</span></span></span></span></span> ，且：</p>
+<p><span class="katex--inline"><span class="katex"><span class="katex-mathml">k(Fn−1)/2≡−1(modFn)k^{(F_n-1)/2} </span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.888em;vertical-align:0;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.03148em;">k</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.888em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.164543em;"><span style="top:-2.357em;margin-left:-.13889em;margin-right:.0714286em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.143em;"><span></span></span></span></span></span></span><span class="mbin mtight">−</span><span class="mord mtight">1</span><span class="mclose mtight">)</span><span class="mord mtight">/</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">−</span><span class="mord">1</span><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:.444444em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:.333333em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.151392em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
+<p>通常取<span class="katex--inline"><span class="katex"><span class="katex-mathml">k=3k=3</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.69444em;vertical-align:0;"></span><span class="mord mathdefault" style="margin-right:.03148em;">k</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">3</span></span></span></span></span>为测试的第一步。</p>
+<hr>
+<p>截止目前，人类已经检测到<span class="katex--inline"><span class="katex"><span class="katex-mathml">F310F_{310}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">1</span><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>，发现<span class="katex--inline"><span class="katex"><span class="katex-mathml">F5F_5</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>到<span class="katex--inline"><span class="katex"><span class="katex-mathml">F310F_{310}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">1</span><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>都是合数。目前的猜想是：除了<span class="katex--inline"><span class="katex"><span class="katex-mathml">F0F_0</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>到<span class="katex--inline"><span class="katex"><span class="katex-mathml">F4F_4</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>，其他所有费马数都是合数。甚至Boklan和康威在2016年的一篇论文里分析过 ，F5之后再有一个费马质数的几率大约是<span class="katex--inline"><span class="katex"><span class="katex-mathml">1/1091/10^9</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06411em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mord">/</span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span></span>。基本依据还是素数定理。</p>
+<p>根据素数定理，一个数字n为质数的几率大约是<span class="katex--inline"><span class="katex"><span class="katex-mathml">1/ln⁡N1/N</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mord">/</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mop">ln</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord mathdefault" style="margin-right:.10903em;">N</span></span></span></span></span>，那么一个费马数<span class="katex--inline"><span class="katex"><span class="katex-mathml">FnF_n</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.151392em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>为素数的几率就只有<span class="katex--inline"><span class="katex"><span class="katex-mathml">1/(2nln⁡2)1/(2^n )</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mord">/</span><span class="mopen">(</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.166667em;"></span><span class="mop">ln</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord">2</span><span class="mclose">)</span></span></span></span></span>。当n增大时，它是质数的可能性就越低。而费马数增加非常快，所以它是素数的可能性是飞速下降的。当然，这是基于我们认为费马数是素数的概率与普通整数一样这个前提。那是否<span class="katex--inline"><span class="katex"><span class="katex-mathml">22n+12<sup>{2</sup>n}+1</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.96331em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.87998em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.738543em;"><span style="top:-2.931em;margin-right:.0714286em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span></span></span></span></span>形式的数比其他数跟容易成为素数呢？目前完全看不出这种情况。</p>
+<p>所以如果哪天真有(外星)人发现了一个新的费马素数，那对我来说，这真的是天大的一个新闻。</p>
+<p>接下来说几个费马数的简单性质：</p>
+<p>第一个：所有费马数互质，这一点可以从一个费马数的递推公式里简单推导出来：</p>
+<p><span class="katex--inline"><span class="katex"><span class="katex-mathml">Fn=F0F1…Fn−1+2F_n=F_0F_1…F_{n-1}+2</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.151392em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.891661em;vertical-align:-.208331em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.208331em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">2</span></span></span></span></span></p>
+<p>这个性质又被称为“哥德尔巴赫定理”，是“定理”，不是“猜想”。确实是那个提出“哥德巴赫猜想”的哥德巴赫证明的定理，所以被称为“哥德巴赫定理”。</p>
+<p>第二个：除了<span class="katex--inline"><span class="katex"><span class="katex-mathml">F0F_0</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>和<span class="katex--inline"><span class="katex"><span class="katex-mathml">F1F_1</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>，所有费马数个位数是7。这应该是比较明显的。</p>
+<p>第三个：所有费马数的倒数和是无理数。它们的倒数和收敛是比较明显的，但证明是无理数就非常难了，直到1963年才有人证明的。</p>
+<p>第四个：这个比较出名了，1801年高斯证明了，一个正多边型多边形可以用尺柜作图的充分条件是：边数n是2的幂次与若干费马素数的乘积。高斯也认为这是必要条件，但他没给出证明，Pierre Wantzel证明了必要性，所以它现在被称为“高斯-Wanzel定理”。</p>
+<p>这个定理的直接推论就是正17边型可以用尺规作图作出。而现在，费马素数只有<span class="katex--inline"><span class="katex"><span class="katex-mathml">F0F_0</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>到<span class="katex--inline"><span class="katex"><span class="katex-mathml">F4F_4</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.83333em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.13889em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>五个。所以看起来，质数边数的正多边形中，只有3，5，17，257和65537这几个边数的正多边形是可以尺规作图的。</p>
+<p>第五个性质是略让人惊讶的，就是所有费马素数的倒数的小数形式，其循环节长度恰好是这个费马素数的值减去1。这个意思是这样，比如1/7的小数形式是：</p>
+<p><span class="katex--inline"><span class="katex"><span class="katex-mathml">0.142857‾0.</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.84444em;vertical-align:0;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.84444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span><span class="mord">4</span><span class="mord">2</span><span class="mord">8</span><span class="mord">5</span><span class="mord">7</span></span></span><span style="top:-3.76444em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:.04em;"></span></span></span></span></span></span></span></span></span></span>，它的循环节长度是6，比分母小1。</p>
+<p>对任何整数的倒数，它的小数循环节的最大长度只可能是分母减一，而且这种情况下，分母显然必须是质数。</p>
+<p>但分母是质数，其倒数的循环节长度不一定能达到分母减一。我们把那些倒数的循环节长度正好是自身数值减一的那些质数，称为“全循环节质数”（Full Reptend Prime）。最小的几个全循环节质数是：7, 17, 19, 23, 29, 47，等等。</p>
+<p>但目前，人们还有没很好的方法去判定一个质数是否是全循环节质数，但是，对费马数恰好有人证明了：</p>
+<p>一个费马数是质数的充分且必要条件是：它的倒数循环节长度正好是这个费马数减一。也就是费马质数必然是全循环节质数。这个定理我感觉留给听众考虑证明很不错。</p>
+<p>接下来再说说几个有关费马数没有证明的命题：</p>
+<p>第一：是否存在更多的费马质数？现在看来不太像有了。</p>
+<p>第二：是否存在无穷多个费马质数?</p>
+<p>第三：是否存在无穷多个费马合数?</p>
+<p>以上两个命题很像梅森素数相关的未解命题。人们至今也没能证明是否有无穷多个梅森质数或梅森合数。这几个命题看起来都是废话，结论都很明显了，但就是证明不了。</p>
+<p>第四：费马数的因子是否都是无平方的？即，因子分解后，所有质因子只出现一次？目前对所有已知的费马数分解都是如此。这个猜想与梅森素数里也是一模一样的。</p>
+<p>(插入若干已知费马数的分解: <a href="http://mathworld.wolfram.com/FermatNumber.html">http://mathworld.wolfram.com/FermatNumber.html</a>)</p>
+<p>好了，以上与大家聊了些费马素数，也许节目标题更应该叫费马合数，因为目前除了5个数，其他费马数很可能全都是合数。而且费马数与梅森数一起看，很多结论和猜想非常像。从二进制来看 ，梅森数就是那种全由1构成的二进制数，而费马数就是那种10…01形式的二进制数，两头是1，中间是0。</p>
+<p>这两种形式的二进制数是否可以成为质数呢？对全是1的二进制数，我们知道只有质数个1连写，才可能是质数，但其中还是有许多不是质数。对两头是1，中间全是0的二进制数，我们知道0的个数仅当是<span class="katex--inline"><span class="katex"><span class="katex-mathml">2n−12^n-1</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.747722em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span></span></span></span></span>个，才可能是质数， 但是除了一开始的几个，其他似乎绝大多数都是合数了。就是这两种形式最简单的二进制数构成的质数，其中还有非常多的未解之谜，不得不惊讶于质数的神秘。</p>
+<p>好了，下期再见！</p>
+<p><a href="https://web.archive.org/web/20160210152415/http://www.prothsearch.net/fermat.html">https://web.archive.org/web/20160210152415/http://www.prothsearch.net/fermat.html</a></p>
+<p><a href="https://primes.utm.edu/glossary/page.php?sort=FermatNumber">https://primes.utm.edu/glossary/page.php?sort=FermatNumber</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Fermat_number">https://en.wikipedia.org/wiki/Fermat_number </a></p>
+<p><a href="http://www.prothsearch.com/fermat.html#Summary">http://www.prothsearch.com/fermat.html#Summary</a></p>
+<p><a href="https://arxiv.org/abs/1605.01371">https://arxiv.org/abs/1605.01371</a></p>
+<p><a href="http://mathworld.wolfram.com/FermatNumber.html">http://mathworld.wolfram.com/FermatNumber.html</a></p>
+<p><a href="http://mathworld.wolfram.com/FermatPrime.html">http://mathworld.wolfram.com/FermatPrime.html</a></p>
+<p><a href="http://mathworld.wolfram.com/ProthPrime.html">http://mathworld.wolfram.com/ProthPrime.html</a></p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/your-website-url\.example\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

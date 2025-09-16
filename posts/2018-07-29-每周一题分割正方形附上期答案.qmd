@@ -1,0 +1,67 @@
+---
+title: '每周一题：分割正方形（附上期答案）'
+date: "2018-07-29"
+categories:
+  - "Uncategorized"
+---
+
+<h1>本期题目：分割正方形（附上周答案）</h1>
+
+（题目来源：Varsity Math）
+
+![square.jpg](https://dalaoliblog.wordpress.com/wp-content/uploads/2018/07/square.jpg)
+
+请你将一个正方形分割成4个**不同大小**的部分，且每个部分都是等腰三角形。请问如何分割？
+
+请直接留言，留下其中最小的一个等腰三角形的顶角度数即可。
+
+<hr />
+
+<h1>上期答案：</h1>
+
+上周题目是：
+
+<blockquote>![rectangles.jpeg](https://dalaoliblog.wordpress.com/wp-content/uploads/2018/07/rectangles.jpeg)
+
+你得到许多由两个任意大小矩形“粘贴”在一起，如L形的木板（参见上图）。也可以认为是一个大的矩形被切去了一个角。你现在的任务是对这些木板进行切割，要求切下的两块面积相等。切割要求是：
+<ul>
+    <li>画出一条直线，恰好平分木板面积，形状不论。</li>
+    <li>只能用一把没有刻度的直线作为工具（即只能使用尺规作图法操作，但不能使用圆规）。</li>
+</ul>
+请你找出最简单的作图法。这个最简单的作图法应该是足够简单可以留言回答的：）
+
+请直接留言作答。</blockquote>
+
+答案是：
+
+本题以下这点就很简单了：一条直线能平分矩形的话，当且仅当这条直线通过矩形的中心点，即两条对角线的交点。
+
+观察到原先图形是两个矩形的组合，所以我们可以找到两个矩形的中心，再连接起来就完成了：
+
+![L-bisect-alt0-1200x434.png](https://dalaoliblog.wordpress.com/wp-content/uploads/2018/07/l-bisect-alt0-1200x434.png)
+
+或者把原先图形看作大矩形“减去”一个小矩形，因此可以把大矩形补全，在找到大小矩形的中心，连线也可以，这个方法比前面那个稍简单点：
+
+![L-bisect-768x582.png](https://dalaoliblog.wordpress.com/wp-content/uploads/2018/07/l-bisect-768x582.png)
+
+有意思的是以上这种方法对两个矩形的位置并无要求，只要两个矩形不是部分重叠即可：
+
+![L-bisect-alt1-1200x881.png](https://dalaoliblog.wordpress.com/wp-content/uploads/2018/07/l-bisect-alt1-1200x881.png)
+
+还能推广到其他有对称性的图形上：
+
+![L-bisect-alt2.png](https://dalaoliblog.wordpress.com/wp-content/uploads/2018/07/l-bisect-alt2.png)
+
+恭喜（如有遗漏请见谅）：**高兴就好，谢，唐，<span class="buddy-card_name">Chauncey Rao</span>，φ，小宇鱼 (●—●)🐟，黄亮，Stones，韩w，Eric，heavy sun，wwz，One Dolphin**答对了！
+
+<hr />
+
+**大老李聊数学”第二季已开播！**识别如下二维码即可：
+
+![ximalaya_season1.png](https://dalaoliblog.wordpress.com/wp-content/uploads/2018/05/ximalaya_season1.png)
+
+下周再见！
+
+<hr />
+
+关注“大老李聊数学”公众号，微信搜索： dalaoli_shuxue

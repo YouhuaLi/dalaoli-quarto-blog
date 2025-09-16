@@ -1,0 +1,48 @@
+---
+title: '每周一题：烧绳计时（附上期答案）'
+date: "2018-08-07"
+categories:
+  - "Uncategorized"
+---
+
+<h1>本期题目：烧绳计时（附上周答案）</h1>
+
+（题目来源：Varsity Math）
+
+![burning rope sketch.png](https://dalaoliblog.wordpress.com/wp-content/uploads/2018/08/burning-rope-sketch.png)
+
+你有若干火柴和3条**不均匀**的可燃烧的绳子。已知三条绳子从一头点燃到烧完的时间分别是48、72和128分钟。
+
+请你用这些绳子精确计量出61分钟。
+
+请直接留言作答。
+
+<hr />
+
+<h1>上期答案：</h1>
+
+上周题目是：
+
+<blockquote>请你将一个正方形分割成4个**不同大小**的部分，且每个部分都是等腰三角形。请问如何分割？
+
+请直接留言，留下其中最小的一个等腰三角形的顶角度数即可。</blockquote>
+
+答案如下图：
+
+![Tile-the-Square](https://dalaoliblog.wordpress.com/wp-content/uploads/2018/08/tile-the-square.png)
+
+因此，最小的等腰三角形顶角是135°。有两位读者留言150°，但我尝试了一下，没有找到其他的解。如果有，请两位读者拍个照发给我。
+
+恭喜（如有遗漏请见谅）：**唐，天天快乐，韩w，eric，Stones，heavy sun，黄亮**答对了！
+
+<hr />
+
+**大老李聊数学”第二季已开播！**识别如下二维码即可：
+
+![ximalaya_season1.png](https://dalaoliblog.wordpress.com/wp-content/uploads/2018/05/ximalaya_season1.png)
+
+下周再见！
+
+<hr />
+
+关注“大老李聊数学”公众号，微信搜索： dalaoli_shuxue

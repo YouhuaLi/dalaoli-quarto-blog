@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2018-07-19">
+
+<title>三维世界中的“和谐”比例–塑料常数 – dalaoli_quarto_blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">dalaoli_quarto_blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">三维世界中的“和谐”比例–塑料常数</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Uncategorized</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">July 19, 2018</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>大家好，我是大老李。今天聊一个可能对多数人还很陌生的常数，叫“塑料常数”，英文就叫Plastic Constant。</p>
+<p>这个数字的定义很简单，它就是方程<span class="math inline">\(x^{3}=x+1\)</span>的唯一实数根，约等于1.3247或4/3。我们知道三次方程是有根式解的，所以这个塑胶常数有一个根式表达形式:</p>
+<p><span class="math inline">\({{\sqrt[{3}]{{\frac {1}{2}}+{\frac {1}{6}}{\sqrt {\frac {23}{3}}}}}+{\sqrt[{3}]{{\frac {1}{2}}-{\frac {1}{6}}{\sqrt {\frac {23}{3}}}}}}\)</span></p>
+<p>它既然代数方程的根，那它就是一个代数数，而不是超越数。我们知道很多常数比如<span class="math inline">\(\pi\)</span>，<span class="math inline">\(e\)</span>都是超越数。超越数给我们的感觉是充满神秘感的，而代数数的神秘感就差很多。那为什么我们还要赋予这个数一个特殊的名字呢？</p>
+<p>你可能也注意到，这个数字的定义与黄金分割比例有点像。黄金分割比就是方程<span class="math inline">\(x^{2}=x+1\)</span>的解。现在这个塑料常数就是把方程左边的平方，改成了立方。那么它们之间有联系吗？被你猜对了，确实有联系，让我们还是从这个常数的来历说起。</p>
+<p>话说在1924年，法国工程师Gérard Cordonnier就专门研究过这个数，他当时只有17岁，他把这个数命名为“辐射数”。但四年之后，荷兰建筑师van den Laan发表了有关这个数在自然界中的属性和在建筑美学上应用，并且他把这个数字命名为“塑料常数”，当年他也才24岁。这也是挺有意思的一件事，像<span class="math inline">\(x^{3}=x+1\)</span>这样的方程，过去对数学家来说，已经研究了很多了，人们也知道这个方程的那个实数解的一些特别性质。但经过这个建筑师研究后，发现了不同的意义，人们才发现原来这个数字是在自然界中是有一些美学含义的，所以人们接受了Laan命名的“塑料常数”这个名字。Laan的结论是塑胶常数不但是“美”，更重要的是所谓“清晰”(Clarity)的。</p>
+<p>Laan的发现是从思考两个问题开始，这两个问题都是关于我们如何感受现实中物体的长度，大小，以及如何把他们归类的。</p>
+<p>第一个问题是这样：比如我给你看一系列大小不同的正方形，有20个。两面最小的边长是5，最大的是25，是最小的5倍，我在节目介绍里就放了这样一张图，请你看了一下，是不是你第一感会自动的把这些正方形分类，一些是属于“偏小”的，一些是“大”的，尽管这些正方形大小都是渐变的，所以不能严格的归为大或小两类，但是你的大脑还是会这样去做。Laan问的第一个问题就是：当两个物体长度是a和b，且a&gt;b，当a:b的比值大于多少之后，你的大脑会把它们归为两类呢？也就是a比b要长到多少比例，你的大脑会认为区别足够大了，应该分为2类了。这是第一个问题。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2018/07/screen-shot-2018-07-18-at-8-52-53-pm.png" class="img-fluid figure-img"></p>
+<figcaption>Screen Shot 2018-07-18 at 8.52.53 PM.png</figcaption>
+</figure>
+</div>
+<p>（上图：你看到上图，第一感会把上图如何“分类”）</p>
+<p>第二个问题是这样，比如卖西瓜。如果西瓜不是按重量卖，而是按数量卖，那么显然老板必须把差不多一样大小的西瓜放在一起标一个价，你不能差太多，否则顾客都会挑大的。现在问题就是，两个西瓜大小之间的差距在什么样的范围内，人们才会认为它们的大小差不多呢？也就是你是瓜店老板的话，你会把差距在这个范围内的瓜放在一起，而你作为顾客的挑选话，你选瓜时也不太会在意它们的大小区别。</p>
+<p>这两个问题看上去都很不“科学”，不像数学问题，更像心理学的问题。但这不妨碍去做这个实验。建筑师Laan真请人做了些实验，最后统计结果出来了：对第一个问题，答案约等4/3。第二个问题，约1/7。也即是当两个物体之间的长度比值达到4/3以上了，你的大脑会把它们划分为两类。而两个东西的大小差距在1/7以内，你的大脑会倾向忽略它们之间的大小区别。这两个数字看上去有点矛盾，其实它们是出现在不同的场景。4/3这个数字是出现在对很多物体需要快速按大小分类的时候。第二个数字是出现在你对两个物体的大小需要进行区分的时候，所以并不矛盾。而且接下来你会发现，这两个数字其实是有统一的来源的。</p>
+<p>Laan建筑师指出，这两个数字其实就是来源于黄金分割比的一个扩展。我们知道黄金分割比是这样定义，一根线段切成两段，我们要使的整个一段长度与较长的一段的比，等于较长的一段比较短的一段，而这个比值，约1.618就是黄金分割比。现在稍微扩展一下，请你考虑一下把一个线段取两个点分为长度不同三段。这样两个分点加线段两端点，我如果任取两点的话，可以得到6种不同的长度组合，如果我把这6段不同的长度组合按最长到最小排列起来，并且要求相邻的两段长度之间的比值都要相等，问这个分点取在哪里，比值又是多少？</p>
+<p><img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2018/07/screen-shot-2018-07-18-at-8-56-23-pm.png" class="img-fluid" alt="Screen Shot 2018-07-18 at 8.56.23 PM.png"> (上图左：黄金分割的来历。上图右：塑料常数的来历，相邻两段比例全部相等)</p>
+<p>如果你有时间，可以暂停一下，马上做做看这道智力题。这个问题答案就是塑料常数，约4/3。而那个1/7怎么来的呢，你把塑料常数的七次方非常接近7，它的倒数就是1/7。也就是一个线段长度按塑料常数的比例不断拉长7次后，它的长度接近原来的7倍，原来的长度是它的1/7。</p>
+<p>你也马上能发现，既然分成3点能得到一个常数，分成4个点，5个点，6个点，应该都可以啊。是的，Laan工程师发现，如果一个线段分成n个点，要使分出的线段之间的比例如之前例子中的“和谐”状态，那这个比例会符合方程<span class="math inline">\(x^{n}=x+1\)</span>。如果n=2，这就是黄金分割，n=3，就是塑料常数。n&gt;3之后，也能求出一个在1与2之间的实数解，而且n越大，比值越小。Laan把这个数列第n个数，称为n维空间的和谐数（harmonious number，或Clarity number“清晰数”）。而因为人类生活在三维空间，所以人类无法感受n大于3之后的和谐数，但是我们能感受到n=2时，黄金分割比带来的美感和n=3时，这个塑料常数带来的和谐感和所谓“清晰感”（Clarity）。他的所谓“清晰感”是有点抽象的概念，之后你可以自己体会一下。</p>
+<p>据说有人做过实验，给人们从不同长宽比的矩形里找最具美感的，结果发现人们都选择长宽比接近黄金分割比的。而Laan认为，如果给人们从很多不同长宽高的立方体里面选择最美的，他们会选出符合塑料常数比值的立方体，而且他也发现古希腊人建筑中，不自觉的运用了这个比值。我在节目介绍里，也会放几张这样的立方体，大家感受一下，是不是比较有美感。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2018/07/screen-shot-2018-07-18-at-9-02-54-pm.png" class="img-fluid figure-img"></p>
+<figcaption>Screen Shot 2018-07-18 at 9.02.54 PM.png</figcaption>
+</figure>
+</div>
+<p>(上图左：按黄金分割比例嵌套的正方形。上图右：长宽高之比符合塑料常数的立方体，你看的出美感吗？)</p>
+<p>那为什么要叫它塑料常数呢？其实按理说既然有黄金分割比，按接下来就应该是白银分割比，是吧？但一个是因为有另一个数字已经被称为白银分割比了，Laan建筑师也不想搞“圣斗士”那套东西，他就直接叫它“塑料常数”，因为塑料就是三维材料，而这个常数在三维世界发挥作用的一个常数。不过后来，确实也有人把这个常数称为“银数”。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2018/07/screen-shot-2018-07-18-at-9-32-12-pm.png" class="img-fluid figure-img"></p>
+<figcaption>Screen Shot 2018-07-18 at 9.32.12 PM.png</figcaption>
+</figure>
+</div>
+<p>(上图：Lann建筑师设计的一座修道院，你能看出其中“塑料常数”的运用吗？)</p>
+<p>好了，以上塑料常数的来历说完，说几个它的重要性质。一个是塑料常数是所谓佩兰数列和巴都万数列的两项之间的比值极限。佩兰数列和巴都万数列的定义跟斐波那契数列很像。斐波那契数列是当前项是前两项之和，而佩兰数列和巴都万数列是跳过上一项，取再前两项之和，也就是<span class="math inline">\(a_{n}=a_{n-2}+a_{n-3}\)</span>。佩兰数列和巴都万数列的区别仅是起始的三项不同。斐波那契数列相邻两项之间的比值极限是黄金分割，而佩兰数列和巴都万数列相邻两项之间的比就是塑料常数，这里也可以看出塑料常数与黄金分割比的联系。</p>
+<p>而另一个性质是塑料常数是所谓皮索特-维贡伊拉卡文数(<strong>Pisot–Vijayaraghavan number</strong>)，简称PV数中最小的一个。PV数的一个有意思性质就是虽然pv数都是无理数，但是这些数的某些幂次会非常接近整数，比如这个塑料常数的15次方就非常接近70。如果你去看其他PV数的某些幂次，会更加接近整数，相当有意思。</p>
+<p><span class="math inline">\((3+{\sqrt {10}})^{6}=27379+8658{\sqrt {10}}=54757.9999817\dots \approx 54758-{\frac {1}{54758}}\)</span></p>
+<p>(上图：PV数<span class="math inline">\(3+{\sqrt {10}}\)</span>的6次方与整数是如此接近)</p>
+<p>最后值得一提的是有人分析了一下塑料常数与音阶联系，确实发现塑料常数与12平均律的音阶是有紧密联系的。我也随手找了一下所谓内六角扳手尺寸表(L值），发现里面很多不同规格的扳手的内径尺寸差距还真的很接近1/7，不知道这是不是不自觉中“塑料常数”在起作用，因为前面说过人们觉得两样东西的尺寸差距超过1/7了，这就算两样东西了，需要不同规格了。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2018/07/wkgknftmbtusgkcsaa1rkievmsw849.png" class="img-fluid figure-img"></p>
+<figcaption>wKgKnFtMBTuSGKCSAA1rkIeVMsw849.png</figcaption>
+</figure>
+</div>
+<p>我还想到的一个著名实验，是让你在心里想一个1到10之间的一个整数，据说2/3以上的人第一感想到7，我觉得是不是也与这个“塑料常数”有关呢？请听众朋友也能想想身边有没有什么事物可能是与塑料常数相关的，也欢迎你告诉我你的发现。我们下期再见！</p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/your-website-url\.example\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2019-11-03">
+
+<title>中文是最有效率的语言吗？– 信息熵简谈 – dalaoli_quarto_blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">dalaoli_quarto_blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">中文是最有效率的语言吗？– 信息熵简谈</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">每周一题</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">November 3, 2019</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>你也许听说过这种说法: 中文是最有效率的一种语言。同样一篇文章，比如联合国宪章，中文版本永远是最薄的。问题是这种说法到底科学吗？今天就跟大家聊聊这个问题。科学家确实找到了一种方法去衡量一种语言的效率，甚至可以定量分析，这就是“信息熵”。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/9/99/ClaudeShannon_MFO3807.jpg" class="img-fluid figure-img"></p>
+<figcaption>enter image description here</figcaption>
+</figure>
+</div>
+<p>1948年，英国数学家克劳德·香农提出了一个表征符号系统中单位符号平均信息量的指标–信息熵，还给出了一个计算信息熵的公式，这个公式十分简洁。请大家看下这期节目介绍，里面有这个公式：</p>
+<p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml">∑i=1npilog⁡2pi<em>{i=1}^{n}p_i</em>{2}p_i</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.92907em;vertical-align:-1.27767em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6514em;"><span style="top:-1.87233em;margin-left:0;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05001em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.30001em;margin-left:0;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.27767em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.311664em;"><span style="top:-2.55em;margin-left:0;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:.166667em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.206968em;"><span style="top:-2.45586em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.24414em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.311664em;"><span style="top:-2.55em;margin-left:0;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>公式里出现的<span class="katex--inline"><span class="katex"><span class="katex-mathml">pip_i</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.625em;vertical-align:-.19444em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.311664em;"><span style="top:-2.55em;margin-left:0;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>是指某种符号系统中，某个符号出现的频率。</p>
+<p>比如文字就是一种符号系统，每个汉字就是一种符号。而频率就是某个字在全体文字材料中出现的比例。比如，如果你统计了一本一百万字的书，这本书中某个字出现了1万次，那么这个字的频率就是：1万/1百万=0.01=1%。</p>
+<p>而香农这个公式就是要把某个符号系统中的符号频率全都统计出来，代入上述公式，就是这个符号系统的信息熵。</p>
+<p>听上去有点抽象，我们来点实际运算就容易多了。比如，如果符号系统只有一个符号，信息熵会如何？</p>
+<p>因为只有一个符号，那么它的频率必然就是100%，也就是1。1的对数是0，所以按这个公式的计算结果就是0。</p>
+<p>这个结果就香农给出的解释是，如果一个符号系统只有1个符号，那么这个符号系统什么信息都不能传递，单个字符能传递的信息是0。如果一种文字只有一个字母a，一a到底，那么这种语言真的啥信息能不能传递。</p>
+<p>那么两种符号会如何？我们先假设两种符号的出现频率都是50%=0.5。那么按公式：<span class="katex--inline"><span class="katex"><span class="katex-mathml">log⁡20.5=−1_{2}0.5=-1</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.93858em;vertical-align:-.24414em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.206968em;"><span style="top:-2.45586em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.24414em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">5</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">−</span><span class="mord">1</span></span></span></span></span> 。那么总信息熵，按照公式就是：</p>
+<p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml">−1×(0.5×(−1)+0.5×(−1))=1-1(0.5(-1)+0.5(-1))=1</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">−</span><span class="mord">1</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mopen">(</span><span class="mord">0</span><span class="mord">.</span><span class="mord">5</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mopen">(</span><span class="mord">−</span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">5</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mopen">(</span><span class="mord">−</span><span class="mord">1</span><span class="mclose">)</span><span class="mclose">)</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span></span></span></span></span></span></p>
+<p>那么这种符号系统的信息熵就是1， 意思就是：这种符号系统的每个符号可以传递1比特信息。此时我们能看出之所以公式前面要有一个乘以-1，就是为了使结果总是大于等于0，因为人对正数的感受比较直观。</p>
+<p>而我们的另一个发现是，影响信息熵的有两个因素：一个是符号的多少，一个是符号的频率分布。那我们可以固定一个变量，看看其中一个变量对信息熵的影响。</p>
+<p>我们先假设每个符号的频率是相等的，字符数不断增加会如何？假设某符号系统有n个符号，每个符号的频率是1/n，则该系统的信息熵是：</p>
+<p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml">−∑i=1n1nlog⁡21n=log⁡2n-_{i=1}^{n}<em>2=</em>{2}n</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.92907em;vertical-align:-1.27767em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6514em;"><span style="top:-1.87233em;margin-left:0;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05001em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.30001em;margin-left:0;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.27767em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">n</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:.166667em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.206968em;"><span style="top:-2.45586em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.24414em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">n</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.93858em;vertical-align:-.24414em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.206968em;"><span style="top:-2.45586em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.24414em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord mathdefault">n</span></span></span></span></span></span></p>
+<p>即有n个符号的符号系统，它的信息熵是<span class="katex--inline"><span class="katex"><span class="katex-mathml">log⁡2n_{2}n</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.93858em;vertical-align:-.24414em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.206968em;"><span style="top:-2.45586em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.24414em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord mathdefault">n</span></span></span></span></span>。也就是符号越多，信息熵越大。</p>
+<p>那我们再考虑一下，如果符号数量固定，符号的频率分布改变，对信息熵的值影响如何？你稍加计算就会发现，如果符号的频率分布越不均匀，则信息熵越小。比如如果只有两个符号，其中一个符号的出现频率占90%，另一个只占10%，则代入公式，可以算出这种符号系统的信息熵是0.47左右。而之前算过两个符号频率相等的话，信息熵是1。</p>
+<p>计算结果有了，我们来解读一下。先解读下为什么符号越多信息熵越大，也就是单个符号提供的信息越多。</p>
+<p>你可以设想，英语不是26个字母，而是有1000个字母了。那么，即使元音字母还是只有a,e,i,o,u这5个，而每个单词要求至少有一个元音字母，那么用1000个字母，你也可能构造出<span class="katex--inline"><span class="katex"><span class="katex-mathml">1000×5×2=100001000=10000</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">2</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span></span></span></span></span>个两个字母的单词。而大学英语六级的词汇量也就是6000左右，1万个单词已经非常多了。如果考虑三个字母的组合，那就够用了。</p>
+<p>所以，英语文章如果可以用1000个字母的系统改写，那么几乎其中所有单词都可以用3个或更少的字母的组合来表示，这本书将大大变薄，所以单个字母的信息量是不是就增加非常多？</p>
+<p>而汉字系统，恰恰有点像有几千个字母的拼写系统，所以中文单个字的信息熵会比字母会高。</p>
+<p>再看看为什么符号频率越均匀，信息熵越高。这是因为符号频率越均匀，说明符号前后出现的关联性越小，也就是每个符号都很关键，都不能丢，所以符号信息量大。反之，符号出现的关联越强，则有些符号就可以省略了，说明这些符号提供的信息少。</p>
+<p>比如，英语里，很多单词的拼写中的字母组合是经常一起出现的，比如ing, tion等等。 这些组合中，你即使丢掉了一个字母，也不妨碍你阅读。网上曾经出现过一个段子，就是一长串英语句子，其中每个单词的拼写都丢掉了1-2个字母，但是你阅读起来完全无障碍，甚至你都不会注意到这些单词拼错了。这就说明这些字母提供的信息少。</p>
+<blockquote class="blockquote">
+<p>一段字母位置错乱的英语文章，但是仍然不妨碍阅读：</p>
+I cnduo’t bvleiee taht I culod aulaclty uesdtannrd waht I was rdnaieg. Unisg the icndeblire pweor of the hmuan mnid, aocdcrnig to rseecrah at Cmabrigde Uinervtisy, it dseno’t mttaer in waht oderr the lterets in a wrod are, the olny irpoamtnt tihng is taht the frsit and lsat ltteer be in the rhgit pclae. The rset can be a taotl mses and you can sitll raed it whoutit a pboerlm. Tihs is bucseae the huamn mnid deos not raed ervey ltteer by istlef, but the wrod as a wlohe. Aaznmig, huh? Yaeh and I awlyas tghhuot slelinpg was ipmorantt! See if yuor fdreins can raed tihs too.
+</blockquote>
+<p>而中文的话，字与字之间的关联就小多了，一句话丢掉很多字的话，这句话的意思就很难还原了。而关联小，也就是字与字之间出现的频率差距不大，你不容易猜到下一个字，这时，每个字提供的信息量就大。</p>
+<p>那英语与中文的信息熵就究竟有多大？不久前国外知名数学博主John D.Cook就发表了一篇<a href="https://www.johndcook.com/blog/2019/10/18/chinese-character-entropy/">博客</a>，他计算了一下中文的信息熵。它使用的中文词频数据是2004年，一位美国大学的<a href="http://lingua.mtsu.edu/chinese-computing/statistics/char/list.php?Which=MO">研究者</a>发布在网上的。统计及结果中，出现频率最高的汉字是 “的”，大概是4.1%。第二位是“一”，频率就只有1.5%了。Cook根据这个词频，计算出单个汉字的信息熵是9.56。而一般认为单个英文字母的信息熵为3.9，中文的优势是很大的。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-2fe5260ccddfcd8e497a08cc816439f0_hd.png" class="img-fluid" alt="（插入中文词频统计）">(上图：美国大学研究者Jun Da 笪骏 <a href="mailto:jda@mtsu.edu">jda@mtsu.edu</a>，2004年对中文词频的统计)</p>
+<p>但这样是否就可以说中文的信息熵就比英文高一倍多呢？还不那么简单，因为信息熵的比较还有一些不确定因素，比如比较的对象。之前是比较英文字母和汉字，但你也可以比较英文单词和汉字。</p>
+<p>实际上英文单词虽然组合多了，但是一句话前后的关联太多，所以单词的信息熵更低了，香农当初计算计算出单个英文单词的信息熵是只有2.62。你也可以对中文也按词来统计，但是中文怎么切词仍然是个问题。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-f0e92f8080ba6ef6a886ae2e08612685_hd.png" class="img-fluid" alt="（插入香农的统计截图）">(上图：香农计算的英语信息熵，英语单词的信息熵只有2.62。“27 letter“是指将“空格”也作为一个字母统计。)</p>
+<p>另外一个因素是有关词频的统计。同样是中文，古文和白话文的词频肯定是不一样。不同领域里的文章里的词频也会有很大差异 。不过有一点确定的是，不论哪种语言，数学论文的单位字符信息熵肯定远大于其他类型的文章，这也是为什么数学论文那么难懂的原因。数学家是能用公式，就不用文字，能用“显然”或“易得”就绝不给你展开。往往一个公式你就要在那里琢磨好几分钟。而大老李虽然讲的啰嗦点，但是能让你懂对不对？</p>
+<p><img src="https://pic2.zhimg.com/80/v2-f18c2aedefcbb5792217083098547b69_hd.jpg" class="img-fluid" alt="（插入信息熵相关论文）">（上图：某数学论文的一页）</p>
+<p>但不管怎样，目前不同统计方式下中文的信息熵都还是领先的。 Cook提出了一种新的比较标准，即不同语言在单位时间内的输出信息量，并且他提出一个猜想是不同语言在单位时间内输出量是接近的。比如同样一本圣经，中文版肯定比英文版薄，但是让你抄写一遍，因为中文笔画多，中文抄的抄的比较慢，所以最终抄写时间可能差不多。</p>
+<p>当然，现在电脑时代，更应该比较在电脑上输入的时间。我觉得可以比较一下平均输入一本中英文版圣经所需要的打字次数（均使用最佳带联想功能的输入法），望有心的读者可以尝试研究。</p>
+<p>另外，如果考虑语音输出的效率，会有一些更有意思的发现。有一点是可以肯定的，中文当以语音形式输出时，单个信息量的信息量大大减少，因为汉字至少有5千多个，但是发音组合考虑声调时，大概只有1200多种，不考虑声调的话 ，只有300多种组合。如果像大老李这样这样前后鼻音不区分的人，信息量就丢失更多了。这就可以解释生活中的很多现象。</p>
+<blockquote class="blockquote">
+<p>中文带声调拼音组合频率前十为：</p>
+<p>de, 4.63%</p>
+<p>shi4, 2.23%</p>
+<p>yi1, 1.71%</p>
+<p>bu4, 1.49%</p>
+<p>ta1, 1.21%</p>
+<p>zai4, 1.13%</p>
+<p>le, 1.10%</p>
+<p>ren2, 0.97%</p>
+<p>you3, 0.96%</p>
+shi2, 0.90%
+</blockquote>
+<blockquote class="blockquote">
+<p>中文无声调拼音组合频率前十为：</p>
+<p>de, 5.05%</p>
+<p>shi, 3.60%</p>
+<p>yi, 3.04%</p>
+<p>ji, 1.58%</p>
+<p>bu, 1.52%</p>
+<p>zhi, 1.42%</p>
+<p>you, 1.42%</p>
+<p>ta, 1.23%</p>
+<p>ren, 1.20%</p>
+li, 1.20%
+</blockquote>
+<p>比如：中文没法改成拼音文字，写出来完全没法读，同音字太多。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-8b4b920668b25b8b418513afdcf25147_hd.jpg" class="img-fluid" alt="（插入用拼音书写的文章图片）">（上图：只有拼音的文章念起来是很累的）</p>
+<p>再比如：大家玩过一个耳语传话的游戏，就是一些人，以耳语的形式把一句话传给下一个人，结果到6、7人之后这句话就被传的面目全非。下次各位可以试试看看穿一句简单的英语，看看是不是容易保持原来的句子。</p>
+<p>下次再有老外问：为什么你们中国人讲话总是这么大声？你可以回答: 为中文语音的信息熵低，我不得不大声说，确保对方每个字都听清楚。</p>
+<p>另外，为什么很多人都讨厌微信上总是发语音的人，也可以用信息熵来解释，就是相比文字，语音在单位时间内接传递的信息太少了，而且也容易失真。</p>
+<p>总之，Cook猜想，不同语言在单位时间的输出信息熵是类似的，这一点有兴趣的听众大可以自己研究一下。</p>
+<p>再解释下为什么香农对这个表征信息量大小的这个指标命名为“信息熵”？它与物理中的“熵”有何联系？当然是有联系的。物理中的”熵“一种直观的定义就是表征一个系统的混乱程度，越混乱，熵值越大，越有序，则熵值越低。</p>
+<blockquote class="blockquote">
+<p>维基百科上对“熵”的定义：</p>
+化学及热力学中所谓“熵”（英语：entropy），是一种测量在动力学方面不能做功的能量总数，也就是当总体的熵增加，其做功能力也下降，熵的量度正是能量退化的指标。熵亦被用于计算一个系统中的失序现象，也就是计算该系统混乱的程度。熵是一个描述系统状态的函数，但是经常用熵的参考值和变化量进行分析比较，它在控制论、概率论、数论、天体物理、生命科学等领域都有重要应用，在不同的学科中也有引申出的更为具体的定义，是各领域十分重要的参量。
+</blockquote>
+<p>那在信息熵中，为什么语言越”混乱“，信息量也越大？这一点还是可以从语言的上下文关联度来考虑。比如英语单词中的字母相关度是很高的，比如之前提到过的ing, tion，还有等等各种前缀后缀。</p>
+<p>因为相关度大，那么你看到ing或者在tion这样的后缀组合里拿掉一个字母，完全不影响阅读，那么就是这些组合中单个字母提供的信息量很小。而中文的上下文关联度就低很多，所以单个汉字信息量大。而上下文关联度高，也可以理解为符号系统越”有序“，而关联度小就是越无序，所以把信息量用“熵”来命名再恰当不过了，而它确实与物理中的熵有许多类似性质。</p>
+<p>最后，讨论下信息量的单位。从公式里看，信息熵是没有单位的，但有时我们也用bit作为其单位（就是计算机中，比特位的比特）。比如中文平均单个汉字信息熵是9.56，也可以说成，单个汉字提供的信息量是9.56比特。这是为什么呢？这其实是一个符号编码的问题。</p>
+<p>现在我们的计算机系统中的字符一般采用的是等长的编码方式，即每个字符的编码长度是相等的。比如unicode编码系统中，每个字符用16bit的二级制来编码。那么理论上，它可以对2^16=65536中字符进行编码，它已经足够对世界上所有文字符号进行编码，甚至现在我们还不断在其中增加表情符（emoji）。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-213e25f2e6b9408b3595f48e8a311d21_hd.jpg" class="img-fluid" alt="(插入unicode插图)">（上图：unicode已经足够对世界上所有文字符号编码）</p>
+<p>但如果你的目标是使目标文本的编码总长度最短的话，那么等长编码方式就不是最优方案了。因为每个字符的频率不同，我们可以考虑对频率高的字符用比较短的长度进行编码。</p>
+<p>比如之前提到，中文文本中，”的“这个字的使用频率最高，那我就可以对”的“用1位的“0”进行编码，其他所有汉字都用“1”开始的二进位编码。中文中第二频率高的字符是”一“，那就用“10”两位对它对编码，用“110”给第三位频率的汉字编码等等。这样频率高的汉字编码长度短，而且不同汉字的编码在开始的二进位都是可以区分的，所以可以互相之间还是可以区分。</p>
+<p>这种编码方式在计算机算法中称为”哈夫曼编码“或”前缀码“，因为不同的字符使用编码的前缀来区分。当然，汉字中”的“出现的频率，还没有搞到值得用1位二进制对其编码。但有一种算法，可以根据不同字符的频率表，得出平均码长最短的编码方式，此时的编码结果称为“最优前缀码”。</p>
+<blockquote class="blockquote">
+在计算机数据处理中，霍夫曼编码使用变长编码表对源符号（如文件中的一个字母）进行编码，其中变长编码表是通过一种评估来源符号出现几率的方法得到的，出现几率高的字母使用较短的编码，反之出现几率低的则使用较长的编码，这便使编码之后的字符串的平均长度、期望值降低，从而达到无损压缩数据的目的。
+</blockquote>
+<p>而对某个汉字字符的频率表，如果你计算出信息熵是9.56，那对同一张频率表，对其进行最优前缀码编码，你会发现，单个汉字的平均编码长度就是9.56！（具体原因，请各位自行分析。）但也因此，我们也可以说，信息熵的单位就是“比特”。</p>
+<p>到这里又会有一个很有意思的洞察，就是考察不同语言文本文件的压缩率。比如都是用unicode编码的中英文版圣经，分别比较用rar软件压缩后文件大小的变化量。因为压缩软件，本质上就是去除文本中的冗余信息，用接近最优编码方式对文件进行编码的方式，那么如果一个文本压缩后，能压缩的很小，就说明原来的文本信息比较冗余，单位字符的信息量低。反之，如果压缩后，文件大小变化不大，就说明原来的文本信息冗余量少，单位字符信息量大。</p>
+<p>那么实际情况当然很多人也做了实验，中文也不负众望，中文本文的压缩率在各种语言的比较中，总是最低的，所以这也侧面验证了，中文是主流语言中最有效率的语言。</p>
+<p>那么有关信息熵的话题聊的差不多了，我最大感想是香农用如此简单的一个公式，给了我那么多的启发和思考，我觉得以后，在提到“最美公式”的时候，香农的这个应该有一席之地。</p>
+<p>而中文在符号上提供的信息量大，是基本上可以确定的。而中文在语音上会丢失的信息的劣势也是很明显的（所以大家爱看有字幕的视频）。</p>
+<p>最后，为什么大家喜欢听播音演员的语音呢？可能就是他们清晰，详略得当，使得听众可以在单位时间内接收到恰好多的信息。而大老李因为没有受过训练，所以不可能达到播音演员的语音效果。但我可以保证，大老李的节目如果你都听懂的话，你在单位时间内接收到的信息量是很大的。下期再见！</p>
+<p><a href="https://www.zhihu.com/question/37998688">https://www.zhihu.com/question/37998688</a></p>
+<p><a href="https://zh.wikipedia.org/zh-cn/%E5%85%8B%E5%8A%B3%E5%BE%B7%C2%B7%E9%A6%99%E5%86%9C">https://zh.wikipedia.org/zh-cn/%E5%85%8B%E5%8A%B3%E5%BE%B7%C2%B7%E9%A6%99%E5%86%9C</a></p>
+<p><a href="https://www.johndcook.com/blog/2019/10/18/chinese-character-entropy/">https://www.johndcook.com/blog/2019/10/18/chinese-character-entropy/</a></p><a href="https://www.johndcook.com/blog/2019/10/18/chinese-character-entropy/">
+</a><p><a href="https://www.johndcook.com/blog/2019/10/18/chinese-character-entropy/"></a></p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/your-website-url\.example\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,84 @@
+---
+title: '一个可以计算古德斯坦序列的2-色图灵机程序'
+date: "2020-10-13"
+categories:
+  - "每周一题"
+---
+
+简单版：
+我写了一个可以计算古德斯坦序列的2-色图灵机程序。这个程序的初值是947，它恰有947个状态。所以它也同时证明了Rado的<span class="katex--inline"><span class="katex"><span class="katex-mathml">Σ\Sigma</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord">Σ</span></span></span></span></span>函数中，
+
+<span class="katex--inline"><span class="katex"><span class="katex-mathml">Σ(947)>G(947)\Sigma(947)>G(947)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord">Σ</span><span class="mopen">(</span><span class="mord">9</span><span class="mord">4</span><span class="mord">7</span><span class="mclose">)</span><span class="mrel">></span></span><span class="base"><span class="mord mathdefault">G</span><span class="mopen">(</span><span class="mord">9</span><span class="mord">4</span><span class="mord">7</span><span class="mclose">)</span></span></span></span></span>
+
+<span class="katex--inline"><span class="katex"><span class="katex-mathml">Σ(n)\Sigma(n)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord">Σ</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></span> 的定义为：所有可停机的2色-n状态图灵机中，停机后纸带上打印最多的“1”的那台图灵机，所打印的 "1"符号数量。 <span class="katex--inline"><span class="katex"><span class="katex-mathml">Σ\Sigma</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord">Σ</span></span></span></span></span>函数也被称为Busy Beaver function/忙碌海狸函数。
+
+G(n)是古得斯坦序列数。
+
+完整版：
+
+2016年，MIT的博士生Adam Yeddida发布了一个通用的2-色图灵机编程语言: <a href="https://github.com/adamyedidia/parsimony">laconic</a>。他同时发布了一个<a href="https://github.com/adamyedidia/parsimony/blob/master/src/laconic/laconic_files/friedman.lac">7910状态</a>的2-色图灵机程序。这个程序可以证明ZFC的一致性，则同时根据哥德尔不完备定理，在ZFC公理系统中，无法证明这个图灵机会停机。
+
+后来， github用户sorear发布了另一个通用图灵机编程语言<a href="https://github.com/sorear/metamath-turing-machines">NQL</a>，用这种语言实现的图灵机会比laconic具有更少的状态数。他先后发布了一个<a href="https://github.com/sorear/metamath-turing-machines/blob/master/sample_out/zf.tm">1919状态</a>和<a href="https://github.com/sorear/metamath-turing-machines/blob/master/sample_out/zf2.tm">748状态</a>的验证ZFC一致性的图灵机。
+
+以上两位的程序设计目标都在于设计出状态数最少的，可证明ZFC一致性的图灵机。其潜在目标在于发现ZFC中可计算数的上限，比如按Sorea的结果，上界目前为<span class="katex--inline"><span class="katex"><span class="katex-mathml">Σ(748)\Sigma(748)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord">Σ</span><span class="mopen">(</span><span class="mord">7</span><span class="mord">4</span><span class="mord">8</span><span class="mclose">)</span></span></span></span></span>。
+
+但我们也可以反过来思考。如果用以上语言执行一个已经证明会停机的算法，则可以用来估计<span class="katex--inline"><span class="katex"><span class="katex-mathml">Σ(n)\Sigma(n)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord">Σ</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></span>的下界。比如，如果一个图灵机程序可以计算一个很大的数x，这个图灵机有n状态，则证明<span class="katex--inline"><span class="katex"><span class="katex-mathml">Σ(n)>x\Sigma(n)>x</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord">Σ</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span><span class="mrel">></span></span><span class="base"><span class="mord mathdefault">x</span></span></span></span></span>。
+
+之前，对比较大的n，只知道一些很弱的下界：
+
+<span class="katex--inline"><span class="katex"><span class="katex-mathml">Σ(2k)>3↑k−23>Ack(k−2,k−2) for k≥2\Sigma(2 k)>3 \uparrow^{k-2} 3>Ack(k-2, k-2) \quad \text { for } k \geq 2</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord">Σ</span><span class="mopen">(</span><span class="mord">2</span><span class="mord mathdefault" style="margin-right:.03148em;">k</span><span class="mclose">)</span><span class="mrel">></span></span><span class="base"><span class="mord">3</span><span class="mrel"><span class="mrel">↑</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.849108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:.03148em;">k</span><span class="mbin mtight">−</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span class="base"><span class="mord">3</span><span class="mrel">></span></span><span class="base"><span class="mord mathdefault">A</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:.03148em;">k</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:.03148em;">k</span><span class="mbin">−</span></span><span class="base"><span class="mord">2</span><span class="mpunct">,</span><span class="mord mathdefault" style="margin-right:.03148em;">k</span><span class="mbin">−</span></span><span class="base"><span class="mord">2</span><span class="mclose">)</span><span class="mord text"><span class="mord"> for </span></span><span class="mord mathdefault" style="margin-right:.03148em;">k</span><span class="mrel">≥</span></span><span class="base"><span class="mord">2</span></span></span></span></span>
+其中Ack(m, n)是<a href="https://www.zhihu.com/zvideo/1273790864729096192">阿克曼函数</a>。另外也知道<span class="katex--inline"><span class="katex"><span class="katex-mathml">Σ(17)>G64\Sigma(17)>G_{64}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord">Σ</span><span class="mopen">(</span><span class="mord">1</span><span class="mord">7</span><span class="mclose">)</span><span class="mrel">></span></span><span class="base"><span class="mord"><span class="mord mathdefault">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span class="" style="top:-2.55em;margin-left:0;margin-right:.05em;"><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">6</span><span class="mord mtight">4</span></span></span></span></span><span class="vlist-s">​</span></span></span></span></span></span></span></span></span>，其中<span class="katex--inline"><span class="katex"><span class="katex-mathml">G64G_{64}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord"><span class="mord mathdefault">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span class="" style="top:-2.55em;margin-left:0;margin-right:.05em;"><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">6</span><span class="mord mtight">4</span></span></span></span></span><span class="vlist-s">​</span></span></span></span></span></span></span></span></span>是葛立恒数。
+
+我开始时尝试用laconic写了个计算<a href="https://github.com/YouhuaLi/metamath-turing-machines/blob/master/ackermann.nql">阿克曼函数的算法</a>，但结果表明阿克曼函数太弱了，而结果的状态数又太多，所以达不到改进<span class="katex--inline"><span class="katex"><span class="katex-mathml">Σ(n)\Sigma(n)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord">Σ</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></span>下界的目的。
+
+后来，我发现古德斯坦序列是一个不错的选择。古德斯坦变换本身已经强到无法在皮亚诺算数公理中证明其有限。一些已知的古德斯坦序列下界非常大，比如：
+<span class="katex--inline"><span class="katex"><span class="katex-mathml">G(8)>Ack(Ack(3×2402,653,211))G(8)>Ack (Ack (3 \times 2^{402,653,211}))</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord mathdefault">G</span><span class="mopen">(</span><span class="mord">8</span><span class="mclose">)</span><span class="mrel">></span></span><span class="base"><span class="mord mathdefault">A</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:.03148em;">k</span><span class="mopen">(</span><span class="mord mathdefault">A</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:.03148em;">k</span><span class="mopen">(</span><span class="mord">3</span><span class="mbin">×</span></span><span class="base"><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">4</span><span class="mord mtight">0</span><span class="mord mtight">2</span><span class="mpunct mtight">,</span><span class="mord mtight">6</span><span class="mord mtight">5</span><span class="mord mtight">3</span><span class="mpunct mtight">,</span><span class="mord mtight">2</span><span class="mord mtight">1</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mclose">)</span></span></span></span></span>
+
+所以，我开始考虑用Laconic和NQL写计算古德斯坦序列的程序。虽然网上有现成的计算G(n) 的算法，但那些都用到了递归。而Laconic和NQL不支持递归函数，NQL甚至没有内置列表结果，所以我的编程也颇费功夫。
+
+我先写了一个等价的<a href="https://github.com/YouhuaLi/metamath-turing-machines/blob/master/misc/goodstein_sequence.py">python程序</a>，验证算法，然后再移植入<a href="https://github.com/YouhuaLi/parsimony/blob/master/src/laconic/laconic_files/goodstein.lac">Laconic</a>和<a href="https://github.com/YouhuaLi/metamath-turing-machines/blob/master/goodstein_sequence.nql">NQL</a>。在Laconic中，可以对初值4以内进行一次古德斯坦变换的计算：
+
+<code>time python2 laconic_interpreter.py goodstein
+s: 2
+s: 3
+s: 26
+Program halted without errors.
+
+real    0m9.745s
+user    0m8.845s
+sys 0m0.252s
+</code></pre>
+其中的26，就是初值为4时，进行一次古德斯坦变换后的结果。
+NQL中由于运行过慢，我没法等到哪怕初值为1的计算结果，如果有谁能帮我验证下，我不胜感激。
+
+而在最终的NQL程序中，不同的初值，会导致最终状态数的少量变化。我发现恰好初值为947时，得到一个947状态的图灵机，因此最终提交了初值为947的代码：
+
+<code>proc main() {
+    n = 947;
+    base = 2;
+    s = 1;
+    while( s > 0 ){
+        stein_none_rescursive(n, base, s);
+        incr(base);
+        n = s;
+    }
+    return;
+}
+</code></pre>
+未来的想法：
+<ul>
+ 	<li>简化程序，将程序状态缩小到748以内。那么这个程序就将是目前已知状态数最少的，ZFC无法证明其停机的图灵机程序。</li>
+ 	<li>计算更大的数字。如果有某个大数，可以用更简单的算法算出更大的结果，那么它将很值得用NQL编程计算。如此可得到<span class="katex--inline"><span class="katex"><span class="katex-mathml">Σ(n)\Sigma(n)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="mord">Σ</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></span>函数更好的下界。</li>
+</ul>
+好了，不知道多少人能看明白，但欢迎来到大数的世界！
+
+<hr />
+
+如想更好理解以上文章，请看我的以下文章：
+
+<a href="https://zhuanlan.zhihu.com/p/143834012">https://zhuanlan.zhihu.com/p/143834012</a>
+<a href="https://zhuanlan.zhihu.com/p/145975481">https://zhuanlan.zhihu.com/p/145975481</a>
+<a href="https://zhuanlan.zhihu.com/p/148324941">https://zhuanlan.zhihu.com/p/148324941</a>
+
+视频：## <a href="https://www.zhihu.com/zvideo/1273790864729096192">小数字变超大数——阿克曼函数和高德纳箭号表示法</a>
+知乎live: <a href="https://www.zhihu.com/lives/1259202613419352064">https://www.zhihu.com/lives/1259202613419352064</a>

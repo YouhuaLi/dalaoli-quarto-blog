@@ -1,0 +1,56 @@
+---
+title: '每周一题：网球“黄金盘”的概率（附上期答案）'
+date: "2018-06-10"
+categories:
+  - "Uncategorized"
+---
+
+<h1>本期题目：网球“黄金盘”的概率（附上周答案）</h1>
+
+（题目来源：WSJ Varsity Math）
+
+![B3-AQ182_MATH_J_20180531131751.jpg](https://dalaoliblog.wordpress.com/wp-content/uploads/2018/06/b3-aq182_math_j_20180531131751.jpg)
+
+**黄金盘**（<span class="LangWithName">英语：<span lang="en">Gold set</span></span>），是一个<a class="mw-redirect" title="网球" href="https://zh.wikipedia.org/wiki/%E7%B6%B2%E7%90%83">网球</a>比赛<a title="术语" href="https://zh.wikipedia.org/wiki/%E6%9C%AF%E8%AF%AD">术语</a>，是指在一盘比赛中不失一分，拿到全部24分以6–0的比分击败对手。这也意味着对手在此盘比赛中没有拿到任何分数，因此也称为“黄金蛋”。
+
+在法国网球公开赛中，女子比赛是三盘两胜制。如果每一分完全靠掷硬币决定，在一场三盘两胜制比赛中，发生一次“黄金盘”的概率是多少？
+
+请直接留言作答。
+
+<hr />
+
+<h1>上期答案：</h1>
+
+上周题目是：
+
+<blockquote>让我们来玩一个类似“二十四点”的游戏，允许使用+, -, ×,÷，小数点，指数和括号运算，每个数字必须也只能使用一次，请思考以下两道题：
+
+1. 请用4，7，8算出8。
+
+2. 请用2，4，7算出16。
+
+注意：如果是0.x之类的小数，可以省略小数点之前的0。比如“.4”就表示0.4。</blockquote>
+
+答案是：
+
+4^(.7+.8)=$4^{0.7+0.8}+4^{1.5}=8$
+
+(.7-.2)^(-4)=$(0.7-0.2)^{-4}=0.5^{-4}=16$
+
+也没啥特别技巧，就是观察，然后设法把7“消化”掉。
+
+恭喜（包括答对一题的）：**韩w，井底蛙，香独秀囧囧，eric，神侃，Stones，阿标，来，Lian**答对了！
+
+<hr />
+
+**大老李聊数学”第二季已开播！**识别如下二维码即可：
+
+![ximalaya_season1.png](https://dalaoliblog.wordpress.com/wp-content/uploads/2018/05/ximalaya_season1.png)
+
+下周再见！
+
+<hr />
+
+关注“大老李聊数学”公众号
+
+![qrcode_for_gh_130ed4d8263c_344](https://dalaoliblog.wordpress.com/wp-content/uploads/2017/09/qrcode_for_gh_130ed4d8263c_344.jpg)

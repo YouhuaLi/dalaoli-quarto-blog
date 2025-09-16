@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2017-12-12">
+
+<title>画树画出一个大数–TREE(3)漫谈 – dalaoli_quarto_blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">dalaoli_quarto_blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">画树画出一个大数–TREE(3)漫谈</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Uncategorized</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 12, 2017</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>画树画出一个大数–TREE(3)漫谈</p>
+<p>大家好，上期我们讲了一个大数，叫葛立恒数。今天我们再接再厉，再讲一个超大数，叫TREE(3)。这里TREE就是英文里树木的那个单词TREE。TREE(3)其实就是一个函数，函数名称叫TREE，而函数自变量取值是3。</p>
+<p>上期讲过，TREE(3)跟葛立恒数比的话，葛立恒数是属于忽略不计的。更为神奇的是，TREE(3)的定义比葛立恒数更简单，简单来说，它就是一个画“树”的游戏，树林的树。这里，这个“树”的概念，对计算机专业的听众来说再熟悉不过了，什么二叉树，查找树等等。如果你不是计算机专业的，也不要紧。你应该也看到过公司的组织架构图，或是某个人的家谱等等，也是用类似一棵树的结构展示的，这就是我们今天要谈的树的概念。我在节目介绍里也放了一个树的简单示意图。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2017/12/tree_demo.png" class="img-fluid figure-img"></p>
+<figcaption>tree_demo</figcaption>
+</figure>
+</div>
+<p>然后TREE(3)这个数，就可以用一种画树的游戏来导出，画的时候，我们会给每个节点，俗称叶子的东西，画上某种颜色。而对线段，俗称树枝，我们不关心它的颜色。而TREE(3)，意思就是用三种颜色来画这颗树。</p>
+<p>我们还有一些画树的规则。这个画树的游戏只有两个规则。第一条规则是这样，你画的第一棵树，只能有一个节点，第二棵树，不能超过2个节点，第三棵树不能超过3个节点…第n棵树，不能超过n个节点。也就是，越到后面，你树中的节点可以越来越多，但不能多过你画的树的序号。</p>
+<p>第二个条件，你后面画的树，不能“包含”前面的树。这里“包含”的概念是这样的，比如你后面的树去掉若干叶子后，就是之前的树，用术语说，就是前面的树是这颗树的子树，那就犯规的。但我们这里“包含”的意思要比“子树”的定义更宽泛点，我们还要求以下这种情况也不允许，就是当前的树中如果取若干节点，这若干节点如果可以跟之前的某棵树的节点建立一一对应关系，而且两颗树中，任意对应两个节点的最近共同祖先是同一颜色，那也不允许。所谓最近共同“祖先”的概念也是很好理解的，就是两个叶子同时向根节点回溯，那它们迟早会在某个节点汇合，最迟也是根节点，那这个结点就叫“最近共同祖先”，如果你把树看作一个家谱的话，那你就更好理解了。现在的要求就是，如果两棵树之间，如果对应节点的最近共同祖先是同一颜色，那游戏结束。其实这种“包含”在数学上有个术语叫inf-embeddable. Embeddable 就是可嵌入的意思，这个词搞嵌入式系统的再熟悉不过。INF是什么意思呢，它其实是下确界，或者说最大下界的拉丁文缩写。为什么用这个词，因为如果你把一棵树某个枝条上的节点当做一个大小排序的话，且根节点最小，那么两个节点的最近祖先其实就是最大的且比这两个节点都小的的节点， 所以叫下确界，INF。这就是inf-embeddable的全部意思。</p>
+<p>(下图：左边的树包含右边的树)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2017/12/gallery-1508517115-screen-shot-2017-10-20-at-123047-pm.jpg" class="img-fluid figure-img"></p>
+<figcaption>gallery-1508517115-screen-shot-2017-10-20-at-123047-pm.jpg</figcaption>
+</figure>
+</div>
+<p>OK，以上就是画树游戏的全部规则。那我跟大家在节目里演示下，玩玩看。当然很推荐你现在拿支笔和纸，一起来玩玩看，你可以用不同的符号来表示颜色。那我们先从TREE(1)这个游戏开始玩，也就是只用一种颜色，假设你用的是红色。先画第一棵树，那你明显只能画一个根节点是红色。你会发现你没办法再画第二棵树了，因为第二棵树，你最多画两个节点。你重画一个红色的根结点，那跟第一棵树一样，肯定不行。你如果画两个红色节点，那也包含第一棵树，也不行。所以游戏结束，你只能画出一棵树，那我们知道TREE(1)=1。</p>
+<p>(下图: TREE(1)游戏示意，右边的树包含左边的树，所以游戏结束。TREE(1)=1)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2017/12/gallery-1508517464-screen-shot-2017-10-20-at-123548-pm.jpg" class="img-fluid figure-img"></p>
+<figcaption>gallery-1508517464-screen-shot-2017-10-20-at-123548-pm.jpg</figcaption>
+</figure>
+</div>
+<p>接下来玩下TREE(2)，用两种颜色，红色和绿色。那你第一棵树，比如还是用红色画一个根节点，第二棵树你如果用绿色画一个根结点，那你会发现你第三棵树就没法画了，因为第三棵树无论怎么画，必然包含第一颗或第二棵树。但我们还有一个更好的做法。那就是第二棵树画成绿色的根节点接一个绿色的叶子。这样，我们第三棵树就可以画成只有一个绿色根结点的树，就一个根。因为我们规则只限制后面的树不能包含前面的树，没有规定前面的树不能包含后面的树。这样虽然我们第二棵树包含了第三棵树，但是第三棵树没有包含之前的树，所以这是允许的。这之后，你会发现你无法再画出第四颗树了。所以TREE(2)=3。</p>
+<p>(下图：TREE(2)游戏示例，你最多画出如下三颗树，所以TREE(2)=3)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2017/12/gallery-1508517877-screen-shot-2017-10-20-at-124359-pm.jpg" class="img-fluid figure-img"></p>
+<figcaption>gallery-1508517877-screen-shot-2017-10-20-at-124359-pm</figcaption>
+</figure>
+</div>
+<p>好TREE(1) ，TREE(2)的游戏我们都玩过了，现在到见证奇迹的时刻了，我们要玩TREE(3)了，比如你可以再加入一个颜色，蓝色。用红，绿，蓝三色来玩这个画树的游戏。你会发现，这次你似乎发挥余地大多了，你可以画非常多的树。我在节目介绍里，也放了TREE(3)游戏开始的12棵树的可能画法：</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2017/12/gallery-1508518282-screen-shot-2017-10-20-at-124954-pm.jpg" class="img-fluid figure-img"></p>
+<figcaption>gallery-1508518282-screen-shot-2017-10-20-at-124954-pm.jpg</figcaption>
+</figure>
+</div>
+<p>但是我劝你不要继续了，因为你无法画到它结束的时刻，因为这个TREE(3)的值实在太大了，大到惊天地泣鬼神，比葛林恒数还大。当然，你可能此时会质疑，你怎么证明TREE(3)是一个有限值，而不是无穷大的，也就是我可以无穷的玩下去呢？</p>
+<p>这里要用到一个定理，叫克鲁斯科尔树定理。克鲁斯科尔这个名字计算机系的听众又是太熟悉了，克鲁斯科尔算法是考试必考的对不对。克鲁斯科尔算我们计算机系学生膜拜的大神了，他已于2010年去世，这里我们也顺带缅怀一下。我们今天不考最小生成树算法，而是克鲁斯科尔发现的这个树定理。这个定理有个粗糙但简单的说法就是如果你给我无穷多个树，那其中必然有一个树是另一颗的INF-embeddable，同下确界意义上的嵌入。那TREE(3)是一个有限的数其实就这个定理的直接推论了，是不是？</p>
+<p>你可能关心TREE(3)这个有限的数到底有多大？不管你信不信，这其实是今天节目最难点了。上一期葛立恒数我用箭号表示法，大概还能说明下葛立恒数有多大，但是在TREE(3)面前，箭号表示法已经完全不管用了。但是我们还是可以参考下，上期我们说了葛立恒数可以用64重箭号表示法来表示，那TREE(3)如果要用多重箭号表示法表示，那需要的层数将远远大于葛立恒数。这大概是我最好的形容了，再往下我都不知道怎么说了，因为再怎么用语言或符号表达，我都感觉都是很徒劳了。当然，如果你有兴趣还是可以上网搜搜有关TREE(3)的符号表示，为了表示它的大，得用各种专门的运算符号才行，虽然这些符号对普通人来说，已经没什么感觉了。</p>
+<p>关于TREE(3)还有好玩的一点，就是根据克鲁斯科尔树定理，TREE(4), TREE(5)，TREE(100)都是有限的对不对？那TREE(TREE(3)呢，就是用用TREE(3)个颜色玩这个画树游戏，那它还是有限的。那如果TREE(TREE(3))我如此嵌套TREE(3)重呢? 对这个数我表示我大脑系统崩溃了。</p>
+<p>OK，今天有关TREE(3)话题就聊到这了，我还是很喜欢TREE(3)这个数，因为它定义是如此之简单，而且从平淡无奇的TREE(1)，TREE(2）, 到TREE(3)如同宇宙大爆炸式的转变，实在太让人吃惊了。另外各位以后写情书也可以考虑写“我爱你TREE(3)年”等等。下周再见！</p>
+<p>收听“大老李聊数学”音频&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 关注“大老李聊数学”</p>
+<div id="gallery-755-1" class="gallery galleryid-755 gallery-columns-2 gallery-size-thumbnail">
+<figure class="gallery-item figure">
+<div class="gallery-icon landscape">
+<a class="no-underline" href="https://dalaoliblog.wordpress.com/2017/10/24/%e4%bd%a0%e8%bf%bd%e6%88%91%e8%b5%b6%e7%9a%84%e8%9c%97%e7%89%9b-%e6%9c%89%e5%85%b3%e5%af%b9%e6%95%b0%e8%9e%ba%e7%ba%bf/ximalaya/"><img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2017/10/ximalaya.png?w=150&amp;h=144" class="img-fluid figure-img"></a>
+</div></figure>
+<figure class="gallery-item figure">
+<div class="gallery-icon landscape">
+<a class="no-underline" href="https://dalaoliblog.wordpress.com/about/qrcode_for_gh_130ed4d8263c_344/"><img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2017/09/qrcode_for_gh_130ed4d8263c_344.jpg?w=150&amp;h=150" class="img-fluid figure-img"></a>
+</div></figure>
+
+
+</div>
+</main></div>
+
+
+ <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/your-website-url\.example\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+ <!-- /content -->
+
+
+
+
+</body></html>

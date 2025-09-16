@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2020-09-06">
+
+<title>计算机怎么丢骰子？– 离散概率分布采样问题 – dalaoli_quarto_blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">dalaoli_quarto_blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">计算机怎么丢骰子？– 离散概率分布采样问题</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">每周一题</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 6, 2020</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>大家好，我是大老李。不久前我看到一篇麻省理工学院的几名学生发表的<a href="http://math.mit.edu/~freer/papers/SFRM-FLDR-AISTATS-2020.pdf">论文</a>，其中提出了一种新的离散概率分布采样（Discrete Probability Distributions Sampling）算法，我研究了一下这个问题，给大家介绍下。</p>
+<p>离散概率分布采样就是解决这种问题：怎么用软件来模拟丢骰子？我需要一系列1-6的数字，这些数字就好像是一个人丢骰子得到的。</p>
+<p>当然，用各种编程语言中自带的随机数生成函数，生成1-6的之间随机整数，作为输出就可以达到目的。现在的问题是：请你来设计这样的随机数生成函数，你会怎么做？</p>
+<p>第一步，你肯定会想到伪随机数生成（pseudo-random numbers generator）算法。之前有一期<a href="https://www.ximalaya.com/keji/14777844/97934111">节目</a>中我专门聊到过伪随机数生成算法。标准的伪随机数生成算法本质上都是生成一系列（伪）随机二进位，就是0和1，且两者概率相等。</p>
+<hr>
+<p>“线性同余法”是一种最简单的伪随机数生成算法，以下是它的一种C语言实现，两行代码即可：</p>
+<p><code>static unsigned long int next = 1; // 种子，每次使用前需变更</code></p><code>
+int rand(void) // 生成伪随机数 { next = next * 1103515245 + 12345; return (unsigned int) (next / 65536) % 32768; } </code>
+
+<hr>
+<p>现在的问题就变成，如果用一串随机二进位，来模拟产生其他概率分布的问题，比如模拟一个6面的骰子。</p>
+<p>其实也不难，相信很多人能想到这个算法：用伪随机数算法获得3个随机二进位。3位随机二进位有<span class="katex--inline"><span class="katex"><span class="katex-mathml">23=82^3=8</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.814108em;vertical-align:0;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">8</span></span></span></span></span>中组合。取其中6种，分别表示骰子的6个面的结果，如果不幸产生了另外2种组合，那只有重新来了。这个思路很好，我后面介绍的“拒绝采样”（Rejection Sampling）就是这种思路的一般化。</p>
+<p>但现在问题又来了，以上这种算法是模拟丢骰子过程的最佳算法吗？这里又要引出另一个问题：“最佳”的衡量标准是啥？。</p>
+<p>一般来说，算法的最重要指标是时间复杂度，其次是空间复杂度。另外，对随机数算法中，还有一个标准是随机二进位的消耗量。比如对上述模拟丢骰子的算法，我们至少要消耗3位随机二进位。每次算法执行是所消耗的随机二进位的“平均值”或者叫“期望值”也是一个衡量算法好坏的一个指标，因为我们希望消耗的随机二进位越少越好。</p>
+<p>对计算机来说，随机二进位也是一种资源。伪随机数算法生成二进位本身需要时间，而且连续使用越久越不安全。虽然现在的计算机多数也有一些从外部噪声获取“熵”，来生成随机数的机制，但那个速度相对很慢。且连续使用的话就更不安全了，因为谁都不能证明那些外部噪声中不存在人们可以掌握的规律。</p>
+<hr>
+<p>RDRND 指令（转自维基百科）：</p>
+<p>RDRAND（之前被称为Bull Mountain[1]）是一个计算机指令，用于从芯片上的硬件随机数生成器中获取随机数。所用到的随机数生成器由芯片上的熵池初始化。RDRAND指令在Ivy Bridge架构处理器上可用，该指令也是X86-64和IA-32指令集的一部分。AMD在2015年6月添加了对RdRand指令的支持。</p>
+<p>为了初始化另一个为随机数生成器，RDSEED指令被添加到了Intel安全密钥，在Broadwell微架构的CPU上开始支持。RDSEED指令的熵来源自时序线路，并且使用硅片上的热噪声来以3GHz的速度输出随机比特流。这比从RDRAND获得的6.4Gbit/s速率要慢（这两个速率都是所有核心、所有线程共享）。RDSEED用来初始化任意宽度的软件 PRNG，而RDRAND指令适用于需要高质量随机数的应用程序。</p>
+<hr>
+<p>综上所述，我们产生这样一个问题：如果用随机二进位去模拟各种离散的概率分布，比如均匀或者不均匀的骰子，最佳算法为何？这个问题被称为“离散随机分布采样问题”。</p>
+<hr>
+<p>什么是采样？</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pic1.zhimg.com/80/v2-f679e9807a62b7222fec0d0dc5839f2b_720w.jpg" class="img-fluid figure-img"></p>
+<figcaption>enter image description here</figcaption>
+</figure>
+</div>
+<p>“采样”是英语“Sampling”的一个翻译。</p>
+<p>Sampling另一个意思是标本采集。你可以这样理解，假设你已经有了某种随机分布规律，比如一个二项分布。那么你想模拟产生一系列这样的随机事件结果，以获得这个随机分布的样本，有点像采集标本，所以用Sampling，中文被译作“采样”。当然，这里的Sampling其实采集“假”的标本，真正的对随机事件的标本采集应该是到现实世界中去记录统计结果。</p>
+<hr>
+<p>而关于“离散随机分布采样问题”，高德纳和姚期智两位科学家在1976年发表过一个经典结论，他们给出了对这类采样问题，需要消耗的随机二进位期望值的上下限，同时也等价的给出了可以达到的最优的时间复杂度。</p>
+<hr>
+<p>高德纳介绍 （转自维基百科）：</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pic2.zhimg.com/80/v2-e6407606ea254130093eb4dbcec406c9_720w.jpg" class="img-fluid figure-img"></p>
+<figcaption>enter image description here</figcaption>
+</figure>
+</div>
+<p>高德纳（英语：Donald Ervin Knuth，音译：唐纳德·尔文·克努斯，1938年1月10日－），出生于美国密尔沃基，著名计算机科学家，斯坦福大学计算机系荣誉退休教授。高德纳教授为现代计算机科学的先驱人物，创造了算法分析的领域，在数个理论计算机科学的分支做出基石一般的贡献。在计算机科学及数学领域发表了多部具广泛影响的论文和著作。1974年图灵奖得主。</p>
+<p>高德纳所写的《计算机程序设计艺术》（The Art of Computer Programming）是计算机科学界最受高度敬重的参考书籍之一。他也是排版软件TeX和字体设计系统Metafont的发明人。此外，他还曾提出文学编程的概念，并创造了WEB与CWEB软件，作为文学编程开发工具。</p>
+<p>姚期智介绍（转自维基百科）：</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pic4.zhimg.com/80/v2-a87e8ae33654dcbc1de305e7f69bc564_720w.jpg" class="img-fluid figure-img"></p>
+<figcaption>enter image description here</figcaption>
+</figure>
+</div>
+<p>姚期智祖籍湖北孝感，1946年12月24日出生于上海，因国共内战，幼年随父母移居台湾，在台湾长大、受教育。1967年，姚期智毕业于国立台湾大学，之后赴美国深造。1972年获哈佛大学物理学博士学位，1975年获伊利诺大学香槟分校（UIUC）计算机科学博士学位。</p>
+<p>2007年3月29日，姚期智领导成立了北京清华大学理论计算机科学研究中心，并在2010年12月30日领导成立了北京清华大学交叉信息研究院。12月6日，姚期智在新竹国立清华大学应聘担任荣誉讲座。</p>
+<p>2015年，姚期智放弃美国国籍。2017年2月21日，由中国科学院外籍院士转为中国科学院院士，加入中国科学院信息技术科学部。</p>
+<hr>
+<p>高和姚两位科学家在1976年证明，对某个离散概率分布<span class="katex--inline"><span class="katex"><span class="katex-mathml">p:=(p1,p2,…,pn)p:=(p_1, p_2, …, p_n)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.625em;vertical-align:-.19444em;"></span><span class="mord mathdefault">p</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">:</span></span><span class="base"><span class="strut" style="height:.36687em;vertical-align:0;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:0;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:0;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mpunct">,</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.151392em;"><span style="top:-2.55em;margin-left:0;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span>进行采样时，每次消耗的随机二进位数量期望值记作<span class="katex--inline"><span class="katex"><span class="katex-mathml">E[LT]E[L_T]</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord mathdefault" style="margin-right:.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathdefault">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.328331em;"><span style="top:-2.55em;margin-left:0;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:.13889em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span></span></span></span></span>，有：</p>
+<p><span class="katex--inline"><span class="katex"><span class="katex-mathml">H(p)≤E[LT]&lt;H(p)+2H(p)E[L_T] &lt; H(p)+2</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord mathdefault" style="margin-right:.08125em;">H</span><span class="mopen">(</span><span class="mord mathdefault">p</span><span class="mclose">)</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord mathdefault" style="margin-right:.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathdefault">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.328331em;"><span style="top:-2.55em;margin-left:0;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:.13889em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord mathdefault" style="margin-right:.08125em;">H</span><span class="mopen">(</span><span class="mord mathdefault">p</span><span class="mclose">)</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">2</span></span></span></span></span></p>
+<p>其中<span class="katex--inline"><span class="katex"><span class="katex-mathml">H(p)H(p)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord mathdefault" style="margin-right:.08125em;">H</span><span class="mopen">(</span><span class="mord mathdefault">p</span><span class="mclose">)</span></span></span></span></span>为概率分布p的熵，T为采样所使用的DDG Tree（离散概率分布生成树，后文有介绍）。</p>
+<p>我之前一期有一期节目标题叫“<a href="https://zhuanlan.zhihu.com/p/89958871">中文是最有效率的语言吗</a>”，其中介绍了信息熵的概念。这里的熵其实就是一回事，也可以被叫做“香农熵”，因为这是香农提出的。本质上，给出一个概率分布我们就能算出这个概率分布的“熵”。</p>
+<hr>
+<p>给定一个离散概率分布，<span class="katex--inline"><span class="katex"><span class="katex-mathml">p:=(p1,p2,…,pn)p:=(p_1, p_2, …, p_n)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.625em;vertical-align:-.19444em;"></span><span class="mord mathdefault">p</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">:</span></span><span class="base"><span class="strut" style="height:.36687em;vertical-align:0;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:0;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:0;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mpunct">,</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.151392em;"><span style="top:-2.55em;margin-left:0;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span>，其信息熵为：</p>
+<p><span class="katex--inline"><span class="katex"><span class="katex-mathml">H=−∑pilog⁡2piH=- </span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.68333em;vertical-align:0;"></span><span class="mord mathdefault" style="margin-right:.08125em;">H</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1.00001em;vertical-align:-.25001em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mop op-symbol small-op" style="position:relative;top:-5.0E-6em;">∑</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.311664em;"><span style="top:-2.55em;margin-left:0;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:.166667em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.206968em;"><span style="top:-2.45586em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.24414em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.311664em;"><span style="top:-2.55em;margin-left:0;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<hr>
+<p>比如，对一个标准的六面骰子，因为每一面的概率是均等的，其信息熵为<span class="katex--inline"><span class="katex"><span class="katex-mathml">log26≈2.584log_{2}{6}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.88888em;vertical-align:-.19444em;"></span><span class="mord mathdefault" style="margin-right:.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord"><span class="mord mathdefault" style="margin-right:.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:-.03588em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord">6</span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">2</span><span class="mord">.</span><span class="mord">5</span><span class="mord">8</span><span class="mord">4</span></span></span></span></span>。那么根据高德纳和姚期智的结论，模拟一个骰子消耗的随机二进位在2.584到4.584之间，也就是3-5位，这是符合我们之前的直觉的。</p>
+<p>再比如，根据我之前关于中文信息熵的文章，中文书面文字的信息熵约为9.56。所以，如果要写一个算法，随机生成汉字，且生成的概率分布符合汉字在书面中文中出现的频率，那么每产生一个汉字，你需要消耗10到12位随机二进位，这个数字应该也是很符合直觉的。其实你再思考下，信息熵实际就是对这个概率分布编码的最短平均长度，那么它是用二进位采样的平均效率就一点不奇怪了。</p>
+<p>那具体算法是如何实现如以上的最少的二进位消耗目标呢？对计算机数据结构的听众还是比较简单的，最基本理念就是用“二叉树”。 因为一位随机二进位只有0和1两种取值，那么反映在二叉树上，我们可以用它来决定向左还是向右遍历。</p>
+<p>从二叉树的根节点开始，根据一个随机二进位决定访问左边还是右边的分叉。可以知道，第n个二进位之后，你会达到这颗二叉树的第n层，且恰好达到这个节点的概率是 <span class="katex--inline"><span class="katex"><span class="katex-mathml">12n</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.19011em;vertical-align:-.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.845108em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.593543em;"><span style="top:-2.786em;margin-right:.0714286em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>。</p>
+<p>所以，思路就是构造一颗二叉树，对其中的每个叶子节点编号，使得你按以上方法到达每个叶子节点的概率之和是你需要的概率值。</p>
+<hr>
+<p>比如，要构造一个<span class="katex--inline"><span class="katex"><span class="katex-mathml">(3/10,7/10)(3/10, 7/10)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mopen">(</span><span class="mord">3</span><span class="mord">/</span><span class="mord">1</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord">7</span><span class="mord">/</span><span class="mord">1</span><span class="mord">0</span><span class="mclose">)</span></span></span></span></span>的二项分布，先把这两个数字写成二进制小数形式：</p>
+<p><span class="katex--inline"><span class="katex"><span class="katex-mathml">p1=310=0.01001‾2p_1==0.0_2</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.625em;vertical-align:-.19444em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:0;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1.19011em;vertical-align:-.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.845108em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">0</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.99444em;vertical-align:-.15em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">0</span><span class="mord"><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.84444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mord">1</span></span></span><span style="top:-3.76444em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:.04em;"></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span class="katex--inline"><span class="katex"><span class="katex-mathml">p2=710=0.10110‾2p_2==0.1_2</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.625em;vertical-align:-.19444em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:0;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1.19011em;vertical-align:-.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.845108em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">0</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">7</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.99444em;vertical-align:-.15em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">1</span><span class="mord"><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.84444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0</span><span class="mord">1</span><span class="mord">1</span><span class="mord">0</span></span></span><span style="top:-3.76444em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:.04em;"></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p>然后构造DDG树，方法是：根据小数点后第n位出现1，则在第n层的右叶子，标记该叶子为该概率事件，并输出，否则继续向下，直至出现循环小数后回退。比如：</p>
+<p><img src="https://picb.zhimg.com/80/v2-f844b751ae80c0d86ba0c6a8ecb92139_720w.jpg" class="img-fluid"></p>
+<p>(图片转自[1])</p>
+<p>上图左边为最优DDG树。因 <span class="katex--inline"><span class="katex"><span class="katex-mathml">p1p_1</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.625em;vertical-align:-.19444em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:0;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span> 在小数点后第2和第5位是1，所以在该树第2和第5层的右叶子标记为<span class="katex--inline"><span class="katex"><span class="katex-mathml">p1p_1</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.625em;vertical-align:-.19444em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:0;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>事件，对<span class="katex--inline"><span class="katex"><span class="katex-mathml">p2p_2</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.625em;vertical-align:-.19444em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.301108em;"><span style="top:-2.55em;margin-left:0;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span></span></span></span></span></span></span></span></span></span></span>同样处理。红色箭头表示循环小数的发生，从而可以回退，重用之前的树结构。</p>
+<p>右图为次优DDG树，层数较少，但是红色返回箭头更多，从而需要消耗更多的二进位。</p>
+<hr>
+<p>这种二叉树，被称为离散分布生成树，简称DDG树（Discrete Distribution Generation Tree）。DDG树就是用<span class="katex--inline"><span class="katex"><span class="katex-mathml">12n</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.19011em;vertical-align:-.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.845108em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.593543em;"><span style="top:-2.786em;margin-right:.0714286em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>逼近概率值。理论上，除非概率分布值恰好分母都是2的幂次，否则就需要无穷深度的二叉树。当然实际应用中，因为有循环小数的关系，不需要真的存储一个无穷深的二叉树。可以部分重用之前的树结构，所以这种树还有些自相似和分形的特性。</p>
+<p>而每次访问DDG数的平均深度，就是每次采样平均需要消耗的二进位数量。高德纳和姚期智两位证明了，平均访问的深度是概率分布的熵值，到熵+2之间。这也是时间上最优的算法。</p>
+<p>但你也发现这个算法的一个缺陷是存储空间上不太有效率。这个存储空间是不单与概率分布取值多少有关，还与概率取值的二进制小数位数有关。如果小数循环有10位，那么就需要10层深度的树。这样，对那些熵很小的分布，树的最下面几层很可能是用不到的，但又不得不存储，这不是很理想，所以人们就开始思考可能的改进方法。</p>
+<p>举个极端的例子，假如采样一个二项分布<span class="katex--inline"><span class="katex"><span class="katex-mathml">(1π,1−1π)( , 1-)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.19011em;vertical-align:-.345em;"></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.845108em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:.03588em;">π</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1.19011em;vertical-align:-.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.845108em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:.03588em;">π</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span></span></span></span></span>。理论上，用DDG树对这种概率分布进行采样的话，需要无穷深度的树。</p>
+<p>有一种改进方法，被称为“拒绝采样”- rejection sampling，基本思想就是用一种比较容易采样的方法去模拟比较困难的概率分布。每次采样后，看输出结果是否在需要的概率分布内，如果不在范围内则丢弃，重新开始采样，这部分结果被“拒绝”，所以称为“拒绝采样”。</p>
+<hr>
+<p>一个”拒绝采样“的例子：</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pic3.zhimg.com/v2-906b740ac37cc486b3b9cbf6e58a29ea_b.png" class="img-fluid figure-img"></p>
+<figcaption>(插入图片)</figcaption>
+</figure>
+</div>
+<p>对<span class="katex--inline"><span class="katex"><span class="katex-mathml">(1π,1−1π)( , 1-)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.19011em;vertical-align:-.345em;"></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.845108em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:.03588em;">π</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1.19011em;vertical-align:-.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.845108em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:.03588em;">π</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span></span></span></span></span>这样的概率事件，因为有<span class="katex--inline"><span class="katex"><span class="katex-mathml">π</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault" style="margin-right:.03588em;">π</span></span></span></span></span>，我们就会想到圆。</p>
+<p>一个半径为1的圆，它的面积是<span class="katex--inline"><span class="katex"><span class="katex-mathml">π</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault" style="margin-right:.03588em;">π</span></span></span></span></span>。在这个单位圆内，考虑一个边长为1的正方形，它的面积为1。如果我们可以均匀的生成单位圆内的点，根据这个点是否在这个圆内部的这正方形内，我们可以决定这个概率事件的输出。这个采样的分布恰好是<span class="katex--inline"><span class="katex"><span class="katex-mathml">(1π,1−1π)( , 1-)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.19011em;vertical-align:-.345em;"></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.845108em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:.03588em;">π</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1.19011em;vertical-align:-.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.845108em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:.03588em;">π</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span></span></span></span></span>。</p>
+<p>但是，直接生成均匀分布在一个圆内的点又是很困难的，所以我们改成均匀生成这个圆的外接正方形内的点。看生成的点是否在这个圆内，如果是，则接受这个结果，并产生输出；如果不是则拒绝这个结果，重新开始。</p>
+<p>均匀产生一个正方形内的点是比较容易的，你只要均匀的在某范围产生两个数字，作为这个点的坐标就可以了。</p>
+<p>这样，用相对简单方式，就可以对 <span class="katex--inline"><span class="katex"><span class="katex-mathml">(1π,1−1π)( , 1-)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.19011em;vertical-align:-.345em;"></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.845108em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:.03588em;">π</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1.19011em;vertical-align:-.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.845108em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:.03588em;">π</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span></span></span></span></span>概率分布进行采样，代价是采样过程中，会丢弃一些结果，导致总体执行时间变长。这就是“拒绝采样”的理念。</p>
+<hr>
+<p>那有没有时间上不增加太多，又节省空间的两全其美的算法呢？这次，MIT研究者新发表的这种随机采样算法，某种程度上达到了两全其美。这种算法的名称称为Fast Loaded Dice Roller，简称<a href="https://github.com/probcomp/fast-loaded-dice-roller">FLDR</a>，字面意思是“快速的丢一个灌铅的骰子”，也就是不均匀骰子。当然，这个名称并不是说这个算法只能用来模拟骰子，它只是形象的告诉你这个算法的用途。</p>
+<p>FLDR思路其实也很简单，它起始就是在DDG树的基础上，引入“拒绝采样”。在DDG树中，我们会发现如果概率事件的概率值分母都是<span class="katex--inline"><span class="katex"><span class="katex-mathml">2n2^n</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.664392em;vertical-align:0;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span></span></span>的形式，那么它只需要有限的深度，是最理想的一种情况。那么我们就可以考虑把概率事件的概率值都写成分母是2的幂次的形式，再增加一个余项补齐，把这个余项作为后来Rejection Sampling中被拒绝的那部分。</p>
+<p>举个例子，比如采样的二项分布的概率是<span class="katex--inline"><span class="katex"><span class="katex-mathml">(3/7,4/7)(3/7, 4/7)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mopen">(</span><span class="mord">3</span><span class="mord">/</span><span class="mord">7</span><span class="mpunct">,</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord">4</span><span class="mord">/</span><span class="mord">7</span><span class="mclose">)</span></span></span></span></span>，那你把分母向2的幂次对齐，那么就是3/8和4/8，也就是1/2。但这两个概率值相加不为1，需要补一个1/8。于是就改成对<span class="katex--inline"><span class="katex"><span class="katex-mathml">(3/8,1/2,1/8)(3/8, 1/2, 1/8)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mopen">(</span><span class="mord">3</span><span class="mord">/</span><span class="mord">8</span><span class="mpunct">,</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord">1</span><span class="mord">/</span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord">1</span><span class="mord">/</span><span class="mord">8</span><span class="mclose">)</span></span></span></span></span>进行采样。对这个三项分布你可以很容易构造出一棵深度为3的DDG tree，如果采样结果落到了你额外增加的那个1/8上，则丢弃这次采样重新开始。</p>
+<hr>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pic1.zhimg.com/v2-bd35825c448b1aaaa3003156855e0a4c_b.png" class="img-fluid figure-img"></p>
+<figcaption>（插入图片）</figcaption>
+</figure>
+</div>
+<p>使用DDG tree和FLDR树对(1/5，4/5)分布采样的例子：</p>
+<p>左图为最优DDG树，需要4层。</p>
+<p>右图为FLDR树，改为对(1/8, 1/2, 3/8)分布构造树结构，只需3层，但会发生更多的回溯。</p>
+<hr>
+<p>再比如，如果用FLDR算法模拟一个正六面骰子，FLDR不是采样<span class="katex--inline"><span class="katex"><span class="katex-mathml">6个166个</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.19011em;vertical-align:-.345em;"></span><span class="mord">6</span><span class="mord cjk_fallback">个</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.845108em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">6</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>，而是采样6个6个<span class="katex--inline"><span class="katex"><span class="katex-mathml">18</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.19011em;vertical-align:-.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.845108em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">8</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>，一个<span class="katex--inline"><span class="katex"><span class="katex-mathml">28=14=</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.19011em;vertical-align:-.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.845108em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">8</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1.19011em;vertical-align:-.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.845108em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">4</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>，也就是7项的一个分布。同样你只需要一个三层的DDG树。如果结果落到那个增加的<span class="katex--inline"><span class="katex"><span class="katex-mathml">14</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.19011em;vertical-align:-.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.845108em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">4</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>，则重新开始。你会发现这个方法其实是与文章开头部分，各位直觉中用电脑模拟骰子的思路是一样的，所以FLDR并不算特别新奇。</p>
+<p>论文作者其实是把我们直觉中的这种思路一般化，并且做了数学分析。他们证明这种情况下他们的算法在空间消耗上是与概率小数点后的位数的对数成正比。而原版的DDR则是与小数点位数成比例的增加，所以FLDR在空间上比较节省许多。</p>
+<p>时间效率上，因为需要丢弃一些采样结果，比原版DDG需要多消耗一些二进位。但他们证明它们算法比原版的DDG tree算法增加的二进位消耗不超过4位，所以是可以接受的一个结果。</p>
+<p>今天跟大家聊了下用电脑怎么来丢骰子以及模拟各种概率分布。我个人比较意外的是信息熵在此处不经意的出现，以及二叉树在此处的经典运用。而拒绝采样的理念也是值得我们自己好好玩味的。</p>
+<p>今天的节目就到这里，我们下期再见。</p>
+<p>参考资料</p>
+<p><a href="https://www.keithschwarz.com/darts-dice-coins/">https://www.keithschwarz.com/darts-dice-coins/</a></p>
+<p><a href="http://math.mit.edu/~freer/papers/SFRM-FLDR-AISTATS-2020.pdf">http://math.mit.edu/~freer/papers/SFRM-FLDR-AISTATS-2020.pdf</a></p>
+<p><a href="https://www.quantamagazine.org/how-and-why-computers-roll-loaded-dice-20200708/">https://www.quantamagazine.org/how-and-why-computers-roll-loaded-dice-20200708/</a></p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/your-website-url\.example\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

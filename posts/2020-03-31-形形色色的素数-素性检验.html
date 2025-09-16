@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2020-03-31">
+
+<title>形形色色的素数–素性检验 – dalaoli_quarto_blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">dalaoli_quarto_blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">形形色色的素数–素性检验</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">每周一题</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 31, 2020</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>大家好，我是大老李。今天聊聊素性检验（primality test），即检查一个数是否为质数的问题。这里的“素性检验”，如其名称所示，仅需要检查一个数字是否为素数，而不需要对其进行质因数分解。因当今计算机的广泛使用，加密和伪随机数算法到处可见。而这些算法中，有许多都需要先产生一个随机大质数，所以素性检验问题对这些算法是至关紧要。</p>
+<p>检查一个数是否为素数，最简单的方法当然是我们小学里都学过的“试除法”。比如检查101是不是质数，我们只要把101去除以2，3，4，一个个除下去，直到100，如果都不能整除，则101是质数。当然，你可以很容易对这个方法改进一些，比如对某个整数n，你只要试除小于<span class="katex--inline"><span class="katex"><span class="katex-mathml">n</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.04em;vertical-align:-.23972em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.80028em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:.833em;"><span class="mord mathdefault">n</span></span></span><span style="top:-2.76028em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:.853em;height:1.08em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.23972em;"><span></span></span></span></span></span></span></span></span></span>的整数就可以了，也只需要试除奇数。如果你有质数表，你也可以只试除小于<span class="katex--inline"><span class="katex"><span class="katex-mathml">n</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.04em;vertical-align:-.23972em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.80028em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:.833em;"><span class="mord mathdefault">n</span></span></span><span style="top:-2.76028em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:.853em;height:1.08em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.23972em;"><span></span></span></span></span></span></span></span></span></span>的质数。</p>
+<p>但不管如何改进，这样的改进结果，从算法角度来说，最终结果都是一个指数时间复杂度的算法。但是试除法的好处是，一旦判断某个数不是质数，同时也就它的质因数也找了出来。</p>
+<p>所以，现在有个问题，对某个很大的数，进行素性检验，如果只要求检验是否为素数，但不要求找出质因子，是否有多项式时间的算法呢？</p>
+<p>你可能想会到<a href="https://zhuanlan.zhihu.com/p/96071526">费马小定理</a>，遗憾的是，费马小定理的逆命题并不成立。之前节目提到过，即使某个数以所有底数通过费马小定理的检验，也不保证所得结果必定质数。这种例外的数字就被称为“卡迈克尔数”。</p>
+<hr>
+<p>（转自维基百科）</p>
+<p>费马小定理是数论中的一个定理：假如 a是一个整数， p 是一个质数，那么 <span class="katex--inline"><span class="katex"><span class="katex-mathml">ap−aa^{p}-a</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.747722em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault">a</span></span></span></span></span>是p的倍数，可以表示为：</p>
+<p><span class="katex--inline"><span class="katex"><span class="katex-mathml">ap≡a(modp)a^{p} a {}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.664392em;vertical-align:0;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord mathdefault">a</span><span class="mord"><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:.444444em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:.333333em;"></span><span class="mord mathdefault">p</span><span class="mclose">)</span></span></span></span></span></span></p>
+<p>如果a不是p的倍数，这个定理也可以写成：</p>
+<p><span class="katex--inline"><span class="katex"><span class="katex-mathml">ap−1≡1(modp)a^{p-1}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.814108em;vertical-align:0;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mord"><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:.444444em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:.333333em;"></span><span class="mord mathdefault">p</span><span class="mclose">)</span></span></span></span></span></span></p>
+<p>“卡迈克尔数”为符合上述性质的<strong>合数</strong>p，也即那些使费马小定理逆命题不成立的反例。最小的卡迈克尔数是561，其等于 <span class="katex--inline"><span class="katex"><span class="katex-mathml">3×11×173 </span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">1</span><span class="mord">1</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span><span class="mord">7</span></span></span></span></span>。</p>
+<hr>
+<p>但卡迈克尔数很稀有，所以，有时一个数如果通过了足够多的底数下的费马小定理的性质检验，则我们知道它是质数的可能性非常高，在某些应用场景下够用了。所以这种用“费马小定理”去检判定质数的方法仍有一定实用性，这种素性检验法就叫做“费马素性检验”（简称“费马检验”）。</p>
+<p>也因为它可能将合数误判为质数，所以它又叫“非确定性”或“概率性”素性检验。费马素性检验的时间复杂度是：<span class="katex--inline"><span class="katex"><span class="katex-mathml">O(k×log⁡3n)O(k^{3}{n})</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord mathdefault" style="margin-right:.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:.03148em;">k</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1.14845em;vertical-align:-.25em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:.01389em;">g</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.898448em;"><span style="top:-3.14734em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord"><span class="mord mathdefault">n</span></span><span class="mclose">)</span></span></span></span></span>，其中k是要检查的底数数量。它已经比指数复杂度的试除法好多了，在电子邮件加密软件PGP就使用了费马素性检验。</p>
+<p>那有没有一种能在多项式时间里，以确定性的方式完成素性检验的算法呢？还真有，这就是2002年，由三位印度科学家提出的AKS算法。当时他们的论文标题就是”素数属于P”。这里的P就是我之前聊过的<a href="https://zhuanlan.zhihu.com/p/68652786">“P vs NP”问题里</a>的那个P，意思是：检查一个数是否为素数，是有多项式时间的算法的。这是第一个确定性的多项式时间的素性检验算法，具有里程碑意义。</p>
+<p>AKS算法的时间复杂度是<span class="katex--inline"><span class="katex"><span class="katex-mathml">O(log⁡12n)O(^{12}n)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.14845em;vertical-align:-.25em;"></span><span class="mord mathdefault" style="margin-right:.02778em;">O</span><span class="mopen">(</span><span class="mop"><span class="mop">lo<span style="margin-right:.01389em;">g</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.898448em;"><span style="top:-3.14734em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></span>，后来被改进到<span class="katex--inline"><span class="katex"><span class="katex-mathml">O(log⁡6n)O(^{6}n)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.14845em;vertical-align:-.25em;"></span><span class="mord mathdefault" style="margin-right:.02778em;">O</span><span class="mopen">(</span><span class="mop"><span class="mop">lo<span style="margin-right:.01389em;">g</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.898448em;"><span style="top:-3.14734em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></span>。 AKS素性测试的基本理念其实还是费马小定理，只是它能在多项式时间内，排除掉n是所有种类的<a href="https://zhuanlan.zhihu.com/p/96071526">伪素数</a>的情况。</p>
+<p>但有意思的是，虽然有了AKS算法，我们当今实用领域里的需要生成大质数的各种加密算法中，几乎没有使用AKS算法的，而是使用一种概率性的算法：米勒——拉宾测试算法（Miller Rabin）。</p>
+<p>米勒–拉宾算法最早其实是1967年苏联数学家Artjuhov发现的，但并不为西方所知。1976年，卡内基梅隆大学的计算机系教授Gary Lee Miller再次提出了这个算法的最初版本，它是基于广义黎曼猜想的确定性算法。也就是：如果广义黎曼假设被证明是真命题，那么这个算法的结果就是正确的，且是决定性的。但是黎曼假设的证明还遥遥无期，所以后来以色列的科学家Michael Rabin将其改进，使其不再依赖黎曼假设，但结果是概率性的。因此这个算法现在被称为“米勒–拉宾算法”。</p>
+<p>米勒–拉宾算法的具体步骤在节目里不便说，但我可以说说它的基本理念，其实很类似于费马素性检验。根据费马小定理，我们知道，对于某个n，如果它是质数，则对所有2到n-1的自然数a, <span class="katex--inline"><span class="katex"><span class="katex-mathml">an−1a^ {n-1}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.814108em;vertical-align:0;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span></span> 除以n的余数是1。 但对某些合数n，也符合这个性质。</p>
+<p>那我们把鉴定一个整数n是否为质数的过程，想象成法庭审判的过程，把这些底数当做一个个证人。比如我们要“审判”101是否为质数。我们先请“2”来作证。证人“2”来了，它按费马小定理算了下，<span class="katex--inline"><span class="katex"><span class="katex-mathml">2101−1≡1(mod101)2^{101-1}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.814108em;vertical-align:0;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">0</span><span class="mord mtight">1</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mord"><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:.444444em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:.333333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span></span>，符合费马小定理。于是证人“2”说：在我看来，101是一个质数。</p>
+<p>然后你继续请证人“3”。“3”也算了下，<span class="katex--inline"><span class="katex"><span class="katex-mathml">3101−1≡1(mod101)3^{101-1}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.814108em;vertical-align:0;"></span><span class="mord"><span class="mord">3</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">0</span><span class="mord mtight">1</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mord"><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:.444444em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:.333333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span></span>，于是，“3”也说：在我看来，101是一个质数。后续你继续请证人4，5，6，7，…，一直到100来作证。结果这些数作为底数对101进行费马检验，结果都符合余数为1。于是它们都作证说：101是一个质数。这些证人在算法中有个术语，叫做“证人数”。</p>
+<p>那你知道，除非101是一个卡迈克尔数，否则它就是一个质数。所以你基本可以确信，101是一个质数。但对561这个数，我们知道它是最小的卡迈尔克数。对它，即使你请“2”到“560”所有的“证人”来作证，这些数都会认为561是一个质数，但是561却是一个合数。此时我们说：2到560都做了“伪证”，但这不能怪这些数，只能怪561这个卡迈克尔数伪装的太像质数了。</p>
+<p>先不管这些，现在请你改进以上过程，改进目标是：尽量少请一些证人，但最终仍然可以以比较高的准确率鉴定一个质数。</p>
+<p>首先，我们不用考虑卡迈克尔数的问题了，因为即使请所有的证人出来，也不能鉴定出它是合数。我们需要考虑的是，怎么少请证人，仍然可以尽量少的误判一个合数为质数。你会想到，如果有两个证人数，它们经常同时作“伪证”，也就是它们经常对同一个合数作出错误判断，那么这两个证人同时出场的意义就不大了。</p>
+<p>比如对341这个数，<span class="katex--inline"><span class="katex"><span class="katex-mathml">2341−1≡1(mod341)2^{341-1}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.814108em;vertical-align:0;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">4</span><span class="mord mtight">1</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mord"><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:.444444em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:.333333em;"></span><span class="mord">3</span><span class="mord">4</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span></span>， <span class="katex--inline"><span class="katex"><span class="katex-mathml">4341−1≡1(mod341)4^{341-1}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.814108em;vertical-align:0;"></span><span class="mord"><span class="mord">4</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">4</span><span class="mord mtight">1</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mord"><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:.444444em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:.333333em;"></span><span class="mord">3</span><span class="mord">4</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span></span>。所以证人“2”和“4”都会认为341是一个质数，但是341却是一个合数，所以2和4同时作了“伪证”。因此我们知道，在341这个问题上，2和4同时出来作证的意义就不大了。</p>
+<p>在法律术语中，这种情况叫“关联证人”，也就是两个证人互相认识或有某种共同的利益，所以“关联证人”的证词会具有相同的倾向性，它们同时作伪证的可能比较高，所以要比互不相关的证人证词效力差。</p>
+<p>在我们素性检验的问题中，我们可以通过某些数学上的性质，挑选合适的证人数，使得它们关系尽量独立，从而达到快速鉴定素数，同时使误差率尽量小的目的。</p>
+<p>这个思路有点像最近的那期“<a href="https://zhuanlan.zhihu.com/p/110769310">三人成虎</a>”的节目：一个证人说某个数字是质数，你可能不信，三个或更多互不认识的证人说某个数字是质数，那么这个数字是质数的概率就很高了。</p>
+<p>而米勒–拉宾算法就是通过一种费马小定理的特殊情形，进行一些数学变换，能够高效选取独立性很高的“证人数”，使得我们能快速鉴定质数。并且我们可以通过调节证人数的数量，控制最后结果的准确率。证人数越多，最终结果是伪质数的概率就越小，且其结果甚至排除掉卡迈克尔数。实践中，我们可以让伪质数出现概率小于<span class="katex--inline"><span class="katex"><span class="katex-mathml">1/21001/2^{100}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06411em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mord">/</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">0</span><span class="mord mtight">0</span></span></span></span></span></span></span></span></span></span></span></span></span>，而它的时间复杂度与费马检验法一样是<span class="katex--inline"><span class="katex"><span class="katex-mathml">O(k×log⁡3n)O(k^{3}{n})</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord mathdefault" style="margin-right:.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:.03148em;">k</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1.14845em;vertical-align:-.25em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:.01389em;">g</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.898448em;"><span style="top:-3.14734em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord"><span class="mord mathdefault">n</span></span><span class="mclose">)</span></span></span></span></span> ，k为“证人”数量，是一个多项式时间算法。</p>
+<p>米勒–拉宾算法十分简洁，以下即为用Python语言实现的米勒–拉宾测试 ：</p>
+<p><code>def is_Prime(n): ““” Miller-Rabin primality test.</code></p><code>
+<p>A return value of False means n is certainly not prime. A return value of True means n is very likely a prime. ““” if n!=int(n): return False n=int(n) #Miller-Rabin test for prime if n==0 or n==1 or n==4 or n==6 or n==8 or n==9: return False</p>
+<p>if n==2 or n==3 or n==5 or n==7: return True s = 0 d = n-1 while d%2==0: d&gt;&gt;=1 s+=1 assert(2**s * d == n-1)</p>
+<p>def trial_composite(a): if pow(a, d, n) == 1: return False for i in range(s): if pow(a, 2**i * d, n) == n-1: return False return True</p>
+<p>for i in range(8):#number of trials a = random.randrange(2, n) if trial_composite(a): return False</p>
+return True </code>
+
+<p>有了米勒—拉宾算法，要产生一个大质数就简单了。比如要找到一个2048位的随机质数，那只要先产生若干个2048位的随机二进制奇数，然后再送到米勒拉宾算法检验，直到找出一个质数。</p>
+<p>给大家一个思考题:，根据素数定理，我们知道素数的密度。2048位的一个随机二进制数为质数的概率约是：<span class="katex--inline"><span class="katex"><span class="katex-mathml">1/ln⁡22048≈0.07%1/%</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06411em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mord">/</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mop">ln</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord"><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mord mtight">0</span><span class="mord mtight">4</span><span class="mord mtight">8</span></span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.80556em;vertical-align:-.05556em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">0</span><span class="mord">7</span><span class="mord">%</span></span></span></span></span>。 那么请问：随机取多少个2048位的二进制<strong>奇数</strong>，可以使得结果中，以99%的概率，至少存在一个质数？这个问题留给大家做思考题。</p>
+<p>到这里，你会有一个问题，米勒–拉宾算法是概率性算法，而AKS算法是确定性的，也就是通过AKS检查的数不会有伪质数，而两者又都是多项式时间的，为什么实践中不用AKS算法？</p>
+<p>这是因为，虽然都是多项式时间算法，但是所需时间还是有差距的，AKS算法要比米勒拉宾算法复杂多，单次检测所需时间明显长。在上述产生随机大质数的过程，两者所需时间的差距可以是1分钟对1秒钟的差距，AKS算法在使用体验上会差不少。</p>
+<p>更重要的是，我们已经通过数学方法证明，米勒-拉宾算法产生的质数（调整到足够测试次数后）是伪质数的几率小于<span class="katex--inline"><span class="katex"><span class="katex-mathml">1/21001/2^{100}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06411em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mord">/</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">0</span><span class="mord mtight">0</span></span></span></span></span></span></span></span></span></span></span></span></span>，这个数字已经小于计算机硬件出错的概率了，因此算法上更高的准确率已经没有意义。并且实践中，还没有发现哪个通过米勒-拉宾检查的数，最终是合数的情况。</p>
+<p>也就是，你可以通过米勒–拉宾算法产生很多质数，然后再送到AKS算法中鉴定，看看是不是伪质数。到目前为止，没有人发现这样的数。其实这是可以理解的，因为我们知道米勒拉宾算法的错误率已经小到<span class="katex--inline"><span class="katex"><span class="katex-mathml">1/21001/2^{100}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06411em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mord">/</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">0</span><span class="mord mtight">0</span></span></span></span></span></span></span></span></span></span></span></span></span>，这是非常非常小的。并且，也许在2的几千次方以内，根本没有这样的伪质数。</p>
+<p>另外，计算机领域中有一个“工业级素数”的说法。如果把大素数生成算法想象成一个个生产素数的工厂的话，那么生产出来的素数就可以称为“工业级素数”。有意思的是，目前的“工业级素数”其实是有个小概率是合数的，属于“残次品”，但目前还没有发现这样的残次品。</p>
+<p>总结一下，目前最常用的大素数检查算法就是米勒–拉宾算法，它的算法简单，“精度”可调，实用性非常高。唯一缺点是：它的结果是概率性的，而非确定性。但这个缺点是可以接受的，因为我们可以把它的出错率调到小于计算机硬件出错的概率。将来如果能证明广义黎曼假设，那我们就可以用原版的米勒算法，那个就是确定性的了。</p>
+<p>参考链接：</p>
+<p><a href="https://crypto.stackexchange.com/questions/71/how-can-i-generate-large-prime-numbers-for-rsa">https://crypto.stackexchange.com/questions/71/how-can-i-generate-large-prime-numbers-for-rsa</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Primality_test">https://en.wikipedia.org/wiki/Primality_test</a></p>
+<p><a href="https://zh.wikipedia.org/zh-cn/AKS%E8%B3%AA%E6%95%B8%E6%B8%AC%E8%A9%A6">https://zh.wikipedia.org/zh-cn/AKS%E8%B3%AA%E6%95%B8%E6%B8%AC%E8%A9%A6</a></p>
+<p><a href="https://zh.wikipedia.org/wiki/%E8%B4%B9%E9%A9%AC%E7%B4%A0%E6%80%A7%E6%A3%80%E9%AA%8C">https://zh.wikipedia.org/wiki/%E8%B4%B9%E9%A9%AC%E7%B4%A0%E6%80%A7%E6%A3%80%E9%AA%8C</a></p>
+<p><a href="https://zh.wikipedia.org/zh-cn/%E7%B1%B3%E5%8B%92-%E6%8B%89%E5%AE%BE%E6%A3%80%E9%AA%8C">https://zh.wikipedia.org/zh-cn/%E7%B1%B3%E5%8B%92-%E6%8B%89%E5%AE%BE%E6%A3%80%E9%AA%8C</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test">https://en.wikipedia.org/wiki/Miller–Rabin_primality_test</a></p>
+<hr>
+<p>喜马拉雅：<a href="https://link.zhihu.com/?target=https%3A//www.ximalaya.com/keji/6310606/">https://www.ximalaya.com/keji/6310606/</a></p>
+<p>微信关注：dalaoli_shuxue</p>
+<p>B站: <a href="https://link.zhihu.com/?target=https%3A//space.bilibili.com/423722633">https://space.bilibili.com/423722633</a></p>
+<p>知乎：<a href="https://link.zhihu.com/?target=https%3A//zhuanlan/">https://zhuanlan</a>.<a href="http://zhihu.com/dalaoli-shuxue/">zhihu.com/dalaoli-shuxue/</a></p>
+<p>电邮：dalaoliliaoshuxue@gmail.com</p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/your-website-url\.example\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

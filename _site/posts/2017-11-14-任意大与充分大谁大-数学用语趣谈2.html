@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2017-11-14">
+
+<title>“任意大”与“充分大”谁大？–数学用语趣谈（2） – dalaoli_quarto_blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">dalaoli_quarto_blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">“任意大”与“充分大”谁大？–数学用语趣谈（2）</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Uncategorized</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">November 14, 2017</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>大家好，我是大老李。这期继续我们的数学用语趣谈。这次讲两个容易理解也经常听到的用语：“任意大”与“充分大”。</p>
+<p>先说个“任意大”的例子，比如“有任意大的素数”，这句话的意思就是说你无论给出一个多大的整数，总会有一个比它更大的素数，因为素数有无限多个。类似还有任意小，比如正数可以是任意小，因为无论你给出怎样的一个正数，总有一个比它更小的正数，比如你就把它除以2。</p>
+<p>但是“充分大”与“任意大”并不一样，你不能说“充分大”的整数都是素数，这肯定是不对的。“充分大”往往用来描述一个涉及到“无限”的数列或函数，来表达这个数列或函数在自变量取值达到一定程度之后，会持续拥有的性质，往往命题里还有“最终”这两个字。比如这样一个命题: “x充分大之后，函数f(x)的值最终大于0”。</p>
+<p>“任意大”和“充分大”概念听上去很简单，但你别小瞧它们的作用。它们在数学里非常重要，因为它们是定义所谓“极限”概念的基础。而“极限”的定义，又是整个微积分的基础。这里历史上有段公案，叫所谓“第二次数学危机”。当初牛顿和莱布尼茨在创立微积分之时，他们经常使用一个概念叫“无穷小量”。这个无穷小量是什么东西，他们两位可没定义清楚。相信学过微积分的人，也都会对这个无穷小量产生过一些顾虑，就是<span class="math inline">\(\mathrm{d} x\)</span>。这个<span class="math inline">\(\mathrm{d} x\)</span>看上去像一个变量，可以加减乘，甚至是放在分母上，但经常算到最后它就被忽略了，被丢弃了，老师会说因为这是无穷小啊，跟0没区别。但你前面怎么又把它做运算呢，相信很多人有过这种困惑。历史上有一个英国大主教，贝克莱就于公开反对过无穷小量的概念，他在1743年发表的一篇文章里写：“无穷小量是消失了的量的鬼魂……能消化得了二阶、三阶流数的人，是不会因吞食了神学论点就呕吐的。”这话虽然有点尖酸刻薄，但是他的攻击不是没有道理。这个“无穷小量”像一个幽灵一样，是当时数学基础上的缺陷，导致了第二次数学危机。</p>
+<p>这次危机一直到柯西，维尔斯塔拉斯等人确立的极限的概念才解决。而极限概念的一般表述形式就是当自变量充分大后，一个函数值与某个定值之间的差可以是任意小。所以，基本上可以说所有的微积分表达式，你把它展开后用语言来描述话，都是当xxx充分大后，xxx与xxx的差是任意小。所以你看“充分大”和“任意大或小”的概念是不是很重要！</p>
+<p>那我们再看看有关这两个关键字的命题，其中最出名的莫过于哥德巴赫猜想。哥德巴赫猜想大家想必熟知，就是任何一个偶数都能表示成两个素数之和。而对哥德巴赫猜想的每一次逼近，你会看到数学家解决的都是“当x充分大”之后，任何一个偶数都能表示成什么样的形式。像我小时候，第一次听到我国数学家陈景润证明了所谓”1+2“命题，就是对“充分大的偶数，都能表示成一个素数加两个素数之积”。当时还在读小学的我还奇怪，为啥说“充分大”，因为我自己计算12就等于3+3*3嘛，为啥不说大于12的偶数，就能表示成1个素数加2个素数之积。那只能说我当时太年幼无知，其实陈景润当时自己都不能确定这个偶数的下限，所以只能说“充分大”，足见哥德巴赫猜想困难。</p>
+<p>再看看所谓“弱歌德巴赫猜想”证明，更是体现了前赴后继的，薪火相传的精神。这个“弱歌德巴赫猜想”是这么说的，“任何大于7的<a href="https://zh.wikipedia.org/wiki/%E5%A5%87%E6%95%B0">奇数</a>都可以表示为三个奇<a href="https://zh.wikipedia.org/wiki/%E7%B4%A0%E6%95%B0">素数</a>之和”。比如9=3+3+3。很明显它是“歌德巴赫猜想”的推论，所以我们叫它“弱歌德巴赫猜想”。这个弱哥德巴赫猜想的第一次大突破是1937年，苏联数学家伊萬·維諾格拉多夫证明了“弱哥德巴赫猜想”对“充分大”的奇数是正确的，你看“充分大”来了。但是跟陈景润一样，他不能确定这个“充分大”的下限，但这是从无限到有限的一次突破，所以这绝对是一次质的飞跃。两年后，他的学生，确定了一个下限，这就是<span class="math inline">\(3^{14348901}\)</span>。虽然大的吓人，但是从不知道下限，到知道一个很大的下限，这也是一次很大的突破。</p>
+<p>在之后要推到1997年，四位数学家有一个戏剧性的证明，在广义黎曼假设成立的条件下，弱哥德巴赫猜想对充分大的奇数成立，这个充分大的下限是<span class="math inline">\(10^{20}\)</span>。然后他们用电脑验证了一下<span class="math inline">\(10^{20}\)</span>以下的所有奇数，都符合弱哥德巴赫猜想。所以他们等于证明了在广义黎曼假设成立的条件下，弱哥德巴赫猜想成立。但问题是他们的证明是依赖于广义黎曼假设，但黎曼假设的证明目前看还是遥遥无期。</p>
+<p>再到2002年，两位香港大学的数学家把下限缩小到大约<span class="math inline">\(2*10^{1364}\)</span>，这个下限是不依赖其他命题的，但是可惜还是太大，比这个下限小的奇数还是多到无法用计算机来验证。</p>
+<p>直到2013年，法国国家科学研究院的研究员哈洛德·賀歐夫各特，发表了两篇论文，终于彻底解决这个问题。他首先综合使用了一些传统方法，将“充分大”的下限缩小到<span class="math inline">\(10^{30}\)</span>左右，再把<span class="math inline">\(10^{30}\)</span>以下的奇数全都用计算机验证一遍，终于完整证明弱哥德巴赫猜想。</p>
+<p>看完这个证明过程我最大的感受就是这个问题之难，其次是解决的方法的有点小偷懒。就是把“充分大”降低到“足够小”，虽然这个足够小对人类来说还是太大了，但有了计算机帮助，我们就能用暴力方法去解决它。我相信这种证明方法将来肯定会越来越多，就是用计算机来帮助判定命题一定范围的真假，我前几期聊过的”拉姆齐理论”也是例证之一。</p>
+<p>另外让人感叹的就是虽然弱哥德巴赫猜想解决了，但是哥德巴赫猜想本身和黎曼假设还是岿然不动。虽然它们都能推出弱哥德巴赫猜想，但可惜反方向不行。</p>
+<p>前面都是“充分大”之后命题成立的例子，其实数学中本来有一些人们认为“充分大”后命题成立的猜想，结果后来发现原来这些命题还有一个“非常大”的反例的例子。 而这其中最惊人的一个例子还是关于素数的。大家都是知道素数的数量一个简单估计，就是前N个自然数中有大约有<span class="math inline">\(\frac{N}{\ln{N}}\)</span>个，它有一个等价但更精确估计函数，是一个积分形式(<span class="math inline">\(Li(x)=\int_{2}^{x}\frac{dt}{\ln{t}}\)</span>)，这个积分具体形式不重要，关键是有好事者把这个估计函数和实际素数的数量进行了比较，发现直到几千上万后，实际素数的数量确实越来接近估计函数的估计，但总是少于估计函数。于是，就有人猜想，对所有的自然数N，总是实际数量要小于这个估计函数。</p>
+<p>但是，在1914年，与哈代并称剑桥双雄的李特伍德证明，不对，肯定有一个N，使得N以内的素数数量会多于这个估计函数，只是这个N太大了，人们完全不知道这个转变发生在什么地方。后来李特伍德的学生思古斯，在1933年，他34岁那年证明了，这个N会在小于<span class="math inline">\(10^{10^{10^{34}}}\)</span>之内出现，不过前提是黎曼假设正确。然后思古斯又奋斗了22年，到了1955年，他证明了这个N会在小于<span class="math inline">\(10^{10^{10^{964}}}\)</span>之内出现，这次他不需要黎曼假设这个前提了，所以这个N比之前的还要大很多，已经大到我无法形容了。这个数字人称思古斯数。现在最新成果已经把思古斯数的范围缩小到<span class="math inline">\(e^{728}\)</span>左右。当然计算机还是远远不能算出这个数，所以我们至今还是不知道第一个会使得素数数量大于那个估计函数的那N值。</p>
+<p>你此时可能回想，那是不是有可能存在一个足够大的N，使得大于N之后的所有自然数，它之前包含的素数都一直大于或小于估计函数值呢？这个思路是很好，只是结论更为惊人，还李特伍德证明了，N之前的素数数量与估计函数之间的大小关系其实会发生无数次转变。也就是这个命题从“充分大”变为了“任意大”，现在可以改为，有任意大的N，使得N以内的素数小于估计函数的估计，也有任意大的N，使得N以内的素数数量大于估计函数的估计。两者不矛盾，因为两者发生无数次大小关系改变，而且第一次转变发生的位置我们不知道，目前发现的状态是在<span class="math inline">\(e^{728}\)</span>附近，有一次转变，但是不是第一次转变不知道。且<span class="math inline">\(10^{19}\)</span>之前没有转变。这些巨大的数字 让我想起了一句名言：“如果数学是上帝留给人类的花园，那素数就是藏在花园里的魔鬼”。</p>
+<p>好了，今天有关“充分大”和“任意大”的话题讲完了。另外打个广告，我最近在订阅号中，会将我以前发表过后被下架的有关比特币的节目内容以文字形式发表，欢迎你关注阅读。如果你喜欢我的节目请关注或打赏。另外也欢迎你提供节目话题线索。再见！</p>
+<p>收听“大老李聊数学”</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2017/10/ximalaya.png" class="img-fluid figure-img"></p>
+<figcaption>ximalaya</figcaption>
+</figure>
+</div>
+<p>订阅“大老李聊数学”：</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2017/09/qrcode_for_gh_130ed4d8263c_344.jpg" class="img-fluid figure-img"></p>
+<figcaption>qrcode_for_gh_130ed4d8263c_344</figcaption>
+</figure>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/your-website-url\.example\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

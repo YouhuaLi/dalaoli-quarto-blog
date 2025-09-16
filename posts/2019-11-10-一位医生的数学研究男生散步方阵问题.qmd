@@ -1,0 +1,164 @@
+---
+title: '一位医生的数学研究——男生散步方阵问题'
+date: "2019-11-10"
+categories:
+  - "每周一题"
+---
+
+一位医生的数学研究——男生散步方阵问题
+
+大家好，我是大老李。这期节目是有关一位听众的一些数学发现。我之前做过一期有关“<a href="https://zhuanlan.zhihu.com/p/52564933">柯克曼女生散步</a>”问题的节目，那期节目的起因就在于我收到了一位署名“牙科医生王本材”的听众给我的来信，他说他正在研究这个问题的一个特例，并且有了些点发现，说希望我先做一期节目给大家科普一下“柯克曼女生散步问题”。
+
+所以我就研究了一下这个问题，发现它本身不但是一道历史名题，而且有很丰富的相关历史故事。你没听过那期节目，强烈推荐你搜索我专辑内一期叫：“三人行，必有排列组合题”的<a href="http://m.ximalaya.com/30297174/sound/141140432">节目</a>，里面有关于这道题的全面历史介绍。
+
+后来我又收到了一位来自上海的初中生——陈嘉熙同学的来信，他对这个问题也有了发现，所以才有了第二季最后一期节目：<a href="https://zhuanlan.zhihu.com/p/56397437">有关初中生的数学发现</a>。
+
+那期节目之后，王医生又发了邮件给我，说陈同学的发现是他的研究结果的一部分，他有更一般化的结果，正在设法写成论文。大概在今年6月的时候，王医生再次发邮件给我，说他已经把他的成果发表在网易博客上，请我过目一下。
+
+因为网易博客对数学内容的显示格式支持不是很好，我也在忙其他一些事情，所以拖延了几个月后，我终于好好看了一下王医生的论文，并且对几个问题要点与他进行了几次邮件沟通。
+
+现在我对他论文的要点有所了解，我确定王医生的确对“柯克曼女生散步问题”的一个特例情况有了开创性的研究，而且他还在文末提出了几个颇有意思的猜想。
+
+现在他的文章已经转到了<a href="https://zhuanlan.zhihu.com/p/89770311">知乎</a>上，但因为他的文章不是很符合数学论文的规范，有些内容因为排版问题，阅读起来会有些吃力。所以我就在此把他文章要点介绍给大家，方便各位进一步阅读和研究。
+
+首先，原版的“柯克曼女生散步问题”是这样一个问题：15个女生每天出去散步一次，每次散步三人一组。请问如何安排散步方案，可以使得一周七天内任何两个人恰好一起散步一次？
+
+这道题其实就是一道排列组合题，当年名噪一时，曾是一个热门话题，如果你有兴趣，可以自己设计一下这15个女生的散步方案。当然我们更关心的是一般化的问题，即，怎样的女生人数和分组数，使得最终能产生一个散步方案，使得每两个女生恰好一起出去散步一次。
+
+而在一般化的问题中，有一组很简单的数字组合是符合产生散步条件的，即：总人数是一个完全平方数，比如<span class="katex--inline"><span class="katex"><span class="katex-mathml">n2n^2</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.814108em;vertical-align:0;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span>，每次散步分为n组，每组n个人，一共出行n+1天。让我们分析下为什么这组数字可以产生出行方案。
+
+首先因为每组人数是n个人，所以每个人每天可以与n-1个人一起散步。那么散步n+1天后，每个人可以一起散步的人数就是<span class="katex--inline"><span class="katex"><span class="katex-mathml">(n+1)(n−1)=n2−1(n+1)(n-1)=n^2-1</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.897438em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span></span></span></span></span>。因为总人数是<span class="katex--inline"><span class="katex"><span class="katex-mathml">n2n^2</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.814108em;vertical-align:0;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span>，所以每个人恰好需要与<span class="katex--inline"><span class="katex"><span class="katex-mathml">n2−1n^2-1</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.897438em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span></span></span></span></span>个人一起散步，因此以上这组数字看上去是合理的。
+
+为了叙述方便，我把以上这种出行人数为<span class="katex--inline"><span class="katex"><span class="katex-mathml">n2n^2</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.814108em;vertical-align:0;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span>类型的散步问题称为“男生散步方阵问题”，因为如果有出行方案，那么这些男生就可以每天以<span class="katex--inline"><span class="katex"><span class="katex-mathml">n×nn\times n</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.66666em;vertical-align:-.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault">n</span></span></span></span></span>方阵形式出去散步，而这个散步方阵我之后会称为“n阶散步方阵”。
+
+![enter image description here](https://01.imgmini.eastday.com/mobile/20180614/be40544b8c469ebf63ef044de5b193ca_wmk.jpeg)
+
+（上图：一个马其顿方阵）
+
+但以上这组数字的合理性只是产生散步方案的必要条件，而不是充分条件。比如：已经证明如果有36个男生，每次6人一组，散步7天，你是无法构造出合理的（每两人恰好一起散步一次）出行方案的。
+
+而王医生此次提出了一个产生合理散步方案的人数的充分条件（虽并未严格证明）：如果总人数是<span class="katex--inline"><span class="katex"><span class="katex-mathml">n2n^2</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.814108em;vertical-align:0;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span>，那么若这个n是单个质数的幂次，则必有出行方案。
+
+“单个质数的幂次”的意思是：对这个n进行质因数分解后，最终形式是单个质数的幂次，而不能出现两个或更多的质数。比如<span class="katex--inline"><span class="katex"><span class="katex-mathml">232^3</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.814108em;vertical-align:0;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span></span>，<span class="katex--inline"><span class="katex"><span class="katex-mathml">323^2</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.814108em;vertical-align:0;"></span><span class="mord"><span class="mord">3</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span>，<span class="katex--inline"><span class="katex"><span class="katex-mathml">535^3</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.814108em;vertical-align:0;"></span><span class="mord"><span class="mord">5</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span></span>等等都符合要求。而6就不符合要求，因为6=2*3。所有质数本身也是单个质数的幂次，因为它们就相当于自身的1次方。
+
+![enter image description here](https://pic1.zhimg.com/80/v2-3eab7134a7aac75b3bf99d93a6bcc88c_hd.jpg)
+
+（上图：王医生在邮件里给出的8阶男生散步方阵的解）
+
+之前陈嘉熙同学发现了当n为质数时的出行方案构造，所以王医生的发现就涵盖了陈同学发现，两者是互相兼容的。
+
+而陈嘉熙同学有关n为质数时的构造方案是相当简单的，所以我们需要重点关注n为合数时的构造。王医生发现，当n为合数时，如果可以构造出一个特别的数列，则必然可以构造出散步方案。
+
+王医生命名该数列为“W数列”，有一个要点是这个数列有一个长度参数，在论文中，王医生用y来表示这个参数，且对某个n阶方阵，其对应的y参数总是等于n-2。那么这个W数列的定义到底是啥？它需要符合以下一些精巧的性质：
+
+首先，这个数列需要包含2到y的所有自然数，一共y-1个数字。
+
+并且，在这个数列中，从任意位置开始，任意连续2项的和，除以y+1的余数，需要互不相等，且不等于0或2。
+
+并且，对上一条性质，不但对任意连续2项，要对任意的2项和，3项和，直到任意y-2项和，都符合上述性质。即从任意位置开始，任意连续n项的和，除以y+1的余数，需要互不相等，且不等于0或n。
+
+<blockquote>
+当y=5时，W(5)数列的例子：
+
+对y=5的情况，那么这个W数列就需要包含2到5，即2，3，4，5这四个数字。
+
+考虑(3，2，5，4）这个数列，计算任何连续两项的和，并取模6的余数：
+
+3+2 = 5 mod 6
+
+2+5 = 1  mod 6
+
+5+4 =3 mod 6
+
+因此，符合结果互不相等，且不等于0或2。请自行验证上述序列连续三项的和(模6)，符合互不相等，且不等于0或3的条件。
+</blockquote>
+
+王医生证明了，如果对某个y，如果可以找到一个W数列，就能根据这个数列，构造出一个y+2阶的方阵出行方案，这是他论文的主要贡献。
+
+那目前对哪些整数找到了W数列呢？大老李写了个程序 ，验证了15以内的情况能找到W数列的整数，它们是：2，3，5，6，7，9，11，14，15。16以上我的电脑是跑不出结果了。
+
+<blockquote>
+大老李用电脑搜索出的 15以内的W数列：
+
+y=2 (2,)
+
+y=3 (2, 3)
+
+y=5 (3, 2, 5, 4)
+
+y=6 (3, 2, 4, 6, 5)
+
+y=7 (2, 4, 3, 6, 5, 7)
+
+y=9 (2, 7, 8, 6, 5, 3, 4, 9)
+
+y=11 (4, 7, 2, 8, 10, 3, 5, 11, 6, 9)
+
+y=14 (4, 6, 2, 9, 3, 11, 8, 5, 13, 7, 14, 10, 12)
+
+y=15 (3, 2, 8, 11, 12, 10, 4, 13, 7, 5, 6, 9, 15, 14)
+
+说明：以上非唯一解。代码<a href="https://github.com/dalaoli-shuxue/math_misc/blob/master/n2-rbibd/gen_w_list.py">在此</a>。
+</blockquote>
+
+这些数字有什么规律？你会发现它们加上2以后，都是单个质数的幂次。所以，王医生猜想，n阶“男生散步方阵问题”存在解的充分条件是：阶数为单个质数的幂次。
+
+另外，给定一个y，有没有什么办法快速构造W数列呢? 大老李也想了半天，没有想到一个好的方法。但是王医生观察到所有W数列的一个有趣性质：就是如果你把w数列写成一行，在第二行内，倒过来写一次，你会发现上下两行的两个数字之和相等。
+
+<blockquote>
+例如，对y=5的情况，(3,2,5,4) 是一个W数列。先写下它：
+
+(3,2,5,4)，再倒序写一次：
+
+(4,5,2,3)，
+
+你会发现上下两个数字之和相等。对目前所有发现的W数列，此性质都成立。
+</blockquote>
+
+王医生在论文中还有第三个猜想，我看得不是明白，就不作介绍了。
+
+总结一下，王医生的论文主要成果就是，如果对某个y，存在一个W数列，则必可以构造出y+2阶的男生散步方阵方案。根据大老李对已有论文的搜索，这绝对是一个新的成果。并且他还提出了两个很有意思的猜想，特别是猜想阶数n为单个质数幂次时，男生散步方阵才有解，这是一个相当有用的性质。
+
+下一步，我觉得还有很多问题可以研究：
+
+首先是：王医生证明了，存在W数列，是男生散步问题有解的充分条件，但是不是必要条件？我个人认为是，但有待证明。
+
+第二个：n为单个质数的幂次时，是否总有w数列？目前大老李计算机验证到15，望有心人能改进算法，或者能想出直接的构造方法。
+
+第三，n为单个质数的幂次，是否为n阶男生散步方阵问题的**充分必要**条件？这个如果可以证明，那将是一个大的发现。
+
+第四：现在，我们猜想，如果对某个y，无法构成W数列，就没有y+2阶的方阵的解，那么是否能根据W数列的失效程度，构造出最多的散步天数方案？比如知乎上有这么一个<a href="https://www.zhihu.com/question/20556961/answer/539995069">问题</a>：
+
+现在有一百个工人，彼此不认识，每天派 10 个人组成一批出去劳动，假设工人们一同劳动后就各自相互认识了，要求每天派出去劳动的工人两两互不认识，请问最多可以坚持多少天？具体的组合是怎么样？
+
+现在，我们知道这个问题就是10阶男生散步方阵问题。如果有解的话，那么他们应该可以坚持<span class="katex--inline"><span class="katex"><span class="katex-mathml">11×10=11011\times 10=110</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">1</span><span class="mord">1</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span><span class="mord">0</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span><span class="mord">1</span><span class="mord">0</span></span></span></span></span>天。但是<span class="katex--inline"><span class="katex"><span class="katex-mathml">10=2×510=2\times 5</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span><span class="mord">0</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">5</span></span></span></span></span>，不是单个质数的幂次，所以我猜想它没有110天的完美方案，但是这个问题总有一个最大天数的答案。大老李曾经写过一个程序，找到一个47天的出行方案，但我没有枚举所有可能，所以不知道是不是最多。
+
+另外，因为大老李用电脑程序验证过，对于10-2=8这个数字，构造不出w数列。那么能否构造一个"失效"程度最小的w数列，以构造出上述问题的对多出行天数结果？我个人直觉是非常相关的，也期待各位能研究。
+
+第五，现在我们只是研究方阵，那是否存在某个类似W数列性质的数列，能帮助我们对非方阵的散步问题找出行方案？如果可以，那也是一个很大的发现。
+
+好了，以上大老李总结了一下王医生论文的要点，以帮助你更好的看懂他的文章。
+
+本次收到王医生的来信，我是非常开心的，因为在我研究了这个问题的过程中，我确实感受了到了研究数学的快乐。而且这个问题确实非常适合业余爱好者研究，希望广大听众也能有所收获。如果你有新的发现，也欢迎发给我。
+
+再次感谢王本材医生的来信，我们下期再见！
+
+王医生论文地址：
+
+<a href="https://zhuanlan.zhihu.com/p/89770311">https://zhuanlan.zhihu.com/p/89770311</a>
+
+知乎100个工人问题地址：
+
+<a href="https://www.zhihu.com/question/20556961/answer/539995069">https://www.zhihu.com/question/20556961/answer/539995069</a>
+
+广告：大老李出视频啦！现在可在哔哩哔哩，西瓜视频，油管和喜马拉雅搜索“**看大老李聊数学**”，观看有趣的数学视频。
+
+喜马拉雅：<a href="https://www.ximalaya.com/keji/6310606/">https://www.ximalaya.com/keji/6310606/</a>
+
+微信关注：dalaoli_shuxue
+
+B站: <a href="https://space.bilibili.com/423722633">https://space.bilibili.com/423722633</a>
+
+知乎：<a href="https://zhuanlan.zhihu.com/dalaoli-shuxue/">https://zhuanlan.zhihu.com/dalaoli-shuxue/</a>
+
+电邮：dalaoliliaoshuxue@gmail.com

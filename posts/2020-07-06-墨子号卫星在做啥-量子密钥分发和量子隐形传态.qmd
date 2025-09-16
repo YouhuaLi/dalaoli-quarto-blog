@@ -1,0 +1,124 @@
+---
+title: '墨子号卫星在做啥： 量子密钥分发和量子隐形传态'
+date: "2020-07-06"
+categories:
+  - "每周一题"
+---
+
+不久前我看到了潘建伟院士谈了墨子号量子科学实验卫星的新闻，但我发现大多数人，也包括我，对墨子号卫星到底在做啥并不太了解。所以我就稍微研究了一下，给大家科普一下墨子号卫星。
+
+![enter image description here](https://pic4.zhimg.com/v2-5249eb7bfa3099b2ecec5346fb078b34_1440w.jpg)
+
+首先，我发现普遍对量子计算和量子通信技术有两大错误观念：一种是极端迷信派，把量子物理的应用吹得神乎其神，什么超光速瞬移，心灵感应等等都来了。另一种是极端反对派，认为有“量子”两个字的研究就是伪科学，骗经费，骗钱。
+
+很明显这两种偏激观念都是错误，而偏激往往来源于无知。所以让我们就学习一下墨子卫星的一些知识，你就能正常看待它。
+
+墨子号卫星的全称是“墨子号量子科学实验卫星”，在2016年8月16日1时40分，于酒泉卫星发射中心搭载长征二号丁运载火箭发射升空，成为全球第一颗设计用于进行量子科学实验的卫星。它的实验任务有许多，但主要的两个实验就是量子秘钥分发和量子隐形传态。这两个实验都是为了实现将来量子通信网络的基础实验。
+
+关于量子秘钥分发，我们需要简单学一点密码学和量子纠缠的知识。我们都有这样的经验，很多网站开始使用手机发送验证码的方式登录，而不是让用户输入用户名密码。我们会感觉这种手机验证码要比固定的密码安全些，因为手机验证码是一次性使用，而且有效期很短。
+
+借鉴这种模式，我们可以这样实现加密通信。比如你要传一个比如16位2进制数给在在远方某处另一个朋友。这个16位2进制数可能是你的工资，你希望严格保密，不被任何人窃听。有个加密办法就是你自己另外产生一串16位2进制数，将你的工资额的16位二进制数与这个随机16位二进制数进行一次“异或”操作（写作XOR或<span class="katex--inline"><span class="katex"><span class="katex-mathml">⊕\oplus</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.66666em;vertical-align:-.08333em;"></span><span class="mord">⊕</span></span></span></span></span>），这样就起到了加密作用。
+
+“异或”是一种计算机科学中的2进位的运算，它的运算规则是：两个不同的二进位进行异或预算结果为1；相同的二进位的异或运算结果为0。
+
+<span class="katex--inline"><span class="katex"><span class="katex-mathml">1⊕0=0⊕1=11 \oplus 0 = 0 \oplus 1 = 1</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">0</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span></span></span></span></span>
+
+<span class="katex--inline"><span class="katex"><span class="katex-mathml">0⊕0=1⊕1=00 \oplus 0 = 1 \oplus 1 =0</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">0</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">0</span></span></span></span></span>
+
+那么你稍微验算下，你会发现，如果某个2进位对另一个2进位数连续进行两次异或，总能还原到原来的数字。用公式写出来就是:
+
+<span class="katex--inline"><span class="katex"><span class="katex-mathml">a⊕b⊕b=aa \oplus b\oplus b =a</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.66666em;vertical-align:-.08333em;"></span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.77777em;vertical-align:-.08333em;"></span><span class="mord mathdefault">b</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.69444em;vertical-align:0;"></span><span class="mord mathdefault">b</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault">a</span></span></span></span></span>
+
+无论这个a, b是0还是1。所以能看到，如果我们把某个二进制串作为秘钥，只要通信双方同时持有这个二进制串。那么发送方只要把发送的信息与这个秘钥进行一次异或操作就起到了加密作用，接收方接收到这个密文后，将密文与秘钥再进行一次异或，就起到了解密作用。
+
+当你把自己的工资数额与一串16位随机二进制数进行异或操作后，你就可以随意的把结果发送给任何人，而不担心泄密。现在的问题就是如何把你的这串16位二进位发送给对方，以便对方解密。发送这串秘钥才是重大的需要严格保密的任务了。
+
+那么如果有一种机制，能够持续稳定地，给处于不同地点的双发提供安全、可靠且相同的随机二进位，那么通信双方就可以用这些二进位作为秘钥通信。
+
+理想情况下，这种二进位需要持续不断的快速发送，使得通信双发不用重用任何二进位，每一位信息都用新的随机位加密，那这这种加密方式就是密码学中理论上最安全的一种秘钥，称为“一次性秘钥”（one time padding)。而要实现的这种加密通信的关键就是实现“秘钥分发”。
+
+那我们再看看“量子纠缠”。量子纠缠的一个基本图像就是，远在两处的两个粒子，它们可以处在一种称为“纠缠态”的状态。处于纠缠态的粒子，如果你对其某种属性进行测量，你会发现测量结果会有某种相关性。
+
+这种相关性比较为人熟知的一点是：如果你对一对纠缠量子的自旋方向进行测量，如果两边测量方向一致，那么测量结果就会相反。
+
+而其实如果测量方向不一致，测量结果仍然会保持特定的相关性。奥妙的是，这种相关性是经典世界所不能模拟和解释的。有关这方面内容可以听我之前的一期节目：“两个天才捣蛋的学生”。
+
+这其实是一种相当有神秘感的特性。它突破了人们认为的经典世界中物质作用所必须满足的运行规则之一：“定域性”，即物质之间的信息传播速度。另外两个规则是“实在性”和“因果律”。而量子的有些性质似乎也突破了“实在性”，比如对双缝干涉实验的解释。目前唯一能守住的就是“因果律”，如果因果律也突破了，那么宇宙秩序就乱套了。
+
+不管怎样，你可以发现量子纠缠就是一种很好的秘钥分发机制。只要给通信双方持续发送纠缠粒子，然后双方按某个约定好的方向测量粒子自旋方向，那么双方会拿到相反的测量结果。只要事先约定测量结果表示为0，另一个结果为1，某方再翻转下结果，那么双方就能持续拿到相同的随机二进位。
+
+如果中途有人截取进行测量，则有一方无法得到结果或测量结果与对方对不上（导致后续解密失败），从而可以察觉到中途的窃听行为。
+
+以上这种利用量子纠缠性质的秘钥分发方案称为“基于纠缠态的协议”。还有一种不利用纠缠态的量子分发协议，称为“基于制备和测量的协议”（比如BB84，下一期节目再详细介绍）。墨子号卫星使用的是基于纠缠态的协议。
+
+此次墨子号卫星的一个实验是，向位于新疆南山和青海德令哈的两处接收站，以每秒2对的速率分发纠缠光子，进行秘钥分发的实验。最终的秘钥生成速率为0.12比特。这个速率虽然比较低，但是在两处距离超过1000公里的位置进行量子秘钥分发实验，目前还是纪录。
+
+《自然》杂志审稿人称赞该工作：“展示了一项开创性实验的结果，…这是朝向构建全球化量子密钥分发网络甚至量子互联网的重要一步，我的确认为不依赖可信中继的长距离纠缠量子密钥分发协议的实验实现是一个里程碑”。
+
+![enter image description here](https://pic4.zhimg.com/80/v2-c21272685deeb6dcdc80e4bbb2ff3e0b_720w.jpg)(《自然》杂志曾以墨子号卫星做封面图)
+
+再说说很有科幻色彩量子隐形传态，量子隐形传态的英文是“quantum teleportation”，而telepotation在很多小说和游戏的中文名称就叫“传送门”。
+
+量子隐形传态协议1993年由6位科学家在一篇论文中共同提出，其中的两位就是提出BB84协议的科学家。隐形传态的效果是，将本地某个量子的某个属性，复制到远方的某个量子上，使得远处的那个量子在那个属性上有与本地量子相同的物理表现，这个属性术语称为“量子位”，或者“量子比特”。
+
+通常，我们电脑上的比特位传送必须通过某种通信介质，不管有线还是无线，光速的是一个无法逾越的上限。而在隐形传态中，量子的传送利用了纠缠例子的超距作用，似乎是瞬间向远方复制了量子位，所以有点像传送门效果。
+
+但要注意的是传送的是量子属性，并不是粒子本身的传送，所以会有超光速运动。而后面你也会看到隐形传态如果要实现信息传递，通信双方还需要用传统信道交换信息，所以同样不会出现超光速信息传递的效果。
+
+量子隐形传态的技术细节需要比较复杂，我给大家找点感觉。你可以想象你在上海有一个桌球，你在北京的朋友也有一个桌球。这两个桌球因为某种机制，形成了一种时刻保持动量守恒的状态，我们就叫它“纠缠的桌球”。两个桌球都是黑球，此时都静静地躺在桌球台上，总动量为0。
+
+有这样一对具有神奇性质的桌球，我们可以作一些很有意思的事情。比如你在北京的朋友拿了另一个白色桌球，撞击他的黑球。此时，因为纠缠的两个黑球具有动量守恒，位于上海的你，能观察到，你的黑球突然动了起来。
+
+此时你知道，北京的黑球肯定被撞了。而且你根据自己的黑球的动量改变量，就能得知撞击北京桌球的那个白球在撞击黑球瞬间的动量。从某种意义上来说，北京的白球的运动状态被复制到上海的黑球上了。
+
+但现实情况不是那么那么简单的理想状态，“纠缠的桌球”有一个奇怪的性质，我们不能“测量”它的动量，一旦测量后，桌球的纠缠状态就被破坏，不再保持动量守恒。还有个限制是，对同一地方的两个桌球只能总体测量，而不能单独测量某个桌球。现在要如何传送北京桌球的运动状态到上海呢？还是有办法的。
+
+仍然先让向北京和上海两地分发一对纠缠的黑色桌球，并且不防假设它们的总动量就是0。但我们不知道它们各自的运动状态，好比它们是放在两个封闭的盒子里。现在我们希望把北京的一个白球的动量复制到上海的黑球上。一个方法是，将白球丢进北京黑球所在的盒子里。这时白球与黑球会发生一些碰撞，北京的黑球运动状态有所改变，我们“推测”上海的黑球运动状态也有所改变。
+
+但是我们还不能直接打开上海的盒子看，因为上海盒子里的黑球运动初始状态你不知道。此时你直接观察，你是推测不出北京白球原来的动量的。这时需要北京方面先对他的黑球和白球做一次联合测量，得出一个总动量结果，把这个结果通过传统信道发送给上海。
+
+这时在上海的你，可以对你的黑球施加一个动量的变化，变化量就是你收到的动量，此时通过的简单的运算（留给各位自己验证），你会发现，改变后的黑球的动量就应该是北京的白球丢入黑盒时的动量，从而你复制了北京的白球运动状态，接下来你是否打开盒子检验结果就不重要了。
+
+以上就是量子隐形传态的基本理念，先分发一对纠缠粒子到两地，然后一地对自己的粒子和目标粒子做一次测量，术语称为贝尔测量（Bell measurement）。测量结果只可能是4种结果中的一种，把测量结果通过传统信道发送到另一地。另一地收到结果后，根据结果对自己的粒子进行一次变换，术语称为“幺正变换”，此时这个粒子就复制了被远地粒子的那个属性。
+
+<hr>
+
+![enter image description here](https://pic1.zhimg.com/80/v2-1c6b6d9236b1f75ae35df6d044154854_720w.jpg)
+
+上图：Nature杂志上有关前两字隐形传态的说明。这项技术使用了一对性质强相关的纠缠的光子，其中一个纠缠光子(蓝色)是在量子隐形传态过程之前分发给接收者的。然后，发送者准备一个未知量子态的光子(粉红色)，并将该光子与第二个纠缠光子(灰色)组合在一个称为贝尔态分析器的设备中。该装置对两个光子的量子态进行联合测量，并将结果作为经典(非量子)信号发送给接收者。最后，接收者使用这些信息来转换他们的光子，重建发送者光子的量子态。
+
+<hr>
+
+其本质是复制一个量子比特，而不是传送真实的粒子，并且过程中需要传统信道辅助传送信息，所以不存在超光速运动或者超光速的信息传递。那既然隐形传态还是要依赖传统通信网络，那它有什么用呢？
+
+这是一个好问题？很多科学技术目前没有明确的应用，但不代表将来也没有。目前来说，量子隐形传态是想中的量子互联网的一项基础技术。我们知道互联网的一项基本要求是能把比特位传输到各地，那么如果要构建量子互联网，那就需要一种能将量子位传送到各地的技术。虽然隐形传态需要依赖传统网络，但是量子互联网的安全性是无与伦比的，所以它还是有其价值。
+
+再比如，如果量子计算机普及了，也许需要云端量子计算机或者分布式量子计算，那么传送量子比特也是一项必要的技术。
+
+墨子号卫星一个实验就是地面与卫星间的量子隐形传态，我这里引用潘建伟院士的话：
+
+“墨子号”量子隐形传态实验采用地面发射纠缠光子、天上接收的方式。卫星过境时与海拔5100米的西藏阿里地面站建立光链路，地面光源每秒产生8000个量子隐形传态事例，实验通信距离从500公里到1400公里，实验传送了6个量子态，置信度均大于99.7%。”
+
+这里6个量子态意思就是一个光子可以复制6个属性，也就是6个量子比特。好比之前的桌球，我不光复制了动量，也复制了颜色，旋转，材质等6个属性，一个光子复制6个量子比特，显然传送效率大大提高。
+
+好了，以上就是我对墨子号卫星的两大基础实验的介绍，可以说，在量子通信领域，中国是走在世界前列的，也是中国为数不多的几个处于世界领先的科技领域，我是很希望看到中国人能在这个领域继续发扬光大，传来更多好消息。墨子号卫星其实还做了其他一些实验，将来有机会再给大家介绍。
+
+做个广告，北京时间7月11日周六晚上9点，我会在知乎上开一次直播语音讲座，讲座话题是有关图灵机的。因为我之前在准备图灵机的节目时，发现图灵机相关话题十分有意思，关联的数学知识很多，意犹未尽，所以想用知乎live的形式跟各位聊聊。
+
+<a href="http://tinyurl.com/y9xdlsxp">http://tinyurl.com/y9xdlsxp</a>
+
+这次直播的预约链接我会放在节目介绍里，另外当天对参与直播并提出问题的听众，我会抽取三名听众，赠送我的书《老师没教的数学》各一本，欢迎各位捧场。今天节目到这里，下期再见！
+
+参考链接：
+
+<a href="https://zh.wikipedia.org/wiki/%E9%87%8F%E5%AD%90%E5%AF%86%E9%91%B0%E5%88%86%E7%99%BC">量子密钥分发</a>
+
+<a href="https://mp.weixin.qq.com/s?__biz=MjM5NzIyNDI1Mw==&mid=402005145&idx=1&sn=4b063916bab37c11e40ec1c90df08f3e&scene=21#wechat_redirect">https://mp.weixin.qq.com/s?__biz=MjM5NzIyNDI1Mw==&mid=402005145&idx=1&sn=4b063916bab37c11e40ec1c90df08f3e&scene=21#wechat_redirect</a>
+
+<a href="https://www.weibo.com/ttarticle/p/show?id=2309404008924671010604">https://www.weibo.com/ttarticle/p/show?id=2309404008924671010604</a>
+
+<a href="https://quantum.ustc.edu.cn/web/index.php/node/351">https://quantum.ustc.edu.cn/web/index.php/node/351</a>
+
+<a href="http://www.cas.cn/syky/201908/t20190819_4710427.shtml">http://www.cas.cn/syky/201908/t20190819_4710427.shtml</a>
+
+<a href="https://www.zhihu.com/question/20138168">https://www.zhihu.com/question/20138168</a>

@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2020-07-22">
+
+<title>公平的进行异地猜硬币游戏——量子猜硬币协议 – dalaoli_quarto_blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">dalaoli_quarto_blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">公平的进行异地猜硬币游戏——量子猜硬币协议</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">每周一题</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">July 22, 2020</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>大家好，我是大老李。这期节目是上期有关量子密钥分发协议的补充。上期节目中我介绍了使用量子纠缠协议的密钥分发机制，也是墨子号卫星实验中所使用的协议。</p>
+<p>但也有一类量子密钥分发协议不使用量子纠缠机制，被称为“基于制备和测量的”量子密钥分发(Quantum Key Distribution，简称QKD)，比如BB84协议。之前每次聊到量子物理，就必谈量子纠缠，让我们暂时忘掉这一点，其实不用量子纠缠，单个粒子就可以有很好的性质，可被利用作密钥分发。</p>
+<p>还是以自旋方向为例，有一个方法，可以使得对粒子自旋方向的测量结果总是得到我们预期的结果。</p>
+<p>我们可以在测量前，让量子通过一个装置进行某种准备，这个装置的关键参数就是方向属性。这个方向属性与测量时所使用的测量方向本质上是同一个东西，所以都被叫做测量基（measurement basis，也可简称为“基底”）。而对装置来说，另一个输入就是我们所期望的自旋方向测量结果，这个结果只有两种选择，我们就用0和1来表示。而整个准备过程称为对量子的一次“制备”。</p>
+<p>制备的效果就是，如果测量时，选择的测量基方向与制备时一致，则测量结果可以得到你制备时输入的结果。比如我们如果希望测量某个粒子自旋方向是0，那我们我们就把粒子送入制备装置，选择目标结果为0和某个测量基方向，进行制备。</p>
+<p>之后测量时，我们选择同样的测量基方向，则理论上我们可以以100%的概率得到自旋方向为0的结果。</p>
+<p>而如果测量时，我们选择了其他一些测量基方向，那结果就带有随机性了。特别是某些特定的测量基夹角情况下，测量结果是一半对一半的随机结果，也就是制备时量子自旋信息完全丢失了。</p>
+<p>以上这个关于量子自旋的制备和测量性质可以这样来直观的比喻：</p>
+<p>如果把粒子比作硬币，自旋方向表示硬币哪一面向上。那么制备的过程就是制备方把硬币放入一个箱子里，箱子外面有两个小孔，分别表示一个测量基。这两个小孔的形状可以想象成一个是➕，一个是✖️。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-60ec0fc24ea7508d161cd548bd41d4e9_720w.jpg" class="img-fluid" alt="enter image description here">(上图：两组测量基可选的方向，以上两组测量基可以满足BB84协议所需效果。)</p>
+<p>原版BB84论文里两组测量基的符号也是用➕和✖️表示，因为这两个符号的方向确实是两组测量基可以取的方向。另外，我可以控制放入箱子后，硬币是正面还是背面向上。制备过程就是我选择一个硬币方向和小孔，把硬币从那个小孔放入箱子，并且我知道现在硬币是哪一面向上。</p>
+<p>那对观察者来说，这个箱子有个奇妙性质：如果制备方从➕小孔投入硬币，那么只有当从➕孔观察硬币，你才能确切知道制备方把硬币哪一面朝上放置了。如果你从✖️孔观察，那么箱子会自动重新掷一次硬币，这样你观察到的结果就是一个纯50%几率的结果了，反之亦然。这个性质是不是很神奇？</p>
+<p>有这么奇妙宝箱，要进行密钥分发就简单了。一种思路就是制备方先制备一系列粒子，以下简称为“量子位”（虽然此处不是用这些粒子做典型的量子计算，但某种程度上它也具有量子比特性质），对每一个粒子，都随机选择一个测量基，把这些量子位通过这些测量基后，发送给接收方。然后再通过传统信道，把自己选择的测量基顺序发送给接收方。接收方按这些测量基顺序去测量这些量子位，那么双方就能得到相同的一组随机二进位。</p>
+<p>但以上过程中，有个不太理想的步骤，即通过传统信道发送随机测量基方向的过程。如果有人能截取到这个信息，那么他就可以提前测量，然后重新制备一组同样的量子位给接收方测量，那么双方无法察觉，而这个人就同样得到了密钥。</p>
+<p>所以需要改进一下。让发送方仍然发送一些列量子位，但接收方对每个量子位进行测量时，随机从两个测量基中选择一个进行测量。然后双方通过传统信道，交换自己的测量基方向信息。那么如果在某一位上，双方选择了相同的测量基，双方应该测得相同的随机位。理论上，双方就可以选取那些位置的量子位作为密钥开始通信。</p>
+<p>但为了加强安全性，双方再从那些相同的测量基方向中，选取一部分子集作为校验，双方比对这些位置上的测量结果是否一致，如果误差率过大，表示这次通信收到干扰和攻击，结果不可信。如果一致，那么余下的位置就是双方的通信密钥。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-3deeb3f811bef25ab0678bf3edb5434e_720w.jpg" class="img-fluid" alt="enter image description here">（上图，一次BB84协议会话的例子：在接收方收到粒子，且双方选择了相同测量基位置（6个OK的位置），双方选择两位作为校验，余下四位即为分享的密钥。（图片取自BB84原始论文））</p>
+<p>这种方式下，要进行如之前所述的中间人攻击就难了，即使你完全劫持了双方的量子通信和传统通信信道，但因为接收方是随机选取测量基方向，并且双方还要选取随机位置进行校验，那么你作为攻击者，事前就不知道该制备什么样的量子位给接收方才能不被发现。以上就是BB84量子密钥分发协议的大致过程。</p>
+<p>在发表BB84协议的同一篇的论文中，两位作者还提出了一个很有意思的“量子猜硬币协议”（Quantum Coin Tossing）。“量子猜硬币协议”是解决这样一个问题：在不同地点的两个人，如何公平的进行猜硬币游戏？就是一个人丢硬币，另一个人来猜。</p>
+<p>这里，两个人之间是完全没有信任的，哪怕视频连线，猜硬币的一方都怀疑丢硬币的一方是不是准备好了两套视频，以保证自己能赢。所以，我们希望有一套能够确保公平的，双方都能接受的远程猜硬币协议。</p>
+<p>大老李很早有关密码学的节目中介绍过一些解决此类问题的思路，基本方法就是用哈希算法，确保掷硬币一方无法抵赖。但用前面有关量子制备和测量的过程，也能达到这一目的。我们来看看，BB84协议作者是如何设计这个量子掷硬币协议的，我还是用之前的那个箱子打比方，并且甲是掷硬币方，乙是猜硬币方。</p>
+<p>首先，甲准备一系列那个具有神奇性质的箱子和硬币。然后他从两个小孔选择一个小孔，作为对方要猜测的结果。所以这里量子猜硬币协议，实质上是“量子猜测量基协议”。</p>
+<p>甲选定好某个测量基后，比如是“➕”，再随机产生一串二进位，比如1000位的随机二进位。根据这1000位随机二进位，他把1000枚硬币从➕小孔放入1000个箱子，并且使硬币方向与这组二进位匹配。然后把这组箱子给乙。</p>
+<p>乙拿到箱子后，可以从任何一个小孔去观察每一个箱子。这样他也得到1000位二进位，同时记录观察每个箱子时所选择的小孔。</p>
+<p>测量结果得到后，甲就可以对接收方说：好了，现在请你猜我当初是从哪个小孔放入硬币的。</p>
+<p>乙以任何依据给出猜测结果后，甲就可以宣布，猜对了或是猜错了。并且，他要把自己当初的1000位随机二进位序列发给乙验证。</p>
+<p>乙得到那1000位二进位后，可以比对甲所宣布的结果和自己测量的结果是否一致，以确认甲没有说谎。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-bc2aca626c33fb9a23e22225e799d169_720w.jpg" class="img-fluid" alt="enter image description here">(上图，一次量子掷硬币协议会话过程：Alice选择了➕测量基，并产生一组随机二进位。Bob随机选择了测量基后，猜对了➕测量基。并且他可以验证，在每一个他选择"R"测量基的位置，其测得得二进位与Alice给出的相同。)</p>
+<p>以上就是这个猜硬币协议的全过程。当然，你可能有的疑问是，甲方有欺诈会如何？比如明明乙猜对了，硬说对方猜错了，乙能发现吗？</p>
+<p>另一方面，乙有没有办法根据观察到的结果，使得自己能以超过50%的概率猜对硬币吗？这一点还是比较好验证的。稍微分析下，你会发现乙无论如何选择自己观察箱子的小孔，也不能使自己猜硬币的成功率大于50%。</p>
+<p>所以我们重点分析下，甲方欺诈会如何。甲方要欺诈，有两次机会，一次是制备粒子时，一次是在对方给出猜测结果后，发送校验信息的时候。</p>
+<p>我们先看看有没有机会在对方给出猜测结果后欺诈。比如甲方把硬币都从➕孔放入，对方也猜了➕，但甲方硬说放的是✖️孔。</p>
+<p>乙方说：“那请你把你最初准备的1000位二进位发给我”。此时甲方就犯难了，因其不知道乙观察箱子时，对每个箱子所选择的孔。因为甲说是其选择的是✖️孔，乙方就会验证在每个他选择✖️孔的位置，是否观察到与甲同样的二进位。但甲不知道哪些位置，以及那些位置上乙观察的结果，乙一比对就能发现甲欺诈，甲行不通。</p>
+<p>那甲有没有办法在制备阶段就作弊？比如制备粒子时，一半箱子箱子选择➕，一半箱子选择✖️放入硬币？但这样情况会更糟了，无论乙最后猜了➕还是✖️，甲都没法证明他赢了，因此更没法设计最后的校验序列了。</p>
+<p>综上所述，用以上方式，即可完成一次远程的猜硬币过程，而且结果是公平的，不可抵赖的。但是作者同时也指出，理论上利用EPR效应，也就是量子纠缠，以上协议就有漏洞了。</p>
+<p>我们之前说要忘记量子纠缠，现在还是要回到量子纠缠。纠缠粒子的性质大致就是，用同方向测量基测量，测量结果总是相反。那我们看看如何用量子纠缠，实现对猜硬币方的欺骗。</p>
+<p>方法是这样，甲方在制备粒子的同时，保留一个这个粒子的纠缠对象在手上。然后还是如同之前协议进行。如果乙方猜错了，那么甲方就如标准协议进行。如果乙猜对了，那么甲方马上对这些手上留下的纠缠例子在另一个测量基上进行测量。然后宣布对方猜错了，并把测量结果<strong>翻转</strong>后发送给乙方校验。</p>
+<p>比如，如果甲方当初制备时用的是➕测量基，对方也猜了➕，那甲对手里的纠缠粒子在✖️测量基上进行一次测量，并且把这次测量结果翻转后发送给接收方，那么接收方是无法分辨出我是否有欺诈的。</p>
+<p>比如对方在第100号箱子上用✖️测量基观察了硬币是正面向上，那么我对100号粒子的纠缠伴侣用✖️测量基进行一次测量，把翻转后结果告诉对方，那么对方的校验结果也是正常的。所以，对方无法发现我进行了欺诈。</p>
+<p>这种欺诈方式甚至于乙方先猜方向，再观察盒子，都无法识破，请大家自行分析下为什么这样。</p>
+<p>好了，以上就简单介绍了一下如何用基于制备和测量的方式进行量子密钥分发和远程猜硬币。我们可以看到即使不用量子纠缠，量子都有一些很神奇的性质。而量子纠缠则更进一步，使神奇性质越发神秘。</p>
+<p>参考文献：</p>
+<p><a href="https://researcher.watson.ibm.com/researcher/files/us-bennetc/BB84highest.pdf">https://researcher.watson.ibm.com/researcher/files/us-bennetc/BB84highest.pdf</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/29860637">https://zhuanlan.zhihu.com/p/29860637</a></p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/your-website-url\.example\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

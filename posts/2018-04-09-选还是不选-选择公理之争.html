@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2018-04-09">
+
+<title>选还是不选？ – 选择公理之争 – dalaoli_quarto_blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">dalaoli_quarto_blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">选还是不选？ – 选择公理之争</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Uncategorized</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">April 9, 2018</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>大家好，我是大老李，今天是大老李聊数学第二季第一期，不管你有没有听过我的第一季的节目，我希望你能喜欢这第二季的节目。</p>
+<p>第二季中，我预计会继续我的“数学用语系列“，但是我在准备这个系列时，发现有很多术语要讲清楚的话，需要先理解其他一些术语，然后追根溯源，我发现最重要还是回到”集合“，这一数学中最为基础的概念。但我肯定不想在节目里讲一遍集合理论，而且大家知道的可能并不比我少。所以我想讲一下集合论中很有意思的一次争端，也是对数学历史上，人们对构建数学基础的理念上的一次大碰撞的核心，就是“选择公理”之争。</p>
+<p>要讲选择公理，就不得不先讲一下所谓数学的第三次危机，也就是由著名的罗素悖论引发的一场危机。简单回溯一下历史，那是在19世纪后半页，数学家们开始逐渐意识到数学的理论基础是不完善的，需要重新构建数学的基础，就像欧几里得几何一样。欧式几何，通过5条简短的公理就能推导出一整套数量庞大且堪称完美的几何定理和结论。所以数学家希望对代数学也建立这样一套公理系统，更重要的是逻辑推理的规则系统。而恰好康托对无穷集合有了很多研究，数学家发现用集合概念来建立数学基础也许是合适，因为集合的概念确实足够简单和平凡，而且看上去所有数学研究对象都可以用集合来描述出来，所以人们就希望用集合论来建立一套基础。</p>
+<p>一开始，数学家可谓信心满满，所以希尔伯特在1900年著名的一场演讲中，所提出的23个20世纪重大数学问题中，前两个问题就都是关于集合的，第一个就是连续统假设。第二个就是证明算术公理的相容性。可以说，这两个问题都是用来建立数学基础的。希尔伯特认为，第一个问题解决，那集合论就没有啥缺陷了；第二个问题解决，代数的基础也有了，数学的基础也就牢固了。可惜这两个问题后来的发展，都走到了数学家期望的反面。</p>
+<p>其中最重大的危机，就是1903年，罗素提出了著名的罗素悖论，也被称为理发师悖论。这次危机后来被称为第三次数学危机。前两次是有关无理数的概念和微积分的基础。这第三次危机出来后，大家都在从各方面试图挽救这次危机。康托作为集合论奠基人之一，自然不希望放弃这一理论。他生命最后20年几乎都在尝试证明连续统假设，当然根据后来科恩的结论，康托的这种努力注定是很悲剧，完全没有进展。这也是他的集合论和超穷基数理论受到各种质疑的一大原因。在1904年第三次数学家大会时，一位来自布达佩斯的著名数学家科尼希宣读了一篇论文，这篇论文宣称康托尔的连续统的势不是任何阿列夫数，更不用说是阿列夫1。此时，一个叫策梅洛的年轻人挽救了康托尔，他发现了科尼希的论文里用到的一个题设是不成立的。因为策梅洛名字首字母是Z, 后来大家熟知的ZFC集合论系统里，Z这个字母就是代表策梅洛。</p>
+<p>策梅洛生于1871年，出生在柏林，比康托小26岁。他在1894年获得了柏林大学的博士学位，后来哥廷根大学授予了他一个无薪助教的职位。到1900年前后，他开始对集合论感兴趣，并开始讲授集合论。他很喜欢康托的理论，所以他在1904年帮了康托一把，但是他和康托都知道，这并不解决所有问题，他们只是暂时摆脱一次直接的打击。康托的集合论需要更多的改进才能更加完备。</p>
+<p>在研究连续统假设过程中，康托他发现他很需要一个称为“良序原理”的东西。优良的良，秩序的序，意思就是良好的秩序。康托发现，如果一个集合天然有一个“最小”元素，无论以何种方式定义大或小，只要能找到这个最小元素，那这个集合就可以被称为良序的。康托希望所有非空集合都是良序的，但是显然你没法把它作为公理，因为这个命题距离”显而易见”，”不证自明”，是有明显距离的。</p>
+<p>策梅洛就开始设法帮助康托来证明良序原理，而他的方法就是提出了一条新的公理，这条公理可以推出良序原理，它被称为选择公理。选择公理有很多等价的表述形式，其中一种比较简单的表述，大致意思是，对任意数量的非空集合，总能从每个集合中选出一个元素来构新的集合。因为这里面涉及到从一个非空集合里选择一个元素的动作，所以这条公理被称为选择公理。这条公理看上去是不是天经地义的？如果是非空集合，里面至少有一个元素，那我自然可以选择出一个元素出来。而问题在于选择的方法。选择公理里并不要求具体选择的方法，而是默认可以选择，这时，如果涉及到无穷集合就会出现让人起疑的地方了。</p>
+<p>比如说，如果是所有自然数的非空子集，每个子集里挑一个元素，那你可以说我挑最小的那个数，这是没问题的。再比如所有实数的闭区间构成的集合，让你从所有区间里挑一个元素，如何选？稍加思索，你可以说，我可以取每一个区间的中点，也就是如果这个区间是a到b，那我就取(a+b)/2这个元素。但是稍加推广，我让你从所有实数的非空子集里挑一个元素，你怎么挑？你会发现，你没法说出一个确切的方法去挑，尽管你知道那么多非空子集里，每个里面都至少有一个元素，而且很多里面还有无穷多个元素，但你就是无法定义一个确切的方法去挑选。其实这样也可以发现，如果我们讨论一个集合的所有子集构成的集合，其实就用到了选择公理，因为我们默认这种我们能够从一个无穷多元素的集合里把它的子集选出来。如果是有限多的集合进行选择是没问题的，但是从无穷多个集合里进行选择，就值得怀疑了。罗素有过一个形象的比喻来说明选择公理，从无数双鞋子里，挑选一只鞋子是可以做到的，因为我们可以说挑左脚或者右脚那只鞋子。但是从无数双袜子里挑选一只袜子出来是做不到的，因为袜子不分左右。</p>
+<p>选择公理从更准确的角度来讲 ，是对任意的由非空集合构成的集合，默认有一个叫选择函数的东西，这个选择函数可以帮我们从每一个非空集合里挑出特定的元素，而不需要特别说明这个选择函数的内容。前面什么取最小元素或者(a+b)/2之类的都是选择函数的例子。选择公理认为，即使说不出选择函数的定义，选择函数还是存在的。反对选择公理的人认为，如果不能说出具体选择函数的定义，那就不能说存在这样的函数。因为你没有一个确切定义的方法去挑选，那你就连判定一个元素是否被选中都不行，之后有关挑选出这些的元素构成的集合进行的推理就是无意义的。</p>
+<p>你可能会想，这条选择公理似乎跟我没啥关系啊，我没感觉到哪里会用到这条公理。那你就大错特错了，实际上在无数的证明中，你已经不自觉的用到了选择公理。比较讽刺的是，那些反对选择公理的人，实际上也在他们之前许多的研究中用到了这条公理。</p>
+<p>最常见的例子就是如果你在证明中用到了非构造性的证明，那多半就用到了选择公理。有一个非构造性证明的经典例子，就是问有没有一个无理数的无理数次方是有理数？比如<span class="math inline">\(\sqrt{2}^{\sqrt{2}}\)</span>是有理数还是无理数？虽然你感觉它当然是无理数，但是证明它并不容易。那我这样来论证原始命题，如果<span class="math inline">\(\sqrt{2}^{\sqrt{2}}\)</span>是有理数，那我就已经找到了一个无理数的无理数次方是有理数的例子。那如果根号2的根号2次方是无理数，那我就考察这样一个数，底数就取<span class="math inline">\(\sqrt{2}^{\sqrt{2}}\)</span>，指数是根号<span class="math inline">\(\sqrt{2}\)</span>。这样底数和指数都是无理数。然后根据幂指数计算规则，这个数就等于<span class="math inline">\(\sqrt{2}^{2}=2\)</span>，是个有理数。那我还是找到了一个无理数的无理数次方是有理数的例子，这个证明是不是够巧妙？但是这个证明是非构造性的，也就是我们没有最终证明<span class="math inline">\(\sqrt{2}^{\sqrt{2}}\)</span>是无理数还是有理数(虽然已有其他证明<span class="math inline">\(\sqrt{2}^{\sqrt{2}}\)</span>是超越数，但不再本文讨论范围内)，只是认为它不是有理数就是无理数。逻辑上我们称其为“排中律”，也就是我们默认认为一个命题非真即假。而在某些集合论框架下，“排中律”是选择公理的一个推论。所以有些极端反对选择公理的人，连排中律也是反对的，也就是“反证法”对他们来说是不成立的。总之，如果你在一个证明里用了“存在xxx，使得xxx成立”，而你没有说明“存在xxx”具体构造的方法，那你基本就是在用选择公理了。现在你可能又会说，使用选择公理不是挺好的，它有什么副作用吗？</p>
+<p>这里又有一个经典的例子，叫巴拿赫塔斯基悖论。这个悖论是说：如果承认选择公理，就可以把一个球体拆解后重新组合，组装成2个与原来的一模一样的球。听上去很不可思议，但是确确实实这个过程是用严格的逻辑推导出来的。我也许将来会用一期节目来讲讲这个巴拿赫塔斯基悖论，但我今天可以讲一个更为简单易懂的使用选择公理推导出来的悖论。也许不能叫悖论，只是用选择公理可以推导出的一个难以置信的结论。请大家做好脑洞大开的准备，你会遇到许多有关“无穷”的东西，也不奇怪，数学里的多少悖论，是与“无穷”这个概念相关的。另外声明一下这个故事不是我想出来的，我是看到一篇中文博客，链接到一篇英文博客，然后这个博主声明这个例子是他从一个叫Mike O’Connor’的人那里知道的。总之版权不是我，要感谢原作者。</p>
+<p>这个悖论是这样子，首先我们先看一个经典的智力趣题，是有关100个囚犯的。某天监狱长让这100个囚犯排成一排，每个人看着前面的人的后脑勺，脸朝一个方向排成一排。然后监狱长给每个囚犯发一顶黑色的或者白色的帽子。每个人看不到自己的帽子颜色，但是可以看到自己前面其他所有人戴的帽子颜色。这样第一个人可以看到前面99个人的帽子，第二个人可以看到98顶帽子，第100个则一顶帽子都看不到。监狱长会从第一个囚犯开始，依次询问他们，每个人可以回答一次自己所戴帽子的颜色，如果答对就立即释放，答错则执行死刑。监狱长允许所有囚犯在这个游戏开始前商量一个策略。现在的问题是，囚犯们怎样设计一种策略，才能使最多的人活下来？</p>
+<p>这个问题相信很多人看到过，答案就是有一种策略，可以肯定使99个人活下来，而有1个人要碰下运气。这个方法就是用黑白颜色的奇偶性来区分。因为第一个人自己戴的帽子没有其他任何人看的到，所以他没有任何办法确保自己能活下来，但是他能看到所有其他人帽子的情况，所以他可以造福大众，用自己的回答给其他人传递信息。办法就是，第一个囚犯观察自己看到的黑色帽子的数量，如果是奇数就回答黑，如果是偶数就回答白。这样第二个再根据自己看到的黑色帽子的奇偶性，再配合第一个人的回答，就能顺利猜出自己头上帽子的颜色。而之后每个人都可以类似方法推出自己的帽子颜色。这个问题就这样解决了。</p>
+<p>现在我们把这个问题改造下，不是100个囚犯，而是无穷多的囚犯，同样这个测试，什么样的策略最好？你看，无穷来了，烧脑的部分就来了。现在，每个囚犯都能看到无穷的黑帽子和白帽子，无穷多的帽子是无所谓奇偶性的，所以也就不能用前述方法。但现在可以告诉大家的是，如果我们可以使用选择公理，那有一种方法可以确保只有有限多的囚犯会被处决，而有无穷多的囚犯活下来。</p>
+<p>方法是这样的，首先我们用0代表白帽子，1代表黑帽子，无穷多个囚犯戴上一顶帽子后，等于是产生了一个0和1构成的无穷序列。现在，囚犯们在测试开始前，可以做这样一件事情， 把所有0和1构成的无穷多个无穷序列归类。如果两个序列符合如下条件，我们就把它们归为一类：如果两个序列在某一位之后，它们的序列就完全相同，就把它们归为一类。例如如果两个序列从第1百万位之后都相同了，那这两个序列就归为一类。但我们并不要求100万这个具体的数字，只要序列尾端某位之后所有无穷多位相同，就可以归为一类。这样的话，可以把所有0和1的序列分类，而且特定的一个序列，只可能在一类里面，因为如果一个序列在两类里面，那这两类肯定也可以合并，因为它们末尾肯定有无穷长的相同序列。</p>
+<p>这一步你是不是觉得已经有点烧脑了，但是以上操作在数学上是完全合理的，我已经很清楚的定义了分类的原则，你给我两个具体的序列，我能很清楚的告诉你它们是不是同一类。不管怎样，假设囚犯们已经把序列都分类好了，而且你会发现，会有无穷多个类，每一类里也无穷多个序列。但是无穷多个囚犯并不害怕。接下来就该选择公理出场了，选择公理告诉我们，对无穷多个非空集合，我们总能挑选出其中一个元素。你不要问我怎么挑，挑哪一个，因为选择公理不要求这一点。那好，我们现在就有无穷多个无穷序列类别，囚犯们就从每个类别中找出某一个序列，作为这个类别的”代表”数字，然后写在一个“字典“上或者“背下来”。</p>
+<p>然后到开始测试的一天，当囚犯们看到其他人的帽子的颜色时候，见证奇迹的时刻来了。这时，每个囚犯都可以看到无穷多个帽子，当每个囚犯都看向“远方”的时候，他们可以回忆一下，或者查下字典，查一下最远处的无穷序列在他们的字典里是归为哪一类。刚才说了，囚犯把所有0，1序列都归类了，当囚犯看到其他人戴的帽子构成的无穷序列时，他们应该也能知道这个序列归为哪类，这一类他们又挑了哪个序列作为代表序列。这样，每个囚犯都可以依次按照这个代表序列来猜自己帽子的颜色，因为这个代表序列从某一位开始，与囚犯们看到的序列是一样的，当有限多个囚犯被牺牲掉之后，后面有无穷多个囚犯都可以猜对自己的帽子颜色！怎么样，这个方法是不是异想天开，匪夷所思。我知道各位需要点时间来消化这个游戏过程，不过你想通之后就会发现这个推理是流畅的，而且可以用严格的数学语言表述出来。那它的难以置信那只能怪选择公理不靠谱了。</p>
+<p>以上这个例子就是告诉我们，如果承认选择公理，我们有可能会推导出一些违背直觉的结果。那可不可从其他公理来推出选择公理或者否定选择公理呢？结果不出意外，选择公理先是被证明与ZF公理系统是相恰的，后来还被证明是与ZF系统独立的，而且还是哥德尔和科恩这两位证明的。那么现在用不用选择公理就变得与连续统假设一样，像是哲学问题而不是数学问题了。现在主流数学界多数人还是会使用选择公理，因为有很多定理不用选择公理就难以证明，多数人还是希望多一条公理，就多一样武器。事实上现在常用的ZFC公理系统中的C，就代表英文里”选择”一词Choice的首字母。而Z前面说过代表策梅洛，F代表弗兰克尔。所以ZFC就代表由策梅洛和弗兰克尔共同建立的一套公理化集合论，再加上选择公理。不知道你听完今天节目到底是选还是不选“选择公理”呢？我个人还是随大流，就选吧。</p>
+<p>到这里你可能会好奇那第三次数学危机后来到底如何了？简单来说一开始大家是试图建立一种完美的数学基础，但是后来发现集合论无法完美做到这一点后，数学家分化了，数学演变成了三种大的流派和好多种小的流派。将来有机会我也会跟大家来聊聊数学的三大门派，看看你选择那一派。下期再见！</p>
+<hr>
+<p>第二季开播了！</p>
+<p><strong>收听大老李聊数学第二季</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2018/04/screen-shot-2018-04-08-at-4-36-33-pm.png" class="img-fluid figure-img"></p>
+<figcaption>Screen Shot 2018-04-08 at 4.36.33 PM</figcaption>
+</figure>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/your-website-url\.example\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

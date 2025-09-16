@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2020-05-26">
+
+<title>数学家的纸上计算机 – 图灵机简介 – dalaoli_quarto_blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">dalaoli_quarto_blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">数学家的纸上计算机 – 图灵机简介</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">每周一题</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">May 26, 2020</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>数学家的纸上计算机 – 图灵机简介</p>
+<p>大家好，我是大老李。不久前在大老李的微信群中，有一位听众转了我一篇文章，是关于2016年国外研究者发表的一篇<a href="https://www.scottaaronson.com/busybeaver.pdf">论文</a>，这位研究者开发出了一个电脑程序，理论上，可以在有限的时间内，验证包括哥德巴赫猜想和黎曼猜想的正确性。</p>
+<p>这篇论文中的发现非常有意思，我很想介绍给大家。但是看懂这篇论文需要的准备知识比较多，好在多数准备知识在大老李之前的节目中都或多或少提过了，比如哥德尔不完备定理，ZFC公理体系等。但欠缺的有关图灵机（Turing Machine）的介绍，所以今天先给大家介绍下图灵机。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-d9825c99e89b90236dd67c29f0c4e749_720w.jpg" class="img-fluid" alt="enter image description here">（图灵，1912年6月23日—1954年6月7日，英国科学家，数学家，被称为计算机科学之父）</p>
+<p>照例，大老李在介绍一个概念前，要先介绍下为什么要有这个概念。图灵为什么要提出图灵机这个概念呢？目的之一是为了回答希尔伯特和他的学生阿克曼（Wilhelm Ackermann）在1928年提出的一个问题：</p>
+<p>是否存在一个算法，对某种形式化语言（Formal Language）中的逻辑命题，能够判断该命题的真假，并最终输出判断结果。这个问题后来被称为“可判定性问题”（Entscheidungsproblem）。</p>
+<p>我知道你听了这个问题后还是一头雾水，什么叫“形式化语言”，这里的“逻辑命题”和“算法”又是啥？那我继续回溯一点历史。这个问题最早可以追溯到17世纪的莱布尼兹。莱布尼兹在帕斯卡的发明基础上，改进设计并制造了一台用机械装置驱动的计算机械：</p>
+<p><img src="https://pic4.zhimg.com/80/v2-af6f063d332969119732a5df9854b78f_720w.jpg" class="img-fluid">(莱布尼兹设计制造的机械计算装置的复制品)</p>
+<p>莱布尼兹还进一步设想，如果将来有一个机器不但能做数学运算，还能做逻辑推理就太棒了。只要直接“告诉”机器你的数学命题，机器能告诉你这个命题正确与否。而且，莱布尼兹还意识到，要达到这一目标，首要的一步的就是需要有一种机器可以读取的“Formal Language”，现在被翻译成“形式化语言”。</p>
+<p>我想听众中可能也有不少人有过这种设想：数学证明的过程，如果全部用符号表示出来，似乎就是一种符号游戏了，甚至于都不需要理解符号所表示的实际意义。如果能把数学命题的证明，变成一种有规律可循的符号游戏，那可以让计算机去全权处理，数学家也就都下岗了。</p>
+<p>但目前离这一目标还相差很远，现在能做的最好的也就是让机器去检查一个“证明”。我之前介绍“<a href="https://zhuanlan.zhihu.com/p/54211787">开普勒猜想</a>”的文章中提到过，黑尔斯为了证明他的证明完全正确，不惜再用11年时间，用群体协作的方法，把他原来的证明用形式化语言重写了一次，然后交给机器证明检查软件，最终确认了他的证明正确。</p>
+<p><code>let BARV3_SET_OF_LIST4 = prove_by_refinement(</code></p><code>
+<p>`!V ul. packing V /&nbsp;barV V 3 ul ==&gt;</p>
+<p>set_of_list ul = {EL 0 ul,EL 1 ul, EL 2 ul, EL 3 ul}`,</p>
+<p>(* {{{ proof *)</p>
+<p>[</p>
+<p>REPEAT WEAKER_STRIP_TAC;</p>
+<p>INTRO_TAC Bump.set_of_list4 [<code>ul</code>];</p>
+<p>ANTS_TAC;</p>
+<p>REWRITE_TAC[arith <code>4 = 3 + 1</code>] THEN MATCH_MP_TAC Marchal_cells_3.BARV_LENGTH_LEMMA;</p>
+<p>BY(ASM_MESON_TAC[]);</p>
+<p>BY(MESON_TAC[])</p>
+<p>]);;</p>
+(* }}} *) </code>
+
+<p>(形式化证明代码的例子，摘自 <a href="https://github.com/flyspeck/">https://github.com/flyspeck/</a> ，黑尔斯关于开普勒猜想的证明代码库)</p>
+<p>说句题外话，关于现在闹得沸沸扬扬的日本东京大学望月新一教授所发表的，多数人看不懂的“abc猜想”的证明。如果有人能把望月教授的证明改写为形式化证明，交给机器检查，那么所有争议就都解决了。只是这个工作量，大概要以几十年起步，所以不知道有没有人肯这么去做。当然要去做，也只有懂望月那套理论的人去做了。这是题外话。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-7018e2f9c7ad0369d028df8c1cd09043_720w.jpg" class="img-fluid" alt="enter image description here">(京都大学的望月新一教授，2012发布了天书般的有关“abc猜想”的证明。关于他的证明是否成立，目前仍是数学界的一大争议。)</p>
+<p>总之，莱布尼兹提出了有关机器证明的初步设想，并提出需要确立一种形式化语言。到十九世纪末，二十世纪初，数学家在数学公理化的工作方面做了很多工作，主流数学家接受了以策梅洛-弗兰克尔集合论，加选择公理所构成的ZFC公理系统，作为数学的逻辑推理基础。把皮亚诺算术公理作为数学研究对象的定义基础。这两套公理构成了数学大厦的地基。</p>
+<p>1900年，德国数学家希尔伯特发布了他著名的“二十世纪重大的23个数学问题”，从他发布的问题来看，希尔伯特对构建完美的数学基础是充满希望的。其中第10个问题是：</p>
+<p>对于一般的丢番图方程，能否通过某个确定的算法，经过有限的步骤，判定这类方程是否有整数解。</p>
+<p>丢番图方程就是那种未知数比方程个数多的那种方程，一般这种方程都有无穷多个解。但是我们经常会加入只考虑整数解得情况，比如“费马大定理”所考虑的也是一种丢番图方程。看的出，希尔伯特的这个问题就是对机器证明问题的一个特例。</p>
+<hr>
+<p><img src="https://pic1.zhimg.com/80/v2-2e8892a9ca46b7a336bbcca72c40fbcc_720w.jpg" class="img-fluid" alt="插入丢番图方程定义：https://zh.wikipedia.org/zh-cn/%E4%B8%9F%E7%95%AA%E5%9C%96%E6%96%B9%E7%A8%8B">(维基百科上关于丢番图方程的介绍)</p>
+<hr>
+<p>虽然在第二年，罗素悖论被发现，但希尔伯特认为这无伤大雅，毕竟罗素悖论里这种自指向的命题，怎么看都不像数学里正经需要研究的命题。所以，1928年，希尔伯特还把1900年提出的第十个问题一般化了：有没有的算法，可以在有限步骤内，对任意的形式化的数学命题进行真或假的判断？</p>
+<p>这里“形式化”的命题我再稍微举个例子，便于大家理解。各位想必都有体会，数学里的命题都有“题设”和“结论”两部份，因为有了某个题设，所以导致某个结论。而题设和结论部分又往往是由若干“存在”或“对任意”这两个词开始的句子。比如哥德巴赫猜想是说：</p>
+<p>对任意大于2的偶数，存在两个质数，其和等于这个偶数。</p>
+<p>可以发现，只要把“存在”和“对任意”这两个词用符号表示出来，，那么数学命题就很容易全用符号表示出来。而数学家确实发明了两个符号去表示这两个词，谓词逻辑中称为“量化符号”。比如哥德巴赫猜想就变成：</p>
+<p><span class="katex--inline"><span class="katex"><span class="katex-mathml">∀</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.69444em;vertical-align:0;"></span><span class="mord">∀</span></span></span></span></span>偶数a&gt;2 ，<span class="katex--inline"><span class="katex"><span class="katex-mathml">∃</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.69444em;vertical-align:0;"></span><span class="mord">∃</span></span></span></span></span>质数c,d，c+d=a。</p>
+<p>这里我还是用了一些文字，比如“偶数”和“质数”。但是偶数和质数的定义很容易再用其他符号表达出来。你把这些符号全部输电脑，电脑是可以处理的，虽然电脑完全不理解符号后面所表达的真实含义。</p>
+<p>以上这种符号表达出来的命题，就是形式化的一阶逻辑命题。</p>
+<p>再插个题外话，解释下什么是“二阶逻辑”。一阶逻辑中，“存在”和“对任意”这两个量化符号后面，只能跟一个一般的陈述语句，术语称为“断言”。但如果允许“存在”和“对任意”后面跟另外一个一阶逻辑，那么整个命题就是一个二阶逻辑命题。好像是:</p>
+<code>对任意a(对任意b…，使得对任意c，有a、b、c满足…) , 存在d(对任何e,使得a、d、e满足…)，使得 （其他一阶逻辑语句…） </code>
+
+<p>看上去就是一阶逻辑的递归。当然，你大概从没有看到过这种形式的数学命题。确实，数学中的命题大概99.9%以上都可以用一阶逻辑描述出来。倒是有些用一阶逻辑可以描述的命题，必须用二阶逻辑才能证明，就比如我之前节目介绍过的“<a href="https://dalaoliblog.wordpress.com/2018/05/01/%E4%BB%8E%E5%B8%95%E9%87%8C%E6%96%AF-%E5%93%88%E6%9E%97%E9%A1%BF%E5%AE%9A%E7%90%86%E5%88%B0%E4%B8%8D%E5%8F%AF%E8%AF%81%E6%98%8E%E6%80%A7%E7%9A%84%E8%AF%81%E6%98%8E/">加强的有限拉姆齐定理</a>”。</p>
+<p>扯了那么多背景介绍，终于可以介绍什么是图灵机了。图灵机是有这样一种性质的数学概念：所有一阶逻辑命题真伪性的判定问题，都可以转化为判定一个图灵机是否“停机”的问题。进而图灵又证明了不存在一个一般的判定图灵机是否停机的算法，从而否决了希尔伯特寻找一种通用算法进行命题真伪判断的梦想。</p>
+<p>在理解图灵机之前，要先确立一种观念：图灵机不是一种机器，它是完全用合法的数学语言定义出的数学概念。我们说它是一种机器，是方便我们理解，但本质 上，它是数学中的定义。有些媒体把图灵在二战期间发明的破解德军加密装置，英尼格玛机，的机器称为“图灵机”，这就错的太离谱了。事实上，图灵发表有关图灵机的论文是在1936年，二战还要3年后再发生。</p>
+<hr>
+<p><img src="https://pic3.zhimg.com/80/v2-23e8df5907fdb3c655205b390966d3ba_720w.jpg" class="img-fluid" alt="（插入模仿游戏电影）">(电影《模仿游戏》剧照，图灵发明的这个机器破解了德军的密码，但这不是图灵机。)</p>
+<hr>
+<p>我这次介绍图灵机，还是先从臆想中图灵机外观开始说起，便于各位理解。根据多数科普书中的介绍，图灵机是这种样子：</p>
+<p><img src="https://pic1.zhimg.com/80/v2-1729fb26a2a41ca4c02395549eebfc58_720w.jpg" class="img-fluid"></p>
+<p>它有一条长长的纸带，理论上是无限长的，纸带上划分了很多小方格子。你可以把这条纸带想象成电脑硬盘存储，每个格子就是图灵机每次操作可以存取的单元大小。</p>
+<p>某个格子上方有一个可以读取格子内信息或写入信息的装置，称为“读写头“。读写头可以在纸上移动，但是只能一格格移动。如果纸带是硬盘的话，那这种硬盘效率是极低的，但没关系，图灵机的设计目标并不是计算效率，而是对计算过程的抽象和简化。</p>
+<p>读写头内部本身能保存一个称为“状态”信息，而图灵机就是能根据当前纸带位置上的信息以及内部状态，来决定读写头在当前纸带的格子上做怎样的输出，然后让读写头向哪个方向移动，以及内部状态如何变化的一个装置。</p>
+<p>下面说说图灵机在数学中的定义。</p>
+<p>数学里，用了七个属性描述图灵机，就是这七个属性，唯一决定了一台图灵机。七个属性看上去有点多，但最主要其实是两个属性：</p>
+<p>第一个属性叫：符号（Symbol）集合，即这台图灵机可以在纸带上读取和写入的符号种类，必须是有限的。所有的符号种类数量称为这台图灵机的“符号数”，或者“颜色数”，简称“色数”。这里，符号具体的样子是无所谓的，我们只关心有多少种符号。其中我们还默认有一种称为“空白”的符号，就是纸带上是空的，这种“空白”也算一种符号，也计算在符号集合里。所以，一般符号集合至少有2个元素，其中一个是空白符。</p>
+<p>第二个属性叫：状态（State）集合，即这台图灵机内部可以处于哪种状态，也必须是有限的。所有的状态种类数量称为这台图灵机的“状态数”。同样，这里，具体状态表示什么含义是无所谓的，我们只关心有多少种状态，最少是1种状态都行。同样，我们还默认有一种称为“停机”的状态，就是图灵机运算结束，机器停下来的状态。但这种状态一般不计算在状态集合里。</p>
+<p>以上就是图灵机最主要的两种属性，其他五种属性是这样的：</p>
+<p>第一个就是前面提到的空白符。这个空白符存在是有必要性的，它其实是可以帮我们区分纸带上每一部分信息的边界在哪里。记得之前我在讲<a href="https://zhuanlan.zhihu.com/p/89958871">信息熵</a>的时候提到，如果只有一个符号是传递不了信息的。就有人说一个符号也可以传递信息，可以用这个符号的数量来表示不同信息。但此时你会发现，必须用空白符。否则你给我发了100个“A”，我怎么知道这些“A”该怎么断开？所以空白符是一个必要符号。</p>
+<p>第二个属性是初始输入，即图灵机运行前，纸带上的符号状态。</p>
+<p>第三个属性是初始状态，即图灵机运行前，内部所处于的某个状态。任何时刻，图灵机只能处于一个状态。</p>
+<p>第四个属性是：“接受状态”，或者叫“终止状态”。也即是图灵机进入这种状态后停机。很多情况下，这个接受状态只有一种，就是之前提到过的停机状态。</p>
+<p>第五个属性是：转移函数集合。转移函数很像是计算机的程序，它决定了图灵机的变化过程。图灵机在任何时刻，它所处于的情形是由两个属性确定的：当前读取头下小方格内的符号和内部状态。转移函数因为是函数，它有输入参数和输出参数。它的输入参数就取这两个属性的值，它的输出参数有三个：</p>
+<ul>
+<li>
+对当前格子输出什么符号；
+</li>
+<li>
+内部状态变为什么；
+</li>
+<li>
+以及读取头向左还是向右移动，或者不动。
+</li>
+</ul>
+<p>所有转移函数的集合就决定了一个图灵机从启动到停机的过程，如果它会停机的话。当然，有些图灵机是不会停机的，比如它进入某几个状态的循环或者读取头永远向右移动等等。</p>
+<p>以上就是图灵机全部7个属性，我知道你听的有点晕，但我发现算盘其实是可以模拟成一个图灵机的。算盘的每一档可以看做图灵机的纸带上的一个格子。横档上的两个算珠可以表示0-3三种符号，可以认为0表示空白符。而横档下的5个算珠可以表示0-5，6种状态。所以算盘可以看做一个3符号，6状态的图灵机。</p>
+<p>如果你在纸上写好所有符号和状态组合下，也就是3*6=18条转移函数，那么你就完成了一台图灵机的定义，可以在算盘上模拟图灵机的运算。</p>
+<hr>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pic2.zhimg.com/v2-da39c94aea2bf60f638d0d82c8baa0f5_b.jpg" class="img-fluid figure-img"></p>
+<figcaption>插入算盘模拟</figcaption>
+</figure>
+</div>
+<p>一个2色-4状态图灵机的状态，颜色，和读写头移动方向的图标表示，其中状态0表示停机状态。（转自mathworld）</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pic4.zhimg.com/v2-e7a3d707654f821c5bb7d6654696e603_b.jpg" class="img-fluid figure-img"></p>
+<figcaption>enter image description here</figcaption>
+</figure>
+</div>
+<p>使用上述图标表示的，一个2色-4状态图灵机的完整运算过程。上面6个方格内是运算规则（转自mathworld）。因为图中没有哪条规则将机器转为0号状态，所以这台图灵机永不停机。</p>
+<p>现在用算盘演示上述图灵机的运算过程。用算盘横档上方的算珠表示颜色，下方算珠表示状态。算盘横档上方一共有2颗算珠，最多可以表示3种颜色；下方算珠有5颗算珠，最多可以表示6中状态。</p>
+<p>本例中，因为只要演示2色-4状态的图灵机，因此只需要使用上方的1颗算珠。算珠在上表示色号0，在下表示色号1。同理，使用下方3颗算珠表示0-4号状态。</p>
+<p>开始时：</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pic4.zhimg.com/80/v2-b1fe571d8833acf3b4036788ea334de7_720w.jpg" class="img-fluid figure-img"></p>
+<figcaption>enter image description here</figcaption>
+</figure>
+</div>
+<p>起始状态：读写头位于左数第5挡（用黄点表示），当前纸带上是0号色，机器处于1状态。根据前图规则（上方6小格中的第2格），图灵机应在当前位置输出1号色，变为3号状态，向左移动一格。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-935513669a82003ab87c3a47c97b5f4e_720w.jpg" class="img-fluid" alt="enter image description here">第二步：读写头位于左数第4挡，当前纸带上是0号色，机器处于3号状态（任何时刻，只有当前读写头位置的状态值有效）。根据前图规则（上方6小格中的第6格），图灵机应在当前位置输出1号色，变为2号状态，向右移动一格。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-fb1006e8292e6720f221d05d5df6dae6_720w.jpg" class="img-fluid" alt="enter image description here">（第三步：读写头位于左数第5挡，当前纸带上是1号色，机器处于2号状态。根据前图规则（上方6小格中的第3格），图灵机应在当前位置输出1号色，变为3号状态，向右移动一格。）</p>
+<p><img src="https://pic1.zhimg.com/80/v2-d09bdd8b3128f2c24d6351a6b9ba9780_720w.jpg" class="img-fluid" alt="enter image description here">（第四步：读写头位于左数第6挡，当前纸带上是0号色，机器处于3号状态。根据前图规则（上方6小格中的第6格），图灵机应在当前位置输出1号色，变为2号状态，向右移动一格。）</p>
+<p>之后的推演留个读者，这台图灵机永不停机…</p>
+<hr>
+<p>你能看的出来，图灵机的计算能力是非常简陋的，但妙就妙在图灵证明了，所有一阶逻辑下的数学命题，都可以转化为一个图灵机，而这个命题的真与假，取决于这个图灵机能否进入停机状态。如果停机了，我们就能从这个图灵机的输出中得知这个命题是真还是假。</p>
+<p>其实之前在<a href="https://zh.wikipedia.org/zh-hans/%E5%93%A5%E5%BE%B7%E5%B0%94%E4%B8%8D%E5%AE%8C%E5%A4%87%E5%AE%9A%E7%90%86">哥德尔不完备定理</a>的节目中提到过，哥德尔其实是证明了“万物皆数字”，所有数学命题都对应一个数字，而图灵有点像证明了“万物皆图灵机”。</p>
+<p>证明了“万物皆图灵机”之后就好办了，希尔伯特的“可判定性问题”就变为， 是否存在一个算法，在有限步骤内，去判断任何一个图灵机在给定输入的情况下，运行后是否能停机。图灵证明了，这样的算法是不存在的。证明方法是大家熟悉的罗素悖论模式：</p>
+<p>假设有这种通用判别算法，叫它算法P。那么定义一种这样的图灵机，称为U，这个图灵机接受另一个图灵机T和某个输入作为它自身的输入。U的运行模式是：</p>
+<p>调用P，把U接收到的图灵机T和输入传递给P。如果P判断T不会停机，则U停机。如果P判断T能停机，则U进入死循环。</p>
+<p>现在问题来了， 既然U也是一台图灵机，则把U本身传递给U作为参数会如何？你自己稍微推想下，就会发现这里面的矛盾，U停与不停都不行，所以就不能有这样的算法P。以上这个问题就被称为“图灵机停机问题”。</p>
+<p>总之，图灵用图灵机作为工具，证明了希尔伯特所希望的通用命题真伪判断算法是不存在的。但要注意一点的是，虽然一般的图灵机的停机问题是不可判定的，但不表示所有的图灵机的停机是不可判定。</p>
+<p>现在已经证明，对四个状态以内的图灵机，都是可判定的。四个状态时的情况还不知道。从5状态开始，猜想都是不可判定的了。再比如，如果你将一个已经证明的数学命题正确编码成图灵机，则不管这个图灵机有多少状态，那么它必然可以停机。</p>
+<p>总结一下要点：</p>
+<p>图灵机有两个主要参数，符号和状态。</p>
+<p>判断数学命题的真伪问题可以转化成判断图灵机是否停机问题，但是不存在一个通用算法去判断图灵机是否会停机。</p>
+<p>图灵也用图灵机证明了希尔伯特的“可判定问题中”提出那种算法是不存在的。</p>
+<p>今天内容那么多，其实都是为了下一期节目的准备知识，下一期才是重头戏，敬请期待。</p>
+<p><a href="https://mathworld.wolfram.com/HaltingProblem.html">https://mathworld.wolfram.com/HaltingProblem.html</a></p>
+<p><a href="https://mathworld.wolfram.com/HaltingProblem.html">https://mathworld.wolfram.com/HaltingProblem.html</a></p>
+<p><a href="https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf">https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Turing_machine">https://en.wikipedia.org/wiki/Turing_machine</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Entscheidungsproblem">https://en.wikipedia.org/wiki/Entscheidungsproblem</a></p>
+<p><a href="http://www.alcula.com/suanpan.php">http://www.alcula.com/suanpan.php</a></p>
+<p><a href="https://mathworld.wolfram.com/TuringMachine.html">https://mathworld.wolfram.com/TuringMachine.html</a></p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/your-website-url\.example\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

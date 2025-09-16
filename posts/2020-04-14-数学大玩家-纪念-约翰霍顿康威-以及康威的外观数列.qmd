@@ -1,0 +1,105 @@
+---
+title: '数学大“玩”家—— 纪念 约翰·霍顿·康威 以及康威的“外观数列”'
+date: "2020-04-14"
+categories:
+  - "每周一题"
+---
+
+数学大“玩”家—— 纪念 约翰·霍顿·康威 以及康威的“外观数列” (音频讲稿)
+
+大家好，我是大老李。今天这期节目是一期特别节目，因为前几天我听到了一个不幸的消息：英国数学家，约翰·霍顿·康威 （John Horton Conway,  1937.12.26 ——2020.4.11）因新冠肺炎于2020年4月11日，<a href="https://www.princeton.edu/news/2020/04/14/mathematician-john-horton-conway-magical-genius-known-inventing-game-life-dies-age">在位于美国新泽西州普林斯顿大学附近的家中去世</a>，享年82岁。
+
+常听我<a href="//m.ximalaya.com/undefined/album/6310606">节目</a>的听众肯定已经无初次听到我提到过康威的名字。我从做节目以来阅读了很多数学文章。如果你问我，在我阅读的文章中，出现最多的，20世纪之后的数学家，那么第一名是埃尔德什（Paul Erdos，匈牙利裔数学家，1913年3月26日－1996年9月20日），第二名就是康威。而且这两位是远远领先于第三名，第三名具体是谁不太明显了。
+
+再比如我去年拍摄了8段数学科普视频短片（可在哔哩哔哩，西瓜视频，网易新闻等搜索“看大老李聊数学“），其中有4篇的内容来源都是康威提出的问题或发明的游戏，可见康威对我的影响力之大。
+
+我在写这篇文章，思考怎么起什么样的标题的时候，最后我觉得用数学大“玩”家来形容康威很合适。
+
+首先说康威是大数学家一定没错。之前我在节目中聊<a href="https://www.ximalaya.com/keji/14777844/121888809">有限单群分类定理</a>时，提到过有几个散在单群就是以<a href="https://zh.wikipedia.org/wiki/%E5%BA%B7%E5%A8%81%E7%BE%A4">康威</a>的名字命名的 ，仅凭此一项成就，足以证明其为成为世界一流数学家。 在有限单群领域，他还命名了最大的散在单群叫“大魔群” （<a href="https://en.wikipedia.org/wiki/Monster_group">Monster group</a>），参与贡献并命名了联系群论与模型式领域的“魔性月光”（<a href="https://en.wikipedia.org/wiki/Monstrous_moonshine">Monstrous Moonshine</a>）理论。
+
+数论领域里，康威证明了“15-定理”。15-定理是“四平方和定理”的扩展：
+
+<hr>
+
+转自维基百科：
+
+**四平方和定理** （英语：Lagrange’s four-square theorem） 说明每个正整数均可表示为4个整数的平方和。它是<a href="https://zh.wikipedia.org/wiki/%E8%B2%BB%E9%A6%AC%E5%A4%9A%E9%82%8A%E5%BD%A2%E6%95%B8%E5%AE%9A%E7%90%86" title="费马多边形数定理">费马多边形数定理</a>和<a href="https://zh.wikipedia.org/wiki/%E8%8F%AF%E6%9E%97%E5%95%8F%E9%A1%8C" title="华林问题">华林问题</a>的特例。
+
+15-定理是由约翰·何顿·康威（John Horton Conway，1937-）和W.A.Schneeberger于1993年证明的定理，内容为如果一个二次多项式可以通过变量取整数值而表示出1~15的值（更严格的结论是只要表示出1,2,3,5,6,7,10,14,15）的话，比如：<span class="katex--inline"><span class="katex"><span class="katex-mathml">w2+2x2+2y2+5z2w^{2}+2x^{2}+2y^{2}+5z^{2}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.897438em;vertical-align:-.08333em;"></span><span class="mord"><span style="margin-right:.02691em;" class="mord mathdefault">w</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.897438em;vertical-align:-.08333em;"></span><span class="mord">2</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1.00855em;vertical-align:-.19444em;"></span><span class="mord">2</span><span class="mord"><span style="margin-right:.03588em;" class="mord mathdefault">y</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.814108em;vertical-align:0;"></span><span class="mord">5</span><span class="mord"><span style="margin-right:.04398em;" class="mord mathdefault">z</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></span>，该二次多项式可以通过变量取整数值而表示出所有正整数。
+
+<hr>
+
+康威还证明了一般化的考拉兹问题是不可决定（<a href="https://en.wikipedia.org/wiki/Undecidable_problem">undecideable problem</a>）的问题。
+
+康威是英国皇家学会（Royal Sociaty）和美国人文与科学会院士（American Academy of Arts and Sciences）。以上这些都足以证明康威是一位大数学家。
+
+但对我来说，更值得称道的是，康威还是一位从风格上来讲，空前绝后的数学科普达人。他极其善于把各种高深的数学理论包装成为好玩的数学游戏或小品，使得普通数学爱好者也能从中略知一二。他命名的数学名词也极具幽默感，从前面提到的“大魔群”，“15-定理”这些名称上，你能看出一些这种风格。
+
+而这里必须要介绍一位康威的黄金搭档：马丁·加德纳（1914-2010）。马丁·加德纳是美国的科普作家，从1957年开始，马丁·加德纳在“科学美国人”杂志上开始了一个名为一个“数学游戏”专栏。从1957年开始，到1980年马丁退休时结束，整整23年间，加德纳写了近300篇的数学专栏文章。他的专栏是如此受欢迎，不光是阅读量以百万计，更重要的是他的数学文章使众多数学爱好者读者有了参与感，使得普罗大众可以正确的研究数学。
+
+而其中，加德纳在1970年的一篇专栏中，介绍了康威最为著名的“<a href="https://www.bilibili.com/video/BV1xJ411Q7do?from=search&seid=10500154958393913043">生命游戏</a>”，使康威几乎一夜之间成为“网红”。有人戏称，整个1970-80年代的计算机中，有1/4都在运行生命游戏。
+
+康威的许多数学小游戏，比如“豆芽游戏”(<a href="https://en.wikipedia.org/wiki/Sprouts_%28game%29">Sprouts</a>)，“清除树枝游戏”（<a href="https://en.wikipedia.org/wiki/Hackenbush">Hackenbush</a>），“<a href="https://www.bilibili.com/video/BV1KJ41197VN?from=search&seid=5078109034900966675">天使与魔鬼游戏</a>”（<a href="https://en.wikipedia.org/wiki/Angel_problem">Angel Problem</a> ），等等，都通过加德纳的专栏变得家喻户晓，许多人也投入其中乐此不疲。可以说，加德纳的专栏是西方上世纪影响力最大的数学科普媒体，而康威则是数学家中的网红明星。
+
+康威本人写作过许多本数学科普书籍，他的科普书最大的特点是，他不讲某个数学问题或数学家的历史，也不会着重讲某个数学领域里的具体问题，而是通过一个个小游戏和趣味题的形式，引起你的兴趣，使你能深入思考，而且回味无穷。总重要的是，如果你有心，你可以沿着他的思路继续研究，参与感极强。这是我在其他数学科普书中看不到的。
+
+![(插入看为著作图片)](https://pic4.zhimg.com/80/v2-5395178a7cde539d62f36f233ad7256b_720w.jpg)(康威的一些数学著作)
+
+很遗憾的是，至今还没有任何一部康威的书被译成中文。所以，我也很希望国内出版社能引进翻译一些康威的书，我相信这些书可以使国内的数学科普跃进至少30年时间。
+
+做节目以来，我一直有感于中外数学爱好者的数学基础素养的差距。如果上网用中文搜索，你会发现有一大堆人声称证明了考拉兹猜想、哥德巴赫猜想、孪生素数猜想、四色定理等等。但是用英语搜，就很少有这种内容。我想这其中与康威和加德纳所起的作用有很大关联。你如果看过康威的那些游戏，你根本就不会去考虑考拉兹猜想这些问题。康威和加德纳等于是为爱好者指明了一条可以探索的道路，避免了无谓的时间浪费。
+
+接下来的半段节目，我想通过介绍一个康威的数学小发明，“外观数列” （Look-and-Say Sequence），让大家感受下康威天才的思路和极具幽默感的呈现数学的方式。
+
+“外观数列”，顾名思义，是一个数列，它的后一项都可以通过对前一项的“外观描述”而决定下来。一下是外观数列在维基百科上的介绍：
+
+<hr>
+
+外观数列（Look-and-say sequence）第n项描述了第n-1项的数字分布。它以1开始：
+
+<code>1：读作1个“1”，即11
+11：读作2个“1”，即21
+21：读作1个“2”，1个“1”，即1211
+1211：读作1个“1”，1个“2”，2个“1”，即111221
+111221：读作3个“1”，2个“2”，1个“1”，即312211
+
+1, 11, 21, 1211, 111221, 312211, 13112221, 1113213211, ... （OEIS中的数列A005150）
+</code></pre>
+
+–
+
+但这个数列除了搞笑外，有什么用处吗？还真有，他有一下一些性质：
+
+如果起始数字只有1，2，3，且没有四个及以上数字连续，则整个数列中只会含有1、2、3三个数字。
+
+如果起始数字是22，那么整个数列都是22。其他情况下，整个数列中的每一项会递增，每一项增加的长度约为30%，确切数字约为1.3035779，它是一个一元71次方程的唯一正实数解。
+
+![enter image description here](https://pic3.zhimg.com/80/v2-62c02848b385ec4ca3e1da78299eb63e_720w.jpg)(图片来自维基百科)
+
+更有意思和让人吃惊的是，康威还从外观数列中，导出另一个名为“宇宙论定理”的定理（<a href="https://mathworld.wolfram.com/CosmologicalTheorem.html">Cosmological Theorem</a>）。这个定理名称很有民科风格（难道是早点占据这个名字，免得被民科占用？"），明显是康威在搞笑了。
+
+这个定理是说，如果一个外观数列，其中只含有1，2，3三个数字，那么整个数列从第8项还是，数列中的数字就可以分为若干个不同长度的基本单元，不同的单元开始自己演化循环，互不干扰。而这种基本单元多达92种，康威全部给找出来了。康威把这92种基本单元比拟成了化学中的发射性元素，而单元之间互相转化的过程就变成元素衰变转化的过程。
+
+![enter image description here](https://pic2.zhimg.com/80/v2-2a74cdad3fde9246ef46867acb428b29_720w.jpg)
+
+(mathworld上关于“宇宙论定理”的页面局部)
+
+上图中，所有元素按序号倒序排列，演化顺序是从大的序号“衰变”为较小的序号。比如：
+
+3-13-1113-3113-…
+
+abundance是“丰度”的意思，意思是这个“元素”在一百万长度中的数列中出现的平均次数。
+
+我看到这里，我真的为康威的巧思拍案叫绝。而且之后，我马上有一些联想到的未解决的问题：
+
+数列第一项如果有4-9这些数字会如何？
+
+数列第一项有4个以上的1，2，3会如何？
+
+有没有其他数字进制下的外观数列？
+
+二进制下的外观数列有没有什么好玩的性质等等？
+
+这些问题是马上浮现在我脑中的，我也希望听众中的有心人能自己研究一下。
+
+康威之后，目前还没有哪个数学家能把数学玩的这么好玩的，所以康威去世是全世界数学爱好者的一大损失。作为康威的粉丝，我自己在未来节目中，肯定还会时不时的介绍康威的一些数学游戏。让我们一起缅怀约翰·康威，这位具有极其幽默感的伟大的数学大玩家，下期节目再见。

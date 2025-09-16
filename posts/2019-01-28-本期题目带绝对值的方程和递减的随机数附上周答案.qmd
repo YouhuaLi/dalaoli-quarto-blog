@@ -1,0 +1,148 @@
+---
+title: '本期题目：带绝对值的方程和递减的随机数（附上周答案）'
+date: "2019-01-28"
+categories:
+  - "每周一题"
+---
+
+<h3>本期题目：带绝对值的方程</h3>
+
+题目来源：brilliant.org
+
+已知带绝对值方程组如下：
+
+$|x|+x+y=8$
+
+$x+|y|-y=14$
+
+问
+
+$x+y=?$
+
+请直接留言解答。
+
+<hr class="wp-block-separator" />
+
+<h3>本期加餐题：递减的随机数</h3>
+
+来源：www.physics.harvard.edu
+
+从0到1之间任意取一个随机数（均匀分布）。不断重复此步骤，直到新取的某个随机数大于上一个随机数。
+
+问，你可以取得的随机数数量的期望值是多少？（提示：显然至少是2）
+
+附加题：你可以获得的最小的那个随机数的平均值是多少？
+
+请直接留言或发邮件至liyouhua @ gmail.com 解答。
+
+<hr class="wp-block-separator" />
+
+<h3>上周题目：正三角形的面积</h3>
+
+<figure class="wp-block-image">![enter image description here](https://ds055uzetaobb.cloudfront.net/image_optimizer/402243dfcb8eb266fc2931703892cb61ba1e4a1f.png)</figure>
+
+<blockquote class="wp-block-quote">
+如图有正三角形ABC。三角形内有一点p，p到正三角形三个顶点的距离分别是5, 12, 13。求三角形ABC的面积。
+</blockquote>
+
+答案是：$45+\frac{169\sqrt{3}}{4}\approx118.179$。
+
+<figure class="wp-block-image">![enter image description here](https://ds055uzetaobb.cloudfront.net/image_optimizer/64fbc1c9c491fa3ba675020da31d547a452939b8.png)</figure>
+
+此题有很多种解法，一种大老李能想到的，但比较“笨”的办法是“坐标系大法”：
+
+可以假设三角形的边长是s，p点坐标是(x,y)，根据p点到三个顶点的距离公式，可以列出三个方程。从三个方程中，尝试解出$s^2$的值即可求得三角形面积。当然这是很“笨”的方法。
+
+<figure class="wp-block-image">![enter image description here](https://ds055uzetaobb.cloudfront.net/image_optimizer/5134a7990b4f1fd5f4fcfc4155301ec64fb78537.gif)</figure>
+
+有一种作辅助线的方法如图：
+
+将$\Delta APC$复制到$\Delta AP^{'}B$的位置，可知$\angle APB=150\degree$。在$\Delta APB$中应用余弦定理，可求的$AB^2=5^2+12^2-2\times 5 \times 12 \times \cos 150\degree=169+60\sqrt{3}$。
+
+<figure class="wp-block-image">![enter image description here](https://pic4.zhimg.com/80/v2-a5d3ba164c60f8f9653e5643929be1cb_hd.jpg)</figure>
+
+但这种方法不是最优美的，最优美的，有一位署名“初二学生张子墨”的读者发来了这张图片：
+
+读者“总统”也给出了同样的解答：
+
+<figure class="wp-block-image">![enter image description here](https://pic4.zhimg.com/80/v2-f18286d7c48be307df997c57356cfb1b_hd.jpg)</figure>
+
+据说这是道初中奥数题？！公众号上所有正确解答已置为精华。
+
+<hr class="wp-block-separator" />
+
+<h3>上期加餐题：传递的比萨</h3>
+
+n个人围着一张圆桌吃饭。他们点了一个（巨大的）披萨，并约定如下方案：第一个拿到披萨的人，取一小块后，将剩下的披萨，以相同概率随机递给自己左边或者右边的人。这个人拿到披萨后，取一小块后，也以相同概率随机递给自己左边或右边的人。
+
+  此后每个人都如此操作（拿过披萨的人可以不取一小块，直接传递出去），直到所有人都拿到过披萨，就不再传递。最后一个拿到披萨的人就是可以独享剩下的披萨的“幸运儿”。
+
+  问题有两个：
+
+<ol><li>在n个人的情况下，对某个不是第一个拿到披萨的人，他成为最后一个拿到披萨“幸运儿”的概率是多少？（可以把结果写成相对于第一个人座位距离的函数。）</li><li>如果多次进行此种“游戏”，平均在每一次的游戏中，披萨被传递多少次？</li></ol>
+
+第一问答案：1/(n-1)，与相对第一个人的座位距离无关，意不意外？
+
+先考虑几个简单的情况。比如n=3时，那两个不是第一个拿到披萨的人，最后拿到披萨的概率（之后称为BTLS, be the last served）显然是1/2。
+
+n=4的情况下，记这个四个人的座位顺序是A,B,C,D，且A第一个拿到披萨。考虑D成为BTLS的概率，披萨可能的传递顺序有：
+
+ABC, …, ABABC, …, ABABABC, … 等等
+
+这些情形的概率和是：
+
+$\frac{1}{2^2}+\frac{1}{2^4}+\frac{1}{2^6}+...=\frac{\frac{1}{4}}{1-\frac{1}{4}}=1/3$
+
+由于对称性，可知B也有1/3的概率成为BTLS，所以C的概率也是1/3。之后继续计算n=5的情形就太繁琐了。我们考虑一个人成为BTLS的充分且必要情形：
+
+<ol><li>披萨必须从左边或右边靠近这个人，并且到达这个人的**邻座者**。</li><li>披萨之后必须**倒转**回去，以任何方式，从**另一个方向**最终到达这个人。</li></ol>
+
+对任何一个人（除第一个人），传递完成时，情形1必然发生，则其发生概率是1，与座位位置无关。
+
+在情形1已经发生的情况下，情形2发生的概率对每一个人是**相等**的。原因是披萨完成绕转桌子一周的概率与披萨的起始位置无关。因此每个人成为BTLS的概率是相等，所以这个概率是：
+
+$\frac{1}{n-1}$
+
+简不简单？
+
+第二问答案:  披萨平均被传递次数是: 
+
+$\frac{n(n-1)}{2}$
+
+本问题等价于问：在一维随机游走中，平均要走多少步，可以覆盖n个位置？
+
+假设问题答案是$f_n$，定义$g_n$如下：
+
+假设已有n个人拿到了披萨，并停留在随机序列的某个位置。$g_n$是披萨的平均传递次数，使得新的某人可以得到披萨。则有：
+
+$f_n=f_{n-1}+g_{n-1}$
+
+这是因为当披萨到达n个人时，披萨必须先到达n-1个人，平均传递$f_{n-1}$次。
+
+以下证明：$g_n=n$。
+
+假设已有1,2,3,…n个人拿到过披萨，且编号顺序即座位顺序。目前披萨在1号手里，0号还没有拿到过披萨。
+
+此时披萨有1/2的概率传递给0号，此时只需要1步，披萨达到新人手里。
+
+另有1/2概率，披萨传递给2号。考虑这样一个序列：2, 3, 4, .. … n-1（共n-2人），则可看出需要平均传递$g_{n-2}$步使得披萨到达1号或n号手里。之后，再平均传递$g_n$步，到达0号手里。综上有：$g_n=\frac{1}{2}(1)+\frac{1}{2}(1+g_{n-2}+g_n)$，化简得：
+
+$g_n=g_{n-2}+2$
+
+因为显然有$g_1=1$，$g_2=2$，所以可以推得$g_n=n$。
+
+所有$f_n=f_{n-1}+(n-1)$和$f_1=0$，所以可推得：
+
+$f_n=\frac{n(n-1)}{2}$
+
+答对只有：**来**! 👍
+
+<hr class="wp-block-separator" />
+
+<h3>在喜马拉雅FM收听："大老李聊数学”：</h3>
+
+<figure class="wp-block-image">![enter image description here](https://pic3.zhimg.com/80/v2-fe88907293f518b2c6817941edc0507a_hd.jpg)</figure>
+
+<h3>关注“大老李聊数学”公众号： dalaoli_shuxue</h3>
+
+<h3>知乎专栏：https://zhuanlan.zhihu.com/dalaoli-shuxue</h3>

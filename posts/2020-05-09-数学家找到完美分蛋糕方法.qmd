@@ -1,0 +1,126 @@
+---
+title: '数学家找到完美分蛋糕方法'
+date: "2020-05-09"
+categories:
+  - "每周一题"
+---
+
+大家好，我是大老李。 今天这期节目是我之前节目的后续。我很早前做过一期节目叫“三人分蛋糕”问题，就是如何分蛋糕给三个人，最为公平合理。我用了“三个和尚分蛋糕”的故事说明了这个流程，这个故事我也引入到了我不久前出版的新书“<a href="https://item.jd.com/12605005.html">老师没教的数学</a>”中。
+
+而其中也提到了，数学家还没有找到确切的4人或以上的分蛋糕方法。而前几天我在美国计算机协会会网站上看到一条新闻：有界且无妒忌的分蛋糕算法（A Bounded and Envy-Free Cake Cutting Algorithm）。
+
+![(插入美国网站新闻)](https://pic1.zhimg.com/80/v2-dd18a9e9a66db22e9016fd81d8d5ba70_720w.jpg)
+
+我赶紧看了下这条新闻，原来澳大利亚新南威尔士大学的两位研究者早在2016年8月就提交了一篇<a href="https://arxiv.org/abs/1604.03655">论文</a>（最新修改是2017年）。称找到了对任意人数的有限步骤的无妒忌分蛋糕方法。我研究了一下这篇论文，看到这方法的思路非常有意思，这里介绍给大家。
+
+先简单复习一下，什么是“分蛋糕问题”。这里所说的“分蛋糕问题”是指：用离散的步骤，在有限的步骤内，完成对一个蛋糕分割，分配给若干个分蛋糕的人。成功分配的标准中，最重要的一条，叫无妒忌，即任何人都认为自己得到的蛋糕，多于或等于其他人的，这叫无妒忌。
+
+这其中还有一些假设：每个人都是诚实，稳定的，对同样的两块蛋糕的好坏判断是不变的。且每个人对蛋糕的价值判断是有传递性的，也就是当你认为A块蛋糕比B好，B比C好，那么你会认为A比C好。另外，我们也假定每个人不介意自己得到的蛋糕是好多个小块，也允许两片蛋糕无缝的合并成较大的一块。 当对蛋糕A切掉一块时，总是认为A的价值大于等于切掉后的；当对蛋糕A增加一点时，总是认为A的价值小于等于增加后的。以上都是必要的，但合理的一些假定。
+
+还有，我们今天只讨论使用离散的切割步骤的方法，“<a href="https://www.zhihu.com/question/20615717/answer/243746563">走刀法</a>”不在考虑范围内。
+
+基于以上的假定和分蛋糕目标，对2个人来分，有一个大家熟知的分割方法，即某人先把蛋糕分成他认为公平的两块，然后让另一个人先挑，双方肯定都不会觉得吃亏。
+
+3人的情况，有一个名为“<a href="https://www.zhihu.com/question/20615717/answer/243746563">Selfrige-Conway流程</a>”，可以达到无妒忌分割的目的。
+
+而对4人或以上，一直没有一个确切的流程。我之前<a href="https://www.ximalaya.com/keji/6310606/27817559">节目</a>播出后，有不少听众给我发来了他们设计的4人分蛋糕流程，但这些流程最终都一个缺陷：没有达到无妒忌的目的。比如很多人提出了这个流程：
+
+假设是甲乙丙丁四人分蛋糕，甲先把蛋糕分成他认为公平的2块。然后让乙、丙、丁评价哪一块更好。如果恰好是乙认为A块蛋糕好，而丙和丁认为B块蛋糕好。那么就让甲、乙去分A块，丙、丁去分bB。而两个人分一块蛋糕的流程是我们已经知道的。
+
+以上流程的缺陷就在于，虽然甲、乙之间，丙、丁之间不会有妒忌。但是两组人之间还是有可能产生妒忌。甲、乙可能会想：“丙怎么能拿到那么大一块呢？丁，你切的蛋糕也太不均匀了吧！” 等等。总之，把一个大的问题分解成两个小问题的思路是好的，但是要时刻防止妒忌的产生，这是很困难的。
+
+那我们看看这次两位澳大利亚研究者提出的流程。这个流程相当复杂，原版论文有30多页，我尽量把流程框架说清楚。这两位研究者把整个流程称为“主要协议” （main protocal），而主要协议又包含三个子协议，称为“核心协议”（core protocal），“分歧协议” (discrepency protocal)和”退出协议”(GoLeft protocal)。
+
+核心协议是整了协议的主体，也是整个流程中最为主要和执行次数最多的协议。核心协议的目的在于尽可能将更多的蛋糕封掉，但是在分的过程中，时刻保持无妒忌。这个流程大致是这样，我以甲、乙、丙、丁四玩家分蛋糕为例：
+
+<ol>
+<li>
+让甲把蛋糕分成他认为公平的4块
+</li>
+<li>
+把四块中的第一块给甲
+</li>
+<li>
+把第二块给乙。并且让乙评价第三和第四块。如果他认为第三和第四块中有哪块比他得到的好，就请他从第三和第四块中切下一点，使得这两块与他拿到的那块一样好。
+</li>
+<li>
+把第三块给丙。并且让丙评价第四块。如果他认为第四块中比他得到的好，就请他从第四块中切下一点，使得它们一样好。
+</li>
+<li>
+接下来丁就拿剩下的一块。
+</li>
+<li>
+此时进行评估，所有四个玩家就手上拿到的蛋糕评估是否有“妒忌”，即否有任何人得到的比自己手上的好。
+</li>
+</ol>
+
+根据以上流程，我们可以确信甲不会妒忌，而其他人可能会对比他们更早得到蛋糕的人产生妒忌。
+
+无论如何，如果此时没有妒忌那是最好，这样就完成了一次核心协议。如果有妒忌，则调整执行顺序，将所有蛋糕还原，再次进行核心协议。
+
+这里调整执行顺序有两种调整策略，一种是调整蛋糕分配的顺序。切蛋糕的人不变，之前是甲拿第一块，可以改成甲拿第二块，乙拿第一块等等。这是一种调整策略。
+
+还有另一个拿蛋糕的顺序，之前是甲第一个拿，可以改成乙第一个拿，甲第二，丙第三等等。这是第二种调整策略。
+
+算法中，要求枚举所有可能的蛋糕分配顺序和选蛋糕的顺次，所以有两重循环。而论文中证明了，枚举了这两轮循环后，其中至少有一次可以产生无妒忌的分配。
+
+可以看得出 ，这是一个非常冗长的步骤，最多可能要执行<span class="katex--inline"><span class="katex"><span class="katex-mathml">(4!)2⋅4(4!)^{2}\cdot 4</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06411em;vertical-align:-.25em;"></span><span class="mopen">(</span><span class="mord">4</span><span class="mclose">!</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">4</span></span></span></span></span>次循环，才能得到一次分配结果。但好处在于，至少部分蛋糕被分配掉了，而且论文证明，每一次至少有<span class="katex--inline"><span class="katex"><span class="katex-mathml">2n\frac{2}{n}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.19011em;vertical-align:-.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.845108em;"><span class="" style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="" style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span class="" style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.345em;"><span class=""></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>的蛋糕被分配掉了，其中n是人数。对四人来说，每次可以分掉至少一半蛋糕。
+
+而我们还可以继续执行核心流程，但是换其他人来切蛋糕。乙、丙、丁玩家都当一次切蛋糕的，执行一次核心流程。当所有玩家都做了一次切蛋糕者，并执行核心流程后，论文证明每个人都会认为剩下的蛋糕小于等于自己已得蛋糕的一半。
+
+而这个流程可以推广到n个玩家，且最终每个玩家都会认为剩下的蛋糕价值至多是自己已得蛋糕的<span class="katex--inline"><span class="katex"><span class="katex-mathml">(n−2)/n(n-2)/n</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">2</span><span class="mclose">)</span><span class="mord">/</span><span class="mord mathdefault">n</span></span></span></span></span>。
+
+以上就是关于核心流程的介绍，核心协议已经非常冗余，但也没办法，因为我们要确保蛋糕的分配不发生妒忌。
+
+执行完核心协议后，总是会剩下些蛋糕。当然可以对剩下的蛋糕继续执行核心协议，但是这样会没完没了。所以我们要有点其他方法，使得能在有限步骤分配完全部蛋糕。
+
+而论文思路就是设法将分配剩余蛋糕的流程，转化若干个人数更少的分蛋糕问题。因为我们已经知道2人或3人分蛋糕的步骤了。如果我们将问题分解成人数更少的小问题，且每个小问题所涉及的蛋糕部分都能不断缩小，那么这个分蛋糕流程必然可以结束。
+
+但是从之前我举例的四人分蛋糕流程中可以看出，分解成小问题后，要确保不发生妒忌是很难的。这里论文作者发现了两种情况下，可以将问题分解成小问题：
+
+一种情况叫“绝对占优”（Domination）：某个玩家认为剩下的蛋糕，即使全部分配给另一个玩家，他都不会妒忌，此时就称这个玩家对另一个玩家“绝对占优”。比如如果甲发现，剩下的蛋糕全部给乙的话，甲也不妒忌，就叫甲对乙“绝对占优”。
+
+![enter image description here](https://pic3.zhimg.com/80/v2-28dd0d315718ac5cdfa70e990cc19eda_720w.jpg)(绝对占优示意图：当玩家2和4对玩家1和3都绝对占优时，玩家2和4就可以退出分割流程。)
+
+如果一个玩家对其他所有玩家都绝对占优时，那这个玩家就可以退出游戏了。“你们玩，我不玩了，你们随便怎么分我都没意见”，是这样吧？所以我们希望要尽可能发生绝对占优的情况，这样就能让玩家数减少。
+
+第二种可以让大问题变小问题的情况叫“显著分歧”。分蛋糕过程中，对蛋糕价值判断产生分歧是难免的。但分歧达到一定程度，反而好处理了。比如，如果剩下的蛋糕现在分成a、b两部分。甲、乙、丙都认为A块比B块好，而且甲、乙、丙认为A块比B块的3倍都好。但是丁认为是B块好。此时分歧很大，但却好办了。我们可以直接把B给丁，而甲、乙、丙对a块执行三人分蛋糕流程。
+
+因为丁认为B块比A块好，那么即使A块后来整个分给了甲乙丙中的某个人，丁也不会妒忌。而甲、乙、丙都认为B块比A块的三倍都要好，那么之后，如果他们三人对A块的分配是无妒忌的，那么甲、乙、丙都会认为自己得到蛋糕的至少是A块的1/3，比b块强，所以他们也不会妒忌丁。
+
+以上这种情况可以推广到一般人数，即当蛋糕被分为A、B 两个部分，其中p个玩家认为a比b的p倍要好，另q个玩家认为B比A的q倍要好，则可以让p个玩家分A，q个玩家分B，这样一个大问题被分解成了两个小问题，且能保持无妒忌。
+
+根据以上两种可以让大问题化为小问题的思路，论文中设计了另两个协议算法：
+
+<ol>
+<li>
+分歧协议(discrepency protocal)。分歧协议就是为了处理出现分歧的情况，并且促使玩家中出现
+
+“显著分歧”，使玩家分化为两队人，开始各自对自己喜欢的那部分进行分配的流程
+</li>
+<li>
+退出协议(GoLeft protocal)。退出协议就是促使玩家中出现绝对占优的情况，当有某个玩家出现对其他所有玩家绝对占优时，他就可以退出这个游戏。
+</li>
+</ol>
+
+这两个算法流程细节非常多，就不展开叙述了。那么总体上这个分蛋糕的协议的框架就是：
+
+先执行若干轮次主协议，使得蛋糕的一部分被分掉。然后穿插执行分歧和退出协议，使得原始问题变为人数更少的小问题。对这个小问题继续执行主协议、分歧协议和退出协议。直至每个小问题中的人数都小于等于3，那么这个问题就能在有限步骤内完成。
+
+![enter image description here](https://dl.acm.org/cms/attachment/e5e405d6-bb62-4d28-9076-f3388cd96887/uf4.jpg)
+
+(分蛋糕流程主协议框架，转自美国计算机协会ACM网站)
+
+以上整个算法我介绍完了，整个算法的复杂度是一个十分惊人的数字，如果人数是n，则算法大约最多需要执行<span class="katex--inline"><span class="katex"><span class="katex-mathml">nnnnnnn^{n^{n^{n^{n^{n}}}}}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.48598em;vertical-align:0;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.48598em;"><span class="" style="top:-3.48598em;margin-right:.05em;"><span class="pstrut" style="height:3.12298em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.60426em;"><span class="" style="top:-3.60426em;margin-right:.0714286em;"><span class="pstrut" style="height:3.17326em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.64256em;"><span class="" style="top:-3.64256em;margin-right:.1em;"><span class="pstrut" style="height:3.23856em;"></span><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.23856em;"><span class="" style="top:-3.23856em;margin-right:.1em;"><span class="pstrut" style="height:2.83456em;"></span><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.83456em;"><span class="" style="top:-2.904em;margin-right:.1em;"><span class="pstrut" style="height:2.5em;"></span><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>次。所以，这也能解释你到目前为止可能有的一个最大疑问：到底有没有真实可运行的代码，实现以上流程？结论很明显，就是没有。因为即使写出来，就算模拟4人的情况，程序也肯定跑不完。
+
+这大概也是为什么这篇论文发布了这么久之后，才最终被美国计算机协会登载在网站上。因为没有代码，只能靠人力审阅论文，而这个算法又是非常冗余和繁复，所以审阅了3、4年才得以正式发表。但不管怎样，这是一个突破，人类第一次有了一个有现步骤内的无妒忌的完美分蛋糕方法。特别是其中有关“显著分歧”和“绝对占优”概念，是很有实用价值的思路。
+
+我觉得下一步是，我希望有人能提出简化版的，仅针对4人分蛋糕情形的算法步骤。因为我们可以看出，针对三人分蛋糕的Selfrige-Conway算法有点像执行了2轮的这篇论文中提到的核心协议的过程。所以，针对4人，是否可以也提出一个简化算法，简化到可以具体写出具体分支流程呢？甚至可以不简化核心流程，只针对核心协议以外的操作步骤进行简化，那也是一大突破。
+
+好了，今天节目差不多了，无论如何，我们知道，科学家已经发现了一种完美的分割蛋糕的方法，只是你要做好准备，其步骤之多，到天荒地老都结束不了。让我们下期再见。
+
+参考链接：
+
+<a href="https://cacm.acm.org/magazines/2020/4/243651-a-bounded-and-envy-free-cake-cutting-algorithm/fulltext">https://cacm.acm.org/magazines/2020/4/243651-a-bounded-and-envy-free-cake-cutting-algorithm/fulltext</a>
+
+<a href="https://arxiv.org/abs/1604.03655">https://arxiv.org/abs/1604.03655</a>

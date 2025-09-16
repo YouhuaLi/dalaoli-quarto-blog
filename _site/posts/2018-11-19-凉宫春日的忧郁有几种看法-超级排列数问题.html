@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2018-11-19">
+
+<title>凉宫春日的忧郁”有几种看法？– 超级排列数问题 – dalaoli_quarto_blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">dalaoli_quarto_blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">凉宫春日的忧郁”有几种看法？– 超级排列数问题</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">音频讲稿</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">November 19, 2018</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>大家好，我是大老李。我不久前节目刚介绍过康威悬赏1000美元的4个问题，但还是有听众说太难了。那好，今天我给各位一道比那几题更“简单”，也非常适合业余爱好者研究的一个问题：超级排列数（Super Permutation）问题。</p>
+<p>这个问题最近有些热起来是因为它有了些新的进展。这个进展要从2011年的一个帖子说起。话说那年在国外一个动漫二次元爱好者的网站（<a href="http://www.4chan.org/">4chan</a>）上有人发了这么一个帖子：怎样以最快的速度看完“凉宫春日的忧郁”，并把所有可能的顺序都到？这句话的意思我得解释一下，这个问题不是二次元爱好者还真不好理解。 <img src="https://upload.wikimedia.org/wikipedia/zh/thumb/7/77/Suzumiya_Haruhi_no_Yuutsu_Official_DVD1.jpg/250px-Suzumiya_Haruhi_no_Yuutsu_Official_DVD1.jpg" class="img-fluid" alt="enter image description here"> （上图：凉宫春日的忧郁DVD封面）</p>
+<p>首先“凉宫春日的忧郁”是一部日本动画片，动画片的背景设定里是有时间穿越的，所以这部动画片每一集内容相对独立且时间先后是不确定的。而当初它在电视台重播的时候，重播的集次顺序也是与首播不一样的。</p>
+<p>2011年，这部14集动画片发行了DVD，在DVD上看你当然可以直接选择任何一集开始收看。所以就有宅男在论坛上问，如果我想把这部动画片以所有可能顺序看完，那么最快的看法是怎样的，需要看多少集？这确实是很理工男的一个问题。</p>
+<p>我可以再稍微举个例子，帮各位分析一下这个问题。比如这部动画片如果只有3集，我们知道3的全排列数是3!=6。也就是总共有6种不同的顺序去看完这部动画片，就是：123，132，213，231，312，321。但我并不需要完整的看完3*6=18集，来看完所有顺序组合。</p>
+<p>比如我先按1、2、3的顺序看了3集，接下来我再看第1集，那我看过的顺序就是1231。从最后3集的顺序来看，就等于把231这个顺序也看完了。看过1231之后，如果要节省时间，那显然应该看第2集，这样等于看完了312这种组合。看过12312之后，你会稍微踌躇一下。因为你看过的最后两集是1和2，但是123这种组合你已经看过，所以再看第3集就没意义了。接下来你无法再像之前那样，每次重复利用最后2个数字，你只能再利用1个数字了。</p>
+<p>总之，你的目标就是找出一个最短由123组成的数字序列，其中要包含123的所有6种排列顺序。而这种由n个不同符号组成的序列，其中包含有这些符号所有排列顺序的序列要做“超级排列”，其中最短的一种排列方式叫“最小超级排列”，而其长度，叫做n的“最小超级排列数”，或者就简称为n的超级排列数。这个问题理解起来是不是够简单？</p>
+<p>而3的最小超级排列相信各位在纸上稍微试试看就能找出来了（例：<img src="http://tex.s2cms.ru/png/%24123121321%24.png" class="img-fluid">），其长度应该是9。找4的超级排列数稍微有点难，但其实在纸上也能试出来，其长度应该是33。要注意找出这些超级排列不难，要证明它们是最短的才是难的。但好在n比较小的时候，我们可以用电脑枚举。</p>
+<p>很早以前就有人用电脑枚举出来，3和4的超级排列数确实是9和33，而5的超级排列数是153。观观察这些数字，你会发现第n个超级排列数减去前一个超级排列数正好是<img src="http://tex.s2cms.ru/png/%24n%EF%BC%81%24.png" class="img-fluid">。比如<img src="http://tex.s2cms.ru/png/%2433-9%3D24%3D4%21%24.png" class="img-fluid">。而<img src="http://tex.s2cms.ru/png/%24153-33%3D120%3D5%21%24.png" class="img-fluid">。而确实有一种比较简单的构造法，可以通过从n-1的超级排列中，增加n！个字符，得到n的超级排列。所以人们就认为n的超级排列数就是<img src="http://tex.s2cms.ru/png/%241%21%2B2%21%2B3%21%2B....%2Bn%21%24" class="img-fluid">。比如6的超级排列数人们猜测为<img src="http://tex.s2cms.ru/png/%24153%2B6%21%3D873%24.png" class="img-fluid">。</p>
+<hr>
+1到4的最小超级排列及其长度：
+<table>
+<thead>
+<tr>
+<th>
+n
+</th>
+<th>
+长度
+</th>
+<th>
+最小超级排列
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+1
+</td>
+<td>
+1
+</td>
+<td>
+1
+</td>
+</tr>
+<tr>
+<td>
+2
+</td>
+<td>
+3
+</td>
+<td>
+121
+</td>
+</tr>
+<tr>
+<td>
+3
+</td>
+<td>
+9
+</td>
+<td>
+123121321
+</td>
+</tr>
+<tr>
+<td>
+4
+</td>
+<td>
+33
+</td>
+<td>
+123412314231243121342132413214321
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>而意想不到的的一幕在2014出现了，一个叫Robin Houston的人发表了一篇文章，他用电脑程序找到了一个长度为872的6的超级排列数，比猜想的短了1！这下大家都懵了，这说明之前的猜想完全是错的，现在连6的真正最小的超级排列数是多少也不知道了，因为你不能保证872就是最短的。</p>
+<hr>
+6的长度为872的超级排列，打破了原先的猜想长度（<img src="http://tex.s2cms.ru/png/%241%21%2B2%21%2B3%21%2B4%21%2B5%21%2B6%21%3D873%24.png" class="img-fluid">）：
+<blockquote class="blockquote">
+12345612345162345126345123645132645136245136425136452136451234651234156234152634 15236415234615234165234125634125364125346125341625341265341235641235461235416235 41263541236541326543126453162435162431562431652431625431624531642531462531426531 42563142536142531645231465231456231452631452361452316453216453126435126431526431 25643215642315462315426315423615423165423156421356421536241536214536215436215346 21354621345621346521346251346215364215634216534216354216345216342516342156432516 43256143256413256431265432165432615342613542613452613425613426513426153246513246 53124635124631524631254632154632514632541632546132546312456321456324156324516324 56132456312465321465324165324615326415326145326154326514362514365214356214352614 35216435214635214365124361524361254361245361243561243651423561423516423514623514 263514236514326541362541365241356241352641352461352416352413654213654123
+</blockquote>
+<hr>
+<p>而Robin Houston用的电脑算法也很简单，其实他把问题转化成了图论中著名的“旅行推销员问题”（Traveling salesman problem），简称TSP问题。比如我们还是考虑3的超级排列数。1到3的全排列有<img src="http://tex.s2cms.ru/png/%243%21%3D6%24.png" class="img-fluid">种。那我就在纸上画6个点，每个点表示其中一种排列。然后我要给这些点两两连线，且做成一个有向图，并且给这些线赋予一个权重，而这个权重就表示如果这两点出现最终超级排列中时，会导致序列增加的长度。</p>
+<hr>
+<p><strong>旅行推销员问题</strong>（最短路径问题）（英语：<strong>Traveling salesman problem</strong>, <strong>TSP</strong>）是这样一个问题：给定一系列城市和每对城市之间的距离，求解访问每一座城市一次并回到起始城市的最短回路。它是<a title="组合优化" href="https://zh.wikipedia.org/wiki/%E7%BB%84%E5%90%88%E4%BC%98%E5%8C%96">组合优化</a>中的一个<a title="NP困难" href="https://zh.wikipedia.org/wiki/NP%E5%9B%B0%E9%9A%BE">NP困难</a>问题，在<a title="运筹学" href="https://zh.wikipedia.org/wiki/%E8%BF%90%E7%AD%B9%E5%AD%A6">运筹学</a>和<a title="理論計算機科學" href="https://zh.wikipedia.org/wiki/%E7%90%86%E8%AB%96%E8%A8%88%E7%AE%97%E6%A9%9F%E7%A7%91%E5%AD%B8">理论计算机科学</a>中非常重要。</p>
+<p><a href="https://zh.wikipedia.org/wiki/File:GLPK_solution_of_a_travelling_salesman_problem.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/GLPK_solution_of_a_travelling_salesman_problem.svg/220px-GLPK_solution_of_a_travelling_salesman_problem.svg.png" class="img-fluid"></a></p>
+<p>旅行商问题的解</p>
+<p>TSP是<a href="https://zh.wikipedia.org/w/index.php?title=%E6%97%85%E8%A1%8C%E8%B4%AD%E4%B9%B0%E8%80%85%E9%97%AE%E9%A2%98&amp;action=edit&amp;redlink=1">旅行购买者问题</a>与<a href="https://zh.wikipedia.org/w/index.php?title=%E8%BD%A6%E8%BE%86%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98&amp;action=edit&amp;redlink=1">车辆路径问题</a>的一种特殊情况。</p>
+<p>在<a title="计算复杂性理论" href="https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E5%A4%8D%E6%9D%82%E6%80%A7%E7%90%86%E8%AE%BA">计算复杂性理论</a>中，TSP的做决定版本（其中，给定长度 <em>L</em>，任务是决定图中是否有路径比 <em>L</em> 还要短）属于<a title="NP完全" href="https://zh.wikipedia.org/wiki/NP%E5%AE%8C%E5%85%A8">NP完全</a>问题。因此随着城市数量的增多，任何TSP算法<a title="計算時間" href="https://zh.wikipedia.org/wiki/%E8%A8%88%E7%AE%97%E6%99%82%E9%96%93">最坏情况下</a>的<a title="时间复杂度" href="https://zh.wikipedia.org/wiki/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6">运行时间</a>都有可能随着城市数量的增多超多项式（可能是<a href="https://zh.wikipedia.org/w/index.php?title=%E6%8C%87%E6%95%B0%E6%97%B6%E9%97%B4%E5%81%87%E8%AF%B4&amp;action=edit&amp;redlink=1">指数</a>）级别增长。</p>
+<p>（以上摘自维基百科）</p>
+<hr>
+<p>比如考虑从“123”这个点到“231”这个点的连线，因为从123序列之后只要再写个1，我就能包含231这个组合，所以这条线的权重就是1。反过来，从231这个点到123这个点，我发现要在231之后再写上2和3两个数字，才能得到231组合，那么这条连线的权重就是2。以此类推，我可以对所有6个点之间的连线都赋予这样的权重。</p>
+<p>所有连线权重有了之后，寻找超级排列数的问题就转化为从这个图中找一条“路”，这条路要通过每个点至少一次，且路的权重为最小。而这个问题恰好就是图论中的“旅行推销员”问题。这样太棒了，因为我们已经有很多算法去求解旅行推销员问题。</p>
+<hr>
+<p><img src="https://d2r55xnwy6nx47.cloudfront.net/uploads/2018/11/Permutations_560-902x1720.jpg" class="img-fluid" alt="enter image description here"> (上图：将超级排列数问题转换为“旅行推销员问题”的过程。图片来源：Lucy Reading-Ikkanda/Quanta Magazine)</p>
+<hr>
+<p>但不幸的是，旅行推销员问题是所谓“NP完全问题”，求解算法会是非常低效的。实际上那个Robin Houston用了TSP问题算法中的一种“概率”求解算法，也就是算法并不枚举所有情况，他只是设定了一个目标，即我要找到一条长度小于753的路，算法只是尽可能去找最短的路，并且找到这样的路才输出。这样输出的结果并不能保证是最短的路，也不能保证一定时间内有输出，所以叫概率性算法。结果是他很幸运的在不多的时间内就找到一条长752的路。而如果要使用确定性的算法，则一般服务器可能要运行几个月到几年，更别说处理6以上的超级排列数问题了。</p>
+<p>但是Houston的这个发现出来之后，一下子引起了众多爱好者的兴趣。因为这个问题看上去是如此简单，但是居然我们现在还没有确切结论。而在这众多爱好者当中，就包括一位澳大利亚的科幻小说作家格雷格·伊根（Greg Egan，1961-，曾获雨果奖）。</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/GregEgan.gif" class="img-fluid" alt="enter image description here"> （上图：Greg Egan在维基百科上留下的图片，申明“网上没有任何我的照片”！）</p>
+<p>格雷格·伊根今年57岁，他早年在澳大利亚一所大学数学专业毕业，但爱好写小说，他22岁时发表了第一部科幻小说，后来转为专业小说家，著作颇丰，曾获雨果奖。但他本人从没有放弃对数学的爱好。其实他1994年的一步小说的名字恰好就叫做“排列城（Permutation City）。</p>
+<p><img src="http://t1.gstatic.com/images?q=tbn:ANd9GcQvcUb4zFF3PBABKZOBnbV9sqBG2aZYE8aHLVfCqv_BRmUgWBE9.png" class="img-fluid" alt="enter image description here">(上图：Greg Egan 1994年的小说作品《排列城》)</p>
+<p>不过怎样，这位“澳大利亚的刘慈欣”看到Houston对超级排列数问题的发现后，他很感兴趣，于是开始考虑有没有可能找到比Houston的更短的超级排列。而没有多久，他就找到了一个超级排列数的上限。这个新的上限与原来的有点像。原先的猜想倒过来说是<img src="http://tex.s2cms.ru/png/%24n%21%2B%28n-1%29%21%2B%28n-2%29%2B...%2B1%21%24" class="img-fluid">。伊根给出的新上限是<img src="http://tex.s2cms.ru/png/%24n%21%2B%28n-1%29%21%2B%28n-2%29%21%2B%28n-3%29%21%2B%28n-3%29%24.png" class="img-fluid">。你会发现新的上限在n&lt;=6之前会大于等于原来的上限，所以并不优越。但是从n=7开始，这个新的上限比原先的就小多了，所以这是一个新的大进展。</p>
+<p>而伊根用的算法是之前一个叫Araon Willams的人2013年一篇论文里提出的有关从循环群中构建凯莱图的方法构造的。这里再次提到了循环群，所以大家可再一次看到群论的威力。而伊根在他的<a href="http://www.gregegan.net/SCIENCE/Superpermutations/Superpermutations.html">个人网站</a>上也给出了这种算法的一个C语言程序，你可以用它生成任何符合他得出的那个上限n的超级排列。</p>
+<p><img src="http://www.gregegan.net/SCIENCE/Superpermutations/BP3.png" class="img-fluid" alt="enter image description here"><img src="http://www.gregegan.net/SCIENCE/Superpermutations/BP4.png" class="img-fluid" alt="enter image description here"><img src="http://www.gregegan.net/SCIENCE/Superpermutations/BP5.png" class="img-fluid" alt="enter image description here">（上图：Greg Egan个人网站上有关超级排列数上限证明的说明，将“距离为1”的排列放在一个圆内，两个圆之间的“距离为2”，如此迭代。可以证明最终的“旅行推销员”路只需要经过权重为1和2的路。）</p>
+<p>但有上限，并不说明这个上限就是最短的，我们还得看下限。关于这个下限的问题有点意思，节目开头我说了2011年时候有人在论坛上问了“凉宫春日的忧郁”最快怎么看完的问题。但显然那个论坛一般数学家是完全不会去的，所以也没有人指出这是超级排列数问题。但是有一个人匿名回复了一下关于这个问题的下限，这个下限跟之前伊根的上限很像：<img src="http://tex.s2cms.ru/png/%24n%21%2B%28n-1%29%21%2B%28n-2%29%21%2B%28n-3%29%24.png" class="img-fluid">。这位匿名大侠的回复只是很阐述了一下他的思路，并没有严格证明。</p>
+<p>幸而不久后，加拿大一所大学的数学教授Nathaniel Johnston在搜索排列组合问题时，从搜索引擎里看到了这个回答。他稍微注意了一下这个匿名人士的回答，发现他的证明基本上是对的，Johnston稍微整理了一下，把这个证明放在了另一个网站上。但是当时数学家认为这个问题的“正确”答案就是<img src="http://tex.s2cms.ru/png/%241%21%2B2%21%2B...n%21%24" class="img-fluid">，所以这个下限就显得没有什么意义，也没有人关心。</p>
+<p>但是这次伊根给出新的上限之后，Johnston提醒了公众一下：目前最好的关于超级排列数的下限是2011年在一个动漫论坛上一位匿名人士的一个帖子，这有点像在bilibili的弹幕里隐藏了一个高深的数学证明的感觉。</p>
+<p>不管怎样，我们现在有了超级排列数的上限和下限，但两者之间还差了(n-3)!这么大。比如n=6的时候，我们根据下限公式计算应该是867，但是目前找到的最短的是872，还有5的差距。而7的超级排列数就在5884到5908之间等等，所以这个问题远没有解决。</p>
+<p>你可能会问，我们不能从已发现的超级排列数当中找一下数字的排列规律吗？目前还真没有，虽然一个超级排列序列倒过来肯定也是一个超级排列序列，但似乎没有其他更多规律了。目前已知5的最短超级排列（排除倒过来写的情况）有8种:</p>
+<hr>
+<p>所有8种长度为153的5的超级排列 Found by Ben Chaffin in March 2014 123451234152341253412354123145231425314235142315423124531243512431524312543121345213425134215342135421324513241532413524132541321453214352143251432154321 123451234152341253412354123145231425314235142315423124531243512431524312543121354213524135214352134521325413251432513425132451321543215342153241532145321 123451234152341253412354123145231425314235142315421352413521435213452135421534215432154231245321453241532451325413251432513425132453124351243152431254312 123451234152341253412354123145213425134215342135421345214352145321452314253142351423154231245312435124315243125432154325143254132451324153241352413254312 123451234152341253412354132541352413542134521342513421534213541231452314253142351423154231245321435214325143215432145324153245132453124351243152431254312 123451234152341253412354132514325134251324513254135241354213541231452134521435214532154321534215324153214523142531423514231542312453124351243152431254312 123451324513425134521354213524135214352134512341523412534123541231452314253142351423154231245312435124315243125432153421532415321453215432514325413254312 123451324153241352413254132451342513452134512341523412534123541231452314253142351423154213542153421543214532143521432514321542312453124351243152431254312</p>
+<hr>
+<p>好了，关于超级排列数问题我就介绍到这里。这个问题我感觉有意思的地方它又是一个简单但是数学家不能解决的问题。而且一开始如此有规律的数字，突然在n=6的时候被打断实在太让人吃惊了。而这个问题目前的最佳进展都是业余爱好者给出的，一个是泡动漫二次元论坛的匿名人士，一个是“澳大利亚的刘慈欣”，所以我觉得它应该很适合各位听众去研究。而这个貌似排列组合的问题居然可以转换成图论的“旅行推销员”问题也确实很有趣。我很希望不远的将来，大老李可以在节目里说：中国的某位业余爱好者有了对超级排列数的新发现。</p>
+<p>最后，我们可以回答一下最初的那个关于14集的“凉宫春日的忧郁”最快要看多少集可以把所有排列看完的问题： 下限：<img src="http://tex.s2cms.ru/png/%2414%21%2B13%21%2B12%21%2B11%5Capprox+9.4%5Ctimes+10%5E%7B10%7D%24" class="img-fluid"> 上限：<img src="http://tex.s2cms.ru/png/%2414%21%2B13%21%2B12%21%2B11%21%2B11%5Capprox+1.9%5Ctimes+10%5E%7B16%7D%24" class="img-fluid"> 因此，这位楼主还是抓紧看第二季吧！好了，下期再见！</p>
+<hr>
+<h3 id="在喜马拉雅fm收听：”大老李聊数学”：" class="anchored">
+在喜马拉雅FM收听：”大老李聊数学”：
+</h3>
+<p><img src="https://upload-images.jianshu.io/upload_images/348687-157cd7585d8e4ebc?imageMogr2/auto-orient/strip%7CimageView2/2/w/432.png" class="img-fluid"></p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/your-website-url\.example\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

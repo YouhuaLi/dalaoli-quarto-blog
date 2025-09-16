@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2020-04-14">
+
+<title>数学大“玩”家—— 纪念 约翰·霍顿·康威 以及康威的“外观数列” – dalaoli_quarto_blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">dalaoli_quarto_blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">数学大“玩”家—— 纪念 约翰·霍顿·康威 以及康威的“外观数列”</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">每周一题</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">April 14, 2020</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>数学大“玩”家—— 纪念 约翰·霍顿·康威 以及康威的“外观数列” (音频讲稿)</p>
+<p>大家好，我是大老李。今天这期节目是一期特别节目，因为前几天我听到了一个不幸的消息：英国数学家，约翰·霍顿·康威 （John Horton Conway, 1937.12.26 ——2020.4.11）因新冠肺炎于2020年4月11日，<a href="https://www.princeton.edu/news/2020/04/14/mathematician-john-horton-conway-magical-genius-known-inventing-game-life-dies-age">在位于美国新泽西州普林斯顿大学附近的家中去世</a>，享年82岁。</p>
+<p>常听我<a href="//m.ximalaya.com/undefined/album/6310606">节目</a>的听众肯定已经无初次听到我提到过康威的名字。我从做节目以来阅读了很多数学文章。如果你问我，在我阅读的文章中，出现最多的，20世纪之后的数学家，那么第一名是埃尔德什（Paul Erdos，匈牙利裔数学家，1913年3月26日－1996年9月20日），第二名就是康威。而且这两位是远远领先于第三名，第三名具体是谁不太明显了。</p>
+<p>再比如我去年拍摄了8段数学科普视频短片（可在哔哩哔哩，西瓜视频，网易新闻等搜索“看大老李聊数学“），其中有4篇的内容来源都是康威提出的问题或发明的游戏，可见康威对我的影响力之大。</p>
+<p>我在写这篇文章，思考怎么起什么样的标题的时候，最后我觉得用数学大“玩”家来形容康威很合适。</p>
+<p>首先说康威是大数学家一定没错。之前我在节目中聊<a href="https://www.ximalaya.com/keji/14777844/121888809">有限单群分类定理</a>时，提到过有几个散在单群就是以<a href="https://zh.wikipedia.org/wiki/%E5%BA%B7%E5%A8%81%E7%BE%A4">康威</a>的名字命名的 ，仅凭此一项成就，足以证明其为成为世界一流数学家。 在有限单群领域，他还命名了最大的散在单群叫“大魔群” （<a href="https://en.wikipedia.org/wiki/Monster_group">Monster group</a>），参与贡献并命名了联系群论与模型式领域的“魔性月光”（<a href="https://en.wikipedia.org/wiki/Monstrous_moonshine">Monstrous Moonshine</a>）理论。</p>
+<p>数论领域里，康威证明了“15-定理”。15-定理是“四平方和定理”的扩展：</p>
+<hr>
+<p>转自维基百科：</p>
+<p><strong>四平方和定理</strong> （英语：Lagrange’s four-square theorem） 说明每个正整数均可表示为4个整数的平方和。它是<a href="https://zh.wikipedia.org/wiki/%E8%B2%BB%E9%A6%AC%E5%A4%9A%E9%82%8A%E5%BD%A2%E6%95%B8%E5%AE%9A%E7%90%86" title="费马多边形数定理">费马多边形数定理</a>和<a href="https://zh.wikipedia.org/wiki/%E8%8F%AF%E6%9E%97%E5%95%8F%E9%A1%8C" title="华林问题">华林问题</a>的特例。</p>
+<p>15-定理是由约翰·何顿·康威（John Horton Conway，1937-）和W.A.Schneeberger于1993年证明的定理，内容为如果一个二次多项式可以通过变量取整数值而表示出1~15的值（更严格的结论是只要表示出1,2,3,5,6,7,10,14,15）的话，比如：<span class="katex--inline"><span class="katex"><span class="katex-mathml">w2+2x2+2y2+5z2w<sup>{2}+2x</sup>{2}+2y<sup>{2}+5z</sup>{2}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.897438em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:.02691em;">w</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.897438em;vertical-align:-.08333em;"></span><span class="mord">2</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1.00855em;vertical-align:-.19444em;"></span><span class="mord">2</span><span class="mord"><span class="mord mathdefault" style="margin-right:.03588em;">y</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.814108em;vertical-align:0;"></span><span class="mord">5</span><span class="mord"><span class="mord mathdefault" style="margin-right:.04398em;">z</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></span>，该二次多项式可以通过变量取整数值而表示出所有正整数。</p>
+<hr>
+<p>康威还证明了一般化的考拉兹问题是不可决定（<a href="https://en.wikipedia.org/wiki/Undecidable_problem">undecideable problem</a>）的问题。</p>
+<p>康威是英国皇家学会（Royal Sociaty）和美国人文与科学会院士（American Academy of Arts and Sciences）。以上这些都足以证明康威是一位大数学家。</p>
+<p>但对我来说，更值得称道的是，康威还是一位从风格上来讲，空前绝后的数学科普达人。他极其善于把各种高深的数学理论包装成为好玩的数学游戏或小品，使得普通数学爱好者也能从中略知一二。他命名的数学名词也极具幽默感，从前面提到的“大魔群”，“15-定理”这些名称上，你能看出一些这种风格。</p>
+<p>而这里必须要介绍一位康威的黄金搭档：马丁·加德纳（1914-2010）。马丁·加德纳是美国的科普作家，从1957年开始，马丁·加德纳在“科学美国人”杂志上开始了一个名为一个“数学游戏”专栏。从1957年开始，到1980年马丁退休时结束，整整23年间，加德纳写了近300篇的数学专栏文章。他的专栏是如此受欢迎，不光是阅读量以百万计，更重要的是他的数学文章使众多数学爱好者读者有了参与感，使得普罗大众可以正确的研究数学。</p>
+<p>而其中，加德纳在1970年的一篇专栏中，介绍了康威最为著名的“<a href="https://www.bilibili.com/video/BV1xJ411Q7do?from=search&amp;seid=10500154958393913043">生命游戏</a>”，使康威几乎一夜之间成为“网红”。有人戏称，整个1970-80年代的计算机中，有1/4都在运行生命游戏。</p>
+<p>康威的许多数学小游戏，比如“豆芽游戏”(<a href="https://en.wikipedia.org/wiki/Sprouts_%28game%29">Sprouts</a>)，“清除树枝游戏”（<a href="https://en.wikipedia.org/wiki/Hackenbush">Hackenbush</a>），“<a href="https://www.bilibili.com/video/BV1KJ41197VN?from=search&amp;seid=5078109034900966675">天使与魔鬼游戏</a>”（<a href="https://en.wikipedia.org/wiki/Angel_problem">Angel Problem</a> ），等等，都通过加德纳的专栏变得家喻户晓，许多人也投入其中乐此不疲。可以说，加德纳的专栏是西方上世纪影响力最大的数学科普媒体，而康威则是数学家中的网红明星。</p>
+<p>康威本人写作过许多本数学科普书籍，他的科普书最大的特点是，他不讲某个数学问题或数学家的历史，也不会着重讲某个数学领域里的具体问题，而是通过一个个小游戏和趣味题的形式，引起你的兴趣，使你能深入思考，而且回味无穷。总重要的是，如果你有心，你可以沿着他的思路继续研究，参与感极强。这是我在其他数学科普书中看不到的。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-5395178a7cde539d62f36f233ad7256b_720w.jpg" class="img-fluid" alt="(插入看为著作图片)">(康威的一些数学著作)</p>
+<p>很遗憾的是，至今还没有任何一部康威的书被译成中文。所以，我也很希望国内出版社能引进翻译一些康威的书，我相信这些书可以使国内的数学科普跃进至少30年时间。</p>
+<p>做节目以来，我一直有感于中外数学爱好者的数学基础素养的差距。如果上网用中文搜索，你会发现有一大堆人声称证明了考拉兹猜想、哥德巴赫猜想、孪生素数猜想、四色定理等等。但是用英语搜，就很少有这种内容。我想这其中与康威和加德纳所起的作用有很大关联。你如果看过康威的那些游戏，你根本就不会去考虑考拉兹猜想这些问题。康威和加德纳等于是为爱好者指明了一条可以探索的道路，避免了无谓的时间浪费。</p>
+<p>接下来的半段节目，我想通过介绍一个康威的数学小发明，“外观数列” （Look-and-Say Sequence），让大家感受下康威天才的思路和极具幽默感的呈现数学的方式。</p>
+<p>“外观数列”，顾名思义，是一个数列，它的后一项都可以通过对前一项的“外观描述”而决定下来。一下是外观数列在维基百科上的介绍：</p>
+<hr>
+<p>外观数列（Look-and-say sequence）第n项描述了第n-1项的数字分布。它以1开始：</p>
+<p><code>1：读作1个“1”，即11 11：读作2个“1”，即21 21：读作1个“2”，1个“1”，即1211 1211：读作1个“1”，1个“2”，2个“1”，即111221 111221：读作3个“1”，2个“2”，1个“1”，即312211</code></p><code>
+1, 11, 21, 1211, 111221, 312211, 13112221, 1113213211, … （OEIS中的数列A005150） </code>
+
+<p>–</p>
+<p>但这个数列除了搞笑外，有什么用处吗？还真有，他有一下一些性质：</p>
+<p>如果起始数字只有1，2，3，且没有四个及以上数字连续，则整个数列中只会含有1、2、3三个数字。</p>
+<p>如果起始数字是22，那么整个数列都是22。其他情况下，整个数列中的每一项会递增，每一项增加的长度约为30%，确切数字约为1.3035779，它是一个一元71次方程的唯一正实数解。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-62c02848b385ec4ca3e1da78299eb63e_720w.jpg" class="img-fluid" alt="enter image description here">(图片来自维基百科)</p>
+<p>更有意思和让人吃惊的是，康威还从外观数列中，导出另一个名为“宇宙论定理”的定理（<a href="https://mathworld.wolfram.com/CosmologicalTheorem.html">Cosmological Theorem</a>）。这个定理名称很有民科风格（难道是早点占据这个名字，免得被民科占用？“），明显是康威在搞笑了。</p>
+<p>这个定理是说，如果一个外观数列，其中只含有1，2，3三个数字，那么整个数列从第8项还是，数列中的数字就可以分为若干个不同长度的基本单元，不同的单元开始自己演化循环，互不干扰。而这种基本单元多达92种，康威全部给找出来了。康威把这92种基本单元比拟成了化学中的发射性元素，而单元之间互相转化的过程就变成元素衰变转化的过程。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pic2.zhimg.com/80/v2-2a74cdad3fde9246ef46867acb428b29_720w.jpg" class="img-fluid figure-img"></p>
+<figcaption>enter image description here</figcaption>
+</figure>
+</div>
+<p>(mathworld上关于“宇宙论定理”的页面局部)</p>
+<p>上图中，所有元素按序号倒序排列，演化顺序是从大的序号“衰变”为较小的序号。比如：</p>
+<p>3-13-1113-3113-…</p>
+<p>abundance是“丰度”的意思，意思是这个“元素”在一百万长度中的数列中出现的平均次数。</p>
+<p>我看到这里，我真的为康威的巧思拍案叫绝。而且之后，我马上有一些联想到的未解决的问题：</p>
+<p>数列第一项如果有4-9这些数字会如何？</p>
+<p>数列第一项有4个以上的1，2，3会如何？</p>
+<p>有没有其他数字进制下的外观数列？</p>
+<p>二进制下的外观数列有没有什么好玩的性质等等？</p>
+<p>这些问题是马上浮现在我脑中的，我也希望听众中的有心人能自己研究一下。</p>
+<p>康威之后，目前还没有哪个数学家能把数学玩的这么好玩的，所以康威去世是全世界数学爱好者的一大损失。作为康威的粉丝，我自己在未来节目中，肯定还会时不时的介绍康威的一些数学游戏。让我们一起缅怀约翰·康威，这位具有极其幽默感的伟大的数学大玩家，下期节目再见。</p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/your-website-url\.example\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

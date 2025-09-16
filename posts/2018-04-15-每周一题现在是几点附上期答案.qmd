@@ -1,0 +1,42 @@
+---
+title: '每周一题：现在是几点？（附上期答案）'
+date: "2018-04-15"
+categories:
+  - "Uncategorized"
+---
+
+<h1>本期题目：现在是几点？（附上周答案）</h1>
+
+![BN-XY801_MATH_J_20180322151904](https://dalaoliblog.wordpress.com/wp-content/uploads/2018/04/bn-xy801_math_j_20180322151904.jpg)
+
+某个白天你漫步在一个公园。你看了下手表，发现时针和分针准确的位于某一个分钟刻度上，且时针的分钟刻度恰好比分针多18格(即时针刻度读数较大)。问现在是几点？
+
+<hr />
+
+<h1>上期答案：</h1>
+
+上周题目是：
+
+<blockquote>![6-dots.jpg](https://dalaoliblog.wordpress.com/wp-content/uploads/2018/04/6-dots.jpg)
+
+平面上有如上图所示的6个点，请你把这些点用直线连接起来（线不能延长出头），但不能构成三角形。规定只考虑由这个6个点作为顶点构成的三角形。问最多可以连几条线？
+
+(请直接在文章末尾留言回复答案）</blockquote>
+
+答案是：9条线，如下图所示：
+
+![Maximizing-Links-Solution.png](https://dalaoliblog.wordpress.com/wp-content/uploads/2018/04/maximizing-links-solution.png)
+
+恭喜**Stones答对**了！有些答10条的读者，你需要检查一下图了：）。
+
+**大老李聊数学”第二季已开播！**识别如下二维码即可：
+
+![Screen Shot 2018-04-08 at 4.36.33 PM.png](https://dalaoliblog.wordpress.com/wp-content/uploads/2018/04/screen-shot-2018-04-08-at-4-36-33-pm.png)
+
+下周再见！
+
+<hr />
+
+关注“大老李聊数学”公众号
+
+![qrcode_for_gh_130ed4d8263c_344](https://dalaoliblog.wordpress.com/wp-content/uploads/2017/09/qrcode_for_gh_130ed4d8263c_344.jpg)

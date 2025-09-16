@@ -1,0 +1,38 @@
+---
+title: '番外篇： “黎曼猜想”节目的修正和注释'
+date: "2018-09-30"
+categories:
+  - "音频讲稿"
+---
+
+番外篇： “黎曼猜想”节目的修正和注释
+
+大家好，我是大老李。大家知道最近我跟汪诘老师合作了一期节目，如果你还没听过，请赶紧听一下我已经转采的这期节目。那期节目的文稿是我先写，汪诘老师后续添加和修改了很多内容。我很佩服汪诘老师能把我的文字能改的如此生动，而且讲的时候还很吸引人。这几天我在喜马拉雅的订阅数是蹭蹭的蹿，再次感谢汪诘老师帮我做了一个大广告。
+
+不过因为那期节目做得比较匆忙，我发现我审稿不太仔细，有多处不正确或用词不当处的地方。另外我看节目下方评论很多听众表示“只能感受下黎曼猜想的气质”，听不懂，所以我想用一点时间，给大家解释那期节目的几个有意思的地方，相当于一个更正和语音注释。
+
+首先，那期节目中，我们说：哥德巴赫猜想很不重要，这有点过分。其实歌德巴赫猜想确实在希尔伯特提出的23个问题中间出现，而且恰好是在第8个问题里，跟黎曼假设一起出现的。
+
+不过希尔伯特也清楚的提到，哥德巴赫猜想的优先级是排在黎曼猜想后面的。另外更重要是，不像黎曼假设是能“下金蛋的鸡”，证明哥德巴赫猜想并不能帮我们得出其他太多有用结论。倒是黎曼假设能推出所谓“弱哥德巴赫猜想”。“弱哥德巴赫猜想”是说：”任一大于5的<a href="https://zh.wikipedia.org/wiki/%E5%A5%87%E6%95%B0">奇数</a>都可以表示为三个奇<a href="https://zh.wikipedia.org/wiki/%E7%B4%A0%E6%95%B0">素数</a>之和。这个猜想现在可以叫定理了，因为它已经在不用黎曼假设的情况下被证明了。但从这一点你就你能看出黎曼假设多有用了。另外虽然黎曼假设不能直接推出正版的哥德巴赫猜想，但是它历史上已经对正版哥德巴赫猜想的研究起过很多作用。
+
+接下来，关于那个有名的数学梗：“全体自然数之和是-1/12”。我是去年才发现这个梗是如此出名，网络上的相关的文章和讨论是如此之多，简直成了“月经”贴。不过这个结论在科学里不是什么用也没有，它确实与量子物理和弦理论有关，各位有兴趣大可以上网看看。这里我要吐槽一下知乎，知乎上有关数学的问题，高赞的帖子往往是那种公式最多的帖子，其实我上知乎并不期望看教科书式的回答，所以我希望知乎上能出现更多把数学问题用简单语言表达出来的回答。
+
+再有人问：节目中说黎曼假设证明后，可以帮我们了解质数的分布。但质数的分布到底是啥？虽然我们没有证明黎曼假设，但我们已经知道那么多质数，所以分布模式我们可以猜一下吗。确实科学家猜了一下并把这种分布模式猜测叫“对关联假设”。而且科学家发现这种黎曼<span class="katex--inline"><span class="katex"><span class="katex-mathml">ζ\zeta</span><span class="katex-html"><span class="base"><span class="strut" style="height:.88888em;vertical-align:-.19444em;"></span><span style="margin-right:.07378em;" class="mord mathit">ζ</span></span></span></span></span>函数零点分布模式与量子的能级分布很像。这里隆重打个广告，各位可以去听听我之前的一期节目叫“看物理学家进攻黎曼假设”，里面有比较详细的解释。
+
+后面，节目中说“目前证明黎曼假设的最佳结果是证明至少有40%”的零点在临界线上，目标是证明“100%”。但这里说目标是证明100%其实欠妥。因为其实数学家已经证明了有无穷多个零点在临界线上，所以如果有有限多个零点不在临界线上，那我们就可以说“几乎100%”的零点都在临界线上，但这样黎曼假设其实还是不成立。哪怕只有一个零点不在临界线上，其他所有无穷个零点都在临界线上，黎曼猜想也是被否定了。所以这里应该说“目标是证明全部零点”，而不应该说“100%”。这里再打个广告，各位可以听我之前一起节目叫“数学用语系列，我”几乎“懂了“。那期节目对”几乎”这个词在数学中的使用有些介绍。
+
+节目后面还提到了一个关于质数的命题，”其反例在e的700多次方之后“，其实这个命题就是关于质数定理的。我们知道质数定理里我们得到了一个关于小于自然数N有多少个质数的估计函数。但是有人统计了一下N到几千万以内的情况，比对这个估计函数与实际情况的差值，发现估计函数的结果总是多一点。于是有人猜想，是不是质数定理的这个估计函数永远比实际值要多点，如果是这样，我们应该考虑从估计函数里去减掉一点对不对？
+
+但是1914年，李特伍德（**John Edensor Littlewood**）证明，这个函数与实际情况的大小关系必然会在某个位置发生转换，而且转换将发生无穷多次！于是，人们试图去找这个转换发生的位置，现在最好的结果就是知道这个转换会在<span class="katex--inline"><span class="katex"><span class="katex-mathml">e728e^{728}</span><span class="katex-html"><span class="base"><span class="strut" style="height:.814108em;vertical-align:0;"></span><span class="mord"><span class="mord mathit">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">7</span><span class="mord mtight">2</span><span class="mord mtight">8</span></span></span></span></span></span></span></span></span></span></span></span></span>次方左右发生一次，但不知是否第一次。但已经验证过<span class="katex--inline"><span class="katex"><span class="katex-mathml">101910^{19}</span><span class="katex-html"><span class="base"><span class="strut" style="height:.814108em;vertical-align:0;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span></span></span>前没有发生转换，你想想看这有多可怕。
+
+最后提到了两个有关有关体现黎曼假设难度的例子。其中第一个例子是我不久前的一期节目：“有意思的163-关于黑格纳数”里提到的。
+
+第二个例子，有关“德布鲁因纽曼常数”的，这个常数的意思大家别管了，大老李也不懂，但是希望大家能听懂这个常数与黎曼假设的关系。这个常数根据大于0，小于0或等于0的三种情况，决定了黎曼假设的真假，所以我们可以通过找出这个常数的值去证明或推翻黎曼假设。
+
+其中如果这个常数小于**等于**0，则黎曼假设为真。但“不幸”的是，今年1月，陶哲轩和另一位研究者，否决的这个常数小于0的可能。另外，节目里我们还提到这个常数的上限是½，但我又考证下，这个常数的上限在今年4月已经被改进到0.22。所以这个常数目前我们所知就是处于大于等于0，小于等于0.22，这么小的范围。
+
+你会发现这个区间里大部分是属于否定黎曼假设的范围，因为黎曼假设仅剩下在这个常数=0的情况下成立，就我来看好像黎曼猜想更可能是错的。所以你说黎曼假设难不难，你很想证明它是真的，但现在看上去更偏向假的！
+
+另外，音频最后提到了哥德尔定理，我之前也做过两期有关哥德尔定理的文章，欢迎大家看看。
+
+好了，以上扯了那么多，希望你对你有帮助。再见！

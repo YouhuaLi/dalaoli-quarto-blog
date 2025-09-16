@@ -1,0 +1,9 @@
+---
+title: '有限单群周期表'
+date: "2018-10-08"
+categories:
+  - "Image"
+  - "每周一题"
+---
+
+![periodic-table-of-groups-page-001](https://dalaoliblog.wordpress.com/wp-content/uploads/2018/10/periodic-table-of-groups-page-001.jpg)

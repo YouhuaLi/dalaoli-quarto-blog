@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2025-09-13">
+
+<title>数学家推翻90年猜想：当两个结相遇，解结数不再是简单的加法 – dalaoli_quarto_blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">dalaoli_quarto_blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">数学家推翻90年猜想：当两个结相遇，解结数不再是简单的加法</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">每周一题</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 13, 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>让我们聊一个最近在<strong>纽结理论</strong>中非常有趣的发现。2025年6月30日，内布拉斯加大学的两名科学家在预印本网站arXiv上发表了一篇<a href="https://arxiv.org/abs/2506.24088">论文</a>，标题为《解结数在连接和下是非加性的》（Unknotting number is not additive under connected sum）。这篇论文成功推翻了一个将近90年的猜想，并提供了一个反例：将两个结连接起来，形成一个更大的新结，但解开这个新结，居然比分别解开原来两个结要更容易。</p>
+<h3 class="anchored">
+什么是“纽结”和“解结数”？
+</h3>
+<p>首先，我们来快速回顾一下纽结的基本概念。在数学中，纽结指的是一个<strong>闭合的绳环</strong>。最简单的结是<strong>平凡结</strong>，就是一个没有任何交叉的圆圈。而最简单的非平凡结则是<strong>三叶结</strong>，它有三个交叉点。你可以自己动手试一试，有且仅有一个或两个交叉点的绳环，无论怎么变动，最终都能被拉直成一个圆圈，所以它们都属于平凡结。</p>
+<p><img src="https://files.mdnice.com/user/5405/aa656e64-6568-49f5-aff4-d524c329fe23.png" class="img-fluid"></p>
+<p>(上图：一个三叶结，交换任意交叉点上的绳子上下关系，其就变为平凡结)</p>
+<p>在区分不同纽结时，<strong>交叉点数量</strong>(crossing)是一个非常重要的指标。但我们还需要一个指标来衡量一个结的复杂程度，那就是<strong>解结数</strong>（unknotting number）。这个概念直观且容易理解：</p>
+<ol>
+<li>
+把一个结投影到平面上，形成一个交叉点最少的图形。
+</li>
+<li>
+在每个交叉点，你都会看到两股绳子，一股在上面，一股在下面。
+</li>
+<li>
+现在，你可以选择任意一个交叉点，把上面的绳子和下面的绳子位置对调。
+</li>
+<li>
+你的目标是，通过最少的对调次数，把这个结变成最简单的平凡结。
+</li>
+</ol>
+<p><strong>解结数</strong>就是你完成这个目标所需要的<strong>最少对调次数</strong>。例如，<strong>三叶结的解结数是1</strong>。不信的话，你可以画一个三叶结的图，然后对调任意一个交叉点，你会发现，它立刻就变成了平凡结。</p>
+<p>虽然解结数的概念很简单，但计算它却非常困难。目前，只有少数特定类型的结有简单的公式可以计算解结数，而对于大多数结，我们只能依赖计算机进行暴力搜索。到目前为止，人类只确定了交叉点数在9个及以下的所有纽结的解结数。对于更复杂的结，我们通常只能找到一个解结数的<strong>上限</strong>。</p>
+<h3 class="anchored">
+纽结的“加法”——连接和
+</h3>
+<p>接下来，我们介绍另一个关键概念：两个纽结的<strong>加法</strong>，也就是<strong>连接和</strong>（connected sum）。这个操作非常直观：</p>
+<ol>
+<li>
+将两个纽结分别剪开一个点，得到四个绳头。
+</li>
+<li>
+将第一个结的两个绳头与第二个结的两个绳头分别连接起来。
+</li>
+<li>
+这个连接过程不能产生新的交叉点。
+</li>
+</ol>
+<p>通过这种方式，两个小结就合并成了一个新的大结。</p>
+<p><img src="https://files.mdnice.com/user/5405/d278dcc8-5207-4fe1-a4d7-45f07ec6e52b.png" class="img-fluid"></p>
+<p>（连接和操作的一个实例，图片来自维基百科）</p>
+<p>这个操作引发了两个有趣的思考题：</p>
+<ul>
+<li>
+<strong>思考题一：</strong> 你剪开两个结的位置不同，或者把结上下翻转，会得到不同的新结吗？这是一个复杂的问题，在纽结理论中有更精确的定义来处理它。
+</li>
+</ul>
+<p><img src="https://files.mdnice.com/user/5405/43622abe-9fb4-4e0a-bd11-a72f17a0805c.png" class="img-fluid"></p>
+<p>（两个三叶结相加的图示。把某个三叶结上下翻转后再相加，会得到同样的结果吗？）</p>
+<ul>
+<li>
+<strong>思考题二：</strong> 两个纽结相加后，交叉点总数会变少吗？目前，数学家们猜想<strong>交叉点数是加性的</strong>，也就是相加后的交叉点数等于原来两个结的交叉点数之和。如果你能找到一个反例，推翻这个近百年的猜想，那将是一个了不起的发现！
+</li>
+</ul>
+<p>这种连接和的“加法”符合<strong>交换律</strong>，并且平凡结相当于“0”的角色，任何结加上平凡结，结果还是它本身。但需要注意的是，一个纽结加上它的镜像，并不能得到平凡结。1999年的一项定理证明，只有当两个结都是平凡结时，它们的连接和才是平凡结。</p>
+<p>我们还可以将纽结分为<strong>素结</strong>和<strong>合结</strong>。如果一个结不能被分解成两个或更多非平凡结的连接和，它就是<strong>素结</strong>，就像数论中的质数一样，是纽结世界的基本“构件”。</p>
+<h3 class="anchored">
+持续了将近90年的猜想被推翻了！
+</h3>
+<p>有了<strong>解结数</strong>和<strong>连接和</strong>这两个概念，数学家们自然会问：<strong>连接和是加性（additive）的吗？</strong> 也就是说，两个结连接起来后，新结的解结数是否等于原来两个结的解结数之和？</p>
+<p>早在1937年，就有人提出了这个猜想。在1977年的一本书中，这个猜想被更明确地阐述出来。我们很容易证明，新结的解结数<strong>不会多于</strong>原来两个结的解结数之和，因为我们总可以通过分别解开这两个小结来解开大结。</p>
+<p>但问题在于：有没有可能新结的解结数会<strong>少于</strong>原来两个结的解结数之和呢？这就像是连接之后，两个结之间的纠缠互相抵消，反而让整个结构变得更容易解开。</p>
+<p>在很长一段时间里，数学家们都没有找到这样的例子，所以这个猜想一直被认为是正确的。然而，在今年6月发表的这篇论文中，内布拉斯加大学的两位研究者终于找到了一个<strong>反例</strong>，从而推翻了这个至少有50年历史的猜想。他们甚至证明，有了这个反例，我们可以构造出无穷多组符合这种情况的纽结。</p>
+<h3 class="anchored">
+反例的细节
+</h3>
+<p>那么，这个反例是什么样的呢？</p>
+<p>研究者们找到的这两个小结都是<strong>七个交叉点</strong>的结，并且它们互为镜像。这两个结都属于一类特殊的纽结，叫做<strong>环面纽结</strong>(torus knot)，因为它们可以完美地缠绕在一个轮胎形状的环面上。环面纽结的解结数可以通过一个简单的公式计算出来，这两个七交叉点环面纽结的解结数都是<strong>3</strong>。</p>
+<p><img src="https://files.mdnice.com/user/5405/61861e1e-6627-4205-95cb-c7f9a0a59920.png" class="img-fluid"></p>
+<p>（本次反例就是以上这个纽结，(7, 2)-torus knot，加上其镜像所得。该纽结的解结数为3。图片来源：https://en.wikipedia.org/wiki/71_knot#/media/File:Blue_7_1_Knot.png）</p>
+<p>当这两个解结数都为3的纽结连接起来，它们形成了一个有<strong>14个交叉点</strong>的大结。根据原来的猜想，这个大结的解结数应该是<span class="math inline">\(3+3=6\)</span>。</p>
+<p>然而，研究者们发现，这个14交叉点的大结，通过一系列操作，最终的解结数是<strong>5</strong>，而不是6。</p>
+<p>具体来说，他们证明：</p>
+<ol>
+<li>
+这个14交叉点的大结，可以通过<strong>两次</strong>绳子对调，变成另一个14交叉点的大结。
+</li>
+</ol>
+<p><img src="https://files.mdnice.com/user/5405/92e63f4b-632a-47ca-aac4-22dc7e62d068.png" class="img-fluid"></p>
+<p><img src="https://files.mdnice.com/user/5405/5bc52298-7682-4894-ae01-ea4dd6b50a5d.png" class="img-fluid"></p>
+<p>(第一步过程的图示。图片来自原作者论文)</p>
+<ol start="2">
+<li>
+这个新的14交叉点大结，只需要<strong>一次</strong>对调，就可以变成一个有15个交叉点的结（没错，对调后交叉点数量变多了）。
+</li>
+</ol>
+<p><img src="https://files.mdnice.com/user/5405/9800fa51-bd9d-4169-a8f0-362be2fcf361.png" class="img-fluid"></p>
+<p>(第二步过程的图示。图片来自原作者论文)</p>
+<ol start="3">
+<li>
+这个15交叉点的结，虽然看起来更复杂，但它的解结数已知为<strong>2</strong>。
+</li>
+</ol>
+<p>因此，最初的14交叉点大结的解结数最多为 <span class="math inline">\(2+1+2=5\)</span>。这证明了它的解结数小于 <span class="math inline">\(3+3=6\)</span>。这个发现之所以了不起，是因为它是在另一个研究项目中被<strong>意外</strong>发现的。</p>
+<h3 class="anchored">
+持续的疑问与新挑战
+</h3>
+<p>这个反例的出现，虽然解决了旧问题，但同时也带来了许多新的疑问：</p>
+<ul>
+<li>
+<strong>第一个问题：</strong> 还有没有其他类型的反例？这个反例中的两个结互为镜像，这是否是唯一的反例类型？感觉上应该不止这一种。
+</li>
+<li>
+<strong>第二个问题：</strong> 反例中的那个14交叉点大结的<strong>确切</strong>解结数是多少？我们刚才证明了它的解结数<strong>最多是5</strong>，但我们还没有证明它不可能是4。如果你能通过四次对调就解开它，那你将创造新的世界纪录！
+</li>
+</ul>
+<p><img src="https://files.mdnice.com/user/5405/6c21ec12-f58b-468b-860e-a20b5fe98387.png" class="img-fluid"></p>
+<p>(上图：根据以上结果，可知这个结的解结数最多是5，但可能是4吗？目前仍未知)</p>
+<p>纽结理论看似简单，但其中蕴含的问题却无比深刻。这个发现再次提醒我们，即使是看似基础的数学猜想，也可能被一个巧妙的反例所推翻。</p>
+<p>最后的思考题：</p>
+<p>以下这个15个交叉点的解结数是2，你能找出翻转哪两个交叉点的绳子，可以解开这个结吗？</p>
+<p><img src="https://files.mdnice.com/user/5405/f97b190f-bb95-4ce1-9f22-5bba85695248.png" class="img-fluid"></p>
+<p>参考链接：</p>
+<p><a href="https://www.newscientist.com/article/2487444-complex-knots-can-actually-be-easier-to-untie-than-simple-ones/">Complex knots can actually be easier to untie than simple ones</a></p>
+<p><a href="https://arxiv.org/abs/2506.24088">Unknotting number is not additive under connected sum</a></p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/your-website-url\.example\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

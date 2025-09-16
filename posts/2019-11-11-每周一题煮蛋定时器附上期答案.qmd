@@ -1,0 +1,120 @@
+---
+title: '每周一题：煮蛋定时器（附上期答案）'
+date: "2019-11-11"
+categories:
+  - "每周一题"
+---
+
+<h3 id="本期题目：煮蛋定时器">本期题目：煮蛋定时器</h3>
+
+题目来源：New Scientist
+
+![enter image description here](https://pcm.trplus.com.tw/650x650/sys-master/productImages/hc3/ha5/8982902046750/000000000016094654-gallery-01-20180108151806632.jpg)
+
+我希望煮个鸡蛋吃。我知道我应该恰好煮9分钟，但我只有两个分别可以计时4分钟和7分钟的定时器（或沙漏），请问我应该如何做，可以恰好煮9分钟鸡蛋？如果有多种方法，如何能使我越早吃到鸡蛋越好？
+
+请直接留言或发邮件至：dalaoliliaoshuxue @gmail.com 解答
+
+<hr>
+
+<h3 id="加餐题：逃离潜艇">加餐题：逃离潜艇</h3>
+
+<a href="https://fivethirtyeight.com">https://fivethirtyeight.com</a>
+
+一位参加过二战的美国海军舰长讲了这个故事：
+
+某次他出海执行任务后，想回到母港。但是他已知有一艘敌方潜艇恰好在他的舰艇与母港的中点位置。我方无法知道对方潜艇的位置和移动方向，但是敌方潜艇可以清楚的知道我方舰艇的位置和移动方向。
+
+假定敌方潜艇的目标是向我方潜艇靠近，并且只要敌方潜艇位于我方舰艇正下方，敌方潜艇就可以击沉我方舰艇。
+
+为了安全回到母港，我方舰艇的速度至少需要达到对方潜艇速度的多少倍？
+
+示意图：可能的敌方潜艇和我方舰艇的移动路线。直到我方舰艇够快，就可以在敌方潜艇赶上之前回到母港。
+
+![enter image description here](https://fivethirtyeight.com/wp-content/uploads/2018/07/boat_submarine.gif)
+
+请直接留言或发邮件至：dalaoliliaoshuxue @gmail.com 解答
+
+<hr>
+
+<h3 id="上周题目：牧师的生日">上周题目：牧师的生日</h3>
+
+<blockquote>
+一位主教在他的一个牧师朋友生日那天拜访了她。知道主教喜欢数字谜题，牧师告诉他，一个家庭刚刚加入她的教堂。
+
+“如果你把他们的三个年龄相乘，会得到2450，如果你把他们的年龄加在一起，你就得到你自己（主教）的年龄。”
+
+主教想了一会儿，说：“我还是不能确定这个家庭中每个人的年龄。”
+
+牧师回答说：“我比那个家庭的每个人都大。”
+
+然后主教就可以说出每个人的年龄。
+
+那天牧师多大了？
+</blockquote>
+
+答案：50岁（那天是牧师的生日）。理由如下：
+
+对2450作因子分解 可得：<span class="katex--inline"><span class="katex"><span class="katex-mathml">2450=1×2×5×5×7×72450=1 \times 2 \times 5 \times 5 \times 7 \times 7</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">2</span><span class="mord">4</span><span class="mord">5</span><span class="mord">0</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">7</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">7</span></span></span></span></span>。里面任取三个因子的组合之积都是2450。因为主教一开始猜不出他们的年龄，则探索所有因子组合后，可知以下两组因子组合之和是相等的：
+
+<span class="katex--inline"><span class="katex"><span class="katex-mathml">5+10+49=7+7+50=645+10+49=7+7+50=64</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">4</span><span class="mord">9</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">7</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">7</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">5</span><span class="mord">0</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">6</span><span class="mord">4</span></span></span></span></span>
+
+因为当牧师说我比那个家庭的年龄都大，而主教显然知道牧师的年龄，则 仅当牧师年龄为50岁时，主教可以说出那个家庭的每个成员年龄，所以牧师那天应该50岁了。
+
+<hr>
+
+<h3 id="上期加餐题：拿走硬币的游戏">上期加餐题：拿走硬币的游戏</h3>
+
+来源：<a href="http://www.theguardian.com">www.theguardian.com</a>
+
+<blockquote>
+今天，我们要玩一个游戏。它在一个具有无限行数和列数的网格上玩，并且它从网格左上角的三个硬币开始，如下图所示。
+
+![enter image description here](https://pic2.zhimg.com/80/v2-94f18ee77cc883b60c4632cda5c7d341_hd.jpg)
+
+游戏只有一步。您可以随时拿走一枚硬币，并将其替换为两个硬币，一个位于被拿走硬币的正下方的单元中，另一个位于拿走的硬币右侧的单元中。例如，拿走最上方右边的硬币，网格现在将变为如下图所示：
+</blockquote>
+
+![enter image description here](https://pic3.zhimg.com/80/v2-fecfe4f45f73d7a92385d2c83773660a_hd.jpg)
+
+<blockquote>
+规则仅此一条。如果硬币下方的单元格和硬币右侧的单元格是空的，则只允许以上述方式删除硬币。如果某硬币右侧或下方格子里有其他硬币，它就不能被拿走。
+
+让我们用红线分隔左上角的四个单元格来重新绘制初始网格。这四个细胞被称为“银行”。
+
+![enter image description here](https://pic4.zhimg.com/80/v2-d4ad185f75081b332096f11d31bd4043_hd.jpg)
+
+现在，请你设计一个策略，使你可以拿走一开始“银行”里有的三枚硬币。或者证明不存在这样的策略。
+
+提示 ：你可以在这里玩这个游戏的在线版本：<a href="http://1t.click/a7RB">http://1t.click/a7RB</a>
+</blockquote>
+
+答案：不存在这样的策略。有多种证明方法，一种比较简明的方式是用衡量硬币“币值”的方法考虑：
+
+![enter image description here](https://i.guim.co.uk/img/media/d67de2b0b92dd1d0db0ec4c143a5c88bc862345e/0_122_1728_1224/master/1728.jpg?width=620&quality=45&auto=format&fit=max&dpr=2&s=93c1a2496d67e530e71c7d35a85fd984)
+
+如上图，对每个格点，我们赋予其一个“币值”。其规律是每一个的币值都是其左边或上边格子的币值的一半，左上角的那格币值赋予1。
+
+按游戏规则，当我们讲一个硬币用其右边和下边的格子中的硬币代替后，总的币值没有变化。用简单的等比数列求和公式，可以算得整个平面的总币值是：4。
+
+开始时，左上角“银行”所属四格的总币值是：<span class="katex--inline"><span class="katex"><span class="katex-mathml">1+1/2+1/2+1/4=9/41+1/2+1/2+1/4=9/4</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mord">/</span><span class="mord">2</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mord">/</span><span class="mord">2</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mord">/</span><span class="mord">4</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">9</span><span class="mord">/</span><span class="mord">4</span></span></span></span></span>。“银行”以外所有格子的币值是：<span class="katex--inline"><span class="katex"><span class="katex-mathml">4−9/4=7/44-9/4=7/4</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">9</span><span class="mord">/</span><span class="mord">4</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">7</span><span class="mord">/</span><span class="mord">4</span></span></span></span></span>
+
+左上角三个硬币的总币值是：<span class="katex--inline"><span class="katex"><span class="katex-mathml">1+1/2+1/2=21+1/2+1/2=2</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mord">/</span><span class="mord">2</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mord">/</span><span class="mord">2</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">2</span></span></span></span></span>
+
+确定以上这些事实后，事情就简单了。当我们想要将左上角的三枚硬币都拿走时，意味着我们需要在“银行”以外的格子内找到总币值为2的格子，但是银行以外的格子总币值只有7/4，小于2，所以移空银行是不可能的！
+
+<hr>
+
+大老李也出视频了！在<a href="https://www.bilibili.com/video/av75154127#reply2098096534">Bilibili</a>，<a href="https://www.ixigua.com/i6757402315478532619/">西瓜视频</a>，喜马拉雅和<a href="https://www.youtube.com/channel/UCPG6CMULjrZ0Z-t68t3-R0g">油管</a>搜索:
+
+“看大老李聊数学”
+
+即可观看！
+
+<hr>
+
+<h4 id="喜马拉雅fm：大老李聊数学”：">喜马拉雅FM："大老李聊数学”：</h4>
+
+![enter image description here](https://pic1.zhimg.com/80/v2-8d13d5180712a2921dbf634a4ab3ce78_hd.jpg)
+
+<h4 id="关注“大老李聊数学”公众号：-dalaoli_shuxue">关注“大老李聊数学”公众号： dalaoli_shuxue</h4>

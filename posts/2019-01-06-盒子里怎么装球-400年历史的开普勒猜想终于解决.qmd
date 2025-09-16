@@ -1,0 +1,146 @@
+---
+title: '盒子里怎么装球？-- 400年历史的开普勒猜想终于解决'
+date: "2019-01-06"
+categories:
+  - "音频讲稿"
+---
+
+大家好，我是大老李。今天聊的一个问题是大老李小时候就知道的一个历史十分悠久的猜想，而它终于在历时400多年后，于在2017年被宣告正式解决。我想了下小时候比较出名猜想中，到现在能被解决的大概仅此一个。庞加莱猜想和5边型单密铺问题也算，但都没有今天这个问题出名，这个问题就是：开普勒猜想。
+
+开普勒猜想最早出现在1611年，德国天文学家兼数学家开普勒写的一本科普小册子里：论六角形的雪花（On the six-cornered snowflake）里。这个开普勒现在最出名的当然是开普勒行星运动三大定律，但他看来是天文、地理都爱好，他也研究过雪花的形状，所以写了这本关于雪花的小册子。
+
+<figure class="wp-block-image">![enter image description here](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Johannes_Kepler_1610.jpg/440px-Johannes_Kepler_1610.jpg)</figure>
+
+开普勒，1571年12月27日－1630年11月15日 ，图片来源：维基百科
+
+在这本小册子里，开普勒提到了他与英国数学家托马斯‧哈利欧特曾有过通信，通信中他们曾经讨论过当时英国著名冒险家沃尔特·雷利（Sir Walter Raleigh）提出的一个问题：怎么堆放加农炮弹最有效率？
+
+这个雷利是当是非常出名的冒险家，也博学多才，帮英国开拓了不少美洲的殖民地。作为一个船长，他当然也关加农炮单怎么堆方的问题。当时的加农炮弹大家电影里都看到过，都是一个个大铁球。在船上狭小的空间内，我们当然希望加农炮弹堆的密度越大越好。用稍微数学语言来表达就是：在一定的空间内，填充相同大小的小球，怎样的填充方式可以使填充密度最大？
+
+<figure class="wp-block-image">![enter image description here](https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Sir_Walter_Raleigh_oval_portrait_by_Nicholas_Hilliard.jpg/440px-Sir_Walter_Raleigh_oval_portrait_by_Nicholas_Hilliard.jpg)</figure>
+
+（上图：沃尔特·雷利爵士（Sir Walter Raleigh，1552年－1618年10月29日），英国伊丽莎白时代著名的冒险家。同时也是位作家、诗人、军人、政治家，更以艺术、文化及科学研究的保护者闻名。图片来源：维基百科）
+
+<figure class="wp-block-image">![enter image description here](http://pic31.nipic.com/20130719/9422601_112548787000_2.jpg)</figure>
+
+这个问题一听你就会想：这还不容易吗？随便去找一个卖水果的摊位，看看老板怎么堆苹果或橘子的？虽然你不一定能在脑子里想清楚具体的对法，但你直觉里能感觉到水果店老板的堆法就是最优的。
+
+（上图：水果店老板最在意“球体填充”问题）
+
+<figure class="wp-block-image">![enter image description here](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Closepacking.svg/1920px-Closepacking.svg.png)</figure>
+
+这里我很推荐如果你家里有很多乒乓球或网球的话赶紧找出来试试看，相信你很快能还原水果店老板的堆法。如果你稍微尝试一下，你会发现实际上有两种堆法，按层从下到上来看：第一层肯定是所有小球挤在一起，每个球周围贴近6个球。上面一层每个球都放在底层球构成的“凹陷”当中，而且你会发现第二曾所有球还是与6个球相贴，所以你会很满意这种堆法。第三层你当然还是会把球放在第二层球留下的凹陷当中，但你会发现有一种方法会使第三层的球与第一层完全对齐，这个堆放呈现ABABAB这种循环模式。第三层还有一种摆法可以与第一层有所错位，但此时第4层又会与第一层对齐，所以此时会有ABCABC这种循环模式。
+
+（上图：左边：面心立方填充；右边：六方最密填充。图片来源：维基百科）
+
+数学里，把第一种ABAB循环的摆法称为：六方最密堆积（hexagonal close packing），而ABCABC这种模式称为“面心立方”堆积（face-centered cubic）。据说水果店老板经常用六方最密，而水兵堆炮弹经常使用面心立方堆积。那这两种堆法那种密度更大？其实你稍微观察看，找出堆法的重复模式，计算结果是一样的，具体数字是<span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml">π/18\pi/\sqrt{18}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2061em;vertical-align:-.25em;"><span style="margin-right:.03588em;" class="mord mathit">π</span><span class="mord">/</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.956095em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"><span class="mord" style="padding-left:.833em;"><span class="mord">18</span></span></span><span class="" style="top:-2.9161em;"><span class="pstrut" style="height:3em;"><span class="hide-tail" style="min-width:.853em;height:1.08em;"></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.083905em;"><span class=""></span></span></span></span></span></span></span></span></span>，约等于0.74。
+
+形象的说，就是给你一个够大的盒子和很多同样的小球，你在盒子再怎么装小球，你也只能填满盒子约74%的空间，所以这个问题也别称为：球体填充问题(sphere packing)。
+
+一般人都会觉得那两种填充法怎么看都是最佳了，但数学家是一群“杠精”：没有证明就不能称为结论。所以开普勒在这本1611年的小册子里提出了这个球体填充问题，并且猜想面心立方堆积就是最佳填充，这个猜想史称：开普勒猜想。
+
+1611年那可是很早的时间啊，40年后牛顿才出生。但这个问题要经过笛卡尔、牛顿、莱布尼茨、伯努利家族、欧拉这些大牛的时代之后，到1831高斯才有一个突破，高斯证明了：面心立方填充是周期性、有规律填充的方法中，密度最大的。
+
+你一听可能又说：那不就完成了，难倒不规则的填充密度可以更大？确实，直觉里当然会认为一样的小球，有规律的堆放要比不规则的对方效率好，但是你怎么证明呢？而且有些例子下，不规则的填充确实比规则填充好。比如有这么道智力题：有一个10*10的正方形，问你这个正方形里最多可以放进去多少个直径为1的圆？
+
+你的第一反应答案当然是100个。但是你若仔细想想，如果我第一排放10个圆，第二排的圆都塞进第一排的两个圆之间的空隙呢？虽然宽度会浪费点，但是高度能节省点。如果这样摆，最后高度能省出对一排的空间，那不是可能多放一点？这样一想问题一下子麻烦起来。你若有兴趣可以自己在纸上画画看，我可以告诉你正确答案是106（音频内误作105，抱歉！），确实不规则的摆法比规则摆法更优，而更麻烦的其实是如何证明106就是最大。
+
+<figure class="wp-block-image">![enter image description here](https://ds055uzetaobb.cloudfront.net/image_optimizer/c00fc08d04cf1078dd320300afaf9e774e73df34.jpg)</figure>
+
+（上图：10*10的正方形内可以放入106个直径为1的圆）
+
+正因为有以上这种例子，所以高斯证明完之后，谁也不敢说问题解决了，人们还需等待排除不规则填充的情况。后来希尔伯特还把它列入他著名的的20世纪23个重大数学问题中的第18个。
+
+1953年，匈牙利数学家费耶斯·托特 （László Fejes Tóth）提出了一个解决开普勒猜想的思路。这个思路是这样，假设有一种不规则填充，可以使得密度大于面心立方填充，那么不管这种不规则填充是什么样，填充完成的空间里，至少有一个局部区域，这个区域中的密度会大于面心立方填充。
+
+而他设计了一种方法，使得只要考察有限多种局部填充结构构，如果完整考察完这有限多种局部填充结构，且密度都低于面心立方，那么开普勒猜想就被解决的。但是他发现需要考察的局部结构数量太多了，1953绝没有一种计算机可以处理的过来，人力更不可及。
+
+<figure class="wp-block-image">![enter image description here](https://upload.wikimedia.org/wikipedia/commons/e/e4/L%C3%A1szl%C3%B3_Fejes_T%C3%B3th-1991-Head_shot.png)</figure>
+
+（上图：费耶斯·托特，12 March 1915 – Budapest, 17 March 2005)
+
+<figure class="wp-block-image">![enter image description here](http://cdn.sci-news.com/images/2017/06/image_4960-Kepler-Conjecture.jpg)</figure>
+
+到1992年，时年34岁，在密歇根大学任教的托马斯·黑尔斯（Thomas Hales）认为时机成熟，他决定循着托特的建议使用计算机来证明开普勒猜想，他找到了他的一个学生弗格森做他的助手。黑尔斯先是经过一些简化工作，尽量减少需要考虑的局部构型。但即便简化后，还是有超过5000个局部构型需要考察，而对每一个构型，都需要进行一次“线性规划”运算。线性规划是一种对很多变量的线性方程考察极值的一种方法，这种方法的计算量是很大的。黑尔斯面临的是大约10万次的线性规划求解。
+
+（上图：托马斯·黑尔斯在演示球体填充问题，拍摄于1990年代。）
+
+所以，即便使用了计算机，他们也用了整整6年时间，才宣告计算完成，最终产生了3G的计算数据和200页的相关程序说明。黑尔斯的这个证明是很不寻常的，这是继四色定理之后，又一个主要靠计算机完成的数学证明。
+
+当时权威期刊”数学年刊“（Annals of Mathematics）成立了一个12人的论文评议小组，组长就是当年还健在的，已经84岁的费耶斯托特。评议小组一致同意在数学年刊上登载这篇论文。又过了4年，到2003年，评议小组给出的最终结论是：他们有99%的把握，这个证明是正确的，剩下的1%，就是他们没法100%确定电脑程序没有bug，运行过程中也没有出现错误等等。这也是数学家怕了，四色定理被宣布证明之后就有一些争议，所以数学家对计算机的证明显得格外谨慎。
+
+黑尔斯为了弥补这最后的1%，想了一个新的办法，这个办法就是把他的证明“形式化”，这样就可以用一些现成的软件工具去验证这个“形式化”的证明，这种软件就要“自动证明检查”（automated proof checking）软件。什么叫形式化的证明呢？有一种数学流派就叫形式主义，形式主义认为，数学的命题可以完全脱离其实际指代的对象而存在，而那些证明仍然是成立的。
+
+借用希尔伯特曾经打过的一个比喻：比如欧几里得几何里有5大公设，过两点有且仅有一条直线，任意线段都能延伸成一直线等等。希尔伯特说，如果你把5大公设里的点、线、面，等等都替换成任何其他符号或者名词，欧几里得几何还是成立的。比如，你说：“过两个桌子有且仅有一张床”，“任意筷子都能延伸成一张床”等等。如此把五大公设这样重写一遍，是不影响后面的推理的，照样可以推出勾股定理，乃至整个欧式几何。
+
+不管你认不认可希尔伯特的说法，反正这种对数学的看法自成一派，称为形式主义。形式主义的数学证明在后来有一个意外的好处就是：机器可以读懂这种证明。比如你让计算机直接去读勾股定理的证明，计算机肯定看不懂；但如果你输入的是类似：“因为a且b，所以c”之类的语句，机器就能看懂了，而且机器甚至于可以检验你的推理过程是否正确！因为机器完全不用管a,b,c到底是啥，机器只要根据我们事先输入的规则，逐步检验推理过程是否符合规则即可。
+
+<figure class="wp-block-image">![enter image description here](https://pic2.zhimg.com/80/v2-2b7dfd7a186b9523123ed1d5bdd726e9_hd.jpg)</figure>
+
+2000年前后，已经有一系列自动证明验证软件发明出来了，黑尔斯从2003年启动一个开源群体协作软件项目<a href="https://github.com/flyspeck/flyspeck">flyspeck</a>，其想法就是把他的证明重新改写成形式化的证明，交由自动证明软件检查。但是把一个人能看懂的证明改写成机器能看懂的形式化证明是一件极其冗长和枯燥的过程。如果你去看看形式化证明，都是一些如同软件代码一样的东西。黑尔斯在启动项目时就预估，这个项目要完成大概需要20年！
+
+（上图：形式化证明的代码，摘自FlySpec项目）
+
+但好在最近几年软件协作方面有了很好的网站github，很多人志愿加入这个项目，flyspeck项目最终于2014年8月10日正式宣布完成，用时约11年。2015年，黑尔斯和21个协作者提交了最终形式化证明开普勒猜想的论文，2017年5月，这个证明最终被评议通过。至此，开普勒猜想，经过406年的时间，终于告别猜想的帽子，成为一个定理！而黑尔斯也从34岁，熬到59岁，完成了他个人数学研究的一个重大使命。
+
+<figure class="wp-block-image">![enter image description here](https://pic3.zhimg.com/80/v2-6da41a743b2041be4ebff4d7614a74f2_hd.jpg)</figure>
+
+三维空间的开普勒猜想解决了，数学家当然也考虑过其他维度的球体填充问题。一个有趣的问题是：维度越多，你觉得球体填充密度是越大还是越小？我的直觉是越大，因为感觉维度越多，球体可以互相靠近的方向越多，所以可以塞的越满嘛，但是恰恰相反，维度越多，球体填充密度就会越来越低，而且无限趋向于0 。
+
+（上图：1维到3维的填充密度比较，是逐步递减过程。图片来源：Henry Cohn，IAP Math Lecture Series）
+
+原因的话可以从两方面体会，一个是你可以体会下平面上用圆填充是不是会比盒子里用球填充更密一点？
+
+另一方面，有个有关高维度空间中物体的性质就是：维度越高，其中的物体的体积就越集中在物体的“外壳”或叫边界上。体积越靠近外壳，小球虽然挤在一起，看上去很多，但它们包裹住的体积占总体积比例是很小的。总之高维空间是很奇怪的空间，四维空间里的水果店老板会很郁闷，看上去来了一个大箱苹果，但是里面真正苹果所占体积却很小。
+
+那高维空间的球体是否可以参考三维的对称性的填充方法，自然推广出去呢？结果完全不行，目前对3维以上的球体填充问题，人们只得到一些填充密度的下限和上限，没有完全能确定的，但是除去两个维度：8维和24维。8维和24维空间的最佳填充方案已经找到了。
+
+<figure class="wp-block-image">![enter image description here](https://pic4.zhimg.com/80/v2-073c6cfb39a55f7464cf34e95f7500c7_hd.jpg)</figure>
+
+（上图：横轴：维度；纵轴：log(填充密度)。红线：已知下限；绿线：已知上限；蓝线：已知最佳填充）
+
+听到这里，你是否感觉这两个维度数字似曾相识？对了！大老李之前的一期有关“有限单群分类定理”的节目中，几乎说过同样的话，那就是关于“亲吻数问题”。亲吻数问题是问：一个球体，最多可以与多少个同样大小的其他球体相切？亲吻数问你一听就会发现与球体填充问题非常相关，因为如果要使球体填充的足够紧密，尽可能使一个球与其他很多球相接触感觉是不错的。
+
+<figure class="wp-block-image">![enter image description here](https://pic3.zhimg.com/80/v2-eb1c198ad392cf7d8d9eb139bf3ed44e_hd.jpg)</figure>
+
+（上图：三维空间内一个球最多与12个同样的球相切，因此3维的的亲吻数是12。图片来源：维基百科）
+
+亲吻数问题，目前4维空间以上情况，只对8维和24空间有了确切的结果。他们是由英国数学家约翰·利奇（John Leech）在1960年代确定，并把那种结构称为利奇晶格。而利用这两个结果推广到球体填充问题，则要等到2016年，才由乌克兰女数学家（Maryna Sergiivna Viazovska）解决。具体填充密度我大致算了下，如前所述，高维空间的最密填充密度是很低的，8维约是3.6%，24维只有0.005%左右，高维空间真的是怪异的深不可测！
+
+<figure class="wp-block-image">![enter image description here](https://pic2.zhimg.com/80/v2-811585b6626c8b42658664ddf4ebd041_hd.jpg)</figure>
+
+（上图：乌克兰数学家：马林娜·谢尔吉夫娜·维亚佐夫斯卡(Maryna Sergiivna Viazovska，1984年12月2日-)
+
+差不多讲完了开普勒猜想的全部历史，你可能问一个几乎对我每一期节目都会有人问的问题：研究这个有用吗？我得承认很多数学问题目前真的是没用的，但不妨碍我们去研究。而这个球体最密填充问题的的确确是有用的。比如原子结构中，就有很多原子之间可以呈现如同面心立方中的晶体结构，比如金刚石中的碳原子结构。
+
+另一个应用领域是信息学中的纠错机制。如果一种信息由三个变量组成，那我们可以把这种信息看作三维空间中的一个个小球。我们希望传送这中信息的时候尽量密度大点，但是我们不能让信息之间靠太近，信息互相之间有重叠我们可能就无法区分信息。这个最密填充就能告诉我们信息传输的最大密度是多少，如果有误差该如何纠错。
+
+看完开普勒猜想的历史，我最大的感慨是一个看似理所当然的结论，数学家花了400年才最终证明完成。而高维空间的情况下也许有更多意外等待着人类去发现 !
+
+参考链接：
+
+<a href="http://math.sjtu.edu.cn/conference/Bannai/2012/data/Chinese.pdf">http://math.sjtu.edu.cn/conference/Bannai/2012/data/Chinese.pdf</a>
+
+<a href="https://en.wikipedia.org/wiki/Sphere_packing">https://en.wikipedia.org/wiki/Sphere_packing</a>
+
+<a href="https://en.wikipedia.org/wiki/Close-packing_of_equal_spheres">https://en.wikipedia.org/wiki/Close-packing_of_equal_spheres</a>
+
+<a href="https://en.wikipedia.org/wiki/Kepler_conjecture">https://en.wikipedia.org/wiki/Kepler_conjecture</a>
+
+<a href="http://mathworld.wolfram.com/SpherePacking.html">http://mathworld.wolfram.com/SpherePacking.html</a>
+
+<a href="http://math.mit.edu/classes/18.095/2015IAP/lecture6/lect_notes.pdf">http://math.mit.edu/classes/18.095/2015IAP/lecture6/lect_notes.pdf</a>
+
+<a href="https://brilliant.org/wiki/sphere-packing/https://brilliant.org/wiki/sphere-packing/">https://brilliant.org/wiki/sphere-packing/</a>
+
+<a href="https://sites.math.washington.edu/~morrow/mathday/mathday15/kristin.pptx">https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=14&cad=rja&uact=8&ved=2ahUKEwipj77I8dDfAhXxFjQIHeUYBlwQFjANegQIChAC&url=https%3A%2F%2Fsites.math.washington.edu%2F~morrow%2Fmathday%2Fmathday15%2Fkristin.pptx&usg=AOvVaw14STb52x9yUeAR7ePVc2JW</a>
+
+<a href="https://www.doc.ic.ac.uk/~js4416/jcss/Sphere%20Packing.pdf">https://www.doc.ic.ac.uk/~js4416/jcss/Sphere%20Packing.pdf</a>
+
+<a href="https://www.quantamagazine.org/sphere-packing-solved-in-higher-dimensions-20160330">https://www.quantamagazine.org/sphere-packing-solved-in-higher-dimensions-20160330</a>
+
+<hr class="wp-block-separator" />
+
+在喜马拉雅FM收听"大老李聊数学"：
+
+<figure class="wp-block-image">![](https://pic4.zhimg.com/80/v2-dae61619440e1a611c9d017947cbe5ff_hd.jpg)</figure>

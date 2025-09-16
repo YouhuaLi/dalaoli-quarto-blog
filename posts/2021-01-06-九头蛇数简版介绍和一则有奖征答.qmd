@@ -1,0 +1,148 @@
+---
+title: '“九头蛇数”简版介绍和一则有奖征答'
+date: "2021-01-06"
+categories:
+  - "每周一题"
+---
+
+<figure class="wp-block-embed is-type-rich is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+https://youtu.be/sDrLJfLZ-_I
+</figure>
+
+九头蛇序列(hydra sequence)可以用这个“去括号”游戏说明。游戏规则是：
+
+开始时，构造一个全由"("和")"字符构成的括号字符串，左右括号必须匹配。比如：
+
+((()())()))</pre>
+
+然后按如下规则对此括号串进行变换：
+
+<ol><li>步数=1</li><li>去掉一对最内层的括号，最右侧的优先</li><li>检查去掉的括号的父括号：</li></ol>
+
+如果该父括号是最外层括号，则无操作；
+
+如果该父括号不是最外层括号，则在该父括号右侧复制该父括号全部内容。复制数量为当前步数。
+
+<ol start="4"><li>步数加一</li><li>如果当前括号串只剩下"()"，变换终止；否则回到步骤2.</li></ol>
+
+比如对："((()))"， 完整变换过程为：
+
+<code>start hydra is: ((()))
+step 1: (()())
+step 2: (())
+step 3: ()</code></pre>
+
+再比如对"(()(()())))"，其变换过程为：
+
+<code>start hydra is: (()(()()))
+step 1: (()(())(()))
+step 2: (()(())()()())
+step 3: (()(())()())
+step 4: (()(())())
+step 5: (()(()))
+step 6: (()()()()()()()())
+step 7: (()()()()()()())
+step 8: (()()()()()())
+step 9: (()()()()())
+step 10: (()()()())
+step 11: (()()())
+step 12: (()())
+step 13: (())
+step 14: ()</code></pre>
+
+现在定义hydra(n)序列如下：对n+1层括号嵌套，按如上规则变换所需步骤数。
+
+比如，之前有关"((()))"例子，其用了三步变换终止，因此hydra(2)=3。
+
+再比如，对4层括号"(((())))" , 它经过37步终止：
+
+<code>start hydra is: (((())))
+step 1: ((()()))
+step 2: ((())(())(()))
+step 3: ((())(())()()()())
+step 4: ((())(())()()())
+step 5: ((())(())()())
+step 6: ((())(())())
+step 7: ((())(()))
+step 8: ((())()()()()()()()()())
+step 9: ((())()()()()()()()())
+step 10: ((())()()()()()()())
+step 11: ((())()()()()()())
+step 12: ((())()()()()())
+step 13: ((())()()()())
+step 14: ((())()()())
+step 15: ((())()())
+step 16: ((())())
+step 17: ((()))
+step 18: (()()()()()()()()()()()()()()()()()()())
+step 19: (()()()()()()()()()()()()()()()()()())
+step 20: (()()()()()()()()()()()()()()()()())
+step 21: (()()()()()()()()()()()()()()()())
+step 22: (()()()()()()()()()()()()()()())
+step 23: (()()()()()()()()()()()()()())
+step 24: (()()()()()()()()()()()()())
+step 25: (()()()()()()()()()()()())
+step 26: (()()()()()()()()()()())
+step 27: (()()()()()()()()()())
+step 28: (()()()()()()()()())
+step 29: (()()()()()()()())
+step 30: (()()()()()()())
+step 31: (()()()()()())
+step 32: (()()()()())
+step 33: (()()()())
+step 34: (()()())
+step 35: (()())
+step 36: (())
+step 37: ()</code></pre>
+
+因此，hydra(3)=37。
+
+现在的问题是，对hydra(4)，它能在有限步骤内结束吗？hydra(4)的前100步的括号字符串长度变化情况为：
+
+<code>start hydra is: ((((()))))
+hydra lengh after step 1: 10
+hydra lengh after step 2: 16
+hydra lengh after step 3: 20
+hydra lengh after step 4: 82
+hydra lengh after step 5: 150
+hydra lengh after step 6: 220
+hydra lengh after step 7: 288
+hydra lengh after step 8: 302
+hydra lengh after step 9: 498
+.....
+hydra lengh after step 98: 11328
+hydra lengh after step 99: 11326
+hydra lengh after step 100: 11324
+.....</code></pre>
+
+且没有终止的迹象。出人意料的是1982年，**Kirby, L.和 Paris, J. 证明**<sup>[1]</sup>，对任意大的n, hydra(n)都是有限的。
+
+更出人意料的是hydra(4)出奇得大，现已证明hydra(4)将远大于另一个出名大数“葛立恒数”。
+
+另外hydra(n)的有限性已无法在皮亚诺算数公理中证明，因此它也是哥德尔不完备定理的一个例子。
+
+有关更具体的九头蛇序列说明，请观看视频。
+
+<hr class="wp-block-separator" />
+
+有奖思考题：
+
+视频中我有一个错误：hydra(n)并不是去括号游戏的最优解法，因为它总是优先去除最右边的括号，因此这样的玩法所得步骤数并不是最少的。那么问题来了，如果我们用optimal_hydra(n)定义为最优解法的步数，那么optimal_hydra(4)的下限是多少？
+
+“去括号”游戏可能的最优玩法是：
+
+总是优先去除最内层的括号；
+
+同样层次的括号中，总是优先去除“兄弟”最多的。因为这些“兄弟”总是要被复制的，那么提前复制的话可以尽量减少复制的次数。
+
+我将对能给出optimal_hydra(4)最优下限甚至确切值的读者，奖励本人所著《老师没教的数学》一本。
+
+请将你的计算结果和理由发至dalaoliliaoshuxue@gmail.com ("大老李聊数学"的拼音 + @gmail.com)， 截止时间2021年1月20日。
+
+本文中用到的计算hydra变化的<a href="https://github.com/YouhuaLi/math_misc/blob/master/brackets_hydra_game/bhg.py">python代码：</a>（随便写的，效率极差， 见谅。）
+
+<h3>参考资料</h3>
+
+[1]
+
+Kirby, L.和 Paris, J. 证明: *http://logic.amu.edu.pl/images/3/3c/Kirbyparis.pdf*

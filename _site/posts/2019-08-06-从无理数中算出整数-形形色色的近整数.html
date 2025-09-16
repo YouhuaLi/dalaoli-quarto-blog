@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2019-08-06">
+
+<title>从无理数中算出整数–形形色色的“近整数” – dalaoli_quarto_blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">dalaoli_quarto_blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">从无理数中算出整数–形形色色的“近整数”</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">每周一题</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">August 6, 2019</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>从无理数中算出整数–形形色色的“近整数”</p>
+<p>大家好，我是大老李。今天聊一个比较轻松的话题–“近整数”，Almost Integer。“近整数”的概念非常简单，就是一些从无理数的运算组合中，不经意发现一些计算结果非常接近整数的情况，所以叫近整数。</p>
+<p>之前的节目中，大老李提到过一个近整数，就是在有关“黑格纳数163”那期节目。我提到了这样一个数字：<span class="katex--inline"><span class="katex"><span class="katex-mathml">eπ163e^{}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.00199em;vertical-align:0;"></span><span class="mord"><span class="mord mathdefault">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.00199em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:.03588em;">π</span><span class="mord sqrt mtight"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.912845em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mtight" style="padding-left:.833em;"><span class="mord mtight">1</span><span class="mord mtight">6</span><span class="mord mtight">3</span></span></span><span style="top:-2.87285em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail mtight" style="min-width:.853em;height:1.08em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.127155em;"><span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>。</p>
+<p>因为<span class="katex--inline"><span class="katex"><span class="katex-mathml">ee</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault">e</span></span></span></span></span>, <span class="katex--inline"><span class="katex"><span class="katex-mathml">π</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault" style="margin-right:.03588em;">π</span></span></span></span></span>和<span class="katex--inline"><span class="katex"><span class="katex-mathml">163</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.04em;vertical-align:-.13278em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.90722em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:.833em;"><span class="mord">1</span><span class="mord">6</span><span class="mord">3</span></span></span><span style="top:-2.86722em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:.853em;height:1.08em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.13278em;"><span></span></span></span></span></span></span></span></span></span>都是无理数，所以这个数字的计算结果直觉中当然是一个无理数，这是对的。但是这个无理数是如此接近于整数，以至于大老李第一次看到的时候惊得下巴都快掉下来了。当然，你用计算器是算不出这个数字的小数部分了，因为它的整数部分已经非常大了，但我十分建议你自己上网找些大数字计算器，看看这个数字的样子：</p>
+<p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml">eπ163=262537412640768743.99999999999925007…e^{}=262537412640768743.99999999999925007…</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.05199em;vertical-align:0;"></span><span class="mord"><span class="mord mathdefault">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.05199em;"><span style="top:-3.113em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:.03588em;">π</span><span class="mord sqrt mtight"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.912845em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mtight" style="padding-left:.833em;"><span class="mord mtight">1</span><span class="mord mtight">6</span><span class="mord mtight">3</span></span></span><span style="top:-2.87285em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail mtight" style="min-width:.853em;height:1.08em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.127155em;"><span></span></span></span></span></span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">2</span><span class="mord">6</span><span class="mord">2</span><span class="mord">5</span><span class="mord">3</span><span class="mord">7</span><span class="mord">4</span><span class="mord">1</span><span class="mord">2</span><span class="mord">6</span><span class="mord">4</span><span class="mord">0</span><span class="mord">7</span><span class="mord">6</span><span class="mord">8</span><span class="mord">7</span><span class="mord">4</span><span class="mord">3</span><span class="mord">.</span><span class="mord">9</span><span class="mord">9</span><span class="mord">9</span><span class="mord">9</span><span class="mord">9</span><span class="mord">9</span><span class="mord">9</span><span class="mord">9</span><span class="mord">9</span><span class="mord">9</span><span class="mord">9</span><span class="mord">9</span><span class="mord">2</span><span class="mord">5</span><span class="mord">0</span><span class="mord">0</span><span class="mord">7</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span></span></span></span></span></span></p>
+<p>其小数点后有12个9，你就知道它是多么接近于整数。当然最令人吃惊的是通过<span class="katex--inline"><span class="katex"><span class="katex-mathml">ee</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault">e</span></span></span></span></span>, <span class="katex--inline"><span class="katex"><span class="katex-mathml">π</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault" style="margin-right:.03588em;">π</span></span></span></span></span>和<span class="katex--inline"><span class="katex"><span class="katex-mathml">163</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.04em;vertical-align:-.13278em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.90722em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:.833em;"><span class="mord">1</span><span class="mord">6</span><span class="mord">3</span></span></span><span style="top:-2.86722em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:.853em;height:1.08em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.13278em;"><span></span></span></span></span></span></span></span></span></span>这些无理数的简单组合，能计算出这样一个如此接近整数的数。当然这个数字如此解近整数是有原因的，具体原因还是请听黑格纳数那期节目，而且我们知道根号里的163换成其他任何整数都不会使结果更加接近整数了。所以这个形式简单的数字里蕴含了很深的数学含义，这就是我们研究近整数的原因之一。</p>
+<p>以下大老李给大家介绍一些其他的近整数，它们的共同特点就是都是从无理数包括超越数的组合中得到的一些非常接近整数的无理数。另外，要注意一点，近整数是与进制无关的，不管是10进制，16进制，或者二进制下，这些数字都还是近整数，所以外星人也可能在研究这些数字。</p>
+<p>首先一组近整数是黄金分割比的幂次。黄金分割就是<span class="katex--inline"><span class="katex"><span class="katex-mathml">(1+5)/2(1+)/2</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1.15722em;vertical-align:-.25em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.90722em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:.833em;"><span class="mord">5</span></span></span><span style="top:-2.86722em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:.853em;height:1.08em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.13278em;"><span></span></span></span></span></span><span class="mclose">)</span><span class="mord">/</span><span class="mord">2</span></span></span></span></span>，约等于1.618。这个数字的幂次会越来越接近整数，比如它的17，18，19次方：</p>
+<p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml">ϕ17=3571+159752≈3571.00028^{17}=</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.05855em;vertical-align:-.19444em;"></span><span class="mord"><span class="mord mathdefault">ϕ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.864108em;"><span style="top:-3.113em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">7</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:2.27022em;vertical-align:-.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.58422em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">3</span><span class="mord">5</span><span class="mord">7</span><span class="mord">1</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mord">1</span><span class="mord">5</span><span class="mord">9</span><span class="mord">7</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.90722em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:.833em;"><span class="mord">5</span></span></span><span style="top:-2.86722em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:.853em;height:1.08em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.13278em;"><span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">3</span><span class="mord">5</span><span class="mord">7</span><span class="mord">1</span><span class="mord">.</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mord">2</span><span class="mord">8</span></span></span></span></span></span></p>
+<p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml">ϕ18=2889+12925≈5777.999827^{18}=2889+1292</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.05855em;vertical-align:-.19444em;"></span><span class="mord"><span class="mord mathdefault">ϕ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.864108em;"><span style="top:-3.113em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">8</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">2</span><span class="mord">8</span><span class="mord">8</span><span class="mord">9</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1.04em;vertical-align:-.083905em;"></span><span class="mord">1</span><span class="mord">2</span><span class="mord">9</span><span class="mord">2</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.956095em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:.833em;"><span class="mord">5</span></span></span><span style="top:-2.9161em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:.853em;height:1.08em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.083905em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">5</span><span class="mord">7</span><span class="mord">7</span><span class="mord">7</span><span class="mord">.</span><span class="mord">9</span><span class="mord">9</span><span class="mord">9</span><span class="mord">8</span><span class="mord">2</span><span class="mord">7</span></span></span></span></span></span></p>
+<p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml">ϕ19=9349+418152≈9349.000107^{19}=</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.05855em;vertical-align:-.19444em;"></span><span class="mord"><span class="mord mathdefault">ϕ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.864108em;"><span style="top:-3.113em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">9</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:2.27022em;vertical-align:-.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.58422em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">9</span><span class="mord">3</span><span class="mord">4</span><span class="mord">9</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mord">4</span><span class="mord">1</span><span class="mord">8</span><span class="mord">1</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.90722em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:.833em;"><span class="mord">5</span></span></span><span style="top:-2.86722em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:.853em;height:1.08em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.13278em;"><span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">9</span><span class="mord">3</span><span class="mord">4</span><span class="mord">9</span><span class="mord">.</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mord">1</span><span class="mord">0</span><span class="mord">7</span></span></span></span></span></span></p>
+<p>这其实是原因的，因为黄金分割比属于无理数里比较特别的一种称为PV数，这种数字在“三维世界的黄金比例-塑料常数”中也提到过，请大家自行查阅。</p>
+<p>下一个近整数是<span class="katex--inline"><span class="katex"><span class="katex-mathml">sin⁡(11)(11)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mop">sin</span><span class="mopen">(</span><span class="mord">1</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span>，这里的11是弧度制下的11，不是11°。如果你手头有科学计算器可以马上算一下，你会发现：</p>
+<p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml">sin⁡11≈−0.999990206……</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.66786em;vertical-align:0;"></span><span class="mop">sin</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord">1</span><span class="mord">1</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">−</span><span class="mord">0</span><span class="mord">.</span><span class="mord">9</span><span class="mord">9</span><span class="mord">9</span><span class="mord">9</span><span class="mord">9</span><span class="mord">0</span><span class="mord">2</span><span class="mord">0</span><span class="mord">6</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span></span></span></span></span></span></p>
+<p>它为什么如此接近-1？其实道理不难。因为我们知道22/7是pi的一个近似分数，那么：</p>
+<p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml">cos⁡22≈cos⁡(7π)=−1(7)=-1</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mop">cos</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord">2</span><span class="mord">2</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mop">cos</span><span class="mopen">(</span><span class="mord">7</span><span class="mord mathdefault" style="margin-right:.03588em;">π</span><span class="mclose">)</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">−</span><span class="mord">1</span></span></span></span></span></span></p>
+<p>知道<span class="katex--inline"><span class="katex"><span class="katex-mathml">cos⁡22</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mop">cos</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord">2</span><span class="mord">2</span></span></span></span></span>约等于-1，那么 <span class="katex--inline"><span class="katex"><span class="katex-mathml">sin⁡(11)(11)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mop">sin</span><span class="mopen">(</span><span class="mord">1</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span>约等于-1就一点不奇怪了。</p>
+<p>当然，你还可以用<span class="katex--inline"><span class="katex"><span class="katex-mathml">π</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault" style="margin-right:.03588em;">π</span></span></span></span></span>更好的近似分数构造这种类型的近整数，比如355/113。这个就留个听众自行尝试了。</p>
+<p>下一个例子是非常让人震惊的一个例子，有另一个有关<span class="katex--inline"><span class="katex"><span class="katex-mathml">ee</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault">e</span></span></span></span></span>和<span class="katex--inline"><span class="katex"><span class="katex-mathml">π</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault" style="margin-right:.03588em;">π</span></span></span></span></span>的近整数：</p>
+<p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml">eπ−π=19.999099979…e^{}-…</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.797722em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord mathdefault">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.714392em;"><span style="top:-3.113em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:.03588em;">π</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault" style="margin-right:.03588em;">π</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span><span class="mord">9</span><span class="mord">.</span><span class="mord">9</span><span class="mord">9</span><span class="mord">9</span><span class="mord">0</span><span class="mord">9</span><span class="mord">9</span><span class="mord">9</span><span class="mord">7</span><span class="mord">9</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span></span></span></span></span></span></p>
+<p>这个近整数是1988年，几乎有三位数学家尼尔斯·洛恩，约翰·康威和西蒙·普劳夫同时发现的。上一期说过<span class="katex--inline"><span class="katex"><span class="katex-mathml">eπe^{}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.664392em;vertical-align:0;"></span><span class="mord"><span class="mord mathdefault">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:.03588em;">π</span></span></span></span></span></span></span></span></span></span></span></span></span>是为数不多的几个被证明的超越数，它现在被称为“盖尔方德常数。”而<span class="katex--inline"><span class="katex"><span class="katex-mathml">eπ−πe^{}-</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.747722em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord mathdefault">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:.03588em;">π</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault" style="margin-right:.03588em;">π</span></span></span></span></span>是一个近整数，这说明<span class="katex--inline"><span class="katex"><span class="katex-mathml">eπe^</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.664392em;vertical-align:0;"></span><span class="mord"><span class="mord mathdefault">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:.03588em;">π</span></span></span></span></span></span></span></span></span></span></span></span>的小数部分非常接近pi的小数部分，但这是为什么，至今没有人给出令人满意的解释，可以说是数学中的神秘现象。</p>
+<p>下一个近整数比较搞笑：是很多cos余弦的嵌套：</p>
+<p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml">2cos⁡(cos⁡(cos⁡(cos⁡(cos⁡(cos⁡(cos⁡(5)))))))=0.99999525497000…2(((((((5)))))))=0.99999525497000…</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mop">cos</span><span class="mopen">(</span><span class="mop">cos</span><span class="mopen">(</span><span class="mop">cos</span><span class="mopen">(</span><span class="mop">cos</span><span class="mopen">(</span><span class="mop">cos</span><span class="mopen">(</span><span class="mop">cos</span><span class="mopen">(</span><span class="mop">cos</span><span class="mopen">(</span><span class="mord">5</span><span class="mclose">)</span><span class="mclose">)</span><span class="mclose">)</span><span class="mclose">)</span><span class="mclose">)</span><span class="mclose">)</span><span class="mclose">)</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">9</span><span class="mord">9</span><span class="mord">9</span><span class="mord">9</span><span class="mord">9</span><span class="mord">5</span><span class="mord">2</span><span class="mord">5</span><span class="mord">4</span><span class="mord">9</span><span class="mord">7</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span></span></span></span></span></span></p>
+<p>我很怀疑这个数字是发现者无聊按计算器算出来的。现在的问题是为什么这个数字是近整数？以上cos再多一层不行，5换成4或6也不行。这是数字里的又一个神秘现象。</p>
+<p>下一个近整数是拉马努金发现的：</p>
+<p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml">22π4=2143+2.748…×10−622<sup>{4}=2143+2.748…</sup>{-6}</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.864108em;vertical-align:0;"></span><span class="mord">2</span><span class="mord">2</span><span class="mord"><span class="mord mathdefault" style="margin-right:.03588em;">π</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.864108em;"><span style="top:-3.113em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">4</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">2</span><span class="mord">1</span><span class="mord">4</span><span class="mord">3</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">2</span><span class="mord">.</span><span class="mord">7</span><span class="mord">4</span><span class="mord">8</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.864108em;vertical-align:0;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.864108em;"><span style="top:-3.113em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>这个数字很有拉马努金风格。</p>
+<p>有些近整数是含有对数的：</p>
+<p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml">510log⁡107=431.00000040…510_{10}7=431.00000040…</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.93858em;vertical-align:-.24414em;"></span><span class="mord">5</span><span class="mord">1</span><span class="mord">0</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.206968em;"><span style="top:-2.45586em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.24414em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord">7</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">4</span><span class="mord">3</span><span class="mord">1</span><span class="mord">.</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mord">4</span><span class="mord">0</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span></span></span></span></span></span></p>
+<p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml">88ln⁡89=395.00000053…88=395.00000053…</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.69444em;vertical-align:0;"></span><span class="mord">8</span><span class="mord">8</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mop">ln</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord">8</span><span class="mord">9</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">3</span><span class="mord">9</span><span class="mord">5</span><span class="mord">.</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mord">5</span><span class="mord">3</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span></span></span></span></span></span></p>
+<p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml">272log⁡π97=1087.000000204…272_{}97=1087.000000204…</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.93858em;vertical-align:-.24414em;"></span><span class="mord">2</span><span class="mord">7</span><span class="mord">2</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.057252em;"><span style="top:-2.45586em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:.03588em;">π</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.24414em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord">9</span><span class="mord">7</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">8</span><span class="mord">7</span><span class="mord">.</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mord">2</span><span class="mord">0</span><span class="mord">4</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span></span></span></span></span></span></p>
+<p>再说一些有关pi和e的近整数：比如</p>
+<p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml">163(π−e)=68.9996644…163(- e)=68.9996644…</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mord">6</span><span class="mord">3</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:.03588em;">π</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord mathdefault">e</span><span class="mclose">)</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">6</span><span class="mord">8</span><span class="mord">.</span><span class="mord">9</span><span class="mord">9</span><span class="mord">9</span><span class="mord">6</span><span class="mord">6</span><span class="mord">4</span><span class="mord">4</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span></span></span></span></span></span></p>
+<p>再一次出现163。也很神奇的是用<span class="katex--inline"><span class="katex"><span class="katex-mathml">π</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault" style="margin-right:.03588em;">π</span></span></span></span></span>去减掉<span class="katex--inline"><span class="katex"><span class="katex-mathml">ee</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault">e</span></span></span></span></span>。因为我想象不出来任何场合需要用<span class="katex--inline"><span class="katex"><span class="katex-mathml">π−e-e</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.66666em;vertical-align:-.08333em;"></span><span class="mord mathdefault" style="margin-right:.03588em;">π</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault">e</span></span></span></span></span>这样的运算，但是这样结果乘以163会如此接近整数，实在是太神奇了。</p>
+<p>还有与pi和e相关的是：</p>
+<p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml">π9e8=9.9998387=9.9998387</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.17711em;vertical-align:-.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.49111em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.740108em;"><span style="top:-2.989em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">8</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:.03588em;">π</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">9</span><span class="mord">.</span><span class="mord">9</span><span class="mord">9</span><span class="mord">9</span><span class="mord">8</span><span class="mord">3</span><span class="mord">8</span><span class="mord">7</span></span></span></span></span></span></p>
+<p>再来一个与163相关的 :</p>
+<p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml">163ln⁡163=31.9999987384=31.9999987384</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.00744em;vertical-align:-.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mop">ln</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord">1</span><span class="mord">6</span><span class="mord">3</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span><span class="mord">6</span><span class="mord">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">3</span><span class="mord">1</span><span class="mord">.</span><span class="mord">9</span><span class="mord">9</span><span class="mord">9</span><span class="mord">9</span><span class="mord">9</span><span class="mord">8</span><span class="mord">7</span><span class="mord">3</span><span class="mord">8</span><span class="mord">4</span></span></span></span></span></span></p>
+<p>与e和pi相关的近整数非常多，我就不在节目念了。强烈推荐你关注我的公众号，“大老李聊数学”，我会发这些数字以文稿形式发送出来 ，供你欣赏。</p>
+<p>最后，如果我们允许用物理常数进行运算的话，那么科学家也发现了一些在国际单位制下，可以得到近整数，最让人吃惊这样一个数：</p>
+<p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml">cekh=1.008mA/(sK)=1.008mA/(sK)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.05744em;vertical-align:-.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.37144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">h</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">c</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mord">.</span><span class="mord">0</span><span class="mord">0</span><span class="mord">8</span><span class="mord mathdefault">m</span><span class="mord mathdefault">A</span><span class="mord">/</span><span class="mopen">(</span><span class="mord mathdefault">s</span><span class="mord mathdefault" style="margin-right:.07153em;">K</span><span class="mclose">)</span></span></span></span></span></span></p>
+<p>其中c是光速，e是单位电子电量，k是玻尔兹曼常数，h是普朗克常数。你如果将以上常数用国际单位制下的数值代入，就会发现是1.0008，单位是mA/(sK)。这些单位这么组合有什么意义吗？科学家还没有看出来。但是这个结果如此接近1是巧合还是必然？会不会是我们测量不精确，其实这个组合就应该等于1？如果这是必然，那么这些看似不太相关的常数如此组合，能得到一个整数，那么其中肯定有一个十分深刻的道理，这让人浮想联翩。</p>
+<p>好了，近整数就讲到这里。近整数有点像数学里的物理实验 ，通过一些简单的对无理数的组合运算，不经意间得到一个非常接近整数的无理数。其中很多近整数我们能解释其接近整数的原因，还有很多我们不知道。特别是<span class="katex--inline"><span class="katex"><span class="katex-mathml">ee</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault">e</span></span></span></span></span>和<span class="katex--inline"><span class="katex"><span class="katex-mathml">π</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault" style="margin-right:.03588em;">π</span></span></span></span></span>的一些组合，它们不愧为数学常数中的两大王牌，任何场合它们都不会缺席。而数学家发现包含<span class="katex--inline"><span class="katex"><span class="katex-mathml">eπe^</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.664392em;vertical-align:0;"></span><span class="mord"><span class="mord mathdefault">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:.03588em;">π</span></span></span></span></span></span></span></span></span></span></span></span>和<span class="katex--inline"><span class="katex"><span class="katex-mathml">e−πe-</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.66666em;vertical-align:-.08333em;"></span><span class="mord mathdefault">e</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault" style="margin-right:.03588em;">π</span></span></span></span></span>的运算组合可以得到近整数的结果，这使得这两个我们最熟悉的数学常数更平添了一点神秘感。</p>
+<p>最后，科学家还发现一些物理常数的组合能得到近整数，这是巧合还是必然？这又是一个有待人类无尽探索的问题。好了，下期再见！</p>
+<p>参考链接：</p>
+<p><a href="https://en.wikipedia.org/wiki/Almost_integer">https://en.wikipedia.org/wiki/Almost_integer</a></p>
+<p><a href="http://mathworld.wolfram.com/AlmostInteger.html">http://mathworld.wolfram.com/AlmostInteger.html</a></p>
+<hr>
+<p>喜马拉雅：<a href="https://www.ximalaya.com/keji/6310606/">https://www.ximalaya.com/keji/6310606/</a></p>
+<p>微信关注：dalaoli_shuxue</p>
+<p>B站: <a href="https://space.bilibili.com/423722633">https://space.bilibili.com/423722633</a></p>
+<p>知乎：<a href="https://zhuanlan.zhihu.com/dalaoli-shuxue/">https://zhuanlan.zhihu.com/dalaoli-shuxue/</a></p>
+<p>电邮：dalaoliliaoshuxue@gmail.com</p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/your-website-url\.example\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

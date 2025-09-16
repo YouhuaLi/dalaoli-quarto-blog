@@ -1,0 +1,148 @@
+---
+title: '用计算器按出来的常数--费根鲍姆常数'
+date: "2019-08-13"
+categories:
+  - "每周一题"
+---
+
+大家好，我是大老李，今天跟大家聊一个常数：费根鲍姆（第一）常数。这个常数是以其发现者美国数学家：米切尔·费根鲍姆命名的。费根鲍姆于不久前，2019年6月30日去世，享年75岁，因此本期节目也算一个小小的纪念。
+
+![](https://www.rockefeller.edu/uploads/www.rockefeller.edu/sites/13/2019/07/Feature_Feigenbaum.jpg)
+
+（上图：米切尔·费根鲍姆（Mitchell J. Feigenbaum），1944-2019）
+
+要理解费根鲍姆常数，我们需要从了解一个生物种群数量变动模型开始。很关心，科学家就很关心生物种群数量的变动模型问题。因为包括我们人类本身也是一种生物种群，人类未来人口数量是增加还是减少，如何变动，当然是一个非常重要的问题。
+
+1845年，比利时数学家皮埃尔·弗朗索瓦·韦吕勒（Pierre François Verhulst，1904-1849）提出了这样一个人口变动模型：他假设地球或者一个特定的相对封闭的生物群落，存在一个理想的人口数量，称其为“可维持人口数”。一旦人口超过这个数量，那么由于资源的匮乏和紧张，人口就要减少。如果人口低于这个可维持人口数，则因为资源充裕，人口就会增加。
+
+另外，人口的变化当然还与平均生育率或者说繁殖率相关。韦吕勒提出了这么一个公式：如果把“当前人口数/可维持人口数”这个比值记为x，繁殖率记为r，则：
+
+<span class="katex--inline"><span class="katex"><span class="katex-mathml">dxdt=rx(1−x)\frac{dx}{dt}=rx(1-x)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.22511em;vertical-align:-.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.880108em;"><span class="" style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">d</span><span class="mord mathdefault mtight">t</span></span></span></span><span class="" style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:.04em;"></span></span><span class="" style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">d</span><span class="mord mathdefault mtight">x</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.345em;"><span class=""></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span style="margin-right:.02778em;" class="mord mathdefault">r</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span></span>。
+
+可以看出，如果当前人口超过可维持人口，那么x就会大于1， 以上公式的取值就会小于0，也就是人口会减少。如果比值小于1，则人口增加。
+
+以上这个模型看上去是有点道理，不过这个模型在生物学上是否有用，有何意义对今天节目来说是完全无关紧要的。我们只需要知道有这个模型。
+
+韦吕勒把以上的人口变动模型公式命名为：Logistic Map。这个名字是有点让人迷惑的，Map是映射的意思，Logistic字典里说是后勤保障的意思。那Logistic Map就是“后勤映射”？这个翻译听上去太奇怪了。有道词典上给这个Logistic Ma的翻译是“逻辑斯谛映射”，这个翻译太糟糕了，翻译了等于没翻译。
+
+维基百科上给了一个翻译叫“单峰映射”，这个翻译好一点。但这个翻译是从曲线形状来的，因为<span class="katex--inline"><span class="katex"><span class="katex-mathml">x(1−x)x(1-x)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span></span>是一个二次函数，二次函数在图像上一般只有一个最大或最小值，图像上就是”一座峰“，所以叫单峰映射。
+
+但这个翻译完全与英文原文无关了。大老李考证了一下Logistic Map名称的来历，终于发现维基百科上有注释原来这个Logsitic其实是来自于法语中的Logistique一词，因为韦吕勒是比利时人，比利时的官方语言之一是法语。而法语中的的Logistique一词，又是来源于古希腊语中的同根词，在古希腊语中，这个词有“居住，住宿的意思“，比如，英语里有logding一词，就是来源同一词源。
+
+既然与“居住”，“住宿“有关，那么Logistic Map以下我就翻译为”生存空间映射”了。以上有点扯远，但是考证一下这个词的意思还是挺有意思的，看来不光是中国人看不懂，英语为母语的人也没太搞懂韦吕勒发明的这个术语。
+
+接下来要聊聊费根鲍姆了。费根鲍姆1944年生于美国费城，父母是分别来自波兰和乌克兰的犹太裔移民。少年时代的费根鲍姆对电气工程很感兴趣，曾希望成为电气工程师，因此他选择进入纽约城市大学的电气工程专业学习。但他后来才发现收音机中用到的知识只是物理理论里很小的一部分。
+
+因此，他从纽约城市大学毕业后，考入了麻省理工大学攻读物理博士学位。1970年，26岁的费根鲍姆取得了物理学的博士学位。1974年，他进入洛斯阿拉莫斯实验室，成为一个专职研究员，当时他的研究领域是流体中的湍流现象。尽管完整的湍流理论至今还有待建立，但是这方面的研究使他接触到了“混沌映射”（chaotic map）理论，这在当时还属于新兴研究领域。
+
+![enter image description here](https://pic3.zhimg.com/80/v2-944354dc846ce08a349a5acf8f8f4d52_hd.jpg)
+
+(上图：当层流遇到障碍物时转变为湍流。**湍流**（英语：turbulence），也稱為**紊流**（大陆地区的旧称），是<a href="https://zh.wikipedia.org/wiki/%E6%B5%81%E4%BD%93" title="流体">流体</a>的一种流动状态。当<a href="https://zh.wikipedia.org/wiki/%E6%B5%81%E9%80%9F" title="流速">流速</a>很小时，流体分层流动，互不混合，称为<a href="https://zh.wikipedia.org/wiki/%E5%B1%82%E6%B5%81" title="层流">层流</a>，或称为片流；逐渐增加流速，流体的流线开始出现波浪状的摆动，摆动的频率及振幅随流速的增加而增加，此种流况称为<a href="https://zh.wikipedia.org/wiki/%E8%BF%87%E6%B8%A1%E6%B5%81">过渡流</a>；当流速增加到很大时，流线不再清楚可辨，流场中有许多小<a href="https://zh.wikipedia.org/wiki/%E6%BC%A9%E6%B8%A6" title="漩渦">漩涡</a>，称为湍流。)
+
+而之前提到的“生存空间映射”就是“混沌映射”的一种，费根鲍姆开始考虑这样一个问题：“生存空间映射”中，如果给定一个固定的繁殖率参数r，取不同的x，进行反复迭代，将上一次的计算结果，作为下一次的参数x进行计算，那么最终结果会如何? 是否x会变为0，也就是物种灭绝，还是出现某种循环状态等等？
+
+虽然这个问题用现在的个人电脑可以轻易地编写出程序，很快地对各种可能参数进行模拟，但1970年代的计算机还非常昂贵，不是你想用就能用的。所以费根鲍姆就搞来了一台当时很时髦的HP-65计算器(也是之前节目中提到过，康威用来计算大魔群用的计算器)，手动开始进行”生存空间映射”的模拟计算。
+
+![enter image description here](https://upload.wikimedia.org/wikipedia/commons/b/b8/HP_65.jpg)
+
+各位听众如果手头有一台科学计算器，那么你大可以拿出计算器，感受下这一计算过程。 现在，我们的目标是考察“生存空间映射”：<span class="katex--inline"><span class="katex"><span class="katex-mathml">rx(1−x)rx(1-x)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span style="margin-right:.02778em;" class="mord mathdefault">r</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span></span>在不同的r值下，反复迭代后的最终表现。
+
+那我们先随便取一个繁殖率参数r的值，比如0.6，x的初值含义是当前人口除以“可维持人口”的比值。但在我们这个纯数学讨论中，这个值可以取任何值。且好在费根鲍姆已经帮我们计算过了，我们知道最终的结论是对绝大多数r，x初值并不重要，最终还是会回归到某种稳定情况。所以，我推荐各位x的初值就取0.5，这样你可以比较快得看到收敛。
+
+那么我们把r=0.6，x=0.5代入，得：
+
+<span class="katex--inline"><span class="katex"><span class="katex-mathml">rx(1−x)=0.6×0.5×(1−0.5)=0.15rx(1-x)=0.6\times 0.5\times (1-0.5)=0.15</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span style="margin-right:.02778em;" class="mord mathdefault">r</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">6</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">5</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">5</span><span class="mclose">)</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">1</span><span class="mord">5</span></span></span></span></span>
+
+因为要计算迭代过程，所以我们把上一次计算的结果0.15代入公式，计算下一代的人口变化，也就是计算:
+
+<span class="katex--inline"><span class="katex"><span class="katex-mathml">0.6×0.15×(1−0.15)=0.07650.6\times 0.15\times (1-0.15)=0.0765</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">6</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">1</span><span class="mord">5</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">1</span><span class="mord">5</span><span class="mclose">)</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">0</span><span class="mord">7</span><span class="mord">6</span><span class="mord">5</span></span></span></span></span>
+
+<hr>
+
+![enter image description here](https://pic3.zhimg.com/80/v2-7af1620e95b8129da8d1e440af0f06a2_hd.jpg)
+
+（上图：善用“ANS”键的功能，可以大大加速迭代计算。）
+
+<hr>
+
+那么之前我们得到最新值是0.0765，当你把这个值继续作为x代入，不断反复迭代计算后，你会发现计算结果越来越小，直到超过计算器的指数存储上限，计算器最终会显示0。
+
+所以，我们知道，当繁殖率参数为0.6是，种群最终消亡了。但这只是繁殖率为0.6的情况，费根鲍姆尝试了非常多的r值，以及不同初始x值的组合，最终有了惊人发现。在节目里，我就不对其他数字做具体说明了，只简单汇报下，不同的繁殖率参数产生的不同结果。
+
+首先，当繁殖率参数在0到1之间时，种群数量最终趋向于0。这是符合直觉的，因为繁殖率太低了。
+
+当繁殖率在1到2之间时，物种就不灭绝了，而是最终稳定在<span class="katex--inline"><span class="katex"><span class="katex-mathml">(r−1)/r(r-1)/r</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mopen">(</span><span style="margin-right:.02778em;" class="mord mathdefault">r</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mord">/</span><span style="margin-right:.02778em;" class="mord mathdefault">r</span></span></span></span></span>这个值上，且不依赖于x初值。比如当r=1.5时，x会稳定在⅓，即种群数量稳定在单个数值上。这一点请各位用计算器自行验证。
+
+当繁殖率在2-3之间时，x最终仍然稳定在<span class="katex--inline"><span class="katex"><span class="katex-mathml">(r−1)/r(r-1)/r</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mopen">(</span><span style="margin-right:.02778em;" class="mord mathdefault">r</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mord">/</span><span style="margin-right:.02778em;" class="mord mathdefault">r</span></span></span></span></span>这个值上，但这次，在收敛到这个终值前，函数值会在这个收敛值的上下摆动很长一段时间，尤其是当r=3的时候。也就是，你计算器要按非常非常多的时间。我自己尝试了一下，当r=3时，理论上映射应该稳定在<span class="katex--inline"><span class="katex"><span class="katex-mathml">(3−1)/3=2/3(3-1)/3=2/3</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mopen">(</span><span class="mord">3</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mord">/</span><span class="mord">3</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord">2</span><span class="mord">/</span><span class="mord">3</span></span></span></span></span>这个值上。但我计算器迭代了上百次，按到手指酸了，仍然没有稳定在这个值上，虽然是越来越接近了，但收敛非常缓慢。这很有意思，虽然r在1到2，和2到3，映射的收敛情况是一样的，但是收敛速度相差非常大。
+
+当繁殖率在3到约3.44949之间时，几乎所有的x初值都能使函数最终稳定在两个值之间的震荡状态中，也就是A-B-A-B，来回摆动。而A,B的值是与繁殖率相关的。
+
+当繁殖率在3.44949到3.54409时，最终的结果是在四个数字中来回震荡了。
+
+而当繁殖率3.54409到3.56695这样一个狭小范围内，你也许能猜到，函数值会在不同位置，在8个，16，32个等等数字之间来回震荡。
+
+而当r等约于3.56695时，这个位置是一个混沌起始点。不管初值如何，都无法观察到函数最终稳定在有限的几个数字上。而且微小的初值变化，可以使最终结果发生巨大的不同。
+
+当r大于3.56695时，情况类似，几乎都是混沌局域。但是神奇的时，还是会有那么一些不怎么混沌的区域，比如<span class="katex--inline"><span class="katex"><span class="katex-mathml">1+81+\sqrt8</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1.04em;vertical-align:-.13278em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.90722em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:.833em;">8</span></span><span class="" style="top:-2.86722em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:.853em;height:1.08em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.13278em;"><span class=""></span></span></span></span></span></span></span></span></span>附近。当r在这个值附近是，函数又会出现周期性的震荡，而且这次是在三个值之间震荡。<span class="katex--inline"><span class="katex"><span class="katex-mathml">1+81+\sqrt8</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.72777em;vertical-align:-.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:1.04em;vertical-align:-.13278em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.90722em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:.833em;">8</span></span><span class="" style="top:-2.86722em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:.853em;height:1.08em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.13278em;"><span class=""></span></span></span></span></span></span></span></span></span>附近的这个范围现在就被称为“稳定岛”(stable island)，因为它是在一大片混沌区域中，相对安全的一个“岛屿”。
+
+以上大致介绍了一下，不同的繁殖率r值时，“生存空间”映射迭代后的最终表现，总结就是从很有规律的收敛到1个值，到逐渐复杂，变为在2个，4个，8个值之间来回震荡等等，再到混沌。到混沌之后，又出现了神奇的一小片一小片的“稳定岛”。
+
+以上我说的简单，但是要在计算器上按出这些结果，不但需要毅力而且需要很强大的观察力和想象力。费根鲍姆当初就在思考，这些结果到底有什么含义呢？能否用根直观的方法体现出来？
+
+确实有，费根鲍姆想到了用坐标图来使以上结果“可视化”。最终画出的这幅图现在被称为“分叉图”（Bifurcation diagram），它几乎会出现在每一本讲述混沌理论的书。这幅图我也放在了节目介绍里：
+
+![](https://pic1.zhimg.com/80/v2-bead8fe6327c62e1443169c0efe38f84_hd.jpg)
+
+这幅图是这样解读的：横坐标是繁殖率参数r，纵坐标是x。如果对某个r，最终x稳定在单个值上，那么就在对应的(r,x)位置画一点。如果是在两个值a,b之间震荡，则就在图中对(r,a)和(r,b)两个点画上颜色，依此类推。那么整幅图中，如果某区域点比较多，颜色比较深，就是x在非常多的值之间震荡或者混沌的区域。而颜色比较浅的区域，就是比较有规律，不怎么混沌的区域。所以在这幅图中，你可以清晰的看到在r=3之后，函数值开始在两个值之间震荡，在3.44949位置，分为4个叉等等。而右边比深色区域中的狭长浅色区域就是“稳定岛”。
+
+这幅图非常直观，但还没完，费根鲍姆还观察到，图上映射图像发生分叉的位置，也就是1分2，2分4，4分8的位置是有规律的。这个规律就是前两次分叉之间的距离除以后两次分叉之间的距离的比值极限约为常数4.6692…。
+
+![enter image description here](https://wikimedia.org/api/rest_v1/media/math/render/svg/2dce01d320459df0cb12f281c1ca398651718fdd)
+
+(上图：费根鲍姆（第一）常数的定义，<span class="katex--inline"><span class="katex"><span class="katex-mathml">ana_n</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.58056em;vertical-align:-.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:.151392em;"><span class="" style="top:-2.55em;margin-left:0;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span>是第n次分叉发生位置的横坐标)
+
+而这个4.6692的比值，就是这就是费根鲍姆常数！1975年，费根鲍姆发现了这个常数。1986年，费根鲍姆获得了物理学的沃尔夫奖。此后，费根鲍姆也在多个数学物理领域作出了贡献。
+
+洛克菲勒大学教授，费根鲍姆的密切合作者和好友Eric D Siggia回忆费根鲍姆说：“Mitchell Feigenbaum是一位具有伟大创意和博学的数学物理学家，他给那些遇见他的人留下了难忘的印象… 尽管他对非线性动力学的研究做出了最为深远的贡献，但他的独特观察能力使他能够转向引人注目的非常规主题 - 制图，反假冒，天文学，光学，视觉，艺术，哲学等等。”
+
+费根鲍姆常数发现至今已44年。虽然猜测它是超越数，但是至今未能证明。另外也有人考察是否能用已知常数表示费根鲍姆常数。就像很早之前，人们就知道自然数的平方倒数和约等于1.64等等，但直到欧拉的发现，人们才知道这其实就是<span class="katex--inline"><span class="katex"><span class="katex-mathml">π2/6\pi^2/6</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06411em;vertical-align:-.25em;"></span><span class="mord"><span style="margin-right:.03588em;" class="mord mathdefault">π</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord">/</span><span class="mord">6</span></span></span></span></span>。
+
+对费根鲍姆常数，有一个很有意思也很神秘的近似值：
+
+<span class="katex--inline"><span class="katex"><span class="katex-mathml">π+tan⁡−1eπ≈4.6690201932⋯\pi+\tan^{-1}{e^\pi}\approx 4.6690201932\cdots</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.66666em;vertical-align:-.08333em;"></span><span style="margin-right:.03588em;" class="mord mathdefault">π</span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.819088em;vertical-align:0;"></span><span class="mop"><span class="mop">tan</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.819088em;"><span class="" style="top:-3.06798em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.664392em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span style="margin-right:.03588em;" class="mord mathdefault mtight">π</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.64444em;vertical-align:0;"></span><span class="mord">4</span><span class="mord">.</span><span class="mord">6</span><span class="mord">6</span><span class="mord">9</span><span class="mord">0</span><span class="mord">2</span><span class="mord">0</span><span class="mord">1</span><span class="mord">9</span><span class="mord">3</span><span class="mord">2</span><span class="mspace" style="margin-right:.166667em;"></span><span class="minner">⋯</span></span></span></span></span>
+
+它可以与费根鲍姆常数吻合到小数点后6位，但可惜不是精确吻合。所以这个式子有没有意义就不知道了。
+
+另外费根鲍姆常数并不仅仅出现在“生存空间”映射中。数学家还研究了其他的一些映射，比如复数平面上的的<span class="katex--inline"><span class="katex"><span class="katex-mathml">x2+cx^2+c</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.897438em;vertical-align:-.08333em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:.222222em;"></span></span><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault">c</span></span></span></span></span>，<span class="katex--inline"><span class="katex"><span class="katex-mathml">csin⁡(x)c\sin(x)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-.25em;"></span><span class="mord mathdefault">c</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mop">sin</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span></span>等等。这些二维平面下的映射，根据不同的c值，也会出现从规律性的震荡到混沌的现象，而且从这些映射的分叉图中，也观察到了费根鲍姆常数，由此证明了费根鲍姆常数的在混沌现象中的普适作用，这凸显了这个常数在混沌领域中重要性。
+
+![enter image description here](https://hypertextbook.com/chaos/diagram/bif.1.07.gif)
+
+(<span class="katex--inline"><span class="katex"><span class="katex-mathml">x→cx(1−x2)x → cx (1 − x^2)</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:1.06411em;vertical-align:-.25em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord">1</span><span class="mord">−</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:.814108em;"><span class="" style="top:-3.063em;margin-right:.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span>)
+
+![enter image description here](https://hypertextbook.com/chaos/diagram/bif.1.10.gif)
+
+(<span class="katex--inline"><span class="katex"><span class="katex-mathml">ƒ:x→csin⁡xƒ: x → c\sin x</span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord latin_fallback">ƒ</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.43056em;vertical-align:0;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:.277778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:.277778em;"></span></span><span class="base"><span class="strut" style="height:.66786em;vertical-align:0;"></span><span class="mord mathdefault">c</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mop">sin</span><span class="mspace" style="margin-right:.166667em;"></span><span class="mord mathdefault">x</span></span></span></span></span>)
+
+以上，差不多粗浅介绍了费根鲍姆常数的来历，它是确实是一个按计算器按出来的常数。费根鲍姆曾说，正是在反复按计算器，观察输出结果的过程中，给了他将结果画在坐标图上的灵感。如果使用现代计算机，虽然可以一下次产生海量的数值结果，但他可能会迷失在数据海洋中，而无法找到其中的规律。
+
+所以，各位听众如果想研究些数学问题，无需迷信计算机，不同的问题有不同的研究方法。很多问题也许用纸笔研究更好。而混沌问题又是一个数学中神秘而有趣的领域，有无穷的秘密等待人类探索。这期节目到这里，如果你喜欢大老李的节目，务必请订阅转发，下期再见！
+
+参考链接：
+
+<a href="https://en.wikipedia.org/wiki/Logistic_map">https://en.wikipedia.org/wiki/Logistic_map</a>
+
+<a href="https://hypertextbook.com/chaos/universality/">https://hypertextbook.com/chaos/universality/</a>
+
+<a href="https://zh.wikipedia.org/zh-cn/%E5%96%AE%E5%B3%B0%E6%98%A0%E8%B1%A1#cite_note-1">https://zh.wikipedia.org/zh-cn/%E5%96%AE%E5%B3%B0%E6%98%A0%E8%B1%A1#cite_note-1</a>
+
+<a href="http://mathworld.wolfram.com/LogisticEquation.html">http://mathworld.wolfram.com/LogisticEquation.html</a>
+
+<a href="https://en.wikipedia.org/wiki/Logistic_function">https://en.wikipedia.org/wiki/Logistic_function</a>
+
+<a href="https://zhuanlan.zhihu.com/p/68535061">https://zhuanlan.zhihu.com/p/68535061</a>
+
+<a href="http://mathworld.wolfram.com/FeigenbaumConstant.html">http://mathworld.wolfram.com/FeigenbaumConstant.html</a>
+
+<a href="http://mathworld.wolfram.com/FeigenbaumConstantApproximations.html">http://mathworld.wolfram.com/FeigenbaumConstantApproximations.html</a>
+
+<a href="https://www.rockefeller.edu/news/26289-mitchell-feigenbaum-physicist-pioneered-chaos-theory-died/">https://www.rockefeller.edu/news/26289-mitchell-feigenbaum-physicist-pioneered-chaos-theory-died/</a>
