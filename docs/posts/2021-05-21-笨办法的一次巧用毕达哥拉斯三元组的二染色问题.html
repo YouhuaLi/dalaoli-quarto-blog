@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2021-05-21">
+
+<title>“笨办法”的一次巧用——毕达哥拉斯三元组的二染色问题 – dalaoli_quarto_blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">dalaoli_quarto_blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">“笨办法”的一次巧用——毕达哥拉斯三元组的二染色问题</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">每周一题</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">May 21, 2021</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>这次的话题与勾股数组有关。勾股数组就是三个自然数，a, b,c 满足<img src="" alt="a^2+b^2=c^2\">，比如大家熟悉的（3，4，5）和（5，12，13）。因为勾股定理也被称为“毕达哥拉斯定理”，它们也被称为“毕达哥拉斯三元组”。</p>
+<p>考虑这样一个问题，有没有可能把全体自然数分成两组，使得每一组中，找不出任何勾股数组？</p>
+<p>这个问题也被称为“毕达哥拉斯三元组的二染色问题”。因为它相当于是把自然数的用了两种颜色染色，每个数字被染上某种颜色，但是如果三个数字属于同一组勾股数组，则它们不能被赋予同一种颜色。问有没有可能完成这样的染色？(注：<strong>不要求同一组中的三个数字互质</strong>。）</p>
+<p>让我们先简单思考一下这个问题。如果这个问题的答案是“可以完成”，那么最简单的证明方式就是，通过勾股数组的性质，把自然数分成两组，能够确保任何一组中没有勾股数组，那将是最简单的证明方法。</p>
+<p>但是，稍微分析一下，你会发现找不出这样的简单分割方法。因为对任何一个自然数来说，它很可能可以作为某个勾股数组的一个数字。有些整数还可能出现多个勾股数组内，这样情况就更复杂了。不管怎样，找不出这样一种简单的，对自然数分割的方法。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-b43b0ea988eaefccba3a70a5b6990086_720w.jpg" class="img-fluid"> （上图：勾股数组的“散射图”，其中每个蓝点的(x,y)是整数点，且为某一组勾股数组的两条直角边，负数部分也对称着色，便于识别。其中的“射线”是因为(x,y)和(2x,2y)之类的情况。）</p>
+<p>那么，就考虑一下问题的反面。如果我们猜想，无法完成二染色，该如何证明？最简单方法就是找出一个反例。对这个问题来说，找反例的意思：要找出一组自然数，无论怎样把这些自然数分为两组，总有一组里包含至少一个勾股数组。</p>
+<p>看上去，找反例的任务是简单一些。对这个问题，比较理想的一种反例情况就是，对不多的一些整数，比如10个整数，它们之间可以互相组成勾股数组的情况非常多，导致不能二染色。</p>
+<p>但是，稍微分析一下，会发现很难找到这种，以勾股数组形式，互相纠缠，紧密联系的一系列整数。比如说，可以证明，不可能存在两组勾股数组，其中共享了两个数字。也就是不存在如下形式的勾股数组： <img src="" alt="a^2+b^2=c^2">和<img src="" alt="b^2+c^2=d^2">。所有勾股数组中，最多有一个数字相同。因此，用手算方法，找出若干互相“纠缠”的勾股数组，就太困难了。</p>
+<p>接下来能想到的方法就是用计算机枚举。从少数几个自然数开始，逐步加入更多的数字，尝试对这些数字分组。直到发现，加入某个数字之后，再也找不出合适的二染色方案了。</p>
+<p>这个方案技术上很简单，问题是计算规模非常大。因为需要证明不存在二染色方案，理论上需要尝试全部着色可能。那么对n个自然数，就大致需要枚举<img src="" alt="2^n">种着色方案，这个数字增长太快了。基本上在<img src="">100”&gt;之后，一般的个人计算机是无能为力的。</p>
+<p>基于以上理由，很久以来，虽然一直有这样一个猜想：存在某个自然数n，从1到n的自然数，按照勾股数不同色规则，不能完成二染色。或者说，无论如何染色，总能在某个颜色的数组中，找到一组勾股数组。猜想存在这样的一个n，但是不知道是多少。</p>
+<p>这个问题在2015年迎来了一个突破。来自于美国南加州大学的研究者确认，这个n至少是7664。这个数字比之前的结果来说是一个很大的提高。他们仍然使用了计算机来测试，但是在其中加入了一些技巧。</p>
+<p>首先，他们把这个二染色问题转换成计算机算法中的“SAT问题”。“SAT”是英语“SATISFIABILITY”，“可满足性”的一个缩写。SAT问题就是在给出一个布尔表达式的情况下，计算能否对表达式中的每某个变量赋予一个“真”或“假”的值，从而使得表达式的值为真。举一个著名的悖论的例子，有两句话：</p>
+下面这句话是假的。上面这个话是真的。问：以上两句话谁真谁假？
+
+<p>如果把这个问题转化成SAT问题来思考，则可以设有两个布尔变量x, y，分别表示这两句话的真或假。那么第一句话，“下面这句话是假的”，用布尔变量表示就是：</p>
+<p>( x&amp;^y | ^x&amp;y )</p>
+<p>第二句话用布尔表达式表示就是：</p>
+<p>( y&amp;x | <sup>y&amp;</sup>x )</p>
+<p>两者用”&amp;“连接后，得：</p>
+<p>( x&amp;^y | ^x&amp;y ) &amp; ( y&amp;x | <sup>y&amp;</sup>x )</p>
+<p>现在，对x,y进行赋值。如果某种赋值结果可以使上面这个表达式为真，那么x,y的赋值结果就是原先问题的答案。但是显然，无论如何赋值，都不能使这个表示为真，所以这个两句话就构成了悖论。这就是SAT问题的一个简单例子。</p>
+<p>而SAT问题在计算机科学中很重要，因为很多算法问题，都可以转化为SAT问题。而SAT问题，又是一个典型的NP问题。关于什么是”P vs NP问题”，可以听我之前的一期节目介绍。所以，当某人宣称证明了“P=NP”的时候，可以问他，请给出一个多项式时间的SAT问题算法。如果给不出，那就有足够理由去怀疑他的证明。这是题外话了，反正SAT问题很重要，它是一种典型的，也是比较好理解的一种NP问题。</p>
+<p>那再看下怎么把这个勾股数组的二染色问题转化为SAT问题，还是比较容易的。因为是二染色，可以认为这两种颜色就是布尔代数里的“真”和“假”。那么问题中，需要避免的就是某一组勾股数组的两个数字同时被赋予“真”或“假”。比如，对某一组勾股数组中的三个数字，我们用布尔变量x, y, z表示它们的值。那么需要避免的就是x,y,z同时为真，且x,y,z同时为假的情况：</p>
+<p>^( x &amp; y &amp; z ) &amp; ^( ^x &amp; ^y &amp; ^z )，化简后：</p>
+<p>( x | y | z ) &amp; ( ^x | ^y | ^z )</p>
+<p>理解上面这一点就好办了，只要把需要考察的自然数都用一个布尔变量表示，并且枚举其中的所有勾股数组，写出以上的表达式。最后把所有的表达式都用“并且”关系连接，得到一个非常长的布尔表达式。</p>
+<p>只要能够找出对这个表达式每个变量的某个赋值，使得总的表达式结果为“真”，那就意味着这些自然数能够二染色；如果找不到这样的方案，则表示不行。如此，就把原来的问题转化成了一个标准的SAT问题。</p>
+<p>转化成SAT问题后，问题就好办了，因为市面上已经有很多好的SAT求解程序。虽然SAT问题是多项式时间的，但不表示求解算法就只能傻傻的枚举是吧？比如表达式里如果要求某个变量同时为真和假，那就马上可以输出无解。其中还有很多可以优化加速的地方。甚至每年，都会进行SAT比赛，就是给出一系列变量很多、表达式很长的SAT问题，让各种求解器一起求解，看谁求解速度快。</p>
+<p><img src="https://files.mdnice.com/user/5405/1f71844a-8da3-497b-811b-9b2817a2fee0.png" class="img-fluid"> (上图：https://satcompetition.github.io关于2021年SAT Competition的页面)</p>
+<p>2015年，南加州大学的这个团队，尝试了市面上的几种优秀的SAT求解器，最后选择了一种方便拆分问题，并行求解的求解器，对7664以内的自然数进行了求解。问题在10台服务器上并行求解，每台机器是12核的CPU。在执行了10多分钟后，确认7664以内的自然数，是可以按照前述规则二染色的。</p>
+<p>当然，我们更希望的结论是找出某个数字，不能完成二染色。但鉴于之前有关这个问题的结论是非常少的， 一下子把这个问题的下限提高到7664，也是一个非常大的突破。所以，这仍然是一个很优秀的成果，这篇论文还被评为当年关于SAT问题的最佳论文。</p>
+<figure class="wp-block-image figure">
+<img src="https://pic4.zhimg.com/80/v2-160742b35d026a0dda64bf3b3b85d4e3_720w.jpg" class="img-fluid figure-img">
+</figure>
+<p>（上图：1到7664的二染色方案，白色点表示着任意颜色均可）</p>
+<p>而一年以后，2016年5月，美国的三名研究者根据以上的思路，加以改进，使用了更多的计算机算力，终于确认，需要寻找的这个数字是7825。也就是，从1到7825，对这些自然数，你无法把它们分成两组，使得两组中都没有勾股数组，而对1到7824，是可以做到的。</p>
+<p>他们的计算过程的最后中间文件多达200T，并且如果是用单个CPU计算的话，他们估计需要4年的时间。</p>
+<p>以上有关勾股数组的二染色问题，算是解决了。这个问题是计算机帮助解决数学问题的一个很好的例子，而且有一个启发是，有些过去不能用计算机解决的问题，随着技术发展，可能在某个时刻，就可以用计算机解决了。目前来看，7000个左右的布尔变量的SAT问题，大概就是目前计算机求解的上限了。</p>
+<p>照例，考虑一些延伸问题，比如三染色情况会如何？如果还是转化成SAT问题，第一个难点就是变量数要爆炸了。二染色的时候，可以认为一种颜色为“真”，一种颜色为“假”，三染色就没有那么直接了，肯定没法做到一个整数对应一个变量。另外，可以三染色的整数下限，可能非常非常大，因此目前用计算机求解不可行。</p>
+<p>另一个略让人吃惊的一个猜想是：无论分组数有多少，只要整数够多，那么就无法做到任何一组里没有勾股数组。比如说，允许分100组，那么还是存在一个很大的整数，从1到这个整数，请你划分100组，你还是无法做到其中任何一组没有勾股数组。并且这个100可以是任意大，这是目前的猜想。</p>
+<p>另一个延伸思考是：从1到7825，这些整数是无法二染色的。那么，能否找出一组最少的整数，它们是无法二染色。因为从1到7825，其中有很多数组不属于任何勾股数组，当然可以拿走。另外之所以，7825加入后，导致不能二染色，必然是有不止一组整数的平方和等于7825，数组纠结在一起，导致无法分组了。而7824肯定不能与7825构成勾股数组，所以拿走7824后，剩下的数字肯定还是不能二染色。</p>
+<p>有一种可能是通过分析与7825相关的勾股数组，顺藤摸瓜，找出一组互相关联纠缠的勾股数组，使得它们不能二染色，有兴趣的读者可以自己研究下。提示：7825出现在以下两组勾股数字中：<img src="" alt="7825^2=5180^2+5865^2=625^2+7800^2
+\"></p>
+<p>参考资料：</p>
+<figure class="wp-block-embed is-type-rich is-provider-embed wp-block-embed-embed figure">
+<div class="wp-block-embed__wrapper">
+https://arxiv.org/pdf/1505.02222.pdf
+</div></figure>
+<figure class="wp-block-embed is-type-rich is-provider-embed wp-block-embed-embed figure">
+<div class="wp-block-embed__wrapper">
+https://arxiv.org/pdf/1605.00723.pdf
+</div></figure>
+
+
+</main></div>
+
+
+ <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/your-website-url\.example\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+ <!-- /content -->
+
+
+
+
+</body></html>

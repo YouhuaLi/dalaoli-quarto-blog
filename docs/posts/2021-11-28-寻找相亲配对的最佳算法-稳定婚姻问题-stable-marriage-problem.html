@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2021-11-28">
+
+<title>寻找相亲配对的“最佳算法” —— 稳定婚姻问题 (Stable Marriage Problem) – dalaoli_quarto_blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">dalaoli_quarto_blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">寻找相亲配对的“最佳算法” —— 稳定婚姻问题 (Stable Marriage Problem)</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">音频讲稿</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">November 28, 2021</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>假设你组织了一次相亲会，男女人数相同。参会者在相亲会上互相认识后，每个人心目中都对全体异性相亲对象有了一个偏好顺序。每个男性对每个女性都有了一个喜好的排序，所有女性也对男性有了这样一个排名。</p>
+<p>作为组织者，搜集到所有人的排名信息后，你会如何考虑将男女配对，让他们后续发展？有没有一种最佳的配对方法？</p>
+<p><img src="https://pic2.zhimg.com/v2-5034de95ab3efeb2fd51d91dcc25eb07_1440w.jpg?source=172ae18b" class="img-fluid"></p>
+<p>当然，这里必须对“最佳”定个标准。在本问题中，“最佳”的首要标准是产生“稳定婚姻。“稳定婚姻”是这样定义的：</p>
+<p>首先我们要定义的是“不稳定婚姻”。“不稳定婚姻”的定义是：如果有这样两对夫妇，其中一对的丈夫认为另一对夫妇中的妻子比自己的妻子好；同时另一对夫妇中的妻子认为当前的老公也不如另一个老公好。这里的“好”和“坏”就是按之前个人的喜好排名决定。如果存在这种情况，那就意味着有两对婚姻里有一男一女，同时存在离开现任配偶，与对方重组婚姻的意愿，那么这两对婚姻就是“不稳定婚姻”。</p>
+<hr>
+<p>稳定婚姻和不稳定婚姻的例子，假设以下3男3女，有如下偏好关系，左边的为最喜欢：</p>
+<p>男1：女1，女2，女3；</p>
+<p>男2：女1，女3，女2；</p>
+<p>男3：女2，女3，女1；</p>
+<p>女1：男3，男1，男2；</p>
+<p>女2：男1，男2，男3；</p>
+<p>女3：男3，男2，男1；</p>
+<p>则： 男1女1；男2女3；男3女2；是一组稳定婚姻。</p>
+<p>男1女2；男2女1；男3女3；是一组不稳定婚姻。因为男1觉得男2的妻子女1，比现任妻子女2好；女1觉得女2的丈夫男1，比现任丈夫男2好。</p>
+<hr>
+<p>“稳定婚姻”的定义就是一组婚姻中，不存在不稳定婚姻。那么对任何一组偏好列表，是否总可以进行合理的匹配，使得最终配对的结构都是“稳定婚姻”？这就是“稳定婚姻问题”（Stable Marriage Problem）。</p>
+<p>答案：确实有这样的一个算法，可以确定地找到一种稳定婚姻方案。算法也挺有意思，其实跟生活中的行为是很有相似度的。这个算法有两个镜像版本：“男性主动”或是“女性主动”的版本。就以“男性主动”版本为例：</p>
+<p>男性循环向女性求婚（其实男性求婚顺序无关紧要，最终结果是一样的）。任何时刻，没有婚约的男性都向自己偏好列表中的排名最高的（且从未求婚过的女性）求婚。而女性第一次接到求婚请求时，暂时接受婚约。第二次接受求婚时，她显然会比较一下这个男性与现有现订婚的男性的排名，如果更高则接受，并且放弃之前的婚约；否则直接拒绝当前的求婚。</p>
+<p>每次求婚之后，总有部分男性被拒了，则继续按照自己的偏好列表继续求婚，但只向自己未求婚过的女性求婚了。而所有女性策略还是相同，如果新的求婚排名高则接受，并且拒掉之前婚约，否则直接拒绝。</p>
+<p>每次求婚之后，总有一些原先有婚约的男性不幸被拒，重新加入相亲军团。</p>
+<p>那么如此循环，直到所有人都结婚，则算法结束，问题解决。</p>
+<hr>
+<p>仍按之前三男三女为例，执行以上求婚算法，偏好列表是：</p>
+<p>男1：女1，女2，女3；</p>
+<p>男2：女1，女3，女2；</p>
+<p>男3：女2，女3，女1；</p>
+<p>女1：男3，男1，男2；</p>
+<p>女2：男1，男2，男3；</p>
+<p>女3：男3，男2，男1；</p>
+<p>则一种可能的求婚过程是：</p>
+<p>男1向女1求婚，女1接受；</p>
+<p>男2向女1求婚，因女1对男1比男2更偏好，则女1拒绝；</p>
+<p>男3向女2求婚，女2接受；</p>
+<p>男2向女3求婚，女3接受。</p>
+<p>此时，所有人都有婚约；结果如下：</p>
+<p>男1女1；男2女3，男3女2。可以验证，结果为稳定婚姻。</p>
+<p>可以看出，此结果中，男性较为满意，但女性不太满意，特别是女2。</p>
+<hr>
+<p>对此算法，你肯定会有若干疑问：</p>
+<p>第一个问题是，怎么证明算法可以在有限时间内结束？</p>
+<p>因为每名男性只可能向特定的女性求婚一次。所以，总的求婚次数最多是n²，n就是男性或女性人数。这个数字是有限的，所以算法必然在有限时间内结束。</p>
+<p>第二个问题是，怎么确定算法结束时，每个人都结婚了？</p>
+<p>可以用反证法，如果有这种情况，那么存在一个女人，她从来未被求过婚，并且有从未向这个女人求过婚的男人。但这是不可能的，因为如果只剩下这个男人和这个女人没有结婚，那么根据算法，不管这个女人在这个男人的喜好列表里的排名有多低，他还是得向这个女人求婚。所以，算法结束时，所有人都结婚了。</p>
+<p>最后一个问题：怎么证明所有婚姻是稳定的？还是用反证法，如果存在这样两对不稳定夫妻，且不稳定因素是Bob和Alice。那么因为Alice在Bob心目中的排名比其现任妻子高，则Bob必然在现任妻子之前向Alice求婚过。而Alice心目中，Bob的排名比现任丈夫高，则不管其现任丈夫在Bob之前或之后求婚，留下的必然是Bob。所以不可能出现不稳定婚姻。</p>
+<p>这个算法是1960年代，由科学家戴维·盖尔（Gale）和劳艾徳·沙普利（Shapley）提出来的，现在该算法用他们的姓氏首字母命名，称为“GS算法”。有意思的是“GS算法”在被正式提出之前，就已经在一些场合下被使用了。但不是用在相亲，而是用在一些地方的医学院接受实习医生的配对选择流程。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-b458b75f42d0fc4a5dc1a4367dd14ad2_720w.jpg" class="img-fluid"> (上图：一定人数下，可能产生的稳定婚姻组合数量。横轴为男性或女性人数，纵轴为稳定婚姻组合数。虚线为计算机采样结果，实线为Pittle的理论公式预测。一般认为，稳定婚姻组合数的增长与N*lnN同级。图片来源：Michael Dzierzawa, Marie-José Oméro, Statistics of stable marriages, Physica A 287 (1–2) (2000) 321–333.)</p>
+<p>GS算法流程是清楚了，但你肯定还有不少的疑问和思考，那以下我就讲讲这个问题的若干变种和对它们的一些分析。</p>
+<p>第一个变种是，虽然GS算法给出的结果都是稳定的婚姻，但是同样是稳定，稳定的程度是不同的。可以想到有这样一种现成的对婚姻稳定度的度量：每一对夫妇，其配偶在自己的喜好列表上的名次。名次越高，名次的数值越小，表示对配偶越满意，婚姻也越稳定。</p>
+<p>这一度量取值范围是1到n，n为男性或女性人数。对这个度量，我称其为“稳定成本”，因为它表达了婚姻的稳定度，并且越低，越稳定，所以是“成本”。</p>
+<p>有了“稳定成本”这样一种度量，我们一下子可以考虑很多有意思的问题。比如对之前男方主动求婚的GS算法，其给出配对结果，男方与女方的稳定成本比较，哪一方的稳定成本比较低，哪一方对婚姻更满意呢？答案有点出人意料：男方满意度较高，女方较低。</p>
+<p>实际上可以证明，在男方主动求婚的情况下，最后配对的结果，在所有可能的稳定配对结果中，男性总是可以与可能的最高顺位的女性配对，而女性则是所有可能结果中，与顺位最低的男性结婚。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-d2f0db0e982f42766ca475c5db6cc5a2_720w.jpg" class="img-fluid"> （上图：男性主动情况下的GS算法中，男女稳定成本的图例。横轴为人数，带○线为男性稳定成本，带黑点的实线为女性稳定成本。可以看出，在男性主动情况下，男性比女性对配偶更满意。图片来源同前。）</p>
+<p>那么当然，如果算法改成女性主动求婚的话，那么结果总是女性的满意度最高，而男性的满意度最低。总之，可以学到的一点是，在找配偶的问题上，主动出击有时是很重要的。</p>
+<hr>
+<p>仍按之前三男三女为例，以女性主动方式，执行以上求婚算法，偏好列表是：</p>
+<p>男1：女1，女2，女3；</p>
+<p>男2：女1，女3，女2；</p>
+<p>男3：女2，女3，女1；</p>
+<p>女1：男3，男1，男2；</p>
+<p>女2：男1，男2，男3；</p>
+<p>女3：男3，男2，男1；</p>
+<p>则一种可能的求婚过程是：</p>
+<p>女1向男3求婚，男3接受；</p>
+<p>女2向男1求婚，男1接受；</p>
+<p>女3向男3求婚，男3接受，女1被毁约；</p>
+<p>女1向男1求婚，男1接受，女2被毁约；</p>
+<p>女2向男2求婚，男2接受。</p>
+<p>配对结果为：</p>
+<p>女1男1，女2男2，女3男3。这种女性主动下的配对结果，女性会比较满意。</p>
+<hr>
+<p>那么，会出现另一个问题，如果要求男女满意度差不多，该怎么办？这个想法又会引出很多问题。</p>
+<p>先考虑这样一个问题：如果我们要求配对的结果是总体上稳定成本最小，即所有人的稳定成本之和最小，这种条件下，是否总是产生稳定婚姻？</p>
+<p>很可惜，答案是否定的。也就是总体上最稳定的婚姻组合，局部很可能产生不稳定婚姻。比如之前的例子，全局最小稳定成本配对结果是：</p>
+<p>男1女2，男2女1，男3女3。男性总稳定成本为：2+1+2=5，女性总稳定成本为：3+1+1=5，总成本为10。可以验证，这是一种达到最小总成本的配对方案，然而这个方案是不稳定的，不稳定因素来自男1和女1。这也是社会学领域经常遇到的情况，即因为个体的“自私”，导致社会总成本上升，这种情况非常常见。</p>
+<p>另一个问题是，怎么寻找这种总体上的最优解？算法复杂度如何？之前的GS算法是比较好的算法那，它的复杂度是n²，n是男人或女人的人数。而寻找总体最优解，如果用蛮力搜索，枚举所有组合，那么需要n!次搜索，显然不太优越。你也可以想象，如果是需要找到精确最优解的话，那它是一个指数复杂度的问题和一个NP问题。甚至还是一个“NP-困难”的问题，因为给出一个组合，验证这个组合是否是全局最优，都没有一个多项式算法。</p>
+<p>但这个情况下，有个有意思的计算，就是全局最优情况下，每个人匹配到配偶的排名期望值是多少？数学家给算出来了，这个值是1.617√N（黄金分割比？），N是男性或女性人数。也即是说，如果是100个男性和女性，如果按全局最配对，那么平均每个人能匹配到的配偶的排名是1.617√100，约等于16名。 这个结果还不错，就是每个人的配偶是自己心目中，在100个人里排名第16名左右。但这是不考虑婚姻是否稳定的，其中有可能存在不稳定婚姻的情况。</p>
+<p>那么下一个问题是，要求稳定婚姻的情况下，最低总稳定成本的情况如何？这里有一个意外的情况是，这种条件下，有了多项式时间的匹配算法。而之前，在不要求稳定婚姻情况下，反而没有多项式时间的算法。增加了约束条件后，却有了更快的算法。这是非常有意思的，问题的要求更多，计算反而更快了。原因是可以猜到的：因为在要求稳定婚姻的情况下，有很多组合不用考虑了，反而能加速了。</p>
+<p>这个具体算法略复杂，，现在的算法复杂度是N³，比GS算法的N²要复杂点，但仍然是多项式时间的算法。那么这时候平均每个人的稳定成本或配偶排名是多少呢？数学家也算出来了，答案是2√(N)，也就是100对夫妻的话，平均每个人的配偶排名大概是第20名。比之前的16名要差一些，但总体上还是挺靠前的。</p>
+<p>所以，如果你要搞相亲会的话，也许这种稳定婚姻情况下的全局最优算法，是一种比较好的匹配算法。</p>
+<p>但目前为止，我们还没有讨论过男女平等的问题。那么我们来看看怎么能做到男女平等，但我们需要先定义一个男女平等的标准。高德纳（Donald Knuth）和波利亚（George Polya）等人曾提出过这么三种标准：</p>
+<p>第一种：平等主义下的最低稳定成本（minimization of egalitarian cost）。它的意思是把全体男性看各自妻子的名次累加得到一个数值，然后把全体女性看各自丈夫的名次累加得到一个数值，两个数值<strong>相加</strong>得到一个总成本值，并寻找其最小值。其实这个标准与之前的全局最低是一摸一样的，之所以叫它“平等主义”就是不区分性别了，男女混在一起算，这可能也算一种男女平等，是现在比较流行的一种平等概念。</p>
+<p>第二种：最小后悔成本（minimization of regret cost)。这种情况下，规定这样一种“后悔成本”：一对夫妻中，夫妇看对方的名次中，比较大的那个数值，就称为这对夫妻的“后悔成本”。比如说，丈夫看妻子是排名第1，妻子看丈夫则是排名第10， 则这对夫妻的后悔成本是10。现在我们要寻找这样一种使得全体夫妻的后悔成本总和最小的配对，这种配对方案被称为“最小后悔成本”。对这种问题，现在已经找到一种算法，复杂度与GS算法是一样的N²，说明这个问题现在已经很好得被解决。</p>
+<p>第三种男女平等标准：“性别平等下的最小成本”（minimization of sex-equalness cost），它应该是大家心目中最常见的男女平等，即全体男性的稳定成本之和，与全体女性的稳定成本之和，两者比较差值的绝对值，希望越小越好。不像第一种，第一种是比较男女成本的和值，这个是比较差值，这大概是大家心目中典型的男女平等。这种条件下的稳定婚姻问题，也被称为“平衡稳定婚姻问题”（Equitable Stable Marriage Problem）。对这类问题，又有一个意外情况就是，它没有多项式算法了。如同寻找全局最优问题一样，它又变成一个NP-困难问题，虽然这种男女平等是大家很希望的一个结果。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-83eef6c7115f1ec722d5fad4a029e484_720w.jpg" class="img-fluid"> （上图：稳定婚姻情况下，男女稳定成本对比，横轴为女性，纵轴为男性。图片是在200人的情况下，产生若干随机偏好列表列表，寻找其中所有稳定婚姻组合，分别计算男性和女性稳定成本。图片来源：Physics Reports 917 (2021) 1–79）</p>
+<p>以上就是科学家提出过的三种“男女平等思想下”的度量。但我自己又考虑了下，其实还可以有其他的男女平等度量。比如基于“方差”的度量，因为人喜欢与其他人比较稳定成本，虽然这种心理不太好。</p>
+<p>但是这样，就可以另外定义三种类似的度量：</p>
+<p>“平等主义下的最小稳定方差：就是看所有人的稳定成本的方差，越小越好。</p>
+<p>“性别平等下的最小成本方差”，顾名思义，就是那女分开来看，分别计算全体男性的稳定成本方差和全体女性的稳定成本方差，越小越好。</p>
+<p>第三种，可能是“三观”最不正的，可以叫“最小夫妻嫌弃指数”：就是夫妻间，互相看对方的稳定成本，也就是排名的差值，希望越小越好。比如夫妻互看，都是第一名，那当然是最好；如果丈夫嫌弃妻子，妻子看丈夫也是哪都不行，虽然可能家庭不太和谐，但也算平等了吧。但如果一方看另一方排名很高，而另一方反过来排名很低，落差很大，那么男女就不太平等了。GS算法产生的结果往往就是这种情况，有时我们需要避免那种情况。那么就可以定义夫妻间“嫌弃指数”：双方看彼此的排名的差值的绝对值。那我们如果寻找所有夫妻的“嫌弃指数”的最小值，那么也是一种可以研究的问题。</p>
+<p>以上三种度量可能是因为“三观不正”，目前我没有看到有人研究过算法，有兴趣的听众可以自己研究下。</p>
+<p>那好了，以上对稳定婚姻问题的基本形态和目前的一些结果介绍完了，讲讲它的若干种扩展。扩展有两大类，一种是扩展配对的数量。</p>
+<p>比如有这样一种家庭组合问题：有若干男女和待收养的小孩，所有男女和小孩都对其他集合的对象有一个偏好列表，问如何将一男一女和一个小孩组合在一起，成立家庭最为合理。问题内容挺奇葩的，但确实是一个很好的算法问题。</p>
+<p>还有一种扩展，就更常见了，就是配对对象本身不分类型，希望被划分到若干组。比如一群人去吃饭，人数很多，需要分桌。每个人都有一些希望一起吃饭和希望不一起吃饭的人，那么怎样分桌可以使大家最满意，这就是一个“分桌问题”（Seating Problem）。有时它也被称为“稳定室友问题”(Stable Roommate Problem）。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-cd6cdf3f34b983e2a62feb6dde4085c6_720w.jpg" class="img-fluid"> (上图：室友关系好坏对学生是一个很重要的问题)</p>
+<p>听上去“稳定婚姻”问题都是处理一些不太正经的问题，但其实它有很多非常正经的应用场合。除了之前的分配学生去医院实习的问题，其实大学录取过程，就有点像“稳定婚姻问题”。对美国的大学录取，就更为典型。比如，美国大学的基本录取流程就是，学生可以向若干大学同时发出申请，如果其中有若干大学同意录取，那么学生就可以选择自己最想去的大学。如果全部被拒了，那么学社还有几会继续发申请给其他大学。这个流程有点像前面“GS算法”，因为学生主动申请，结果会对学生比较理想，学生总是可以进入其可能进入的最好大学。当然，学校也会意识到这个问题，所以有时大学会主动邀请他们特别想录取的学生入学。</p>
+<p>还有一种应用场合则更加性命攸关了，就是器官捐献和匹配。如果现在有三个可供移植的相同器官和三个等待移植的病人。把哪个器官分配给谁，如何做到公平合理，移植效果又最大化，这就是需要诸多权衡和考虑的问题。</p>
+<p>最后，稳定婚姻问题在物理学中也有它的意义。我们可以把稳定成本想象成一个物体的能量或者能级。一般来说，一个系统中的物体总是倾向于从能级高到能级最低的状态演变。很多学术论文里，会直接把“稳定婚姻”问题里的“稳定成本”称为“能量”，那么寻找最小总成本的问题，就相当于寻找这个系统最稳定状态的问题，这就是“稳定婚姻问题”在物理学中的意义。</p>
+<p>参考链接：</p>
+<p>https://www.sciencedirect.com/science/article/pii/S0370157321000843</p>
+<p>https://hal.archives-ouvertes.fr/jpa-00247483/document</p>
+<p>DOI: 10.1051/jphyslet:019850046017077100</p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/your-website-url\.example\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

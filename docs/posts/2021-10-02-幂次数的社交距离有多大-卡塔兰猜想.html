@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2021-10-02">
+
+<title>幂次数的“社交距离”有多大？—— 卡塔兰猜想 – dalaoli_quarto_blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">dalaoli_quarto_blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">幂次数的“社交距离”有多大？—— 卡塔兰猜想</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">每周一题</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 2, 2021</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>这次聊一个数论里的著名猜想——“卡塔兰猜想”（Catalan’s Conjecture）。其实它已经被证明了，它的名字现在应该叫做“米哈伊列斯库定理”才对。但无奈“卡塔兰猜想”的名字太著名了，用了太久了，所以没有人会用“米哈伊列斯库定理”这个名字。就像人们只知道“费马大定理”，而不会叫它“怀尔斯定理”。</p>
+<p>卡塔兰猜想是比利时数学家欧仁·查理·卡塔兰在1844年提出的一个猜想：</p>
+<p>方程：<span class="math inline">\(x^p-y^q=1\)</span></p>
+<p>其中x, y, p, q都是正整数，p, q大于1，</p>
+<p>只有<span class="math inline">\(3^2-2^3=1\)</span> 这样一组非平凡解。</p>
+<p>这个猜想用一种直观的描述就是：请你把自然数中幂次形式的数，也就是可以表示成<span class="math inline">\(a^b\)</span> 形式的数都列出来，其中a, b都是自然数，且指数b&gt;1。那么自然数中符合这个条件的有：</p>
+<p>1, 4, 8，9, 16, 25, 27, 32, 64……</p>
+<p>现在问所有这些数字中，有没有连续的两个整数？以上已经列出来一对：8和9是连续，但后面还有没有这样连续的两个幂次数呢？卡塔兰猜想就是说：除了8和9这一对之外，再也没有连续的都是幂次形式的自然数了。</p>
+<p>这个命题的内容简单到小学生都可以理解。但一般来说，数论里这种小学生都可以理解的命题都是特别难的。</p>
+<p>那来看一下这个问题被解决的历史过程吧。其实早在卡塔兰提出这个猜想的500年前，法国中世纪的犹太哲学家，吉尔松尼德（Levi ben Gerson，1288 - 1344）就证明了卡塔兰猜想的一个最简单的特例：两个完全平方数和完全立方数之间，只有8和9是相差1的，再也没有其他的了。</p>
+<p>但是吉尔松尼德的证明当时并不为人知，所以后来欧拉又证明了同样的结论。欧拉的证明是比较复杂的，后来人们找到了相对简单的证明。我简单说说这个证明的思路。</p>
+<p>还是回到原来的不定方程，现在我们只考虑完全立方数和完全平方数之间的情况，那么方程就便成为：</p>
+<p><span class="math inline">\(x^3-y^2=\pm 1\)</span></p>
+<p>其中最简单的情况是右边等于1的情况，也就是：</p>
+<p><span class="math inline">\(x^3-y^2=1\)</span></p>
+<p>这个方程，我们要证明它没有正整数解。证明第一步，我们把它改写成：</p>
+<p><span class="math inline">\(x^3=y^2+1\)</span></p>
+<p>然后我们要对右边进行因式分解。虽然右边的<span class="math inline">\(y^2+1\)</span> ，在中学数学课本里是无法因式分解的，但是如果你听过大老李的节目，知道有“高斯整数”这个东西，那么<span class="math inline">\(y^2+1\)</span>就可以分解为：</p>
+<p><span class="math inline">\(x^3=(y+i)(y-i)\)</span></p>
+<p>其实，这是最关键的一步！虽然我们是在通常的整数范围内提出的问题，但是证明过程中，我们要跳入到“高斯整数”这个更大的“宇宙”中去。因为我们知道，如果原方程有正整数解，那么那些解也同样满足高斯整数条件下的命题。因为高斯整数包含所有整数，所以我们把<span class="math inline">\(y^2+1\)</span>分解成<span class="math inline">\((y+i)(y-i)\)</span>是没有任何问题。</p>
+<p>一旦右边进行了因式分解，那么问题就迎刃而解。你所需要分析的是<span class="math inline">\(y+i\)</span> 和<span class="math inline">\(y-i\)</span>两个数的最大公约数。你会发现，这个最大公约数必须是2的因子，也就是它只可能是2或者1。</p>
+<p>但另一方面，因为<span class="math inline">\(y^2\equiv 0 \ \mbox{or}\  1 (\bmod 4)\)</span>，<span class="math inline">\(y^2+1\equiv 1 \ \mbox{or}\  2 (\bmod 4)\)</span>。</p>
+<p>对任何偶数，其3次方必然整除4，所以<span class="math inline">\(x\)</span>只能是奇数，则<span class="math inline">\(y+i\)</span>和<span class="math inline">\(y-i\)</span> 的最大公约数只是1，也就是<span class="math inline">\(y+i\)</span>和<span class="math inline">\(y-i\)</span> 互质。</p>
+<p>但要注意的是，在高斯整数中，“互质”表示这两个数的公因子为<span class="math inline">\(\pm 1\)</span>和<span class="math inline">\(\pm i\)</span>，这四种情况之一。还要注意，以上分析中用到一个重要前提是：“高斯整数”具有“唯一因子分解定理”。如果没有这个性质，那么很多讨论就进行不下去的。</p>
+<p>既然<span class="math inline">\(y+i\)</span>和<span class="math inline">\(y-i\)</span> 互质，意味着<span class="math inline">\(y+i\)</span>和<span class="math inline">\(y-i\)</span>本身必须是一个完全立方数，即:</p>
+<p><span class="math inline">\(y+i=d(a+bi)^3\)</span></p>
+<p>其中a、b是整数，<span class="math inline">\(d\)</span> 是<span class="math inline">\(\pm 1\)</span> 、<span class="math inline">\(\pm i\)</span>之一。因为<span class="math inline">\(d^3\)</span> 总是高斯整数下的一个单位元(unit)，所以<span class="math inline">\(d\)</span>基本可以忽略， 于是：</p>
+<p><span class="math inline">\(y+i=(a+bi)^3\)</span></p>
+<p>展开后，比较等式左右两边的实部和虚部。可以解得唯一解y=0（x=1），于是方程<span class="math inline">\(x^3-y^2=1\)</span>没有正整数解。</p>
+<p>对另一种情况：<span class="math inline">\(x^3-y^2=-1\)</span> ，需要证明它除了<span class="math inline">\(x=2\)</span>和<span class="math inline">\(y=3\)</span>以外，没有其他正整数解。第一步还是如法炮制，因式分解：</p>
+<p><span class="math inline">\(x^3=(y+1)(y-1)\)</span></p>
+<p>这次同样可以确定<span class="math inline">\(y+1\)</span> 和<span class="math inline">\(y-1\)</span> 的最大公因子不是2就是1。虽然到这里的步骤，是大家应该很习惯的，但后面的讨论过程其实要比之前的高斯整数下的分析麻烦些，用到的准备知识会多一些，所以这里就不详述了。</p>
+<p>以上就是现代数学中，对证明<span class="math inline">\(x^3-y^2=\pm 1\)</span>这个方程，仅有<span class="math inline">\(x=2\)</span> 和<span class="math inline">\(y=3\)</span>基本过程。以上就是卡塔兰猜想最简单的一个特例。</p>
+<p>下一个突破是1850年，勒贝格证明了<span class="math inline">\(x^p-y^2=1\)</span>这个方程无整数解（要注意，他不是发明”勒贝格积分“的那个勒贝格，只是同一个姓）。勒贝格的证明第一步其实与之前还是一样，把方程分解为：<span class="math inline">\(x^p=(y+i)(y-i)\)</span> 。</p>
+<p>再下一个突破要经过的时间就很长了。过了111年，到1961年，中国数学家柯召(1910年4月12日～2002年11月8日)证明了，如果<span class="math inline">\(x^2-y^p=1\)</span>有解，那么<span class="math inline">\(x\)</span>要大于<span class="math inline">\(10^{3\cdot 10^{9}}\)</span>，这样一个非常大的数字。</p>
+<p>再到1976年，美国的Joseph E.Z. Chein去掉了这个下界，最终证明了<span class="math inline">\(x^2-y^q=1\)</span>这个方程在<span class="math inline">\(q&gt;3\)</span>的时候无解。</p>
+<p>但以上只是固定了一个幂次为完全平方数的情况，距离卡塔兰猜想还有相当大的距离。1999年, M. Mignotte 证明如果还有其他解，那么两个指数都有上界：</p>
+<p><span class="math inline">\(p&lt;7.15 \times 10^{11}\)</span></p>
+<p><span class="math inline">\(q&lt;7.78 \times 10^{16}\)</span></p>
+<p>但两个指数还是太大，远超计算机可以枚举的范围。</p>
+<p>终于到2002年，罗马尼亚数学家普雷达·米哈伊列斯库（Preda Mihăilescu, 1955 - ）最终完成了卡塔兰猜想的证明，从而解决了这个有150多年历史的猜想。他的证明的核心技术是环理论的“零化子”（annihilator），当然也是基于前人的成果。因为之前有人证明，如果卡塔兰猜想还有其他解，那么两个指数必须是某种特殊形式的质数对（Double Wieferich Prime Pair）。米哈伊列斯库证明，即使指数是这种形式的质数对，也无解，所以完成了证明。</p>
+<p>以上介绍了”卡坦兰猜想“的历史，我知道你很想看看它的扩展。你能想到的第一个扩展大概是，两个幂次相差2的情况，之前列举过程中我们就看到了一组解是25和27。那有没有其他解？我是没找到。</p>
+<p>但一个直观感觉是幂次数之间的距离总体上是逐渐增加的，所以现在数学家猜想：<span class="math inline">\(x^p-y^q=m\)</span>，<span class="math inline">\(m\)</span>是任何正整数，这个方程只有有限多的整数解。这是目前的一个猜想。而如果”ABC猜想“为真，这个猜想也为真。</p>
+<p>卡塔兰猜想的另一个更有意思的扩展叫“费马–卡塔兰猜想”。它有点像费马大定理和卡塔兰猜想的结合体。费马大定理说<span class="math inline">\(x^p+y^p=z^p\)</span>，指数大于等于3的情况下无解。那么允许指数不同的情况下，解的情况为何？或者说，更一般的情况下，对方程：</p>
+<p><span class="math inline">\(x^p+y^q=z^r\)</span></p>
+<p>非平凡正整数解的情况如何？</p>
+<p>数学家注意到一个情况是，如果三个指数都比较小的情况下，解是很多的。比如三个指数都是2，那就是勾股定理嘛。而如果三个指数要求比较大，解就少很多。特别是，如果要求三个指数的倒数和小于1的话，解的情况非常有意思。</p>
+<p>目前已知，在<span class="math inline">\(\frac{1}{p}+\frac{1}{q}+\frac{1}{r}&lt;1\)</span> 的情况下，对以上方程，现在找到以下10组解：</p>
+<p><span class="math inline">\(1^{p}+2^{3}=3^{2}\)</span> 其中p&gt;6；</p>
+<p><span class="math inline">\(2^{5}+7^{2} =3^{4}\)</span></p>
+<p><span class="math inline">\(7^{3}+13^{2} =2^{9}\)</span></p>
+<p><span class="math inline">\(2^{7}+17^{3} =71^{2}\)</span></p>
+<p><span class="math inline">\(3^{5}+11^{4} =122^{2}\)</span></p>
+<p><span class="math inline">\(17^{7}+76271^{3} =21063928^{2}\)</span></p>
+<p><span class="math inline">\(1414^{3}+2213459^{2} =65^{7}\)</span></p>
+<p><span class="math inline">\(9262^{3}+15312283^{2} =113^{7}\)</span></p>
+<p><span class="math inline">\(43^{8}+96222^{3} =30042907^{2}\)</span></p>
+<p><span class="math inline">\(33^{8}+1549034^{2} =15613^{3}\)</span></p>
+<p>那么费马——卡塔兰猜想就是说，除了以上10组解，这个方程没有其他解。这是一个神奇的现象，对我来说这10组解看上去都是些奇奇怪怪的数字。数学里这种出现若干特别数字特例的情况是非常少的。我不太清楚数学家如何找到这10组解的，反正对我来说这10组解太有神秘感了。</p>
+<p>而观察上面的10组解的话，你会发现，任何一组解里都有一个指数为2的数，也就是会出现完全平方数。由此出现一个”Beal猜想“，称：</p>
+<p>以上方程在指数都大于2的情况下，无（非平凡）解。</p>
+<p>Beal是美国的银行家，也是数学爱好者。他出资悬赏100万美元，证明这个猜想。当然，这个猜想与费马——卡塔兰猜想谁更难，是见仁见智了。如果你要找反例的话，那么Beal猜想更难，因为它要求反例中的指数都大于2。如果是证明猜想为真的话，那么”Beal猜想“稍微简单点。因为如果”费马——卡塔兰猜想“为真，就蕴含了Beal猜想为真，反之不然。</p>
+<p>以上猜想还能扩展到高斯整数范围内，还有一些神奇数字。比如，对原版”卡塔兰猜想“，高斯整数中有一组解：</p>
+<p><span class="math inline">\((78+78 i)^{2}-(-23 i)^{3}=i\)</span></p>
+<p>对，”费马——卡坦兰猜想“，高斯整数内也有若干解，比如：</p>
+<p><span class="math inline">\((8+5 i)^{2}+(5+3 i)^{3}=(1+2 i)^{7}\)</span></p>
+<p><span class="math inline">\((20+9 i)^{2}+(1+8 i)^{3}=(1+i)^{15}\)</span></p>
+<p>对，Beal猜想，高斯整数中找到一个反例：</p>
+<p><span class="math inline">\((-2+i)^3 + (-2-i)^3 = (1+i)^4\)</span></p>
+<p>当然这些解怎么找，是不是全部解，这些问题就太难了。</p>
+<p>好了，今天关于卡塔兰猜想的问题就聊到这里，最大感想还是数论的深不可测。而高斯整数在这些问题中非常有用，更加验证了“虚数不虚”。</p>
+<p>参考链接：</p>
+<p>https://mathworld.wolfram.com/Fermat-CatalanConjecture.html</p>
+<p>https://mathworld.wolfram.com/CatalansConjecture.html</p>
+<p>https://www.mathpuzzle.com/Gaussians.html</p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/your-website-url\.example\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

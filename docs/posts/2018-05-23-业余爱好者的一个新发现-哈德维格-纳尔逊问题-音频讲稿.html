@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2018-05-23">
+
+<title>业余爱好者的一个新发现 哈德维格-纳尔逊问题 （音频讲稿） – dalaoli_quarto_blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">dalaoli_quarto_blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">业余爱好者的一个新发现 哈德维格-纳尔逊问题 （音频讲稿）</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Uncategorized</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">May 23, 2018</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>大家好，我是大老李。今天聊个最近的一条数学新闻，是关于一个业余数学爱好者的一个新的数学发现，这个发现是关于一个叫“哈德维格-纳尔逊问题”的。这个问题1945年先由瑞士数学家哈德维格发表，1950年普林斯顿大学数学系教授纳尔逊将其正规化，因此后来将此问题命名为：哈德维格-纳尔逊问题。这个名字有点长，所以之后节目里我就把它简称为“哈纳问题”。这个哈纳问题被马丁加德纳于1960年在《科学美国人》杂志上发表，名声一时大噪。</p>
+<p>它到底是怎样的呢? 它又是一个着色问题：请你给一个平面上所有点着色，着色目标是是使得所有距离为1的两个点能着上不同的颜色，问最少需要几中颜色？这个问题是不是粗听有点像四色定理，但是一个重要的不同是，它涉及到距离为1，这个确切的长度要求，这也意味着它不是像四色定理那样可以对形状任意扭曲变形的拓扑问题。</p>
+<p>那我们来做做看这道题，你可能感觉有点无从着手，因为要考虑平面上所有点，而距离为1的点对又数不胜数。但是我们还是可以发挥通常的数学思维方法，先把问题简化，考虑几个极端情况。比如我先考虑一个半径为1的圆，根据题意，我知道圆心到圆周上的点距离都是1，所以圆心与圆周的颜色必须不同。但圆周上肯定也有距离为1的点。所以我们马上可以考虑一下园内接6边型这个形状，我马上知道这六边形的六个点至少需要2种颜色着色。这样，这个圆加圆心就需要至少3种颜色，我们就得到了“哈纳”问题的一个下限。其实根据这条思路略微发展，你可以很快把下限提高1，变成4。这个就留给 听众思考了。</p>
+<p>然后我们再考虑一下上限，就是最多需要多少种颜色，我肯定能够对平面着色。这个也不难，我们可以设法把平面分成很多等分，使得两个距离为1的点被分割在不同的部分上。所以能想到最简单的思路就是用正六边形去平铺整个平面，就像蜂窝一样，如果我使得六边形最长对角线距离略微小于1，那么整个平面上所有距离为1的点就能落在两个不同的正六边形内。然后你会发现只要用7种颜色就可以将所有六边形着色，而且使得任何距离为1的两个点落在不同颜色的正六边形内。我在节目介绍里放了这样一个六边形密铺图，你也可以考虑下为什么至少是7种颜色，而不是像“四色定理”说的四种颜色，虽然用4种颜色我们可以确保相邻的六边形是不同颜色。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2018/05/hadwiger-nelson_problem.png" class="img-fluid figure-img"></p>
+<figcaption>Hadwiger-Nelson_problem.png</figcaption>
+</figure>
+</div>
+<p>(上图：将平面用外接圆直径略小于1的正六边形密铺，且用7中颜色着色，可证明哈德维格-纳尔逊问题的上限是7)</p>
+<p>以上，这样我们就得到了一个上限7。你看，我们有了下限4和上限7，也就是这个“哈纳问题”的答案就是4，5，6，7中的一个，是不是一下子感觉简单好多？而且根据以上思路，其实我们并不需要考虑平面上所有得到点，只要我们能找到有限多个点构成的图，如果我们能证明这有点多个点构成的图，其中距离为1的点对，至少需要若干种颜色，则这个数字就是“哈纳问题”的下限。后来数学家还把这种所有单位距离的点对有连线，而其他距离的点对都不连线的图称为“单位距离图” （unit-distance graphs)</p>
+<p>虽然这个问题感觉被一下子简化了许多，但是从1960年代之后，它却几乎停滞了50多年，直到上个月，终于有了突破，它的下限被提高到了5，而且令人惊奇的是，这次的发现不是来自职业数学研究者，而是一位英国的生物学家，今年55岁的奥布里.得. 格雷(Aubrey de Grey)。他在生物学领域发表过一些“惊世骇俗”的言论，比如生物技术可以使人活1000年之类的。但不管他在生物学领域成就如何，这次他在数学领域的发现确实是实打实的。</p>
+<p>这位格雷医生自小喜欢数学，他喜欢在休息的时候研究些数学问题。他从去年圣诞节开始，对这个“哈纳问题”产生了兴趣，并且他小时候很喜欢玩“奥赛罗棋”（Othello），据说是“奥赛罗棋”给了他一些灵感。这里大老李说明下，奥赛罗棋也叫黑白棋，反棋。大老李小时候喜欢玩各种棋，这个黑白棋肯定是玩过的，实体版电脑版都玩过。这个棋现在玩的人应该很少了，我估计听众里00后很少见过这种棋。至于这棋与“哈纳问题“的联系，根据我看的格雷医生的论文，我知道有一种黑白棋的棋盘形状全是正三角形密铺的，这种棋盘应该给了他启发。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2018/05/othello_game.jpg" class="img-fluid figure-img"></p>
+<figcaption>othello_game.jpg</figcaption>
+</figure>
+</div>
+<p>(上图：黑白棋，又名奥赛罗棋，反棋)</p>
+<p>这位格雷医生，从去年圣诞节开始研究，到今年4月，短短几个月时间，就有了突破新成果。这个成果就是，他发现了一个由1581个点构成的图，而且这个图根据“哈纳问题”的着色规则，是无法用4种颜色着色的，而是需要至少5种颜色，也就是他把这个问题的下限提高了1。这个图有1581个点，所以你也能猜到他是用电脑程序去发现这个图的，但即使使用电脑，也是需要技巧的，我把这个图样子放在了节目介绍里。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2018/05/screen-shot-2018-05-22-at-8-39-20-pm.png" class="img-fluid figure-img"></p>
+<figcaption>Screen Shot 2018-05-22 at 8.39.20 PM.png</figcaption>
+</figure>
+</div>
+<p>(上图：格雷医生发现的1581个点构成的，无法用四种颜色着色的单位距离图)</p>
+<p>他的基本思路就是从一个名为“莫泽纺锤”（Moser spindle）的形状开始去构图。这个“莫泽纺锤”是以一对兄弟威廉莫泽（William Moser）和里奥莫泽(Leo Moser)的名字命名的。他们在1960年代发现了一个7个点11条边的图，这个图是至少需要4种颜色着色的，而且现已证明这是点数最少的需要4色着色的单位距离图。因为它形似纺锤，所以人称”莫泽纺锤“，我也把这个莫泽纺锤的样子放在了节目介绍里。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2018/05/moserspindle_700.gif" class="img-fluid figure-img"></p>
+<figcaption>MoserSpindle_700.gif</figcaption>
+</figure>
+</div>
+<p>（上图：莫泽纺锤，它至少需要四种颜色着色）</p>
+<p>有“莫泽纺锤”的好处就是，如果你的图里至少包含一个这种纺锤，那我知道我的图至少需要4种颜色。然后我就考虑如何在图中不断添加新的纺锤，然后使得尽可能多的点的距离是1，直到我发现4中颜色不够用了。果然格雷医生一开始用电脑发现了一个2万多个点的图，4色不够用，后来压缩到1581个点。</p>
+<p>之所以把这个问题介绍给大家，一个是因为这是不可多的业余数学爱好者做出的数学发现，所以我觉得给位听众大可以一试。另外一个原因是这个“哈纳问题”现在已经正式被Polymath项目所接待，成为第16个正式课题。这个Polymath项目，简单来说就是数学界的github，也就是群体协作项目。这个项目是由包括陶哲轩在内的一些全球顶尖数学家发起的，他们有感于之前数学家单打独斗解决问题带来的种种弊端，而同时网络潜在力量对于数学问题的证明似乎没有发挥出来，因此他们于2009年发起了这个名为Polymath的网络数学群体合作项目。但是与github不同的是，不是每个人都能发起发起具体的课题，而是必须由陶哲轩这样的数学家检查通过才行。这样做的好处是，数学家能够检验某个具体问题是否有可能被解决，是否适合网络协作等等。否则我估计网站上都会是诸如考拉兹猜想，哥德巴赫猜想的讨论，但那显然是跑偏了。</p>
+<p>这个“哈纳问题”在格雷医生的发现后，很快被Polymath接纳了，然后数学家提出了目前可以考虑进一步研究的三个方向：</p>
+<p>第一：找到更小的，也就是点数更少的，至少需要五种颜色着色的单位距离图。这个意图很明显，因为现在格雷医生找到的图多达1500多个点，人眼既不能判断，也基本无法以这个图继续发展，尝试寻找需要六种颜色着色的图，所以我们希望找到更小的图。这个目标已经有所进展，就在这个项目发布到ploymath上没几天，就有不少人人找到了更小的五色着色图，目前最新记录是633个点。</p>
+<p>第二，尝试减少计算机的辅助。格雷医生的证明里有一个397个点的子图是用电脑暴力检索验证的。这个目标的意图就是说我们希望证明当中有更多的逻辑推理成分，因为只有更多的推理成分，我们才能把这个方法去处理6种颜色，7种颜色的情况。单靠电脑的话，因为计算量增加的指数效应，是很难取得进展的。</p>
+<p>第三，就是尝试将现有方法永远到寻找一个至少用6种颜色才能着色的单位距离图，也就是继续提高下限，而前面两个目标其实是为这个目标来服务的。目前，其实我们已经把问题答案缩小到5，6，7三种情况，看上去提高下限又是比较容易的，我们如果能排除5和6两种情况，也就是找到5种颜色和6种颜色无法着色的单位距离图，那我们就等于得到了哈德维格-纳尔逊问题的答案，就是7。看上去只是两步之遥，但谁也说不准这两步的难度到底多大。</p>
+<p>好了，以上就是关于哈德维格-纳尔逊问题的一介绍。这个问题我觉得有意思的点在于我觉得广大业余 数学爱好者尤其是编程爱好者完全可以参与进来，而且在Polymath项目的页面上有非常详尽的关于这个问题的已知结论和入门材料以及众多爱好者的讨论。我在节目的介绍里放了这个项目的链接地址：<a href="http://t.cn/R3803sw">http://t.cn/R3803sw</a> (注意：有一种数字货币也叫Polymath，不要混淆)。我看了下“四色定理”从提出到解决用了120多年，而哈德维格-纳尔逊问题提出到现在也就80年左右，我很好奇这个问题能否在120年内解决。好了，这次节目到这里，下期再见！</p>
+<hr>
+<p>收听“大老李聊数学”</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dalaoliblog.wordpress.com/wp-content/uploads/2018/05/ximalaya_season1.png" class="img-fluid figure-img"></p>
+<figcaption>ximalaya_season1</figcaption>
+</figure>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/your-website-url\.example\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
